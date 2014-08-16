@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='utf-8'?>
+<epm xmlns='http://eprints.org/ep2/data/2.0' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' id='http://eprints-devel.localdomain:8080/id/epm/rioxx' uuid='urn:uuid:fee5136b-4106-55cd-a4df-58a6dd5bf7f0'>
+  <epmid>rioxx</epmid>
+  <uri>http://eprints-devel.localdomain:8080/id/epm/rioxx</uri>
+  <documents>
+    <document>
+      <files>
+        <file>
+          <filename>epm/rioxx/cfg/cfg.d/zz_rioxx.pl</filename>
+          <mime_type>text/plain</mime_type>
+          <hash>059b25e3da8720be62ebdc20d7613c0a</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>53</filesize>
+        </file>
+        <file>
+          <filename>plugins/EPrints/Plugin/Export/RIOXX.pm</filename>
+          <mime_type>text/plain</mime_type>
+          <hash>d73139f4a0a00449ebe05733310b0e60</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>4284</filesize>
+        </file>
+        <file>
+          <filename>static/images/epm/rioxx.png</filename>
+          <mime_type>image/png</mime_type>
+          <hash>efb58d16f41a24f3c1b9eb0f705cad81</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>112083</filesize>
+        </file>
+      </files>
+      <mime_type>image/png</mime_type>
+      <format>image</format>
+      <main>static/images/epm/rioxx.png</main>
+      <content>install</content>
+    </document>
+    <document>
+      <files>
+        <file>
+          <filename>static/images/epm/rioxx.png</filename>
+          <mime_type>image/png</mime_type>
+          <hash>efb58d16f41a24f3c1b9eb0f705cad81</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>112083</filesize>
+        </file>
+      </files>
+      <format>image</format>
+      <main>static/images/epm/rioxx.png</main>
+      <content>coverimage</content>
+    </document>
+  </documents>
+  <version>1.0.0</version>
+  <creators>
+    <item>
+      <name>
+        <family>Brody</family>
+        <given>Tim</given>
+      </name>
+      <id>tdb2@ecs.soton.ac.uk</id>
+    </item>
+  </creators>
+  <title>RIOXX Application Profile Export</title>
+  <description>An export plugin that is aimed at UK HE repositories to supply data to RCUK to comply with the RCUK Open Access Policy (April 2013).</description>
+  <home_page>http://www.rioxx.net/</home_page>
+  <icon>images/epm/rioxx.png</icon>
+</epm>
