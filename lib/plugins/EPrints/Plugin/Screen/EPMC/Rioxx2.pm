@@ -32,7 +32,7 @@ sub action_enable
 
         $self->SUPER::action_enable( $skip_reload );
         my $repo = $self->{repository};
-
+print STDERR "RIOXX2 EPMC::Rioxx2::action_enable\n";
 
 my $xml = '
  <workflow xmlns="http://eprints.org/ep3/workflow" xmlns:epc="http://eprints.org/ep3/control">
@@ -40,8 +40,7 @@ my $xml = '
                <stage ref="rioxx2"/>
        </flow>
        <stage name="rioxx2">
-               <component>
-                       <field ref="title" required="yes" />
+               <component type="Field::Multi">
                        <field ref="rioxx2_coverage" />
                        <field ref="rioxx2_language" />
                        <field ref="rioxx2_date_accepted" />
@@ -59,10 +58,11 @@ my $xml = '
 
 
 
-	my $filename = $repository->config( "config_path" )."/workflows/eprint/default.xml";
+	my $filename = $repo->config( "config_path" )."/workflows/eprint/default.xml";
 
         EPrints::XML::add_to_xml( $filename, $xml, $self->{package_name} );
 
+print STDERR "RIOXX2 EPMC::Rioxx2::action_enable added new stage\n";
 
         $self->reload_config if !$skip_reload;
 }
@@ -79,10 +79,11 @@ sub action_disable
 {
         my( $self, $skip_reload ) = @_;
 
+print STDERR "RIOXX2 EPMC::Rioxx2::action_disable\n";
         $self->SUPER::action_disable( $skip_reload );
         my $repo = $self->{repository};
 
-	my $filename = $repository->config( "config_path" )."/workflows/eprint/default.xml";
+	my $filename = $repo->config( "config_path" )."/workflows/eprint/default.xml";
         EPrints::XML::remove_package_from_xml( $filename, $self->{package_name} );
 
         $self->reload_config if !$skip_reload;

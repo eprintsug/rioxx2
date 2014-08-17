@@ -15,9 +15,9 @@
         <file>
           <filename>lang/en/phrases/rioxx2.xml</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>2d92993e371dd139c33b285116b5c030</hash>
+          <hash>8dba657b42a88b9b81cc55edca5759e6</hash>
           <hash_type>MD5</hash_type>
-          <filesize>1125</filesize>
+          <filesize>4174</filesize>
         </file>
         <file>
           <filename>plugins/EPrints/Plugin/Export/RIOXX2.pm</filename>
@@ -26,14 +26,22 @@
           <hash_type>MD5</hash_type>
           <filesize>4285</filesize>
         </file>
+        <file>
+          <filename>plugins/EPrints/Plugin/Screen/EPMC/Rioxx2.pm</filename>
+          <mime_type>inode/symlink</mime_type>
+          <hash>76bc010da1123dda4db52b79fcbd6219</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>2555</filesize>
+        </file>
       </files>
       <mime_type>inode/symlink</mime_type>
       <format>other</format>
-      <main>plugins/EPrints/Plugin/Export/RIOXX2.pm</main>
+      <main>plugins/EPrints/Plugin/Screen/EPMC/Rioxx2.pm</main>
       <content>install</content>
     </document>
   </documents>
   <version>1.0.0</version>
+  <controller>EPMC::Rioxx2</controller>
   <creators>
     <item>
       <name>
