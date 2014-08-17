@@ -74,7 +74,7 @@ push @{$c->{fields}->{eprint}},
 		{
 			sub_name => 'funder_name',
 			type => 'text',
-		}
+		},
 		{
 			sub_name => 'funder_id',
 			type => 'url',
@@ -124,6 +124,7 @@ push @{$c->{fields}->{eprint}},
 	)],
 	required => 1,
 },
+;
 
 
 

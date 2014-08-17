@@ -8,9 +8,9 @@
         <file>
           <filename>epm/rioxx2/cfg/cfg.d/zz_rioxx2.pl</filename>
           <mime_type>text/plain</mime_type>
-          <hash>00d50a13089de7417a45145535a27ed1</hash>
+          <hash>a2529547ee2cdc88f6373bbfa98e268d</hash>
           <hash_type>MD5</hash_type>
-          <filesize>1625</filesize>
+          <filesize>1628</filesize>
           <data encoding='base64'>JGMtPntwbHVnaW5zfXsnRXhwb3J0OjpSSU9YWDInfXtwYXJhbXN9e2Rpc2FibGV9ID0gMDsKCiMg
 TmV3IEVQcmludCBGaWVsZHMgZm9yIFJJT1hYMgoKcHVzaCBAeyRjLT57ZmllbGRzfS0+e2Vwcmlu
 dH19LAoKewoJbmFtZSA9PiAncmlveHgyX2NvdmVyYWdlJywKCXR5cGUgPT4gJ3RleHQnLAoJbXVs
@@ -29,17 +29,45 @@ YXJ0aWFsbHlfd2FpdmVkCgkJZnVsbHlfd2FpdmVkCgkJbm90X2NoYXJnZWQKCQlub3RfcmVxdWly
 ZWQKCQl1bmtub3duCgkpXSwKfSwKewoJbmFtZSA9PiAncmlveHgyX3Byb2plY3QnLAoJdHlwZSA9
 PiAnY29tcG91bmQnLAkKCWZpZWxkcyA9PiBbCgkJewoJCQlzdWJfbmFtZSA9PiAnaWQnLAoJCQl0
 eXBlID0+ICd0ZXh0JywKCQl9LAoJCXsKCQkJc3ViX25hbWUgPT4gJ2Z1bmRlcl9uYW1lJywKCQkJ
-dHlwZSA9PiAndGV4dCcsCgkJfQoJCXsKCQkJc3ViX25hbWUgPT4gJ2Z1bmRlcl9pZCcsCgkJCXR5
-cGUgPT4gJ3VybCcsCgkJfQoJXSwKCXJlcXVpcmVkID0+IDEsCgltdWx0aXBsZSA9PiAxLAp9LAp7
-CgluYW1lID0+ICdyaW94eDJfcHVibGljYXRpb25fZGF0ZScsCgl0eXBlID0+ICd0ZXh0JywKfSwK
-ewoJbmFtZSA9PiAncmlveHgyX3R5cGUnLAoJdHlwZSA9PiAnc2V0JywKCW9wdGlvbnMgPT4gW3F3
-KAoJCWJvb2sKCQlib29rX2NoYXB0ZXIKCQlib29rX2VkaXRlZAoJCWNvbmZlcmVuY2VfaXRlbQoJ
-CWpvdXJuYWxfYXJ0aWNsZQoJCW1hbnVhbAoJCW1vbm9ncmFwaAoJCXBvbGljeV9yZXBvcnQKCQl0
-ZWNoX3JlcG9ydAoJCXRlY2hfc3RhbmRhcmQKCQl0aGVzaXMKCQlvdGhlcgoJCWNvbnN1bHRhbmN5
-X3JlcG9ydAoJCXdvcmtpbmdfcGFwZXIKCSldLAoJcmVxdWlyZWQgPT4gMSwKCW11bHRpcGxlID0+
-IDEsCn0sCnsKCW5hbWUgPT4gJ3Jpb3h4Ml92ZXJzaW9uJywKCXR5cGUgPT4gJ3NldCcsCglvcHRp
-b25zID0+IFtxdygKCQlhbwoJCXNtdXIKCQlhbQoJCXAKCQl2b3IKCQljdm9yCgkJZXZvcgoJCW5h
-CgkpXSwKCXJlcXVpcmVkID0+IDEsCn0sCgoKCgo=
+dHlwZSA9PiAndGV4dCcsCgkJfSwKCQl7CgkJCXN1Yl9uYW1lID0+ICdmdW5kZXJfaWQnLAoJCQl0
+eXBlID0+ICd1cmwnLAoJCX0KCV0sCglyZXF1aXJlZCA9PiAxLAoJbXVsdGlwbGUgPT4gMSwKfSwK
+ewoJbmFtZSA9PiAncmlveHgyX3B1YmxpY2F0aW9uX2RhdGUnLAoJdHlwZSA9PiAndGV4dCcsCn0s
+CnsKCW5hbWUgPT4gJ3Jpb3h4Ml90eXBlJywKCXR5cGUgPT4gJ3NldCcsCglvcHRpb25zID0+IFtx
+dygKCQlib29rCgkJYm9va19jaGFwdGVyCgkJYm9va19lZGl0ZWQKCQljb25mZXJlbmNlX2l0ZW0K
+CQlqb3VybmFsX2FydGljbGUKCQltYW51YWwKCQltb25vZ3JhcGgKCQlwb2xpY3lfcmVwb3J0CgkJ
+dGVjaF9yZXBvcnQKCQl0ZWNoX3N0YW5kYXJkCgkJdGhlc2lzCgkJb3RoZXIKCQljb25zdWx0YW5j
+eV9yZXBvcnQKCQl3b3JraW5nX3BhcGVyCgkpXSwKCXJlcXVpcmVkID0+IDEsCgltdWx0aXBsZSA9
+PiAxLAp9LAp7CgluYW1lID0+ICdyaW94eDJfdmVyc2lvbicsCgl0eXBlID0+ICdzZXQnLAoJb3B0
+aW9ucyA9PiBbcXcoCgkJYW8KCQlzbXVyCgkJYW0KCQlwCgkJdm9yCgkJY3ZvcgoJCWV2b3IKCQlu
+YQoJKV0sCglyZXF1aXJlZCA9PiAxLAp9LAo7CgoKCgo=
+</data>
+        </file>
+        <file>
+          <filename>lang/en/phrases/rioxx2.xml</filename>
+          <mime_type>inode/symlink</mime_type>
+          <hash>2d92993e371dd139c33b285116b5c030</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>1125</filesize>
+          <data encoding='base64'>PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjwh
+RE9DVFlQRSBwaHJhc2VzIFNZU1RFTSAiZW50aXRpZXMuZHRkIj4KPGVwcDpwaHJhc2VzIHhtbG5z
+PSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hodG1sIiB4bWxuczplcHA9Imh0dHA6Ly9lcHJpbnRz
+Lm9yZy9lcDMvcGhyYXNlIiB4bWxuczplcGM9Imh0dHA6Ly9lcHJpbnRzLm9yZy9lcDMvY29udHJv
+bCI+CgoKPGVwcDpwaHJhc2UgaWQ9InVzZXJfZmllbGRuYW1lX29yY2lkIj5PUkNJRDwvZXBwOnBo
+cmFzZT4KPGVwcDpwaHJhc2UgaWQ9InVzZXJfZmllbGRoZWxwX29yY2lkIj5UaGUgT1JDSUQgZm9y
+IHRoZSB1c2VyPC9lcHA6cGhyYXNlPgoKIDxlcHA6cGhyYXNlIGlkPSJlcHJpbnRfZmllbGRuYW1l
+X3Jpb3h4Ml9jb3ZlcmFnZSI+Q292ZXJhZ2U8L2VwcDpwaHJhc2U+CiA8ZXBwOnBocmFzZSBpZD0i
+ZXByaW50X2ZpZWxkbmFtZV9yaW94eDJfbGFuZ3VhZ2UiPkxhbmd1YWdlPC9lcHA6cGhyYXNlPgog
+PGVwcDpwaHJhc2UgaWQ9ImVwcmludF9maWVsZG5hbWVfcmlveHgyX2RhdGVfYWNjZXB0ZWQiPkRh
+dGUgQWNjZXB0ZWQ8L2VwcDpwaHJhc2U+CiA8ZXBwOnBocmFzZSBpZD0iZXByaW50X2ZpZWxkbmFt
+ZV9yaW94eDJfZnJlZXRvcmVhZCI+RnJlZSB0byByZWFkPC9lcHA6cGhyYXNlPgogPGVwcDpwaHJh
+c2UgaWQ9ImVwcmludF9maWVsZG5hbWVfcmlveHgyX2xpY2Vuc2UiPkxpY2Vuc2UgUmVmPC9lcHA6
+cGhyYXNlPgogPGVwcDpwaHJhc2UgaWQ9ImVwcmludF9maWVsZG5hbWVfcmlveHgyX2FwYyI+QVBD
+PC9lcHA6cGhyYXNlPgogPGVwcDpwaHJhc2UgaWQ9ImVwcmludF9maWVsZG5hbWVfcmlveHgyX3By
+b2plY3QiPlByb2plY3Q8L2VwcDpwaHJhc2U+CiA8ZXBwOnBocmFzZSBpZD0iZXByaW50X2ZpZWxk
+bmFtZV9yaW94eDJfcHVibGljYXRpb25fZGF0ZSI+UHVibGljYXRpb24gRGF0ZTwvZXBwOnBocmFz
+ZT4KIDxlcHA6cGhyYXNlIGlkPSJlcHJpbnRfZmllbGRuYW1lX3Jpb3h4Ml90eXBlIj5UeXBlPC9l
+cHA6cGhyYXNlPgogPGVwcDpwaHJhc2UgaWQ9ImVwcmludF9maWVsZG5hbWVfcmlveHgyX3ZlcnNp
+b24iPlZlcnNpb248L2VwcDpwaHJhc2U+CgoKPC9lcHA6cGhyYXNlcz4K
 </data>
         </file>
         <file>

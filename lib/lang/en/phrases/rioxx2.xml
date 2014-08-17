@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE phrases SYSTEM "entities.dtd">
+<epp:phrases xmlns="http://www.w3.org/1999/xhtml" xmlns:epp="http://eprints.org/ep3/phrase" xmlns:epc="http://eprints.org/ep3/control">
+
+
+<epp:phrase id="user_fieldname_orcid">ORCID</epp:phrase>
+<epp:phrase id="user_fieldhelp_orcid">The ORCID for the user</epp:phrase>
+
+ <epp:phrase id="eprint_fieldname_rioxx2_coverage">Coverage</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_language">Language</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_date_accepted">Date Accepted</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_freetoread">Free to read</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_license">License Ref</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_apc">APC</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_project">Project</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_publication_date">Publication Date</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_type">Type</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_version">Version</epp:phrase>
+
+
+</epp:phrases>
