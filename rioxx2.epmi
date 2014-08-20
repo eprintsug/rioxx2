@@ -6,11 +6,25 @@
     <document>
       <files>
         <file>
+          <filename>epm/rioxx2/cfg/cfg.d/z_rioxx_report.pl</filename>
+          <mime_type>text/plain</mime_type>
+          <hash>4d9e3e673a9ded7cb428fda7f60d9785</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>4314</filesize>
+        </file>
+        <file>
           <filename>epm/rioxx2/cfg/cfg.d/zz_rioxx2.pl</filename>
           <mime_type>text/plain</mime_type>
-          <hash>a2529547ee2cdc88f6373bbfa98e268d</hash>
+          <hash>445bbf0c124821d04fbdf9ade8f5f877</hash>
           <hash_type>MD5</hash_type>
-          <filesize>1628</filesize>
+          <filesize>2378</filesize>
+        </file>
+        <file>
+          <filename>lang/en/phrases/reports.xml</filename>
+          <mime_type>inode/symlink</mime_type>
+          <hash>39c7a34eafc3d99d8dc509bab765ba71</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>932</filesize>
         </file>
         <file>
           <filename>lang/en/phrases/rioxx2.xml</filename>
@@ -27,17 +41,108 @@
           <filesize>4285</filesize>
         </file>
         <file>
+          <filename>plugins/EPrints/Plugin/Export/Report.pm</filename>
+          <mime_type>inode/symlink</mime_type>
+          <hash>535755b1bb018c12f8841b4d2512623e</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>2143</filesize>
+        </file>
+        <file>
+          <filename>plugins/EPrints/Plugin/Export/Report/CSV.pm</filename>
+          <mime_type>inode/symlink</mime_type>
+          <hash>4f42ac68e5467ec997b21616436fef3e</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>3031</filesize>
+        </file>
+        <file>
+          <filename>plugins/EPrints/Plugin/Export/Report/CSV/Example.pm</filename>
+          <mime_type>inode/symlink</mime_type>
+          <hash>0e433b1b61f549da00316e4971512570</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>409</filesize>
+        </file>
+        <file>
+          <filename>plugins/EPrints/Plugin/Export/Report/CSV/Rioxx2.pm</filename>
+          <mime_type>inode/symlink</mime_type>
+          <hash>8aa7b0b23f70c8157008b52145854e27</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>378</filesize>
+        </file>
+        <file>
           <filename>plugins/EPrints/Plugin/Screen/EPMC/Rioxx2.pm</filename>
           <mime_type>inode/symlink</mime_type>
           <hash>76bc010da1123dda4db52b79fcbd6219</hash>
           <hash_type>MD5</hash_type>
           <filesize>2555</filesize>
         </file>
+        <file>
+          <filename>plugins/EPrints/Plugin/Screen/Report.pm</filename>
+          <mime_type>inode/symlink</mime_type>
+          <hash>46559d0b1dd723d0a9c7ca21cd3c8995</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>12006</filesize>
+        </file>
+        <file>
+          <filename>plugins/EPrints/Plugin/Screen/Report/Example.pm</filename>
+          <mime_type>inode/symlink</mime_type>
+          <hash>1c2d8c6ae6fc484e6bb1a93978ec88b9</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>1893</filesize>
+        </file>
+        <file>
+          <filename>plugins/EPrints/Plugin/Screen/Report/Example/Articles.pm</filename>
+          <mime_type>inode/symlink</mime_type>
+          <hash>4c43aa504919a5484599af05f9b146b1</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>499</filesize>
+        </file>
+        <file>
+          <filename>plugins/EPrints/Plugin/Screen/Report/Example/ConferenceItems.pm</filename>
+          <mime_type>inode/symlink</mime_type>
+          <hash>3c8b240f6728e37d91784edf2409a85c</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>516</filesize>
+        </file>
+        <file>
+          <filename>plugins/EPrints/Plugin/Screen/Report/Rioxx2.pm</filename>
+          <mime_type>inode/symlink</mime_type>
+          <hash>fd0d5b33375a81baf03242708fcc2501</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>1893</filesize>
+        </file>
+        <file>
+          <filename>plugins/EPrints/Plugin/Screen/Report/Rioxx2/Articles.pm</filename>
+          <mime_type>inode/symlink</mime_type>
+          <hash>0fc53ea0deb378ee5a868ac0925111ee</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>495</filesize>
+        </file>
+        <file>
+          <filename>static/images/epm/rioxx2.png</filename>
+          <mime_type>inode/symlink</mime_type>
+          <hash>d8646e78c07e6a9653257a04d2c96521</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>65030</filesize>
+        </file>
       </files>
       <mime_type>inode/symlink</mime_type>
       <format>other</format>
-      <main>plugins/EPrints/Plugin/Screen/EPMC/Rioxx2.pm</main>
+      <main>static/images/epm/rioxx2.png</main>
       <content>install</content>
+    </document>
+    <document>
+      <files>
+        <file>
+          <filename>static/images/epm/rioxx2.png</filename>
+          <mime_type>inode/symlink</mime_type>
+          <hash>d8646e78c07e6a9653257a04d2c96521</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>65030</filesize>
+        </file>
+      </files>
+      <format>image</format>
+      <main>static/images/epm/rioxx2.png</main>
+      <content>coverimage</content>
     </document>
   </documents>
   <version>1.0.0</version>
@@ -60,4 +165,5 @@
   </creators>
   <title>RIOXX2 Export utility</title>
   <description>RIOXX2 Export utility</description>
+  <icon>images/epm/rioxx2.png</icon>
 </epm>
