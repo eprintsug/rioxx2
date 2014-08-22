@@ -1,25 +1,35 @@
-
 my @rioxx2_fields = (
 	{
 		target => "EPrint ID",
 		source => "eprint.eprintid",
+		default => sub {
+			my( $plugin, $objects ) = @_;
+			my $eprint = $objects->{eprint};
+			return $eprint->get_id;
+		},
 		validate => "required",
 	},
 	{
 		target => "dc:coverage",
 		source => "eprint.rioxx2_coverage",
+		default => "",
 		validate => "recommended",
 	},
 	{
 		target => "dc:description",
 		source => "eprint.abstract",
+		default => sub {
+			my( $plugin, $objects ) = @_;
+			my $eprint = $objects->{eprint};
+			return $eprint->get_value( "abstract" );
+		},
+
 		validate => "required",
 	},
 	{
 		target => "dc:format",
 		source => sub {
 			my( $plugin, $objects ) = @_;
-
 			my $eprint = $objects->{eprint};
 			my @docs = $eprint->get_all_documents;
 			if ( @docs )
@@ -45,7 +55,6 @@ my @rioxx2_fields = (
 			}
 			return undef;
 		},
-	
 		validate => "required",
 	},
 	{
@@ -121,6 +130,17 @@ my @rioxx2_fields = (
 	{
 		target => "rioxxterms:type",
 		source => "eprint.rioxx2_type",
+		default => sub {
+			my( $plugin, $objects ) = @_;
+print STDERR "rioxxterms:type default [$plugin] [$objects]\n";
+			my $eprint = $objects->{eprint};
+			my $type_map = $plugin->{repository}->config( "rioxx2_type_map" );
+			my $ep_type =  $eprint->value( 'type' );
+			my $rioxx2_type = $type_map->{$ep_type};
+			$rioxx2_type = "other" unless EPrints::Utils->is_set( $rioxx2_type ); 
+print STDERR "rioxxterms:type default returning [$rioxx2_type] for [$ep_type]\n";
+			return $rioxx2_type;
+		},
 		validate => "required",
 	},
 	{
@@ -147,10 +167,35 @@ my @rioxx2_fields = (
 	},
 );
 
+$c->{reports}->{"rioxx2"}->{fields} = [ map { $_->{target} } @rioxx2_fields ];
+$c->{reports}->{"rioxx2"}->{mappings} = { map { $_->{target} => $_->{source} } @rioxx2_fields };
+$c->{reports}->{"rioxx2"}->{defaults} = { map { $_->{target} => $_->{default} } @rioxx2_fields };
+$c->{reports}->{"rioxx2"}->{validate} = { map { $_->{target} => $_->{validate} } @rioxx2_fields };
+
 $c->{reports}->{"rioxx2-articles"}->{fields} = [ map { $_->{target} } @rioxx2_fields ];
 $c->{reports}->{"rioxx2-articles"}->{mappings} = { map { $_->{target} => $_->{source} } @rioxx2_fields };
 $c->{reports}->{"rioxx2-articles"}->{validate} = { map { $_->{target} => $_->{validate} } @rioxx2_fields };
 
+$c->{rioxx2_type_map} = {
+	article		=> 'journal_article',
+	book_section	=> 'book_chapter',
+	monograph	=> 'monograph',
+	conference_item	=> 'conference_item',
+	book		=> 'book',
+	thesis		=> 'thesis',
+	patent		=> 'other',
+	artefact	=> 'other',
+	exhibition	=> 'other',
+	composition	=> 'other',
+	performance	=> 'other',
+	image		=> 'other',
+	video		=> 'other',
+	audio		=> 'other',
+	dataset		=> 'other',
+	experiment	=> 'other',
+	teaching_resource	=> 'other',
+	other		=> 'other',
+};
 
 my @example_fields = (
 	{

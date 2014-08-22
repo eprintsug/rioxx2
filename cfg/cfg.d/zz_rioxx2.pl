@@ -11,6 +11,7 @@ $c->{plugins}{"Export::Report::CSV"}{params}{disable} = 0;
 $c->{plugins}{"Export::Report::CSV::Example"}{params}{disable} = 0;
 $c->{plugins}{"Export::Report::CSV::Rioxx2"}{params}{disable} = 0;
 
+$c->{plugins}{'InputForm::Component::Field::Override'}{params}{disable} = 0;
 
 # New report role for the admin user
 push @{$c->{user_roles}->{admin}}, qw{
@@ -124,7 +125,7 @@ push @{$c->{fields}->{eprint}},
 		working_paper
 	)],
 	required => 1,
-	multiple => 1,
+	multiple => 0,			# N.B. Profile says this is a "one or more"
 },
 {
 	name => 'rioxx2_version',

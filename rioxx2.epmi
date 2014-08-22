@@ -15,9 +15,9 @@
         <file>
           <filename>epm/rioxx2/cfg/cfg.d/zz_rioxx2.pl</filename>
           <mime_type>text/plain</mime_type>
-          <hash>445bbf0c124821d04fbdf9ade8f5f877</hash>
+          <hash>974cbeab55eba618fdba7f3666797f8c</hash>
           <hash_type>MD5</hash_type>
-          <filesize>2378</filesize>
+          <filesize>2455</filesize>
         </file>
         <file>
           <filename>lang/en/phrases/reports.xml</filename>
@@ -69,18 +69,25 @@
           <filesize>378</filesize>
         </file>
         <file>
+          <filename>plugins/EPrints/Plugin/InputForm/Component/Field/Override.pm</filename>
+          <mime_type>inode/symlink</mime_type>
+          <hash>d54cd396ec99ca0d7850d5aa5c978b0c</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>3011</filesize>
+        </file>
+        <file>
           <filename>plugins/EPrints/Plugin/Screen/EPMC/Rioxx2.pm</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>76bc010da1123dda4db52b79fcbd6219</hash>
+          <hash>7eea400f6024f2ce64d4b8a878f49bb8</hash>
           <hash_type>MD5</hash_type>
-          <filesize>2555</filesize>
+          <filesize>2711</filesize>
         </file>
         <file>
           <filename>plugins/EPrints/Plugin/Screen/Report.pm</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>46559d0b1dd723d0a9c7ca21cd3c8995</hash>
+          <hash>e220ab1945d1ac46378ace532dd993b1</hash>
           <hash_type>MD5</hash_type>
-          <filesize>12006</filesize>
+          <filesize>12377</filesize>
         </file>
         <file>
           <filename>plugins/EPrints/Plugin/Screen/Report/Example.pm</filename>
@@ -106,9 +113,9 @@
         <file>
           <filename>plugins/EPrints/Plugin/Screen/Report/Rioxx2.pm</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>fd0d5b33375a81baf03242708fcc2501</hash>
+          <hash>0f6c504f9e9c731c01eede6f5dd564aa</hash>
           <hash_type>MD5</hash_type>
-          <filesize>1893</filesize>
+          <filesize>1923</filesize>
         </file>
         <file>
           <filename>plugins/EPrints/Plugin/Screen/Report/Rioxx2/Articles.pm</filename>

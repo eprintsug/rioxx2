@@ -53,11 +53,13 @@
  <epp:phrase id="eprint_fieldopt_rioxx2_version_evor">Enhanced Version of Record</epp:phrase>
  <epp:phrase id="eprint_fieldopt_rioxx2_version_na">Not Applicable (or Unknown)</epp:phrase>
 
-eprint_fieldopt_rioxx2_type_book_chapter
-
 
  <epp:phrase id="metapage_title_rioxx2">RIOXX2</epp:phrase>
 
+ <epp:phrase id="Plugin/InputForm/Component/Field/Override:default_for_field">Default value: </epp:phrase>
+ <epp:phrase id="Plugin/InputForm/Component/Field/Override:override_for_field">Value to use: </epp:phrase>
+ <epp:phrase id="Plugin/InputForm/Component/Field/Override:select_override">Override the default value</epp:phrase>
+ <epp:phrase id="Plugin/InputForm/Component/Field/Override:select_default">Use the default value</epp:phrase>
 
 
 </epp:phrases>

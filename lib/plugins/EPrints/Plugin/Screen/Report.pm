@@ -128,6 +128,7 @@ sub items
 {
 	my( $self ) = @_;
 
+print STDERR "Report::items  dataset[".$self->{processor}->{dataset}."] order[".$self->param( 'custom_order' )."]\n"; 
 	if( defined $self->{processor}->{dataset} )
 	{
 		my %search_opts = ( filters => $self->filters, satisfy_all => 1 );
@@ -150,6 +151,7 @@ sub validate_dataobj
 {
 	my( $plugin, $dataobj ) = @_;
 
+print STDERR "Report::validate \n"; 
 	my $repo = $plugin->repository;
 
 	my $report_fields = $plugin->report_fields( $dataobj );
@@ -282,6 +284,7 @@ sub report_fields
 sub validate_fields
 {
 	my( $plugin ) = @_;
+print STDERR "Report::validate_fields \n"; 
 
 	return $plugin->{validate_fields} if( defined $plugin->{validate_fields} );
 
@@ -300,6 +303,7 @@ sub render_splash_page
 {
 	my( $self ) = @_;
 
+print STDERR "Report::render_splash_page \n"; 
 	my @plugins = $self->report_plugins;
 
 	if( !scalar( @plugins ) )
@@ -357,6 +361,7 @@ sub render
 {
 	my( $self ) = @_;
 
+print STDERR "Report::render \n"; 
 	# if users access Screen::Report directly we want to display some sort of menu
 	# where users can select viewable reports
 	if( "EPrints::Plugin::".$self->get_id eq __PACKAGE__ )
@@ -418,6 +423,7 @@ sub render_export_bar
 {
 	my( $self ) = @_;
 
+print STDERR "Report::render_export_bar \n"; 
 	my $repo = $self->repository;
 
 	my $chunk = $repo->make_doc_fragment;
@@ -504,6 +510,7 @@ sub report_plugins
 {
 	my( $self ) = @_;
 
+print STDERR "Report::report_plugins \n"; 
 	# sf2 - can't list via type => "Search::Report" ? 
         my @plugin_ids = $self->repository->plugin_list(
                 type => "Screen",

@@ -19,6 +19,8 @@ sub new
 	$self->{custom_order} = '-title/creators_name';
 	$self->{appears} = [];
 
+	$self->{report} = 'rioxx2';
+
 	return $self;
 }
 

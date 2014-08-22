@@ -34,22 +34,42 @@ sub action_enable
         my $repo = $self->{repository};
 print STDERR "RIOXX2 EPMC::Rioxx2::action_enable\n";
 
+	# With the current code you cannot provide an override for a report field that is derived 
+	# I.e. one that has a "sub" as a "source" in the report map rather than an EPrint field. 
 my $xml = '
  <workflow xmlns="http://eprints.org/ep3/workflow" xmlns:epc="http://eprints.org/ep3/control">
        <flow>
                <stage ref="rioxx2"/>
        </flow>
        <stage name="rioxx2">
-               <component type="Field::Multi">
-                       <field ref="rioxx2_coverage" />
-                       <field ref="rioxx2_language" />
-                       <field ref="rioxx2_date_accepted" />
-                       <field ref="rioxx2_freetoread" />
-                       <field ref="rioxx2_license" />
-                       <field ref="rioxx2_apc" />
-                       <field ref="rioxx2_project" />
-                       <field ref="rioxx2_publication_date" />
+               <component type="Field::Override">
                        <field ref="rioxx2_type" />
+               </component>
+               <component>
+                       <field ref="rioxx2_coverage" />
+               </component>
+               <component type="Field::Override">
+                       <field ref="rioxx2_language" />
+               </component>
+               <component>
+                       <field ref="rioxx2_date_accepted" />
+               </component>
+               <component>
+                       <field ref="rioxx2_freetoread" />
+               </component>
+               <component type="Field::Override">
+                       <field ref="rioxx2_license" />
+               </component>
+               <component>
+                       <field ref="rioxx2_apc" />
+               </component>
+               <component type="Field::Override">
+                       <field ref="rioxx2_project" />
+               </component>
+               <component type="Field::Override">
+                       <field ref="rioxx2_publication_date" />
+               </component>
+               <component type="Field::Override">
                        <field ref="rioxx2_version" />
                </component>
        </stage>
@@ -62,6 +82,7 @@ my $xml = '
 
         EPrints::XML::add_to_xml( $filename, $xml, $self->{package_name} );
 
+print STDERR "###################################################\n";
 print STDERR "RIOXX2 EPMC::Rioxx2::action_enable added new stage\n";
 
         $self->reload_config if !$skip_reload;
