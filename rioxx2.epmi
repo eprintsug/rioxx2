@@ -8,16 +8,16 @@
         <file>
           <filename>epm/rioxx2/cfg/cfg.d/z_rioxx_report.pl</filename>
           <mime_type>text/plain</mime_type>
-          <hash>ea3da0b09b74a52359fe8b94c3539021</hash>
+          <hash>d0d06837686242ce92969dee99b0173a</hash>
           <hash_type>MD5</hash_type>
-          <filesize>5927</filesize>
+          <filesize>6122</filesize>
         </file>
         <file>
           <filename>epm/rioxx2/cfg/cfg.d/zz_rioxx2.pl</filename>
           <mime_type>text/plain</mime_type>
-          <hash>2c0324960882bd0583899e07a1bd3c6d</hash>
+          <hash>b0d5fa0c2b900f930a3e960414640524</hash>
           <hash_type>MD5</hash_type>
-          <filesize>2501</filesize>
+          <filesize>2549</filesize>
         </file>
         <file>
           <filename>lang/en/phrases/reports.xml</filename>
@@ -71,9 +71,9 @@
         <file>
           <filename>plugins/EPrints/Plugin/InputForm/Component/Field/Override.pm</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>54a03559a3a812566b00e44bdd95ba14</hash>
+          <hash>b81e7ffc1ed7e2ce0931537663e7de0f</hash>
           <hash_type>MD5</hash_type>
-          <filesize>6359</filesize>
+          <filesize>6476</filesize>
         </file>
         <file>
           <filename>plugins/EPrints/Plugin/Screen/EPMC/Rioxx2.pm</filename>
