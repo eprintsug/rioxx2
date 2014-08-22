@@ -60,6 +60,19 @@ my @rioxx2_fields = (
 	{
 		target => "dc:language",
 		source => "eprint.rioxx2_language",
+		default => sub {
+			my( $plugin, $objects ) = @_;
+			my $eprint = $objects->{eprint};
+			my $langs = {}; 
+			my @docs = $eprint->get_all_documents;
+			foreach my $doc ( @docs )
+			{
+				next unless $doc->is_set( "language" );
+				$langs->{ $doc->value( "language" ) }++;
+			}
+			my @lang_array = keys $langs;
+			return \@lang_array;
+		},
 		validate => "required",
 	},
 	{
@@ -132,13 +145,11 @@ my @rioxx2_fields = (
 		source => "eprint.rioxx2_type",
 		default => sub {
 			my( $plugin, $objects ) = @_;
-print STDERR "rioxxterms:type default [$plugin] [$objects]\n";
 			my $eprint = $objects->{eprint};
 			my $type_map = $plugin->{repository}->config( "rioxx2_type_map" );
 			my $ep_type =  $eprint->value( 'type' );
 			my $rioxx2_type = $type_map->{$ep_type};
 			$rioxx2_type = "other" unless EPrints::Utils->is_set( $rioxx2_type ); 
-print STDERR "rioxxterms:type default returning [$rioxx2_type] for [$ep_type]\n";
 			return $rioxx2_type;
 		},
 		validate => "required",

@@ -119,7 +119,7 @@ print STDERR "field name [".$self->{config}->{field}->name."] [$report_field_nam
 			last;
 		}
 	}
-print STDERR "value[".$value."] default[".$default_value."]########################################\n";
+print STDERR "value[".$value."] default[".Data::Dumper::Dumper( $default_value )."]###\n";
 	
 	my $xml = $repo->xml;
 	my $frag = $xml->create_document_fragment;
@@ -131,7 +131,9 @@ print STDERR "value[".$value."] default[".$default_value."]#####################
 	my $td21 = $tr2->appendChild( $xml->create_element( "td" ) );
 	my $td22 = $tr2->appendChild( $xml->create_element( "td" ) );
 
-	my $default_value_html = $xml->create_text_node( $default_value );
+	my $default_value_str = $default_value;
+	$default_value_str = join(", ", @$default_value ) if 'ARRAY' eq ref $default_value;
+	my $default_value_html = $xml->create_text_node( $default_value_str );
 	$td11->appendChild ( $self->html_phrase( "default_for_field" ) );
 	$td12->appendChild ( $default_value_html );
 	$td21->appendChild ( $self->html_phrase( "override_for_field" ) );
