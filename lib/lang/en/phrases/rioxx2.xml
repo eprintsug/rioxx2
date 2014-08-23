@@ -10,6 +10,7 @@
  <epp:phrase id="eprint_fieldname_rioxx2_language">Language</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_dateAccepted">Date accepted</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_free_to_read">Free to read</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_free_to_read_free_to_read">Free to read</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_free_to_read_start_date">Start date</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_free_to_read_end_date">End date</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_license_ref">License ref</epp:phrase>

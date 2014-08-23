@@ -1,181 +1,208 @@
+
+$c->{rioxx2}->{type_map} = {
+	article		=> 'journal_article',
+	book_section	=> 'book_chapter',
+	monograph	=> 'monograph',
+	conference_item	=> 'conference_item',
+	book		=> 'book',
+	thesis		=> 'thesis',
+};
+
+$c->{rioxx2}->{content_map} = {
+	draft		=> "AO",
+	submitted	=> "SMUR",
+	accepted	=> "AM",
+	published	=> "P",
+};
+
 my @rioxx2_fields = (
-	{
-		target => "EPrint ID",
-		source => "eprint.eprintid",
-		default => sub {
-			my( $plugin, $objects ) = @_;
-			my $eprint = $objects->{eprint};
-			return $eprint->get_id;
-		},
-		validate => "required",
-	},
 	{
 		target => "dc:coverage",
 		source => "eprint.rioxx2_coverage",
-		default => "",
-		validate => "recommended",
+		required => "optional",
 	},
 	{
 		target => "dc:description",
-		source => "eprint.abstract",
-		default => sub {
-			my( $plugin, $objects ) = @_;
-			my $eprint = $objects->{eprint};
-			return $eprint->get_value( "abstract" );
-		},
-
-		validate => "required",
+		source => "eprint.abstract", # TODO strip HTML
+		required => "recommended",
 	},
 	{
 		target => "dc:format",
-		source => sub {
-			my( $plugin, $objects ) = @_;
-			my $eprint = $objects->{eprint};
-			my @docs = $eprint->get_all_documents;
-			if ( @docs )
-			{
-				my $doc = $docs[0];
-				return $doc->value( "mime_type" );
-			}
-			return undef;
-		},
-		validate => "required",
+		source => "document.mime_type",
+		required => "recommended",
 	},
 	{
 		target => "dc:identifier",
 		source => sub {
-			my( $plugin, $objects ) = @_;
-
-			my $eprint = $objects->{eprint};
-			my @docs = $eprint->get_all_documents;
-			if ( @docs )
-			{
-				my $doc = $docs[0];
-				return $doc->get_url;
-			}
+			my( undef, $objects ) = @_;
+			return $objects->{document}->get_url if defined $objects->{document};
 			return undef;
 		},
-		validate => "required",
+		required => "mandatory",
 	},
 	{
 		target => "dc:language",
-		source => "eprint.rioxx2_language",
-		default => sub {
-			my( $plugin, $objects ) = @_;
-			my $eprint = $objects->{eprint};
-			my $langs = {}; 
-			my @docs = $eprint->get_all_documents;
-			foreach my $doc ( @docs )
-			{
-				next unless $doc->is_set( "language" );
-				$langs->{ $doc->value( "language" ) }++;
-			}
-			my @lang_array = keys $langs;
-			return \@lang_array;
+		source => sub {
+			my( undef, $objects ) = @_;
+			return  $objects->{eprint}->value( "rioxx2_language" ) if $objects->{eprint}->is_set( "rioxx2_language" );
+			return $objects->{document}->value( "language" ) if defined $objects->{document} && $objects->{document}->is_set( "language" );
+			return undef;
 		},
-		validate => "required",
+		required => "mandatory",
 	},
 	{
 		target => "dc:publisher",
 		source => "eprint.publisher",
-		validate => "required",
+		required => "recommended",
 	},
 	{
 		target => "dc:relation",
-		source => "eprint.related_url->{url}",
-		validate => "required",
+		source => "eprint.related_url_url",
+		required => "optional",
 	},
 	{
 		target => "dc:source",
-		source => "eprint.issn",
-		validate => "required",
+		source => sub {
+			my ( undef, $objects ) = @_;
+
+			my $eprint = $objects->{eprint};
+			my $type = $eprint->get_type;
+
+			return $eprint->value( "issn" ) if ( $type eq "article" || $type eq "conference_item" ) && $eprint->is_set( "issn" );
+			return $eprint->value( "publication" ) if $type eq "article" && $eprint->is_set( "pubication" );
+			return $eprint->value( "isbn" ) if ( $type eq "book_section" || $type eq "conference_item" ) && $eprint->is_set( "isbn" );
+			return $eprint->value( "book_title" ) if $type eq "book_section" && $eprint->is_set( "book_title" );
+			return $eprint->value( "event_title" ) if $type eq "conference_item" && $eprint->is_set( "event_title" );
+
+			return undef;
+			
+		},
+		required => "mandatory", # TODO only mandatory for article, book_section, conference_item
 	},
 	{
 		target => "dc:subject",
 		source => "eprint.subjects",
-		validate => "required",
+		required => "recommended",
 	},
 	{
 		target => "dc:title",
 		source => "eprint.title",
-		validate => "required",
+		required => "mandatory",
 	},
 	{
 		target => "dcterms:dateAccepted",
 		source => "eprint.rioxx2_dateAccepted",
-		validate => "required",
+		required => "mandatory",
 	},
 	{
 		target => "free_to_read",
-		source => "eprint.rioxx2_free_to_read",
-		validate => "required",
+		source => sub {
+			my( undef, $objects ) = @_;
+			return $objects->{eprint}->value( "rioxx2_free_to_read" ) if $objects->{eprint}->is_set( "rioxx2_free_to_read" );
+			return unless defined $objects->{document};
+			return { free_to_read => 1 } if $objects->{document}->is_set( "security" ) && $objects->{document}->value( "security" ) eq "public";
+			return { free_to_read => 1, start_date => $objects->{document}->value( "date_embargo" ) } if $objects->{document}->is_set( "date_embargo" );
+			return undef;
+		},
+		required => "optional",
 	},
 	{
 		target => "license_ref",
-		source => "eprint.rioxx2_license_ref",
-		validate => "required",
+		source => "eprint.rioxx2_license_ref", # TODO document.license + document.date_embargo
+		required => "mandatory",
 	},
 	{
 		target => "rioxxterms:apc",
 		source => "eprint.rioxx2_apc",
-		validate => "required",
+		required => "optional",
 	},
 	{
 		target => "rioxxterms:author",
-		source => "eprint.creators",
-		validate => "required",
+		source => "eprint.creators", # TODO corp_creators
+		required => "mandatory",
 	},
 	{
 		target => "rioxxterms:contributor",
-		source => "eprint.editors",
-		validate => "required",
+		source => "eprint.editors", # TODO contributors
+		required => "optional",
 	},
 	{
 		target => "rioxxterms:project",
-		source => "eprint.rioxx2_project",
-		validate => "required",
+		source => sub {
+			my( undef, $objects ) = @_;
+
+			return $objects->{eprint}->value( "rioxx2_project" ) if $objects->{eprint}->is_set( "rioxx2_project" );
+
+			return unless $objects->{eprint}->is_set( "funders" ) && $objects->{eprint}->is_set( "projects" );
+
+			my @projects = @{ $objects->{eprint}->value( "projects" ) };
+			my @funders = @{ $objects->{eprint}->value( "funders" ) };
+
+			while( scalar @projects < scalar @funders )
+			{
+				push @projects, $projects[$#projects];
+			}
+
+			my @value;
+			for( my $i = 0; $i < scalar @projects; $i++ )
+			{
+				push @value, {
+					project => $projects[$i],
+					funder_name => ( $i > $#funders ? $funders[$#funders] : $funders[$i] ),
+				};
+			}
+			return \@value;
+		},
+		required => "mandatory",
 	},
 	{
 		target => "rioxxterms:publication_date",
-		source => "eprint.rioxx2_publication_date",
-		validate => "required",
+		source => sub {
+			my( undef, $objects ) = @_;
+			return $objects->{eprint}->value( "rioxx2_publication_date" ) if $objects->{eprint}->is_set( "rioxx2_publication_date" );
+			return $objects->{eprint}->value( "date" ) if $objects->{eprint}->is_set( "date" )
+				&& ( !$objects->{eprint}->is_set( "date_type" ) || $objects->{eprint}->value( "date_type" ) eq "published" );
+			return undef;
+		},
+		required => "optional",
 	},
 	{
 		target => "rioxxterms:type",
 		source => sub {
 			my( $plugin, $objects ) = @_;
-			my $eprint = $objects->{eprint};
-			my $type_map = $plugin->{repository}->config( "rioxx2_type_map" );
-			my $ep_type =  $eprint->value( 'type' );
-			my $rioxx2_type = $type_map->{$ep_type};
-			$rioxx2_type = "other" unless EPrints::Utils->is_set( $rioxx2_type ); 
-			return $rioxx2_type;
+			return $objects->{eprint}->value( "rioxx2_type" ) if $objects->{eprint}->is_set( "rioxx2_type" );
+			return $plugin->{repository}->config( "rioxx2", "type_map", $objects->{eprint}->get_type ) || "other";
 		},
-		validate => "required",
+		required => "mandatory",
 	},
 	{
 		target => "rioxxterms:version",
-		source => "eprint.rioxx2_version",
-		validate => "required",
+		source => sub {
+			my( $plugin, $objects ) = @_;
+			return $objects->{eprint}->value( "rioxx2_version" ) if $objects->{eprint}->is_set( "rioxx2_version" );
+			my $content = defined $objects->{document} ? $objects->{document}->value( "content" ) : "";
+			return $plugin->{repository}->config( "rioxx2", "content_map", $content ) || "NA";
+		},
+		required => "mandatory",
 	},
 	{
 		target => "rioxxterms:version_of_record",
 		source => sub {
-			my( $plugin, $objects ) = @_;
-			my $eprint = $objects->{eprint};
-			if ( $eprint->exists_and_set( 'doi' ) )
-			{
-				return $eprint->value( 'doi' );
-			}
-			elsif ( $eprint->is_set ( 'id_number' ) )
-			{
-				return $eprint->value( 'id_number' );
-			}
+			my( undef, $objects ) = @_;
+			return $objects->{eprint}->value( "doi" ) if $objects->{eprint}->exists_and_set( 'doi' );
+			return $objects->{eprint}->value( 'id_number' ) if  $objects->{eprint}->is_set ( 'id_number' );
 			return undef;
 		},
-		validate => "required",
+		required => "recommended",
 	},
 );
+
+for( @rioxx2_fields )
+{
+	next if defined $_->{validate};
+	next if $_->{required} ne "mandatory";
+	$_->{validate} = "required";
+}
 
 $c->{rioxx2}->{field_lookup} = { map { $_->{target} =~ /^(.*:)?(.*)$/; "rioxx2_$2" => $_ } @rioxx2_fields };
 
@@ -187,60 +214,3 @@ $c->{reports}->{"rioxx2"}->{validate} = { map { $_->{target} => $_->{validate} }
 $c->{reports}->{"rioxx2-articles"}->{fields} = [ map { $_->{target} } @rioxx2_fields ];
 $c->{reports}->{"rioxx2-articles"}->{mappings} = { map { $_->{target} => $_->{source} } @rioxx2_fields };
 $c->{reports}->{"rioxx2-articles"}->{validate} = { map { $_->{target} => $_->{validate} } @rioxx2_fields };
-
-$c->{rioxx2_type_map} = {
-	article		=> 'journal_article',
-	book_section	=> 'book_chapter',
-	monograph	=> 'monograph',
-	conference_item	=> 'conference_item',
-	book		=> 'book',
-	thesis		=> 'thesis',
-	patent		=> 'other',
-	artefact	=> 'other',
-	exhibition	=> 'other',
-	composition	=> 'other',
-	performance	=> 'other',
-	image		=> 'other',
-	video		=> 'other',
-	audio		=> 'other',
-	dataset		=> 'other',
-	experiment	=> 'other',
-	teaching_resource	=> 'other',
-	other		=> 'other',
-};
-
-my @example_fields = (
-	{
-		target => "EPrint ID",
-		source => "eprint.eprintid",
-		validate => "required",
-	},
-	{
-		target => "Title",
-		# just to demonstrate getting data via a sub {}
-		source => sub {
-			my( $plugin, $objects ) = @_;
-
-			my $eprint = $objects->{eprint};
-			return $eprint->value( 'title' );
-		},
-		validate => sub {
-			my( $plugin, $objects, $problems ) = @_;
-
-			my $eprint = $objects->{eprint};
-
-			if( $eprint->value( 'title' ) =~ /the/i )
-			{
-				push @$problems, "Problems detected!!";
-			}
-		}
-	},
-);
-
-$c->{reports}->{"example-articles"}->{fields} = [ map { $_->{target} } @example_fields ];
-$c->{reports}->{"example-articles"}->{mappings} = { map { $_->{target} => $_->{source} } @example_fields };
-$c->{reports}->{"example-articles"}->{validate} = { map { $_->{target} => $_->{validate} } @example_fields };
-
-$c->{reports}->{"example-conf-items"}->{fields} = [ map { $_->{target} } @example_fields ];
-$c->{reports}->{"example-conf-items"}->{mappings} = { map { $_->{target} => $_->{source} } @example_fields };
-$c->{reports}->{"example-conf-items"}->{validate} = { map { $_->{target} => $_->{validate} } @example_fields };

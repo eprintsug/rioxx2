@@ -19,8 +19,15 @@ sub get_related_objects
 
 	return {
 		eprint => $dataobj,
-		document => $documents[0], # TODO delegate to config
+		document => $documents[0] || undef, # TODO delegate to config
 	};
+}
+
+sub field_config
+{
+	my( $plugin, $field ) = @_;
+
+	return $plugin->{repository}->config( "rioxx2", "field_lookup", $field );
 }
 
 sub value
@@ -29,7 +36,7 @@ sub value
 
 	my $repo = $plugin->{repository};
 
-	my $source = $repo->config( "rioxx2", "field_lookup", $field, "source" );
+	my $source = $plugin->field_config( $field )->{source};
 	return unless defined $source;
 
 	my $objects = $plugin->get_related_objects( $dataobj );
@@ -41,21 +48,21 @@ sub value
 		};
 		if( $@ )
 		{
-			$repo->log( "value() runtime error: $@" );
+			$repo->log( "value($field) runtime error: $@" );
 			return;
 		}
 		return $value;
 	}
 
-	my( $ds, $f ) = split( ".", $source );
+	my( $ds, $f ) = ( split( /\./, $source ) );
 	unless( defined $objects->{$ds} )
 	{
-		$repo->log( "value() invalid dataset $ds\n" );
+		$repo->log( "value($field) invalid dataset $ds\n" );
 		return;
 	}
 	unless( $objects->{$ds}->get_dataset->has_field( $f ) )
 	{
-		$repo->log( "value() $ds has no field $f\n" );
+		$repo->log( "value($field) $ds has no field $f\n" );
 		return;
 	}
 	return $objects->{$ds}->value( $f );
@@ -67,7 +74,7 @@ sub validate
 
 	my $repo = $plugin->{repository};
 
-	my $validate = $repo->config( "rioxx2". "field_lookup", $field, "source" );
+	my $validate = $plugin->field_config( $field )->{validate};
 	return unless defined $validate;
 
 	my $objects = $plugin->get_related_objects( $dataobj );
@@ -81,7 +88,7 @@ sub validate
 		};
 		if( $@ )
 		{
-			$repo->log( "validate() runtime error: $@" );
+			$repo->log( "validate($field) runtime error: $@" );
 			return;
 		}
 		return @problems;

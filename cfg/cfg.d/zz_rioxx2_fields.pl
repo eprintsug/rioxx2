@@ -18,6 +18,7 @@ $c->add_dataset_field(
 $c->add_dataset_field(
 	"eprint",
 	{ name => "rioxx2_free_to_read", type => "compound", fields => [
+		{ sub_name => "free_to_read", type => "boolean" },
 		{ sub_name => "start_date", type => "date", min_resolution => "day" },
 		{ sub_name => "end_date", type => "date", min_resolution => "day" }
 	] }
