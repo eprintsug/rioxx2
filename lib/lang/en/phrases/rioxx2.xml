@@ -54,10 +54,16 @@
 
  <epp:phrase id="metapage_title_rioxx2">RIOXX2</epp:phrase>
 
- <epp:phrase id="Plugin/InputForm/Component/Field/Override:default_for_field">Default value: </epp:phrase>
- <epp:phrase id="Plugin/InputForm/Component/Field/Override:override_for_field">Value to use: </epp:phrase>
- <epp:phrase id="Plugin/InputForm/Component/Field/Override:select_override">Override the default value</epp:phrase>
- <epp:phrase id="Plugin/InputForm/Component/Field/Override:select_default">Use the default value</epp:phrase>
+ <epp:phrase id="Plugin/InputForm/Component/Field/Rioxx2:content">
+	<epc:pin name="choose_container">
+		<label><epc:pin name="use_mapping"/>Use default mapping</label>
+		<br/>
+		<label><epc:pin name="use_override"/>Override the default mapping by providing a value</label>
+	</epc:pin>
+	<epc:pin name="input_container">
+		<epc:pin name="input"/>
+	</epc:pin>
+</epp:phrase>
 
 
 </epp:phrases>

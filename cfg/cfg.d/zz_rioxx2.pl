@@ -11,7 +11,7 @@ $c->{plugins}{"Export::Report::CSV"}{params}{disable} = 0;
 $c->{plugins}{"Export::Report::CSV::Example"}{params}{disable} = 0;
 $c->{plugins}{"Export::Report::CSV::Rioxx2"}{params}{disable} = 0;
 
-$c->{plugins}{'InputForm::Component::Field::Override'}{params}{disable} = 0;
+$c->{plugins}{'InputForm::Component::Field::Rioxx2'}{params}{disable} = 0;
 
 # New report role for the admin user
 push @{$c->{user_roles}->{admin}}, qw{
