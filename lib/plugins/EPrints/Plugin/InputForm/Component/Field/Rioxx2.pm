@@ -1,10 +1,10 @@
 =head1 NAME
 
-EPrints::Plugin::InputForm::Component::Field::Override
+EPrints::Plugin::InputForm::Component::Field::Rioxx2
 
 =cut
 
-package EPrints::Plugin::InputForm::Component::Field::Override;
+package EPrints::Plugin::InputForm::Component::Field::Rioxx2;
 
 use EPrints::Plugin::InputForm::Component::Field;
 
@@ -18,7 +18,7 @@ sub new
 
 	my $self = $class->SUPER::new( %opts );
 
-	$self->{name} = "Override";
+	$self->{name} = "Rioxx2";
 	$self->{visible} = "all";
 
 	$self->{actions} = [qw/ create /];
@@ -37,14 +37,14 @@ sub action_create
 {
 	my( $self ) = @_;
 
-print STDERR "Override::action_create\n";
+print STDERR "Rioxx2::action_create\n";
 }
 	
 sub update_from_form
 {
 	my( $self, $processor ) = @_;
 
-print STDERR "Override::update_from_form called\n";
+print STDERR "Rioxx2::update_from_form called\n";
 	my $field = $self->{config}->{field};
 	my $value = $field->form_value( $self->{session}, $self->{dataobj}, $self->{prefix} );
 	$self->{dataobj}->set_value( $field->{name}, $value );
@@ -72,7 +72,7 @@ sub render_content
 	my( $self, $surround ) = @_;
 
 	my $repo = $self->{repository};
-print STDERR "Override::render_content ###### \n";
+print STDERR "Rioxx2::render_content ###### \n";
 	my $dataobj = $self->{dataobj};
 	my $reports = $self->{repository}->config( "reports" );
 	my $rioxx_map = $reports->{rioxx2};
@@ -177,7 +177,7 @@ sub render_content_mod
 {
 	my( $self, $surround ) = @_;
 	my $session = $self->{session};
-print STDERR "Override::render_content_mod called for [".$self->{config}->{field}->{name} ."]\n";
+print STDERR "Rioxx2::render_content_mod called for [".$self->{config}->{field}->{name} ."]\n";
 	
 	my $value;
 	if( $self->{dataobj} )

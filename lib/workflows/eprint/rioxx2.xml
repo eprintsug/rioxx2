@@ -9,16 +9,16 @@
 	</flow>
 
 	<stage name="rioxx2">
-		<component type="Field::Override"><field ref="rioxx2_type" /></component>
-		<component><field ref="rioxx2_coverage" /></component>
-		<component type="Field::Override"><field ref="rioxx2_language" /></component>
-		<component><field ref="rioxx2_dateaccepted" /></component>
-		<component><field ref="rioxx2_free_to_read" /></component>
-		<component type="Field::Override"><field ref="rioxx2_license_ref" /></component>
-		<component><field ref="rioxx2_apc" /></component>
-		<component type="Field::Override"><field ref="rioxx2_project" /></component>
-		<component type="Field::Override"><field ref="rioxx2_publication_date" /></component>
-		<component type="Field::Override"><field ref="rioxx2_version" /></component>
+		<component type="Field::Rioxx2"><field ref="rioxx2_type" /></component>
+		<component type="Field::Rioxx2"><field ref="rioxx2_coverage" /></component>
+		<component type="Field::Rioxx2"><field ref="rioxx2_language" /></component>
+		<component type="Field::Rioxx2"><field ref="rioxx2_dateaccepted" /></component>
+		<component type="Field::Rioxx2"><field ref="rioxx2_free_to_read" /></component>
+		<component type="Field::Rioxx2"><field ref="rioxx2_license_ref" /></component>
+		<component type="Field::Rioxx2"><field ref="rioxx2_apc" /></component>
+		<component type="Field::Rioxx2"><field ref="rioxx2_project" /></component>
+		<component type="Field::Rioxx2"><field ref="rioxx2_publication_date" /></component>
+		<component type="Field::Rioxx2"><field ref="rioxx2_version" /></component>
 	</stage>
 
 </workflow>
