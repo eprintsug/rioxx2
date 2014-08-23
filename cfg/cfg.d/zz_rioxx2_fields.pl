@@ -12,7 +12,7 @@ $c->add_dataset_field(
 
 $c->add_dataset_field(
 	"eprint",
-	{ name => "rioxx2_dateaccepted", type => "date", min_resolution => "year", required => 1 }
+	{ name => "rioxx2_dateAccepted", type => "date", min_resolution => "year", required => 1 }
 );
 
 $c->add_dataset_field(

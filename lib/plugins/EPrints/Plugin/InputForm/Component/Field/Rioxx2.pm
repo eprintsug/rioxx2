@@ -26,7 +26,10 @@ sub render_content
 	my $basename = $self->{prefix} . "_$class";
 	my $value = $self->{dataobj}->get_value( $self->{config}->{field}->{name} ) if $self->{dataobj};
 
+	my $mapped_value = $repo->plugin( "Rioxx2Utils" )->value( $self->{dataobj}, $self->{config}->{field}->{name} );
+
 	return $self->html_phrase( "content",
+		mapped_value => $repo->xml->create_text_node( $mapped_value ),
 		choose_container => $repo->xml->create_element( "div", id => $basename, class => $class ),
 		use_mapping => $repo->render_noenter_input_field(
 			type => "radio",
@@ -43,6 +46,13 @@ sub render_content
 		input_container => $repo->xml->create_element( "div", id => $basename . "_input" ),
 		input => $self->SUPER::render_content( $surround )
 	);
+}
+
+sub validate
+{
+	my( $self ) = @_;
+
+	return $self->{repository}->plugin( "Rioxx2Utils" )->validate( $self->{dataobj}, $self->{config}->{field}->{name} );
 }
 
 1;

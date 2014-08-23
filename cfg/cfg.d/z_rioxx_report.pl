@@ -102,17 +102,17 @@ my @rioxx2_fields = (
 	},
 	{
 		target => "dcterms:dateAccepted",
-		source => "eprint.rioxx2_date_accepted",
+		source => "eprint.rioxx2_dateAccepted",
 		validate => "required",
 	},
 	{
 		target => "free_to_read",
-		source => "eprint.rioxx2_freetoread",
+		source => "eprint.rioxx2_free_to_read",
 		validate => "required",
 	},
 	{
 		target => "license_ref",
-		source => "eprint.rioxx2_license",
+		source => "eprint.rioxx2_license_ref",
 		validate => "required",
 	},
 	{
@@ -142,8 +142,7 @@ my @rioxx2_fields = (
 	},
 	{
 		target => "rioxxterms:type",
-		source => "eprint.rioxx2_type",
-		default => sub {
+		source => sub {
 			my( $plugin, $objects ) = @_;
 			my $eprint = $objects->{eprint};
 			my $type_map = $plugin->{repository}->config( "rioxx2_type_map" );
@@ -177,6 +176,8 @@ my @rioxx2_fields = (
 		validate => "required",
 	},
 );
+
+$c->{rioxx2}->{field_lookup} = { map { $_->{target} =~ /^(.*:)?(.*)$/; "rioxx2_$2" => $_ } @rioxx2_fields };
 
 $c->{reports}->{"rioxx2"}->{fields} = [ map { $_->{target} } @rioxx2_fields ];
 $c->{reports}->{"rioxx2"}->{mappings} = { map { $_->{target} => $_->{source} } @rioxx2_fields };

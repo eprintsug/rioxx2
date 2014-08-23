@@ -12,7 +12,7 @@
 		<component type="Field::Rioxx2"><field ref="rioxx2_type" /></component>
 		<component type="Field::Rioxx2"><field ref="rioxx2_coverage" /></component>
 		<component type="Field::Rioxx2"><field ref="rioxx2_language" /></component>
-		<component type="Field::Rioxx2"><field ref="rioxx2_dateaccepted" /></component>
+		<component type="Field::Rioxx2"><field ref="rioxx2_dateAccepted" /></component>
 		<component type="Field::Rioxx2"><field ref="rioxx2_free_to_read" /></component>
 		<component type="Field::Rioxx2"><field ref="rioxx2_license_ref" /></component>
 		<component type="Field::Rioxx2"><field ref="rioxx2_apc" /></component>
