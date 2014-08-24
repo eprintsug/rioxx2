@@ -36,7 +36,7 @@ my @rioxx2_fields = (
 		source => sub {
 			my( undef, $objects ) = @_;
 			return $objects->{document}->get_url if defined $objects->{document};
-			return undef;
+			return;
 		},
 		required => "mandatory",
 	},
@@ -44,9 +44,10 @@ my @rioxx2_fields = (
 		target => "dc:language",
 		source => sub {
 			my( undef, $objects ) = @_;
-			return  $objects->{eprint}->value( "rioxx2_language" ) if $objects->{eprint}->is_set( "rioxx2_language" );
-			return $objects->{document}->value( "language" ) if defined $objects->{document} && $objects->{document}->is_set( "language" );
-			return undef;
+			return $objects->{eprint}->value( "rioxx2_language" ) if $objects->{eprint}->is_set( "rioxx2_language" );
+			return unless defined $objects->{document};
+			return $objects->{document}->value( "language" ) if $objects->{document}->is_set( "language" );
+			return;
 		},
 		required => "mandatory",
 	},
@@ -64,17 +65,14 @@ my @rioxx2_fields = (
 		target => "dc:source",
 		source => sub {
 			my ( undef, $objects ) = @_;
-
 			my $eprint = $objects->{eprint};
-			my $type = $eprint->get_type;
-
-			return $eprint->value( "issn" ) if ( $type eq "article" || $type eq "conference_item" ) && $eprint->is_set( "issn" );
-			return $eprint->value( "publication" ) if $type eq "article" && $eprint->is_set( "pubication" );
-			return $eprint->value( "isbn" ) if ( $type eq "book_section" || $type eq "conference_item" ) && $eprint->is_set( "isbn" );
-			return $eprint->value( "book_title" ) if $type eq "book_section" && $eprint->is_set( "book_title" );
-			return $eprint->value( "event_title" ) if $type eq "conference_item" && $eprint->is_set( "event_title" );
-
-			return undef;
+			return unless $eprint->get_type eq "article" || $eprint->get_type eq "book_section" || $eprint->get_type eq "conference_item";
+			for( qw( issn isbn publication book_title event_title ) )
+			{
+				next unless $eprint->is_set( $_ );
+				return $eprint->value( $_ );
+			}
+			return;
 			
 		},
 		required => "mandatory", # TODO only mandatory for article, book_section, conference_item
@@ -102,7 +100,7 @@ my @rioxx2_fields = (
 			return unless defined $objects->{document};
 			return { free_to_read => 1 } if $objects->{document}->is_set( "security" ) && $objects->{document}->value( "security" ) eq "public";
 			return { free_to_read => 1, start_date => $objects->{document}->value( "date_embargo" ) } if $objects->{document}->is_set( "date_embargo" );
-			return undef;
+			return;
 		},
 		required => "optional",
 	},
@@ -110,6 +108,7 @@ my @rioxx2_fields = (
 		target => "license_ref",
 		source => "eprint.rioxx2_license_ref", # TODO document.license + document.date_embargo
 		required => "mandatory",
+		# TODO license_ref must be HTTP URL, must include start_date
 	},
 	{
 		target => "rioxxterms:apc",
@@ -162,7 +161,7 @@ my @rioxx2_fields = (
 			return $objects->{eprint}->value( "rioxx2_publication_date" ) if $objects->{eprint}->is_set( "rioxx2_publication_date" );
 			return $objects->{eprint}->value( "date" ) if $objects->{eprint}->is_set( "date" )
 				&& ( !$objects->{eprint}->is_set( "date_type" ) || $objects->{eprint}->value( "date_type" ) eq "published" );
-			return undef;
+			return;
 		},
 		required => "optional",
 	},
@@ -180,8 +179,8 @@ my @rioxx2_fields = (
 		source => sub {
 			my( $plugin, $objects ) = @_;
 			return $objects->{eprint}->value( "rioxx2_version" ) if $objects->{eprint}->is_set( "rioxx2_version" );
-			my $content = defined $objects->{document} ? $objects->{document}->value( "content" ) : "";
-			return $plugin->{repository}->config( "rioxx2", "content_map", $content ) || "NA";
+			return "NA" unless defined $object->{document};
+			return $plugin->{repository}->config( "rioxx2", "content_map", $objects->{document}->value( "content" ) ) || "NA";
 		},
 		required => "mandatory",
 	},
@@ -190,10 +189,11 @@ my @rioxx2_fields = (
 		source => sub {
 			my( undef, $objects ) = @_;
 			return $objects->{eprint}->value( "doi" ) if $objects->{eprint}->exists_and_set( 'doi' );
-			return $objects->{eprint}->value( 'id_number' ) if  $objects->{eprint}->is_set ( 'id_number' );
-			return undef;
+			return $objects->{eprint}->value( 'id_number' ) if  $objects->{eprint}->is_set ( 'id_number' ); # TODO only if looks like DOI
+			return;
 		},
 		required => "recommended",
+		# TODO must be HTTP URL
 	},
 );
 
