@@ -179,7 +179,7 @@ my @rioxx2_fields = (
 		source => sub {
 			my( $plugin, $objects ) = @_;
 			return $objects->{eprint}->value( "rioxx2_version" ) if $objects->{eprint}->is_set( "rioxx2_version" );
-			return "NA" unless defined $object->{document};
+			return "NA" unless defined $objects->{document};
 			return $plugin->{repository}->config( "rioxx2", "content_map", $objects->{document}->value( "content" ) ) || "NA";
 		},
 		required => "mandatory",
