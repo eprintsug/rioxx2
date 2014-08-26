@@ -17,56 +17,87 @@ sub new
 	return $self;
 }
 
+sub parse_config
+{
+	my( $self, $config_dom ) = @_;
+
+	$self->SUPER::parse_config( $config_dom );
+
+	return if scalar @{$self->{problems}};
+
+	unless( defined $self->_input_field )
+	{
+		push @{$self->{problems}}, $self->repository->html_phrase( "Plugin/InputForm/Component/Field/Rioxx2:error_missing_input",
+			ref => $self->repository->xml->create_text_node( $self->{config}->{field}->name ),
+			xml => $self->repository->xml->create_text_node( $self->{repository}->xml->to_string( $config_dom ) )
+		);
+	}
+}
+
+sub _input_field
+{
+	my( $self ) = @_;
+
+	if( $self->{dataobj}->dataset->has_field( $self->{config}->{field}->name . "_input" ) )
+	{
+		return $self->{dataobj}->dataset->field( $self->{config}->{field}->name . "_input" );
+	}
+	return;
+}
+
 sub render_content
 {
 	my( $self, $surround ) = @_;
 
-	my $field = $self->{config}->{field}->{name};
-	my $source = $self->rioxx2_plugin->field_config( $field )->{source};
-	return $self->SUPER::render_content( $surround ) if ref($source) eq "" && $source =~ /\.$field/;
+	my $field = $self->{config}->{field};
+	local $self->{config}->{field} = my $override_field = $self->_input_field;
+
+	unless( $field->property( "rioxx2_value" ) )
+	{
+		return $self->SUPER::render_content( $surround );
+	}
 
 	my $repo = $self->repository;
 	my $class = "rioxx2_override";
 	my $basename = $self->{prefix} . "_$class";
-	my $value = $self->{dataobj}->get_value( $self->{config}->{field}->{name} ) if $self->{dataobj};
 
-	my $mapped_value = $self->rioxx2_plugin->value( $self->{dataobj}, $self->{config}->{field}->{name} );
+	my $override_value = $self->{dataobj}->value( $override_field->name );
 
 	return $self->html_phrase( "content",
-		mapped_value => $repo->xml->create_text_node( $mapped_value ),
+		mapped_value => $field->render_value( $repo, undef, undef, undef, $self->{dataobj}, 1 ),
 		choose_container => $repo->xml->create_element( "div", id => $basename, class => $class ),
 		use_mapping => $repo->render_noenter_input_field(
 			type => "radio",
 			value => "use_mapping",
 			name => "$basename\_radio",
-			checked => EPrints::Utils::is_set( $value ) ? undef : "checked"
+			checked => EPrints::Utils::is_set( $override_value ) ? undef : "checked"
 		),
 		use_override => $repo->render_noenter_input_field(
 			type => "radio",
 			value => "use_override",
 			name => "$basename\_radio",
-			checked => EPrints::Utils::is_set( $value ) ? "checked" : undef
+			checked => EPrints::Utils::is_set( $override_value ) ? "checked" : undef
 		),
 		input_container => $repo->xml->create_element( "div", id => $basename . "_input" ),
 		input => $self->SUPER::render_content( $surround )
 	);
 }
 
+sub update_from_form
+{
+	my( $self, $processor ) = @_;
+
+	local $self->{config}->{field} = $self->_input_field;
+	return $self->SUPER::update_from_form;
+}
+
+
 sub validate
 {
 	my( $self ) = @_;
 
 	return map { $self->repository->xml->create_text_node( $_ ) }
-		$self->rioxx2_plugin->validate( $self->{dataobj}, $self->{config}->{field}->{name} );
-}
-
-sub rioxx2_plugin
-{
-	my( $self ) = @_;
-
-	return $self->{rioxx2} if defined $self->{rioxx2};
-
-	return $self->{rioxx2} = $self->repository->plugin( "Rioxx2Utils" );
+		$self->{config}->{field}->validate( $self->repository, $self->{config}->{field}->get_value( $self->{dataobj} ) );
 }
 
 1;
