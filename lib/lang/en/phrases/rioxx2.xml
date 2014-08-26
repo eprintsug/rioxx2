@@ -10,54 +10,54 @@
  <epp:phrase id="eprint_fieldname_rioxx2_language">Language</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_dateAccepted">Date accepted</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_free_to_read">Free to read</epp:phrase>
- <epp:phrase id="eprint_fieldname_rioxx2_free_to_read_free_to_read">Free to read</epp:phrase>
- <epp:phrase id="eprint_fieldname_rioxx2_free_to_read_start_date">Start date</epp:phrase>
- <epp:phrase id="eprint_fieldname_rioxx2_free_to_read_end_date">End date</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_free_to_read_input_free_to_read">Free to read</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_free_to_read_input_start_date">Start date</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_free_to_read_input_end_date">End date</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_license_ref">License ref</epp:phrase>
- <epp:phrase id="eprint_fieldname_rioxx2_license_ref_license_ref">License URL</epp:phrase>
- <epp:phrase id="eprint_fieldname_rioxx2_license_ref_start_date">Start date</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_license_ref_input_license_ref">License URL</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_license_ref_input_start_date">Start date</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_apc">APC</epp:phrase>
- <epp:phrase id="eprint_fieldopt_rioxx2_apc_paid">Paid</epp:phrase>
- <epp:phrase id="eprint_fieldopt_rioxx2_apc_partially_waived">Partially Waived</epp:phrase>
- <epp:phrase id="eprint_fieldopt_rioxx2_apc_fully_waived">Fully Waived</epp:phrase>
- <epp:phrase id="eprint_fieldopt_rioxx2_apc_not_charged">Not Charged</epp:phrase>
- <epp:phrase id="eprint_fieldopt_rioxx2_apc_not_required">Not Required</epp:phrase>
- <epp:phrase id="eprint_fieldopt_rioxx2_apc_unknown">Unknown</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_apc_input_paid">Paid</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_apc_input_partially waived">Partially Waived</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_apc_input_fully waived">Fully Waived</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_apc_input_not charged">Not Charged</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_apc_input_not required">Not Required</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_apc_input_unknown">Unknown</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_project">Project</epp:phrase>
- <epp:phrase id="eprint_fieldname_rioxx2_project_project">Project ID</epp:phrase>
- <epp:phrase id="eprint_fieldname_rioxx2_project_funder_name">Funder Name</epp:phrase>
- <epp:phrase id="eprint_fieldname_rioxx2_project_funder_id">Funder ID</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_project_input_project">Project ID</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_project_input_funder_name">Funder Name</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_project_input_funder_id">Funder ID</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_publication_date">Publication Date</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_type">Type</epp:phrase>
- <epp:phrase id="eprint_fieldopt_rioxx2_type_book">Book</epp:phrase>
- <epp:phrase id="eprint_fieldopt_rioxx2_type_book_chapter">Book Chapter</epp:phrase>
- <epp:phrase id="eprint_fieldopt_rioxx2_type_book_edited">Book Edited</epp:phrase>
- <epp:phrase id="eprint_fieldopt_rioxx2_type_conference_item">Conference Paper/Proceeding/Abstract</epp:phrase>
- <epp:phrase id="eprint_fieldopt_rioxx2_type_journal_article">Journal Article/Review</epp:phrase>
- <epp:phrase id="eprint_fieldopt_rioxx2_type_manual">Manual/Guide</epp:phrase>
- <epp:phrase id="eprint_fieldopt_rioxx2_type_monograph">Monograph</epp:phrase>
- <epp:phrase id="eprint_fieldopt_rioxx2_type_policy_report">Policy Briefing Report</epp:phrase>
- <epp:phrase id="eprint_fieldopt_rioxx2_type_tech_report">Technical Report</epp:phrase>
- <epp:phrase id="eprint_fieldopt_rioxx2_type_tech_standard">Technical Standard</epp:phrase>
- <epp:phrase id="eprint_fieldopt_rioxx2_type_thesis">Thesis</epp:phrase>
- <epp:phrase id="eprint_fieldopt_rioxx2_type_other">Other</epp:phrase>
- <epp:phrase id="eprint_fieldopt_rioxx2_type_consultancy_report">Consultancy Report</epp:phrase>
- <epp:phrase id="eprint_fieldopt_rioxx2_type_working_paper">Working Paper</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Book">Book</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Book chapter">Book chapter</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Book edited">Book edited</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Conference Paper/Proceeding/Abstract">Conference Paper/Proceeding/Abstract</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Journal Article/Review">Journal Article/Review</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Manual/Guide">Manual/Guide</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Monograph">Monograph</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Policy briefing report">Policy briefing report</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Technical Report">Technical Report</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Technical Standard">Technical Standard</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Thesis">Thesis</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Other">Other</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Consultancy Report">Consultancy Report</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Working paper">Working paper</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_version">Version</epp:phrase>
- <epp:phrase id="eprint_fieldopt_rioxx2_version_AO">Author's Original</epp:phrase>
- <epp:phrase id="eprint_fieldopt_rioxx2_version_SMUR">Submitted Manuscript Under Review</epp:phrase>
- <epp:phrase id="eprint_fieldopt_rioxx2_version_AM">Accepted Manuscript</epp:phrase>
- <epp:phrase id="eprint_fieldopt_rioxx2_version_P">Proof</epp:phrase>
- <epp:phrase id="eprint_fieldopt_rioxx2_version_VoR">Version of Record</epp:phrase>
- <epp:phrase id="eprint_fieldopt_rioxx2_version_CVoR">Corrected Version of Record</epp:phrase>
- <epp:phrase id="eprint_fieldopt_rioxx2_version_EVoR">Enhanced Version of Record</epp:phrase>
- <epp:phrase id="eprint_fieldopt_rioxx2_version_NA">Not Applicable (or Unknown)</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_version_input_AO">Author's Original</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_version_input_SMUR">Submitted Manuscript Under Review</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_version_input_AM">Accepted Manuscript</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_version_input_P">Proof</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_version_input_VoR">Version of Record</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_version_input_CVoR">Corrected Version of Record</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_version_input_EVoR">Enhanced Version of Record</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_version_input_NA">Not Applicable (or Unknown)</epp:phrase>
 
  <epp:phrase id="metapage_title_rioxx2">RIOXX2</epp:phrase>
 
  <epp:phrase id="Plugin/InputForm/Component/Field/Rioxx2:content">
 	<epc:pin name="choose_container">
-		<label><epc:pin name="use_mapping"/>Use default mapping (<epc:pin name="mapped_value"/>)</label>
+		<label><epc:pin name="use_mapping"/>Use default mapping: <epc:pin name="mapped_value"/></label>
 		<br/>
 		<label><epc:pin name="use_override"/>Override the default mapping by providing a value</label>
 	</epc:pin>
@@ -66,5 +66,6 @@
 	</epc:pin>
 </epp:phrase>
 
+<epp:phrase id="Plugin/InputForm/Component/Field/Rioxx2:error_missing_input"><em><epc:pin name="ref"/></em> requires <em><epc:pin name="ref"/>_input</em> to be defined: <pre><epc:pin name="xml" /></pre></epp:phrase>
 
 </epp:phrases>
