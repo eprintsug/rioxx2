@@ -22,6 +22,8 @@ foreach my $row ($te->rows) {
 
 	my( $name, undef, $desc ) = @$row;
 
+	$desc =~ s/<br>/<br\/>/gs;
+
 	$name =~ /^([^:]+:)?(.*)$/;
 
 	print <<PHRASE;
