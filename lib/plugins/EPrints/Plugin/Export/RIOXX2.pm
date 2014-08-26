@@ -11,10 +11,10 @@ sub new
 	my $self = $class->SUPER::new(%params);
 
 	$self->{accept} = [qw( dataobj/eprint )];
-	$self->{name} = 'OAI-PMH RIOXX';
-	$self->{metadataPrefix} = "rioxx";
-	$self->{xmlns} = "http://docs.rioxx.net/schema/v1.0/",
-	$self->{schemaLocation} = "http://docs.rioxx.net/schema/v1.0/rioxx.xsd";
+	$self->{name} = 'RIOXX2 XML';
+	$self->{metadataPrefix} = "rioxx2";
+	$self->{xmlns} = "http://docs.rioxx.net/schema/v2.0/",
+	$self->{schemaLocation} = "http://docs.rioxx.net/schema/v2.0/rioxx.xsd";
 
 	return $self;
 }
@@ -46,195 +46,40 @@ sub xml_dataobj
 		'xmlns:dc' => "http://purl.org/dc/elements/1.1/",
 		'xmlns:dcterms' => "http://purl.org/dc/terms/",
 		'xmlns:rioxxterms' => "http://docs.rioxx.net/schema/v1.0/rioxxterms/",
-        'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance",
+        	'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance",
 		'xsi:schemaLocation' => $self->param('xmlns')." ".$self->param('schemaLocation'),
 	);
 
 	my @data;
 
-	if ($eprint->exists_and_set('creators'))
+	foreach my $field ( grep { $_->name =~ /^rioxx2_/ && $_->name !~ /_input$/ && $_->is_virtual } $eprint->dataset->get_fields ) # TODO UGH
 	{
-		foreach my $creator (@{$eprint->value('creators')})
+		$field->name =~ /^rioxx2_(.*)$/;
+		
+		my $value = $field->get_value( $eprint );
+		$value = [ $value ] unless ref( $value ) eq "ARRAY";
+
+		for( @$value )
 		{
-			my $id = $creator->{id};
-			push @data, [
-					'dc:creator',
-					EPrints::Utils::make_name_string($creator->{name}),
-					id => $id,
+			next unless EPrints::Utils::is_set( $_ );
+			if( ref( $_ ) eq "" )
+			{
+				push @data, [
+					$field->property( "rioxx2_ns" ) . ":" . $1,
+					$_,
 				];
+			}
+			elsif( ref( $_ ) eq "HASH" )
+			{
+				my %copy = %$_;
+				push @data, [
+					$field->property( "rioxx2_ns" ) . ":" . $1,
+					delete $copy{$1},
+					%copy,
+				];
+			}
 		}
 	}
-	
-	my @docs = $eprint->get_all_documents;
-	if (@docs)
-	{
-		push @data, [
-				'dc:identifier',
-				$docs[0]->get_url,
-			];
-		if ($docs[0]->exists_and_set('mime_type'))
-		{
-			push @data, [
-					'dc:format',
-					$docs[0]->value('mime_type'),
-				];
-		}
-		else
-		{
-			push @data, [
-					'dc:format',
-					$docs[0]->value('format'),
-				];
-		}
-		if ($docs[0]->exists_and_set('license'))
-		{
-			push @data, [
-					'dc:rights',
-					$docs[0]->value('license'),
-				];
-		}
-	}
-	else
-	{
-		push @data, [
-				'dc:identifier',
-				$eprint->uri,
-			];
-	}
-
-	if ($eprint->exists_and_set('language'))
-	{
-		push @data, [
-				'dc:language',
-				$eprint->value('language'),
-			];
-	}
-	elsif (@docs && $docs[0]->exists_and_set('language'))
-	{
-		push @data, [
-				'dc:language',
-				$docs[0]->value('language'),
-			];
-	}
-
-	if ($eprint->exists_and_set('issn'))
-	{
-		push @data, [
-				'dc:source',
-				$eprint->value('issn'),
-			];
-	}
-
-	if ($eprint->exists_and_set('title'))
-	{
-		push @data, [
-				'dc:title',
-				$eprint->value('title'),
-			];
-	}
-
-	if ($eprint->exists_and_set('date'))
-	{
-		push @data, [
-				'dcterms:issued',
-				$eprint->value('date'),
-			];
-	}
-
-	if ($eprint->exists_and_set('funders'))
-	{
-		foreach my $funder (@{$eprint->value('funders')})
-		{
-			push @data, [
-					'rioxxterms:funder',
-					$funder,
-				];
-		}
-	}
-
-	if ($eprint->exists_and_set('projects'))
-	{
-		foreach my $project (@{$eprint->value('projects')})
-		{
-			push @data, [
-					'rioxxterms:project',
-					$project,
-				];
-		}
-	}
-
-	if ($eprint->exists_and_set('abstract'))
-	{
-		push @data, [
-				'dc:description',
-				$eprint->value('abstract'),
-			];
-	}
-
-	if ($eprint->exists_and_set('publisher'))
-	{
-		push @data, [
-				'dc:publisher',
-				$eprint->value('publisher'),
-			];
-	}
-
-	if ($eprint->exists_and_set('subjects'))
-	{
-		foreach my $subject (@{$eprint->value('subjects')})
-		{
-			push @data, [
-					'dc:subject',
-					$subject,
-				];
-		}
-	}
-
-	if ($eprint->exists_and_set('contributors'))
-	{
-		foreach my $person (@{$eprint->value('contributors')})
-		{
-			my $id = $person->{id};
-			push @data, [
-					'dc:contributor',
-					EPrints::Utils::make_name_string($person->{name}),
-					id => $id,
-				];
-		}
-	}
-	
-	if ($eprint->exists_and_set('type'))
-	{
-		push @data, [
-				'dc:type',
-				$eprint->value('type'),
-			];
-	}
-
-	for(qw( official_url id_number ))
-	{
-		if ($eprint->exists_and_set($_))
-		{
-			push @data, [
-					'dc:relation',
-					$eprint->value($_),
-				];
-		}
-	}
-
-	if ($eprint->exists_and_set('relation'))
-	{
-		foreach my $relation (@{$eprint->value('relation')})
-		{
-			push @data, [
-					'dcterms:references',
-					$relation->{uri},
-				];
-		}
-	}
-
-	my $f = $self->param('extra_fields');
-	&$f($self, $eprint, \@data) if defined $f;
 
 	for(@data)
 	{
