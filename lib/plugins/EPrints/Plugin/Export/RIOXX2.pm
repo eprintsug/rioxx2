@@ -52,7 +52,7 @@ sub xml_dataobj
 
 	my @data;
 
-	foreach my $field ( grep { $_->name =~ /^rioxx2_/ && $_->name !~ /_input$/ && $_->is_virtual } $eprint->dataset->get_fields ) # TODO UGH
+	foreach my $field ( grep { $_->type =~ /^rioxx2$/ } $eprint->dataset->get_fields ) 
 	{
 		$field->name =~ /^rioxx2_(.*)$/;
 		

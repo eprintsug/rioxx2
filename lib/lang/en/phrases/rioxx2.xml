@@ -7,28 +7,47 @@
 <epp:phrase id="user_fieldhelp_orcid">The ORCID for the user</epp:phrase>
 
  <epp:phrase id="eprint_fieldname_rioxx2_coverage">Coverage</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_coverage_input">Coverage Input</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_description">Description</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_format">Format</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_identifier">Identifier</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_language">Language</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_language_input">Language Input</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_publisher">Publisher</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_relation">Relation</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_source">Source</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_subject">Subject</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_title">Title</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_dateAccepted">Date accepted</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_dateAccepted_input">Date accepted Input</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_free_to_read">Free to read</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_free_to_read_input">Free to read Input</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_free_to_read_input_free_to_read">Free to read</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_free_to_read_input_start_date">Start date</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_free_to_read_input_end_date">End date</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_license_ref">License ref</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_license_ref_input">License ref Input</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_license_ref_input_license_ref">License URL</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_license_ref_input_start_date">Start date</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_apc">APC</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_apc_input">APC Input</epp:phrase>
  <epp:phrase id="eprint_fieldopt_rioxx2_apc_input_paid">Paid</epp:phrase>
  <epp:phrase id="eprint_fieldopt_rioxx2_apc_input_partially waived">Partially Waived</epp:phrase>
  <epp:phrase id="eprint_fieldopt_rioxx2_apc_input_fully waived">Fully Waived</epp:phrase>
  <epp:phrase id="eprint_fieldopt_rioxx2_apc_input_not charged">Not Charged</epp:phrase>
  <epp:phrase id="eprint_fieldopt_rioxx2_apc_input_not required">Not Required</epp:phrase>
  <epp:phrase id="eprint_fieldopt_rioxx2_apc_input_unknown">Unknown</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_author">Author</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_contributor">Contributor</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_project">Project</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_project_input">Project Input</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_project_input_project">Project ID</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_project_input_funder_name">Funder Name</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_project_input_funder_id">Funder ID</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_publication_date">Publication Date</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_publication_date_input">Publication Date Input</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_type">Type</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_type_input">Type Input</epp:phrase>
  <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Book">Book</epp:phrase>
  <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Book chapter">Book chapter</epp:phrase>
  <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Book edited">Book edited</epp:phrase>
@@ -44,6 +63,7 @@
  <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Consultancy Report">Consultancy Report</epp:phrase>
  <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Working paper">Working paper</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_version">Version</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_version_input">Version Input</epp:phrase>
  <epp:phrase id="eprint_fieldopt_rioxx2_version_input_AO">Author's Original</epp:phrase>
  <epp:phrase id="eprint_fieldopt_rioxx2_version_input_SMUR">Submitted Manuscript Under Review</epp:phrase>
  <epp:phrase id="eprint_fieldopt_rioxx2_version_input_AM">Accepted Manuscript</epp:phrase>
@@ -52,6 +72,7 @@
  <epp:phrase id="eprint_fieldopt_rioxx2_version_input_CVoR">Corrected Version of Record</epp:phrase>
  <epp:phrase id="eprint_fieldopt_rioxx2_version_input_EVoR">Enhanced Version of Record</epp:phrase>
  <epp:phrase id="eprint_fieldopt_rioxx2_version_input_NA">Not Applicable (or Unknown)</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_version_of_record">Version of Record</epp:phrase>
 
  <epp:phrase id="metapage_title_rioxx2">RIOXX2</epp:phrase>
 
@@ -67,5 +88,8 @@
 </epp:phrase>
 
 <epp:phrase id="Plugin/InputForm/Component/Field/Rioxx2:error_missing_input"><em><epc:pin name="ref"/></em> requires <em><epc:pin name="ref"/>_input</em> to be defined: <pre><epc:pin name="xml" /></pre></epp:phrase>
+
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:title">RIOXX2</epp:phrase>
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:edit_field_link">Edit <epc:pin name="field"/></epp:phrase>
 
 </epp:phrases>
