@@ -63,4 +63,8 @@ sub get_property_defaults
 	return %defaults;
 }
 
+sub to_sax
+{
+}
+
 1;
