@@ -115,6 +115,40 @@ sub render
 {
 	my( $self ) = @_;
 
+	my $repo = $self->{repository};
+        my $xml = $repo->xml;
+        my $xhtml = $repo->xhtml;
+	my $eprint = $self->{processor}->{eprint};
+
+	my @labels;
+	push @labels, $self->html_phrase( "fields" );
+	push @labels, $self->html_phrase( "xml" );
+
+	my @contents;
+	push @contents, $self->render_fields();
+	push @contents, $self->render_xml();
+
+	my $id_prefix = "rioxx2_view";
+	my $current = $repo->param( "${id_prefix}_current" );
+	$current = 0 if !defined $current;
+
+	my $page = $repo->make_doc_fragment;
+	$page->appendChild( $repo->xhtml->tabs(
+		\@labels,
+		\@contents,
+		basename => $id_prefix,
+		current => $current,
+		) );
+
+	$page->appendChild( $self->render_export_button( $eprint ) );
+
+	return $page;
+}
+
+sub render_fields
+{
+	my( $self ) = @_;
+
 	my $eprint = $self->{processor}->{eprint};
 	my $session = $eprint->{session};
 	my $workflow = $self->workflow;
@@ -206,8 +240,37 @@ sub render
 		$span->setAttribute( style => "padding-left: 20px; background: url('".$session->current_url( path => "static", "style/images/warning-icon.png" )."') no-repeat;" );
 	}
 
+	$tr = $session->make_element( "tr" );
+	$table->appendChild( $tr );
+	$td = $session->make_element( "td", colspan => 2 );
+	$tr->appendChild( $td );
+
 	return $page;
 }
+
+sub render_xml
+{
+	my( $self ) = @_;
+
+print STDERR "render_xml\n";
+	my $repo = $self->{repository};
+	my $eprint = $self->{processor}->{eprint};
+
+        my $plugin = $repo->plugin( "Export::RIOXX2" ); 
+	my $page = $repo->make_doc_fragment;
+	
+	my $output = $plugin->xml_dataobj( $eprint ); 
+
+print STDERR "output: ".$output->toString."\n";
+
+	my $div = $page->appendChild( $repo->xml->create_element( "div" ) );
+	$div->appendChild( $self->html_phrase( "xmlblock", xml=>$self->render_xml_tree( $repo, $output, 0, 600 ) ) );
+
+	return $page;
+}
+
+
+
 
 sub render_edit_button
 {
@@ -252,32 +315,151 @@ sub render_stage_warnings
 	return $session->render_message( "warning", $ul );
 }
 
+
+sub render_export_button
+{
+        my( $self, $eprint ) = @_;
+
+        my $repo = $self->{session};
+        my $xml = $repo->xml;
+        my $xhtml = $repo->xhtml;
+	my $user = $repo->current_user;
+	my $staff = $user->get_type eq "editor" || $user->get_type eq "admin";
+
+        my $frag = $xml->create_document_fragment;
+        my $plugin = $repo->plugin( "Export::RIOXX2" ); 
+
+	return $frag unless $plugin;
+
+        my $uri = $repo->config( "http_cgiurl" ) . "/export_redirect"; 
+        my $form = $repo->render_form( "GET", $uri );
+        $frag->appendChild( $form );
+        $form->appendChild( $xhtml->hidden_field( dataset => $eprint->dataset->id ) );
+        $form->appendChild( $xhtml->hidden_field( dataobj => $eprint->id ) );
+        $form->appendChild( $xhtml->hidden_field( format => $plugin->get_subtype ) );
+                                        
+        $form->appendChild(
+                $xml->create_element( "input",
+                        type => "submit",
+                        value => $repo->phrase( "lib/searchexpression:export_button" ),
+                        class => "ep_form_action_button"
+                )
+        ); 
+
+        return $frag;
+}       
+
+
+#XML render based on History.pm
+sub render_xml_tree
+{
+	my( $self, $session, $domtree, $indent, $width ) = @_;
+
+	if( EPrints::XML::is_dom( $domtree, "Text" ) )
+	{
+		my $v = $domtree->nodeValue;
+		if( $v=~m/^[\s\r\n]*$/ )
+		{
+			return $session->make_doc_fragment;
+		}
+		my $r = $session->make_text( ("  "x$indent).$v."\n" );
+		return $r;
+	}
+
+	if( EPrints::XML::is_dom( $domtree, "Element" ) )
+	{
+		my $t = '';
+		my $justtext = 1;
+
+		foreach my $cnode ( $domtree->getChildNodes )
+		{
+			if( EPrints::XML::is_dom( $cnode,"Element" ) )
+			{
+				$justtext = 0;
+				last;
+			}
+			if( EPrints::XML::is_dom( $cnode,"Text" ) )
+			{
+				$t.=$cnode->nodeValue;
+			}
+		}
+		my $name = $domtree->nodeName;
+		my $f = $session->make_doc_fragment;
+		my $padder;
+		if( $justtext )
+		{
+			my $offset = $indent*2+length($name)+2;
+			my $endw = length($name)+3;
+			$f->appendChild( $session->make_text( "  "x$indent ) );
+			$t = "" if( $t =~ m/^[\s\r\n]*$/ );
+			$f->appendChild( $session->make_text( "<$name>" ) );
+			$f->appendChild( mktext( $session, $t, $offset, $endw, $width ) );
+			$f->appendChild( $session->make_text( "</$name>\n" ) );
+		}
+		else
+		{
+			$f->appendChild( $session->make_text( "  "x$indent ) );
+			$f->appendChild( $session->make_text( "<$name>\n" ) );
+	
+			foreach my $cnode ( $domtree->getChildNodes )
+			{
+				my( $sub, $padsub ) = $self->render_xml_tree( $session,$cnode, $indent+1, $width );
+				$f->appendChild( $sub );
+			}
+
+			$f->appendChild( $session->make_text( "  "x$indent ) );
+			$f->appendChild( $session->make_text( "</$name>\n" ) );
+		}
+		return $f;
+	}
+	return( $session->make_text( "eh?:".ref($domtree) ), $session->make_doc_fragment );
+}
+
+
+
+sub _mktext
+{
+	my( $session, $text, $offset, $endw, $width ) = @_;
+
+	return () unless length( $text );
+
+	my $lb = chr(8626);
+	my @bits = split(/[\r\n]/, $text );
+	my @b2 = ();
+	
+	foreach my $t2 ( @bits )
+	{
+		while( $offset+length( $t2 ) > $width )
+		{
+			my $cut = $width-1-$offset;
+			push @b2, substr( $t2, 0, $cut ).$lb;
+			$t2 = substr( $t2, $cut );
+			$offset = 0;
+		}
+		if( $offset+$endw+length( $t2 ) > $width )
+		{
+			push @b2, $t2.$lb, "";
+		}
+		else
+		{
+			push @b2, $t2;
+		}
+	}
+
+	return @b2;
+}
+
+sub mktext
+{
+	my( $session, $text, $offset, $endw, $width ) = @_;
+
+	my @bits = _mktext( $session, $text, $offset, $endw, $width );
+
+	return $session->make_text( join( "\n", @bits ) );
+}
+
+
+
 1;
 
-=head1 COPYRIGHT
-
-=for COPYRIGHT BEGIN
-
-Copyright 2000-2011 University of Southampton.
-
-=for COPYRIGHT END
-
-=for LICENSE BEGIN
-
-This file is part of EPrints L<http://www.eprints.org/>.
-
-EPrints is free software: you can redistribute it and/or modify it
-under the terms of the GNU Lesser General Public License as published
-by the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-EPrints is distributed in the hope that it will be useful, but WITHOUT
-ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
-License for more details.
-
-You should have received a copy of the GNU Lesser General Public
-License along with EPrints.  If not, see L<http://www.gnu.org/licenses/>.
-
-=for LICENSE END
 

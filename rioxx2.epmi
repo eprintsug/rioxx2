@@ -50,9 +50,9 @@
         <file>
           <filename>lang/en/phrases/rioxx2.xml</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>af92786b195c921c8a443a85b7c3bf34</hash>
+          <hash>7ff33ee8d3b478275103823335953c38</hash>
           <hash_type>MD5</hash_type>
-          <filesize>7041</filesize>
+          <filesize>7403</filesize>
         </file>
         <file>
           <filename>lang/en/phrases/rioxx2_help.xml</filename>
@@ -120,9 +120,9 @@
         <file>
           <filename>plugins/EPrints/Plugin/Screen/EPrint/RIOXX2.pm</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>3ddd7098a6f37e149ed27adc511833d5</hash>
+          <hash>61309625451c014749fc09256174fa52</hash>
           <hash_type>MD5</hash_type>
-          <filesize>6635</filesize>
+          <filesize>10803</filesize>
         </file>
         <file>
           <filename>plugins/EPrints/Plugin/Screen/Report.pm</filename>
