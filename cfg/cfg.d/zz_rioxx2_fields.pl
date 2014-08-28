@@ -20,13 +20,12 @@ $c->{rioxx2}->{content_map} = {
 
 $c->add_dataset_field(
 	"eprint",
-	{ name => "rioxx2_coverage", type => "rioxx2", rioxx2_required => "optional", rioxx2_ns => "dc"  }
-);
+	{ name => "rioxx2_coverage", type => "rioxx2", rioxx2_required => "optional", rioxx2_ns => "dc", rioxx2_validate => "rioxx2_validate_coverage" });
 
 # TODO strip HTML
 $c->add_dataset_field(
 	"eprint",
-	{ name => "rioxx2_description", type => "rioxx2", rioxx2_value => sub { $_[0]->value( "abstract" ) }, rioxx2_required => "recommended", rioxx2_ns => "dc" }
+	{ name => "rioxx2_description", type => "rioxx2", rioxx2_validate=>"rioxx2_validate_description", rioxx2_value => sub { $_[0]->value( "abstract" ) }, rioxx2_required => "recommended", rioxx2_ns => "dc" }
 );
 
 $c->add_dataset_field(
@@ -263,3 +262,26 @@ $c->{rioxx2_project} = sub {
 	}
 	return \@projects;
 };
+
+# Validation Routines
+
+$c->{rioxx2_validate_coverage} = sub {
+	my( $eprint ) = @_;
+
+print STDERR "validate called for coverage ##########################\n";
+
+};
+$c->{rioxx2_validate_description} = sub {
+	my( $repo, $value, $eprint ) = @_;
+	
+	my $name = $repo->xml->create_text_node( "rioxx2_description" );
+	my @problems = ();
+	if ( !$value )
+	{
+		push @problems, $repo->html_phrase( "rioxx2_validate:recommended_not_set", field=>$name );
+	} 
+	return @problems;
+};
+
+
+

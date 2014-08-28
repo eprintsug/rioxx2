@@ -59,28 +59,54 @@ sub can_be_viewed
 	return $self->allow( "eprint/details" );
 }
 
+sub _render_compliance
+{
+	my( $self, $eprint, $field ) = @_;
+
+	my $repo = $self->{repository};
+        my $xml = $repo->xml;
+
+	my $name = $field->name;
+	my @problems = $field->validate( $repo, $eprint->get_value( $name ), $eprint ); 
+
+	return $self->html_phrase( "field:validation:pass" ) unless scalar @problems;
+	return $self->html_phrase( "field:validation:fail" );
+}
+
+
+sub _render_required_icon
+{
+	my( $self, $field ) = @_;
+
+	my $repo = $self->{repository};
+        my $xml = $repo->xml;
+
+	my $rioxx2_required = $field->property( "rioxx2_required" );
+	my $div = $xml->create_element( "div", style=>"float: left; width: 16px;" );
+	$div->appendChild( $self->html_phrase( "field:rioxx2:".$rioxx2_required ) );
+	return $div;
+}
+
 sub _render_name_maybe_with_link
 {
 	my( $self, $eprint, $field ) = @_;
 
-	my $r_name = $field->render_name( $eprint->{session} );
-
-	return $r_name if !$self->edit_ok;
-
+	my $repo = $self->{repository};
+        my $xml = $repo->xml;
 	my $name = $field->get_name;
-	my $field_type = $field->get_type;
-	
+	my $r_name = $field->render_name( $repo );
 	my $stage = $self->_find_stage( $eprint, $name );
 
-	return $r_name if( !defined $stage );
-
-	my $url = "?eprintid=".$eprint->get_id."&screen=".$self->edit_screen_id."&stage=$stage#$name";
-	my $link = $eprint->{session}->render_link( $url );
-	$link->setAttribute( title => $self->phrase( "edit_field_link",
-			field => $self->{session}->xhtml->to_text_dump( $r_name )
-		) );
-	$link->appendChild( $r_name );
-	return $link;
+	my $div = $xml->create_element( "div", style=>"float: right; width: 130px;" );
+	if ( $self->edit_ok && defined $stage )
+	{
+		my $url = "?eprintid=".$eprint->get_id."&screen=".$self->edit_screen_id."&stage=$stage#$name";
+		$r_name = $eprint->{session}->render_link( $url );
+		$r_name->setAttribute( title => $self->phrase( "edit_field_link", field => $name ) );
+		$r_name->appendChild( $field->render_name( $repo ) );
+	}
+	$div->appendChild( $r_name );
+	return $div;
 }
 
 sub edit_screen_id { return "EPrint::Edit"; }
@@ -125,7 +151,7 @@ sub render
 	push @labels, $self->html_phrase( "xml" );
 
 	my @contents;
-	push @contents, $self->render_fields();
+	push @contents, $self->render_fields( $eprint );
 	push @contents, $self->render_xml();
 
 	my $id_prefix = "rioxx2_view";
@@ -147,106 +173,79 @@ sub render
 
 sub render_fields
 {
-	my( $self ) = @_;
+	my( $self, $eprint ) = @_;
 
-	my $eprint = $self->{processor}->{eprint};
-	my $session = $eprint->{session};
+	my $repo = $self->{repository};
+        my $xml = $repo->xml;
 	my $workflow = $self->workflow;
+	my $stage = "rioxx2";
 
-	my $page = $session->make_doc_fragment;
+	my $page = $repo->make_doc_fragment;
 
 	$self->{edit_ok} = $self->could_obtain_eprint_lock;
 	$self->{edit_ok} &&= $self->allow( "eprint/edit" );
 
-	my $rows = [];
-	my $stage = "rioxx2";
+
+	my $has_problems = 0;
+
+	my $edit_screen = $repo->plugin(
+		"Screen::".$self->edit_screen_id,
+		processor => $self->{processor} );
+
+	my $table = $repo->make_element( "table",
+			border => "0",
+			cellpadding => "3",
+			style=>'width:100%' );
+	$page->appendChild( $table );
+
+	my( $tr, $td, $th );
+
+	$tr = $table->appendChild( $repo->make_element( "tr" ) );
+	$th = $tr->appendChild( $repo->make_element( "th", colspan => 4, class => "ep_title_row", style=>"text-align:left;margin-right:1em", ) );
+	$th->appendChild( $repo->html_phrase( "metapage_title_$stage" ) );
+
+	my $bdiv = $xml->create_element( "div", style=>"float: right; width: 130px;" );
+	$bdiv->appendChild( $self->render_edit_button( $stage ) );
+	$th->appendChild( $bdiv );
+
 	my @fields = grep { $_->type =~ /^rioxx2$/ } $eprint->get_dataset->get_fields;
 	foreach my $field ( @fields )
 	{
 		my $name = $field->get_name();
-
+		my $icon = $self->_render_required_icon( $field );
 		my $r_name = $self->_render_name_maybe_with_link( $eprint, $field );
+		my $compliance = $self->_render_compliance( $eprint, $field );
 
 		if( !$field->isa( "EPrints::MetaField::Subobject" ) )
 		{
-			push @$rows, $session->render_row(
-				$r_name,
-				$eprint->render_value( $field->get_name(), 1 ) );
+			
+			$tr = $table->appendChild( $repo->make_element( "tr" ) );
+			my $td1 = $tr->appendChild( $repo->make_element( "td", class=>"ep_row") );
+			$td1->appendChild( $icon );
+			my $td2 = $tr->appendChild( $repo->make_element( "td", class=>"ep_row", style=>"text-align: right;" ) );
+			$td2->appendChild( $r_name );
+			my $td3 = $tr->appendChild( $repo->make_element( "td", class=>"ep_row", style=>"text-align: left;" ) );
+			$td3->appendChild( $eprint->render_value( $name, 1 ) );
+			my $td4 = $tr->appendChild( $repo->make_element( "td", class=>"ep_row" ) );
+			$td4->appendChild( $compliance );
 		}
 	}
 
 
-	my $has_problems = 0;
-
-	my $edit_screen = $session->plugin(
-		"Screen::".$self->edit_screen_id,
-		processor => $self->{processor} );
-
-	my $table = $session->make_element( "table",
-			border => "0",
-			cellpadding => "3" );
-	$page->appendChild( $table );
-
-	my( $tr, $th, $td );
-
-	my $url = URI->new( $session->current_url );
-	$url->query_form(
-		screen => $self->edit_screen_id,
-		eprintid => $eprint->id,
-		stage => $stage
-	);
-
-	$tr = $session->make_element( "tr" );
-	$table->appendChild( $tr );
-	$th = $session->make_element( "th", colspan => 2, class => "ep_title_row" );
-
-	$tr->appendChild( $th );
-
-	my $title = $session->html_phrase( "metapage_title_$stage" );
-	my $table_inner = $session->make_element( "table", style=>'width:100%' );
-	my $tr_inner = $session->make_element( "tr" );
-	my $td_inner_1 = $session->make_element( "td", style=>'text-align:left;margin-right:1em' );
-	$th->appendChild( $table_inner );
-	$table_inner->appendChild( $tr_inner );
-	$tr_inner->appendChild( $td_inner_1 );
-	$td_inner_1->appendChild( $title );
-	if( $self->edit_ok )
-	{
-		my $td_inner_2  = $session->make_element( "td",style=>'text-align:right;font-size:80%' );
-		$tr_inner->appendChild( $td_inner_2 );
-		$td_inner_2->appendChild( $self->render_edit_button( $stage ) );
-	}
-
-	$tr = $session->make_element( "tr" );
-	$table->appendChild( $tr );
-	$td = $session->make_element( "td", colspan => 2 );
-	$tr->appendChild( $td );
-#	my @problems = $stage->validate( $self->{processor} );
-#	if( @problems )
-#	{
-#		$has_problems = 1;
-#		$td->appendChild(
-#			$self->render_stage_warnings( $stage, @problems ) );
-#	}
-
-	foreach $tr (@$rows)
-	{
-		$table->appendChild( $tr );
-	}
-
 	if( $has_problems )
 	{
 		my $span = $self->{title};
-		$span->setAttribute( style => "padding-left: 20px; background: url('".$session->current_url( path => "static", "style/images/warning-icon.png" )."') no-repeat;" );
+		$span->setAttribute( style => "padding-left: 20px; background: url('".$repo->current_url( path => "static", "style/images/warning-icon.png" )."') no-repeat;" );
 	}
 
-	$tr = $session->make_element( "tr" );
+	$tr = $repo->make_element( "tr" );
 	$table->appendChild( $tr );
-	$td = $session->make_element( "td", colspan => 2 );
+	$td = $repo->make_element( "td", colspan => 2 );
 	$tr->appendChild( $td );
 
 	return $page;
 }
+
 
 sub render_xml
 {
@@ -276,13 +275,13 @@ sub render_edit_button
 {
 	my( $self, $stage ) = @_;
 
-	my $session = $self->{session};
+	my $repo = $self->{repository};
 
-	my $div = $session->make_element( "div" );
+	my $div = $repo->make_element( "div" );
 
 	local $self->{processor}->{stage} = $stage;
 
-	my $screen = $session->plugin( "Screen::".$self->edit_screen_id,
+	my $screen = $repo->plugin( "Screen::".$self->edit_screen_id,
 			processor => $self->{processor},
 		);
 	return $div if !defined $screen; # No Edit screen plugin available
@@ -330,6 +329,8 @@ sub render_export_button
         my $plugin = $repo->plugin( "Export::RIOXX2" ); 
 
 	return $frag unless $plugin;
+
+	$frag->appendChild( $self->html_phrase( "export:title" ) );
 
         my $uri = $repo->config( "http_cgiurl" ) . "/export_redirect"; 
         my $form = $repo->render_form( "GET", $uri );

@@ -93,6 +93,18 @@
 <epp:phrase id="Plugin/Screen/EPrint/RIOXX2:edit_field_link">Edit <epc:pin name="field"/></epp:phrase>
 <epp:phrase id="Plugin/Screen/EPrint/RIOXX2:fields">RIOXX2 Metadata</epp:phrase>
 <epp:phrase id="Plugin/Screen/EPrint/RIOXX2:xml">XML</epp:phrase>
-
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:export:title"><br/><table border="0" cellpadding="3" style="width:100%"><tbody><th class="ep_title_row" style="text-align:left;margin-right:1em"> Export </th></tbody></table></epp:phrase>
 <epp:phrase id="Plugin/Screen/EPrint/RIOXX2:xmlblock"><pre style="margin: 0 0 0 0; padding: 3px 3px 3px 3px; border-left: 1px dashed black; border-bottom: 1px dashed black;"><epc:pin name="xml"/></pre></epp:phrase>
+
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:field:rioxx2:mandatory"><img src="{$config{rel_path}}/style/images/rioxx2_mandatory.png" alt="Required" width="16" height="16" style="float: left;" title="Mandatory"/></epp:phrase>
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:field:rioxx2:recommended"><img src="{$config{rel_path}}/style/images/rioxx2_recommended.png" alt="Required" width="16" height="16" style="float: left;" title="Recommended" /></epp:phrase>
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:field:rioxx2:optional"><img src="{$config{rel_path}}/style/images/rioxx2_optional.png" alt="Required" width="16" height="16" style="float: left;" title="Optional"/></epp:phrase>
+
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:field:validation:pass"><img src="{$config{rel_path}}/style/images/rioxx2_validation_pass.png" alt="Required" width="16" height="16" title="Validation passed"/></epp:phrase>
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:field:validation:fail"><img src="{$config{rel_path}}/style/images/rioxx2_validation_fail.png" alt="Required" width="16" height="16" title="Validation failed"/></epp:phrase>
+
+
+<epp:phrase id="rioxx2_validate:recommended_not_set">The Field "<epc:pin name="field"/>" is recommended but not set</epp:phrase>
+
+
 </epp:phrases>
