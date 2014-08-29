@@ -268,7 +268,8 @@ $c->{rioxx2_project} = sub {
 $c->{rioxx2_validate_coverage} = sub {
 	my( $eprint ) = @_;
 
-print STDERR "validate called for coverage ##########################\n";
+	my @problems = ();
+	return @problems;
 
 };
 $c->{rioxx2_validate_description} = sub {

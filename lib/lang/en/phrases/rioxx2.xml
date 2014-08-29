@@ -101,7 +101,7 @@
 <epp:phrase id="Plugin/Screen/EPrint/RIOXX2:field:rioxx2:optional"><img src="{$config{rel_path}}/style/images/rioxx2_optional.png" alt="Required" width="16" height="16" style="float: left;" title="Optional"/></epp:phrase>
 
 <epp:phrase id="Plugin/Screen/EPrint/RIOXX2:field:validation:pass"><img src="{$config{rel_path}}/style/images/rioxx2_validation_pass.png" alt="Required" width="16" height="16" title="Validation passed"/></epp:phrase>
-<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:field:validation:fail"><img src="{$config{rel_path}}/style/images/rioxx2_validation_fail.png" alt="Required" width="16" height="16" title="Validation failed"/></epp:phrase>
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:field:validation:fail"><img src="{$config{rel_path}}/style/images/rioxx2_validation_fail.png" alt="Required" width="16" height="16" title="Validation failed" border="0"/></epp:phrase>
 
 
 <epp:phrase id="rioxx2_validate:recommended_not_set">The Field "<epc:pin name="field"/>" is recommended but not set</epp:phrase>

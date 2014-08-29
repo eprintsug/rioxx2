@@ -66,11 +66,27 @@ sub _render_compliance
 	my $repo = $self->{repository};
         my $xml = $repo->xml;
 
+	my $details = $xml->create_document_fragment;
+	my $icon = $self->html_phrase( "field:validation:pass" );
 	my $name = $field->name;
 	my @problems = $field->validate( $repo, $eprint->get_value( $name ), $eprint ); 
 
-	return $self->html_phrase( "field:validation:pass" ) unless scalar @problems;
-	return $self->html_phrase( "field:validation:fail" );
+	return ($icon, $details) unless scalar @problems;
+
+	my $id = $name."_problems";
+	$icon = $xml->create_element( "a", onclick=>"EPJS_blur(event); EPJS_toggle_type(\'$id\',false, 'table-cell');return false", href=>"#", );
+	$icon->appendChild( $self->html_phrase( "field:validation:fail" ) );
+	
+	my $tr = $details->appendChild( $xml->create_element( "tr" ) );
+	my $td_p = $tr->appendChild( $xml->create_element( "td", colspan=>"4", id=>$id, class=>"ep_row", style=>"display:none;", ) );
+	my $ul = $td_p->appendChild( $xml->create_element( "ul" ) );
+	foreach my $problem ( @problems )
+	{
+		my $li = $ul->appendChild( $xml->create_element( "li" ) );
+		$li->appendChild( $problem );
+	}
+
+	return ($icon, $details);
 }
 
 
@@ -214,20 +230,22 @@ sub render_fields
 		my $name = $field->get_name();
 		my $icon = $self->_render_required_icon( $field );
 		my $r_name = $self->_render_name_maybe_with_link( $eprint, $field );
-		my $compliance = $self->_render_compliance( $eprint, $field );
+		my ($compliance, $details) = $self->_render_compliance( $eprint, $field );
 
 		if( !$field->isa( "EPrints::MetaField::Subobject" ) )
 		{
 			
 			$tr = $table->appendChild( $repo->make_element( "tr" ) );
-			my $td1 = $tr->appendChild( $repo->make_element( "td", class=>"ep_row") );
+			my $td1 = $tr->appendChild( $repo->make_element( "td", class=>"ep_row", style=>"width: 18px;") );
 			$td1->appendChild( $icon );
-			my $td2 = $tr->appendChild( $repo->make_element( "td", class=>"ep_row", style=>"text-align: right;" ) );
+			my $td2 = $tr->appendChild( $repo->make_element( "td", class=>"ep_row", style=>"text-align: right; width: 150px;" ) );
 			$td2->appendChild( $r_name );
 			my $td3 = $tr->appendChild( $repo->make_element( "td", class=>"ep_row", style=>"text-align: left;" ) );
 			$td3->appendChild( $eprint->render_value( $name, 1 ) );
-			my $td4 = $tr->appendChild( $repo->make_element( "td", class=>"ep_row" ) );
+			my $td4 = $tr->appendChild( $repo->make_element( "td", class=>"ep_row", style=>"width: 32px;" ) );
 			$td4->appendChild( $compliance );
+			$table->appendChild( $details );
+			
 		}
 	}
 
