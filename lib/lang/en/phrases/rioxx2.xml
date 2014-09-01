@@ -104,7 +104,11 @@
 <epp:phrase id="Plugin/Screen/EPrint/RIOXX2:field:validation:fail"><img src="{$config{rel_path}}/style/images/rioxx2_validation_fail.png" alt="Required" width="16" height="16" title="Validation failed" border="0"/></epp:phrase>
 
 
-<epp:phrase id="rioxx2_validate:recommended_not_set">The Field "<epc:pin name="field"/>" is recommended but not set</epp:phrase>
+<epp:phrase id="rioxx2_validate:item_has_no_resource">This item does not have a resouce. Please upload a document</epp:phrase>
+<epp:phrase id="rioxx2_validate:mandatory_not_set">The mandatory field "<epc:pin name="field"/>" is not set</epp:phrase>
+<epp:phrase id="rioxx2_validate:recommended_not_set">The field "<epc:pin name="field"/>" is recommended but not set</epp:phrase>
+<epp:phrase id="rioxx2_validate:field_contains_markup">The field "<epc:pin name="field"/>" contains markup tags: <epc:pin name="tags"/></epp:phrase>
+<epp:phrase id="rioxx2_validate:language_not_found">The field "<epc:pin name="field"/>" does not seem to contain a valid ISO 639-3 language code: <epc:pin name="code"/></epp:phrase>
 
 
 </epp:phrases>

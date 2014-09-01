@@ -23,6 +23,7 @@ $c->add_dataset_field(
 	{ name => "rioxx2_coverage", type => "rioxx2", rioxx2_required => "optional", rioxx2_ns => "dc", rioxx2_validate => "rioxx2_validate_coverage" });
 
 # TODO strip HTML
+# validation checks for markup and reports the tags found - that might be more appropriate than trying to strip out tags.
 $c->add_dataset_field(
 	"eprint",
 	{ name => "rioxx2_description", type => "rioxx2", rioxx2_validate=>"rioxx2_validate_description", rioxx2_value => sub { $_[0]->value( "abstract" ) }, rioxx2_required => "recommended", rioxx2_ns => "dc" }
@@ -30,17 +31,17 @@ $c->add_dataset_field(
 
 $c->add_dataset_field(
 	"eprint",
-	{ name => "rioxx2_format", type => "rioxx2", rioxx2_value => sub { $_[1] && $_[1]->value( "mime_type" ) }, rioxx2_required => "recommended", rioxx2_ns => "dc" }
+	{ name => "rioxx2_format", type => "rioxx2", rioxx2_value => sub { $_[1] && $_[1]->value( "mime_type" ) }, rioxx2_validate=>"rioxx2_validate_mime_type", rioxx2_required => "recommended", rioxx2_ns => "dc" }
 );
 
 $c->add_dataset_field(
 	"eprint",
-	{ name => "rioxx2_identifier", type => "rioxx2", rioxx2_value => sub { $_[1] && $_[1]->get_url }, rioxx2_required => "mandatory", rioxx2_ns => "dc" }
+	{ name => "rioxx2_identifier", type => "rioxx2", rioxx2_value => sub { $_[1] && $_[1]->get_url }, rioxx2_validate=>"rioxx2_validate_identifier", rioxx2_required => "mandatory", rioxx2_ns => "dc" }
 );
 
 $c->add_dataset_field(
 	"eprint",
-	{ name => "rioxx2_language", type => "rioxx2", rioxx2_value => sub { $_[1] && $_[1]->value( "language" ) }, rioxx2_required => "mandatory", rioxx2_ns => "dc" }
+	{ name => "rioxx2_language", type => "rioxx2", rioxx2_value => sub { $_[1] && $_[1]->value( "language" ) }, rioxx2_validate=>"rioxx2_validate_language", rioxx2_required => "mandatory", rioxx2_ns => "dc" }
 );
 
 $c->add_dataset_field(
@@ -272,17 +273,107 @@ $c->{rioxx2_validate_coverage} = sub {
 	return @problems;
 
 };
+
 $c->{rioxx2_validate_description} = sub {
 	my( $repo, $value, $eprint ) = @_;
 	
-	my $name = $repo->xml->create_text_node( "rioxx2_description" );
+	# reporting the field as abstract rather than the rioxx2 field 
+	my $ds = $repo->dataset( "eprint" );
+	my $source_field = $ds->field( "abstract" );
+	my $name = $source_field->render_name;
 	my @problems = ();
 	if ( !$value )
 	{
 		push @problems, $repo->html_phrase( "rioxx2_validate:recommended_not_set", field=>$name );
 	} 
+
+	# check for markup in the text
+
+	use HTML::Parser;
+
+	my $start_events = [];
+	my $p = HTML::Parser->new(api_version => 3, );
+	$p->handler( start => $start_events, '"S", attr, attrseq, text' );
+	$p->parse( $value );
+	if ( scalar @$start_events ) 
+	{
+		my $tags = "";
+		foreach my $start ( @$start_events )
+		{
+			$tags .= $start->[3]." ";
+			$tags .= " ";
+		}
+		push @problems, $repo->html_phrase( "rioxx2_validate:field_contains_markup", 
+				field=>$name, 
+				tags=>$repo->xml->create_text_node( $tags ) );
+	}
 	return @problems;
 };
+
+$c->{rioxx2_validate_mime_type} = sub {
+	my( $repo, $value, $eprint ) = @_;
+	
+	my @documents = $eprint->get_all_documents;
+	return unless scalar @documents;
+
+	my $ds = $repo->dataset( "document" );
+	my $source_field = $ds->field( "format" );
+	my $name = $source_field->render_name;
+	my @problems = ();
+	if ( !$value )
+	{
+		push @problems, $repo->html_phrase( "rioxx2_validate:recommended_not_set", field=>$name );
+	} 
+
+	return @problems;
+};
+
+$c->{rioxx2_validate_identifier} = sub {
+	my( $repo, $value, $eprint ) = @_;
+	
+	my @problems = ();
+	if ( !$value )
+	{
+		push @problems, $repo->html_phrase( "rioxx2_validate:item_has_no_resource" );
+	} 
+
+	return @problems;
+};
+
+$c->{rioxx2_validate_language} = sub {
+	my( $repo, $value, $eprint ) = @_;
+	
+	my $ds = $repo->dataset( "document" );
+	my $source_field = $ds->field( "language" );
+	my $name = $source_field->render_name;
+
+	my @problems = ();
+	if ( !$value )
+	{
+		push @problems, $repo->html_phrase( "rioxx2_validate:mandatory_not_set", field=>$name );
+	} 
+	else
+	{
+# we could check the code against iso 639-1, -2 and -3 but we cannot use the official list as it would breach the terms of use:
+#
+#The ISO 639-3 code set may be downloaded and incorporated into software products, web-based systems, digital devices, etc., either commercial or non-commercial, provided that:
+
+#attribution is given www.sil.org/iso639-3/ as the source of the codes;
+#the identifiers of the code set are not modified or extended except as may be privately agreed using the Private Use Area (range qaa to qtz), and then such extensions shall not be distributed publicly;
+#the product, system, or device does not provide a means to redistribute the code set.
+#
+# as this is a bazaar plugin the "product" would: "provide a means to redistribute the code set"
+
+		if ( $value !~ /[a-z]{2,3}/ && $value !~ /[a-z]{2}-[a-zA-Z]{2}/ )
+		{
+			push @problems, $repo->html_phrase( "rioxx2_validate:language_not_found", field=>$name, code=>$repo->xml->create_text_node( $value ) );
+		}
+	}
+
+	return @problems;
+};
+
+
 
 
 
