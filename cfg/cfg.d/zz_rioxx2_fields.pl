@@ -46,12 +46,12 @@ $c->add_dataset_field(
 
 $c->add_dataset_field(
 	"eprint",
-	{ name => "rioxx2_publisher", type => "rioxx2", rioxx2_value => sub { $_[0]->value( "publisher" ) }, rioxx2_required => "recommended", rioxx2_ns => "dc" }
+	{ name => "rioxx2_publisher", type => "rioxx2", rioxx2_value => sub { $_[0]->value( "publisher" ) }, rioxx2_validate=>"rioxx2_validate_publisher", rioxx2_required => "recommended", rioxx2_ns => "dc" }
 );
 
 $c->add_dataset_field(
 	"eprint",
-	{ name => "rioxx2_relation", type => "rioxx2", rioxx2_value => sub { $_[0]->value( "related_url_url" ) }, rioxx2_required => "optional", rioxx2_ns => "dc" }
+	{ name => "rioxx2_relation", type => "rioxx2", rioxx2_value => sub { $_[0]->value( "related_url_url" ) }, rioxx2_validate=>"rioxx2_validate_relation", rioxx2_required => "optional", rioxx2_ns => "dc" }
 );
 
 $c->add_dataset_field(
@@ -285,8 +285,8 @@ $c->{rioxx2_validate_description} = sub {
 	if ( !$value )
 	{
 		push @problems, $repo->html_phrase( "rioxx2_validate:recommended_not_set", field=>$name );
+		return @problems;
 	} 
-
 	# check for markup in the text
 
 	use HTML::Parser;
@@ -351,9 +351,8 @@ $c->{rioxx2_validate_language} = sub {
 	if ( !$value )
 	{
 		push @problems, $repo->html_phrase( "rioxx2_validate:mandatory_not_set", field=>$name );
+		return @problems;
 	} 
-	else
-	{
 # we could check the code against iso 639-1, -2 and -3 but we cannot use the official list as it would breach the terms of use:
 #
 #The ISO 639-3 code set may be downloaded and incorporated into software products, web-based systems, digital devices, etc., either commercial or non-commercial, provided that:
@@ -364,14 +363,67 @@ $c->{rioxx2_validate_language} = sub {
 #
 # as this is a bazaar plugin the "product" would: "provide a means to redistribute the code set"
 
-		if ( $value !~ /[a-z]{2,3}/ && $value !~ /[a-z]{2}-[a-zA-Z]{2}/ )
+	# the value could be a scalar or an array!
+	my $values = [];
+	if ( ref $value eq "ARRAY" ) 
+	{
+		$values = $value;
+	}
+	else
+	{
+		push @$values, $value;
+	}
+ 
+	foreach my $v ( @$values )
+	{
+		if ( $v !~ /[a-z]{2,3}/ && $v !~ /[a-z]{2}-[a-zA-Z]{2}/ )
 		{
-			push @problems, $repo->html_phrase( "rioxx2_validate:language_not_found", field=>$name, code=>$repo->xml->create_text_node( $value ) );
+			push @problems, $repo->html_phrase( "rioxx2_validate:language_not_found", 
+				field=>$name, 
+				code=>$repo->xml->create_text_node( $v ) );
 		}
 	}
 
 	return @problems;
 };
+
+$c->{rioxx2_validate_publisher} = sub {
+	my( $repo, $value, $eprint ) = @_;
+	
+	my $ds = $repo->dataset( "eprint" );
+	my $source_field = $ds->field( "publisher" );
+	my $name = $source_field->render_name;
+	my @problems = ();
+	if ( !$value )
+	{
+		push @problems, $repo->html_phrase( "rioxx2_validate:recommended_not_set", field=>$name );
+	} 
+
+	return @problems;
+};
+
+$c->{rioxx2_validate_relation} = sub {
+	my( $repo, $value, $eprint ) = @_;
+	
+	return unless $value;
+
+	my $ds = $repo->dataset( "eprint" );
+	my $source_field = $ds->field( "related_url" );
+	my $name = $source_field->render_name;
+	my @problems = ();
+	foreach my $v ( @$value )
+	{
+		if ( $v !~ /http[.]?:\/\// )
+		{
+			push @problems, $repo->html_phrase( "rioxx2_validate:not_an_http_uri", 
+					field=>$name, 
+					fvalue=>$repo->xml->create_text_node( $v ) );
+		} 
+	}
+
+	return @problems;
+};
+
 
 
 

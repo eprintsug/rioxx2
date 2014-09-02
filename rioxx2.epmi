@@ -36,9 +36,9 @@
         <file>
           <filename>epm/rioxx2/cfg/cfg.d/zz_rioxx2_fields.pl</filename>
           <mime_type>text/plain</mime_type>
-          <hash>47235a439bd469816fac997943097b8f</hash>
+          <hash>a34af309d77ccd85fd1532201d21f36c</hash>
           <hash_type>MD5</hash_type>
-          <filesize>12283</filesize>
+          <filesize>13446</filesize>
         </file>
         <file>
           <filename>lang/en/phrases/reports.xml</filename>
@@ -50,9 +50,9 @@
         <file>
           <filename>lang/en/phrases/rioxx2.xml</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>17e47431351a2818a58820ec5640d9ff</hash>
+          <hash>efdf3582869583fd905ba4e14e712ea8</hash>
           <hash_type>MD5</hash_type>
-          <filesize>9472</filesize>
+          <filesize>9645</filesize>
         </file>
         <file>
           <filename>lang/en/phrases/rioxx2_help.xml</filename>
