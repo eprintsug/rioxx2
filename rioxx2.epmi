@@ -20,6 +20,13 @@
           <filesize>767</filesize>
         </file>
         <file>
+          <filename>epm/rioxx2/cfg/autocomplete/funderNames</filename>
+          <mime_type>text/plain</mime_type>
+          <hash>507d4197c031aeb0f75572dc9d709fb3</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>617130</filesize>
+        </file>
+        <file>
           <filename>epm/rioxx2/cfg/cfg.d/z_rioxx_report.pl</filename>
           <mime_type>text/plain</mime_type>
           <hash>9eb6bb5b4eb153b2aefc6c84c5dee276</hash>
@@ -36,9 +43,16 @@
         <file>
           <filename>epm/rioxx2/cfg/cfg.d/zz_rioxx2_fields.pl</filename>
           <mime_type>text/plain</mime_type>
-          <hash>a34af309d77ccd85fd1532201d21f36c</hash>
+          <hash>91623c0baeb0a494a4a0d31a32ed5129</hash>
           <hash_type>MD5</hash_type>
-          <filesize>13446</filesize>
+          <filesize>19604</filesize>
+        </file>
+        <file>
+          <filename>epm/rioxx2/cgi/users/lookup/fundref</filename>
+          <mime_type>text/plain</mime_type>
+          <hash>300e948440c1fadf5da9b8ee75101145</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>1956</filesize>
         </file>
         <file>
           <filename>lang/en/phrases/reports.xml</filename>
@@ -50,9 +64,9 @@
         <file>
           <filename>lang/en/phrases/rioxx2.xml</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>efdf3582869583fd905ba4e14e712ea8</hash>
+          <hash>5706295cd340637bd21d88a7a4f3b1f6</hash>
           <hash_type>MD5</hash_type>
-          <filesize>9645</filesize>
+          <filesize>9817</filesize>
         </file>
         <file>
           <filename>lang/en/phrases/rioxx2_help.xml</filename>

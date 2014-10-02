@@ -56,69 +56,69 @@ $c->add_dataset_field(
 
 $c->add_dataset_field(
 	"eprint",
-	{ name => "rioxx2_source", type => "rioxx2", rioxx2_value => "rioxx2_source", rioxx2_required => "mandatory", rioxx2_ns => "dc" }
+	{ name => "rioxx2_source", type => "rioxx2", rioxx2_value => "rioxx2_source", rioxx2_validate=>"rioxx2_validate_source", rioxx2_required => "mandatory", rioxx2_ns => "dc" }
 );
 
 $c->add_dataset_field(
 	"eprint",
-	{ name => "rioxx2_subject", type => "rioxx2", rioxx2_value => sub { $_[0]->value( "subjects" ) }, rioxx2_required => "recommended", rioxx2_ns => "dc" }
+	{ name => "rioxx2_subject", type => "rioxx2", rioxx2_value => sub { $_[0]->value( "subjects" ) }, rioxx2_validate=>"rioxx2_validate_subject", rioxx2_required => "recommended", rioxx2_ns => "dc" }
 );
 
 $c->add_dataset_field(
 	"eprint",
-	{ name => "rioxx2_title", type => "rioxx2", rioxx2_value => sub { $_[0]->value( "title" ) }, rioxx2_required => "mandatory", rioxx2_ns => "dc" }
+	{ name => "rioxx2_title", type => "rioxx2", rioxx2_value => sub { $_[0]->value( "title" ) }, rioxx2_validate=>"rioxx2_validate_title", rioxx2_required => "mandatory", rioxx2_ns => "dc" }
 );
 
 $c->add_dataset_field(
 	"eprint",
-	{ name => "rioxx2_dateAccepted", type => "rioxx2", rioxx2_required => "mandatory", rioxx2_ns => "dcterms" }
+	{ name => "rioxx2_dateAccepted", type => "rioxx2", rioxx2_validate=>"rioxx2_validate_dateAccepted", rioxx2_required => "mandatory", rioxx2_ns => "dcterms" }
 );
 
 $c->add_dataset_field(
 	"eprint",
-	{ name => "rioxx2_free_to_read", type => "rioxx2", rioxx2_value => "rioxx2_free_to_read", rioxx2_required => "optional", rioxx2_ns => "tbc" }
+	{ name => "rioxx2_free_to_read", type => "rioxx2", rioxx2_value => "rioxx2_free_to_read", rioxx2_validate=>"rioxx2_validate_free_to_read", rioxx2_required => "optional", rioxx2_ns => "tbc" }
 );
 
 $c->add_dataset_field(
 	"eprint",
 	# TODO rioxx2_value: derive from document.license + document.date_embargo
 	# TODO rioxx2_validate: license_ref must be HTTP URL, must include start_date
-	{ name => "rioxx2_license_ref", type => "rioxx2", rioxx2_required => "mandatory", rioxx2_ns => "tbc" }
+	{ name => "rioxx2_license_ref", type => "rioxx2", rioxx2_validate=>"rioxx2_validate_license_ref", rioxx2_required => "mandatory", rioxx2_ns => "tbc" }
 );
 
 $c->add_dataset_field(
 	"eprint",
-	{ name => "rioxx2_apc", type => "rioxx2", rioxx2_required => "optional", rioxx2_ns => "rioxxterms" }
+	{ name => "rioxx2_apc", type => "rioxx2", rioxx2_validate=>"rioxx2_validate_apc", rioxx2_required => "optional", rioxx2_ns => "rioxxterms" }
 );
 
 $c->add_dataset_field(
 	"eprint",
-	{ name => "rioxx2_author", type => "rioxx2", rioxx2_value => "rioxx2_author", rioxx2_required => "mandatory", rioxx2_ns => "rioxxterms" }
+	{ name => "rioxx2_author", type => "rioxx2", rioxx2_value => "rioxx2_author", rioxx2_validate=>"rioxx2_validate_author", rioxx2_required => "mandatory", rioxx2_ns => "rioxxterms" }
 );
 
 $c->add_dataset_field(
 	"eprint",
-	{ name => "rioxx2_contributor", type => "rioxx2", rioxx2_value => "rioxx2_contributor", rioxx2_required => "optional", rioxx2_ns => "rioxxterms" }
+	{ name => "rioxx2_contributor", type => "rioxx2", rioxx2_value => "rioxx2_contributor", rioxx2_validate=>"rioxx2_validate_contributor", rioxx2_required => "optional", rioxx2_ns => "rioxxterms" }
 );
 
 $c->add_dataset_field(
 	"eprint",
-	{ name => "rioxx2_project", type => "rioxx2", rioxx2_value => "rioxx2_project", rioxx2_required => "mandatory", rioxx2_ns => "rioxxterms" }
+	{ name => "rioxx2_project", type => "rioxx2", rioxx2_value => "rioxx2_project", rioxx2_validate=>"rioxx2_validate_project", rioxx2_required => "mandatory", rioxx2_ns => "rioxxterms" }
 );
 
 $c->add_dataset_field(
 	"eprint",
-	{ name => "rioxx2_publication_date", type => "rioxx2", rioxx2_value => sub { ( !$_[0]->is_set( "date_type" ) || $_[0]->value( "date_type" ) eq "published" ) && $_[0]->value( "date" ) }, rioxx2_required => "optional", rioxx2_ns => "rioxxterms" }
+	{ name => "rioxx2_publication_date", type => "rioxx2", rioxx2_value => sub { ( !$_[0]->is_set( "date_type" ) || $_[0]->value( "date_type" ) eq "published" ) && $_[0]->value( "date" ) }, rioxx2_validate=>"rioxx2_validate_publication_date", rioxx2_required => "optional", rioxx2_ns => "rioxxterms" }
 );
 
 $c->add_dataset_field(
 	"eprint",
-	{ name => "rioxx2_type", type => "rioxx2", rioxx2_value => sub { $_[0]->repository->config( "rioxx2", "type_map", $_[0]->get_type ) || "other" }, rioxx2_required => "mandatory", rioxx2_ns => "rioxxterms" }
+	{ name => "rioxx2_type", type => "rioxx2", rioxx2_value => sub { $_[0]->repository->config( "rioxx2", "type_map", $_[0]->get_type ) || "other" }, rioxx2_validate=>"rioxx2_validate_type", rioxx2_required => "mandatory", rioxx2_ns => "rioxxterms" }
 );
 
 $c->add_dataset_field(
 	"eprint",
-	{ name => "rioxx2_version", type => "rioxx2", rioxx2_value => sub { $_[1] && $_[1]->repository->config( "rioxx2", "content_map", $_[1]->value( "content" ) ) || "NA" }, rioxx2_required => "mandatory", rioxx2_ns => "rioxxterms" }
+	{ name => "rioxx2_version", type => "rioxx2", rioxx2_value => sub { $_[1] && $_[1]->repository->config( "rioxx2", "content_map", $_[1]->value( "content" ) ) || "NA" }, rioxx2_validate=>"rioxx2_validate_version", rioxx2_required => "mandatory", rioxx2_ns => "rioxxterms" }
 );
 
 $c->add_dataset_field(
@@ -127,7 +127,8 @@ $c->add_dataset_field(
 	# TODO rioxx2_validate: must be a HTTP URL
 	# this is more of a conditional mandatory rather than a mandatory i.e. if there is a DOI it is manadatory
 	# we could therefore say that if it is published and an article then it is manadtory.
-	{ name => "rioxx2_version_of_record", type => "rioxx2", rioxx2_value => sub { ( $_[0]->exists_and_set( "doi" ) && $_[0]->value( "doi" ) ) || $_[0]->value( "id_number" ) }, rioxx2_required => "mandatory", rioxx2_ns => "rioxxterms" }
+	# could probably provide an override for this field
+	{ name => "rioxx2_version_of_record", type => "rioxx2", rioxx2_value =>"rioxx2_version_of_record", rioxx2_validate=>"rioxx2_validate_version_of", rioxx2_required => "mandatory", rioxx2_ns => "rioxxterms" }
 );
 
 # overrides
@@ -210,9 +211,13 @@ $c->{rioxx2_source} = sub {
 $c->{rioxx2_free_to_read} = sub {
 	my( $eprint, $document ) = @_;
 
+print STDERR "rioxx2_free_to_read document[$document]\n";
 	return unless $document;
+print STDERR "rioxx2_free_to_read 1 embargo[".$document->value( "date_embargo" )."] security[".$document->value( "security" )."]\n";
 	return { free_to_read => 1 } if $document->is_set( "security" ) && $document->value( "security" ) eq "public";
+print STDERR "rioxx2_free_to_read 2\n";
 	return { free_to_read => 1, start_date => $document->value( "date_embargo" ) } if $document->is_set( "date_embargo" );
+print STDERR "rioxx2_free_to_read 3\n";
 };
 
 $c->{rioxx2_author} = sub {
@@ -264,10 +269,32 @@ $c->{rioxx2_project} = sub {
 	return \@projects;
 };
 
+$c->{rioxx2_version_of_record} = sub {
+	my( $eprint ) = @_;
+
+	my $value;
+	foreach my $field ( qw( doi id_number ) )
+	{
+		$value = $eprint->value( $field ) if $eprint->exists_and_set( $field );
+		last if $value;
+	}
+	return unless $value;
+
+	#If it is a DOI then it must be represented in HTTP form
+	if ( $value =~ /10\..+\/.+/ )
+	{
+		$value = "http://dx.doi.org/".$value;
+	}
+	return $value;
+};
+
+
+
+
 # Validation Routines
 
 $c->{rioxx2_validate_coverage} = sub {
-	my( $eprint ) = @_;
+	my( $repo, $value, $eprint ) = @_;
 
 	my @problems = ();
 	return @problems;
@@ -404,9 +431,8 @@ $c->{rioxx2_validate_publisher} = sub {
 
 $c->{rioxx2_validate_relation} = sub {
 	my( $repo, $value, $eprint ) = @_;
-	
-	return unless $value;
 
+	return unless $value;
 	my $ds = $repo->dataset( "eprint" );
 	my $source_field = $ds->field( "related_url" );
 	my $name = $source_field->render_name;
@@ -425,6 +451,203 @@ $c->{rioxx2_validate_relation} = sub {
 };
 
 
+
+$c->{rioxx2_validate_source} = sub {
+	my( $repo, $value, $eprint ) = @_;
+
+	my @problems = ();
+	my $type = $eprint->get_value( "type" );
+	return @problems unless $type =~ /article|book_section|conference_item/ ;
+	
+	if ( !$value )
+	{
+		push @problems, $repo->html_phrase( "rioxx2_validate:source_not_set" );
+	} 
+	return @problems;
+};
+
+$c->{rioxx2_validate_subject} = sub {
+	my( $repo, $value, $eprint ) = @_;
+
+	my $ds = $repo->dataset( "eprint" );
+	my $source_field = $ds->field( "subjects" );
+	my $name = $source_field->render_name;
+	my @problems = ();
+	if ( !$value )
+	{
+		push @problems, $repo->html_phrase( "rioxx2_validate:recommended_not_set", field=>$name );
+	} 
+
+	return @problems;
+};
+
+
+$c->{rioxx2_validate_title} = sub {
+	my( $repo, $value, $eprint ) = @_;
+
+	my $ds = $repo->dataset( "eprint" );
+	my $source_field = $ds->field( "title" );
+	my $name = $source_field->render_name;
+	my @problems = ();
+	if ( !$value )
+	{
+		push @problems, $repo->html_phrase( "rioxx2_validate:mandatory_not_set", field=>$name );
+	} 
+
+	return @problems;
+};
+
+
+$c->{rioxx2_validate_dateAccepted} = sub {
+	my( $repo, $value, $eprint ) = @_;
+
+	my $ds = $repo->dataset( "eprint" );
+	my $source_field = $ds->field( "rioxx2_dateAccepted" );
+	my $name = $source_field->render_name;
+	my @problems = ();
+	if ( !$value )
+	{
+		push @problems, $repo->html_phrase( "rioxx2_validate:mandatory_not_set", field=>$name );
+	} 
+
+	return @problems;
+};
+
+
+$c->{rioxx2_validate_free_to_read} = sub {
+	my( $repo, $value, $eprint ) = @_;
+print STDERR "######## rioxx2_validate_free_to_read [".Data::Dumper::Dumper($value)."]\n";	
+
+	my @problems = ();
+	return @problems unless $value;
+	return @problems;
+};
+
+
+$c->{rioxx2_validate_license_ref} = sub {
+	my( $repo, $value, $eprint ) = @_;
+print STDERR "######## \n";	
+
+	my @problems = ();
+	return @problems;
+};
+
+
+$c->{rioxx2_validate_apc} = sub {
+	my( $repo, $value, $eprint ) = @_;
+print STDERR "######## \n";	
+
+	my @problems = ();
+	return @problems;
+};
+
+
+$c->{rioxx2_validate_author} = sub {
+	my( $repo, $value, $eprint ) = @_;
+print STDERR "######## \n";	
+
+	my @problems = ();
+	return @problems;
+};
+
+
+$c->{rioxx2_validate_contributor} = sub {
+	my( $repo, $value, $eprint ) = @_;
+print STDERR "######## \n";	
+
+	my @problems = ();
+	return @problems;
+};
+
+
+$c->{rioxx2_validate_project} = sub {
+	my( $repo, $value, $eprint ) = @_;
+print STDERR "######## project[$value]\n";	
+
+	my $ds = $repo->dataset( "eprint" );
+	my $source_field = $ds->field( "rioxx2_project" );
+	my $name = $source_field->render_name;
+	my @problems = ();
+	if ( !$value || 0 == scalar @$value )
+	{
+		push @problems, $repo->html_phrase( "rioxx2_validate:mandatory_not_set", field=>$name );
+	} 
+	foreach my $project ( @$value )
+	{
+		push @problems, $repo->html_phrase( "rioxx2_validate:project_not_set" ) unless $project->{project};
+		push @problems, $repo->html_phrase( "rioxx2_validate:funder_not_set" ) unless ( $project->{funder_name} || $project->{funder_id} );
+	}
+	return @problems;
+};
+
+
+$c->{rioxx2_validate_publication_date} = sub {
+	my( $repo, $value, $eprint ) = @_;
+
+	# this is an optional free text field 
+	my @problems = ();
+	return @problems;
+};
+
+
+$c->{rioxx2_validate_type} = sub {
+	my( $repo, $value, $eprint ) = @_;
+	my $ds = $repo->dataset( "eprint" );
+	my $source_field = $ds->field( "rioxx2_type" );
+	my $name = $source_field->render_name;
+	my @problems = ();
+	if ( !$value )
+	{
+		# this should not happen but just in case...
+		push @problems, $repo->html_phrase( "rioxx2_validate:mandatory_not_set", field=>$name );
+	} 
+	#not much point in checking the actual value as it is selected from a controlled list
+	return @problems;
+};
+
+
+$c->{rioxx2_validate_version} = sub {
+	my( $repo, $value, $eprint ) = @_;
+	my $ds = $repo->dataset( "eprint" );
+	my $source_field = $ds->field( "rioxx2_version" );
+	my $name = $source_field->render_name;
+	my @problems = ();
+	if ( !$value )
+	{
+		# this should not happen but just in case...
+		push @problems, $repo->html_phrase( "rioxx2_validate:mandatory_not_set", field=>$name );
+	} 
+	#not much point in checking the actual value as it is selected from a controlled list
+	return @problems;
+};
+
+
+$c->{rioxx2_validate_version_of} = sub {
+	my( $repo, $value, $eprint ) = @_;
+print STDERR "rioxx2_validate_version_of value[$value]\n";
+	my $ds = $repo->dataset( "eprint" );
+	my $source_field;
+	foreach my $field ( qw( rioxx2_version_of_record id_number doi ) )
+	{
+		$source_field = $ds->field( $field ) if $ds->has_field( $field );
+	}
+	my $name = $source_field->render_name;
+	
+	my @problems = ();
+	if ( !$value )
+	{
+		push @problems, $repo->html_phrase( "rioxx2_validate:recommended_not_set", field=>$name );
+		return @problems;
+	} 
+	if ( $value !~ /http.?\/\// )
+	{
+		push @problems, $repo->html_phrase( "rioxx2_validate:not_an_http_uri", 
+				field=>$name,
+				fvalue=>$repo->xml->create_text_node( $value ) );
+	}
+
+	return @problems;
+};
 
 
 
