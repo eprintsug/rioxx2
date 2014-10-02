@@ -112,5 +112,15 @@
 <epp:phrase id="rioxx2_validate:source_not_set">This item is probably published as part of a larger work but the source (e.g. the ISSN) has not been specified</epp:phrase>
 
 <epp:phrase id="rioxx2_validate:not_an_http_uri">The entry "<epc:pin name="fvalue"/>" for the field "<epc:pin name="field"/>" does not appear to be an HTTP URI</epp:phrase>
+<epp:phrase id="rioxx2_validate:project_not_set">The mandatory Project field has not been specified</epp:phrase>
+<epp:phrase id="rioxx2_validate:funder_not_set">The mandatory Project field must have either a funder name or a funder id specified.</epp:phrase>
+<epp:phrase id="rioxx2_validate:no_funder_controlled_list">A funder name has been specified but the controlled list of names has not been found.</epp:phrase>
+<epp:phrase id="rioxx2_validate:funder_not_in_list">The funder name was not found in the controlled list of names.</epp:phrase>
+<epp:phrase id="rioxx2_validate:funder_id_not_in_list">The funder id was not found in the controlled list of IDs.</epp:phrase>
+<epp:phrase id="rioxx2_validate:funder_no_match_for_name_id">The funder name and id do not match in the controlled list.</epp:phrase>
+<epp:phrase id="rioxx2_validate:missing_license_url">The License URI is missing. This should point to a resource which expresses the license terms</epp:phrase>
+<epp:phrase id="rioxx2_validate:missing_license_start">The License start date is missing or incomplete</epp:phrase>
+<epp:phrase id="rioxx2_validate:missing_free_start">The free to read start date is incomplete</epp:phrase>
+<epp:phrase id="rioxx2_validate:missing_free_end">The free to read start date is incomplete</epp:phrase>
 
 </epp:phrases>

@@ -19,3 +19,6 @@ $c->{plugins}{'InputForm::Component::Field::Rioxx2'}{params}{disable} = 0;
 push @{$c->{user_roles}->{admin}}, qw{
         +report
 };
+
+$c->{fundref_csv_file} = $c->{"config_path"}."/autocomplete/funderNames";
+

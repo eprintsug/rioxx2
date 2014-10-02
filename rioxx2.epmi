@@ -36,16 +36,16 @@
         <file>
           <filename>epm/rioxx2/cfg/cfg.d/zz_rioxx2.pl</filename>
           <mime_type>text/plain</mime_type>
-          <hash>cce3acadc1dcc47469f2d9a05acac044</hash>
+          <hash>2b52ecdfcaed479d4c67c4b40e454cb8</hash>
           <hash_type>MD5</hash_type>
-          <filesize>942</filesize>
+          <filesize>1018</filesize>
         </file>
         <file>
           <filename>epm/rioxx2/cfg/cfg.d/zz_rioxx2_fields.pl</filename>
           <mime_type>text/plain</mime_type>
-          <hash>91623c0baeb0a494a4a0d31a32ed5129</hash>
+          <hash>ce76a940f3da8f43b2d85a25c72c2677</hash>
           <hash_type>MD5</hash_type>
-          <filesize>19604</filesize>
+          <filesize>22137</filesize>
         </file>
         <file>
           <filename>epm/rioxx2/cgi/users/lookup/fundref</filename>
@@ -64,9 +64,9 @@
         <file>
           <filename>lang/en/phrases/rioxx2.xml</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>5706295cd340637bd21d88a7a4f3b1f6</hash>
+          <hash>8736b673aef7091fd30266b43b53c7ef</hash>
           <hash_type>MD5</hash_type>
-          <filesize>9817</filesize>
+          <filesize>11111</filesize>
         </file>
         <file>
           <filename>lang/en/phrases/rioxx2_help.xml</filename>

@@ -211,13 +211,9 @@ $c->{rioxx2_source} = sub {
 $c->{rioxx2_free_to_read} = sub {
 	my( $eprint, $document ) = @_;
 
-print STDERR "rioxx2_free_to_read document[$document]\n";
-	return unless $document;
-print STDERR "rioxx2_free_to_read 1 embargo[".$document->value( "date_embargo" )."] security[".$document->value( "security" )."]\n";
+	return undef unless $document;
 	return { free_to_read => 1 } if $document->is_set( "security" ) && $document->value( "security" ) eq "public";
-print STDERR "rioxx2_free_to_read 2\n";
 	return { free_to_read => 1, start_date => $document->value( "date_embargo" ) } if $document->is_set( "date_embargo" );
-print STDERR "rioxx2_free_to_read 3\n";
 };
 
 $c->{rioxx2_author} = sub {
@@ -236,7 +232,7 @@ $c->{rioxx2_author} = sub {
 $c->{rioxx2_contributor} = sub {
 	my( $eprint ) = @_;
 
-	my @contributors;;
+	my @contributors;
 	for( @{ $eprint->value( "editors_name" ) }, @{ $eprint->value( "contributors_name" ) } )
 	{
 		push @contributors, EPrints::Utils::make_name_string( $_ );
@@ -516,26 +512,58 @@ $c->{rioxx2_validate_dateAccepted} = sub {
 
 $c->{rioxx2_validate_free_to_read} = sub {
 	my( $repo, $value, $eprint ) = @_;
-print STDERR "######## rioxx2_validate_free_to_read [".Data::Dumper::Dumper($value)."]\n";	
-
+	# This is an optional element the only possible thing to check is that all parts of any dates are specified 
 	my @problems = ();
 	return @problems unless $value;
+	if ( $value->{start_date} && $value->{start_date} != /\d\d\d\d-\d\d-\d\d/ ) {
+		push @problems, $repo->html_phrase( "rioxx2_validate:missing_free_start" );
+	} 
+	if ( $value->{end_date} && $value->{end_date} != /\d\d\d\d-\d\d-\d\d/ ) {
+		push @problems, $repo->html_phrase( "rioxx2_validate:missing_free_end" );
+	} 
+
 	return @problems;
 };
 
 
 $c->{rioxx2_validate_license_ref} = sub {
 	my( $repo, $value, $eprint ) = @_;
-print STDERR "######## \n";	
-
+	my $ds = $repo->dataset( "eprint" );
+	my $source_field = $ds->field( "rioxx2_license_ref" );
+	my $name = $source_field->render_name;
 	my @problems = ();
+	if ( !$value )
+	{
+		push @problems, $repo->html_phrase( "rioxx2_validate:mandatory_not_set", field=>$name );
+		return @problems;
+	} 
+	
+	if ( $value->{license_ref} )
+	{
+		if ( $value->{license_ref} !~ /http.?\/\// )
+		{
+			push @problems, $repo->html_phrase( "rioxx2_validate:not_an_http_uri", 
+				field=>$name,
+				fvalue=>$repo->xml->create_text_node( $value->{license_ref} ) );
+		}
+	}
+	else
+	{
+		push @problems, $repo->html_phrase( "rioxx2_validate:missing_license_url" );
+	}
+	unless ( $value->{start_date} && $value->{start_date} =~ /\d\d\d\d-\d\d-\d\d/ )
+	{
+		push @problems, $repo->html_phrase( "rioxx2_validate:missing_license_start" );
+		# could check that the date is a valid date
+	}
+
 	return @problems;
 };
 
 
 $c->{rioxx2_validate_apc} = sub {
 	my( $repo, $value, $eprint ) = @_;
-print STDERR "######## \n";	
+	# this field is optional and the values are taken from a controlled list
 
 	my @problems = ();
 	return @problems;
@@ -544,17 +572,25 @@ print STDERR "######## \n";
 
 $c->{rioxx2_validate_author} = sub {
 	my( $repo, $value, $eprint ) = @_;
-print STDERR "######## \n";	
 
+	my $ds = $repo->dataset( "eprint" );
+	my $source_field = $ds->field( "creators" );
+	my $name = $source_field->render_name;
 	my @problems = ();
+	if ( !$value || 0 == scalar @$value )
+	{
+		push @problems, $repo->html_phrase( "rioxx2_validate:mandatory_not_set", field=>$name );
+	} 
+	
+	# at the moment the id field is not specified but when it is we should validate the contents
 	return @problems;
 };
 
 
 $c->{rioxx2_validate_contributor} = sub {
 	my( $repo, $value, $eprint ) = @_;
-print STDERR "######## \n";	
 
+	# this field is optional and the id field is not specified but when it is we should validate the contents
 	my @problems = ();
 	return @problems;
 };
@@ -562,7 +598,6 @@ print STDERR "######## \n";
 
 $c->{rioxx2_validate_project} = sub {
 	my( $repo, $value, $eprint ) = @_;
-print STDERR "######## project[$value]\n";	
 
 	my $ds = $repo->dataset( "eprint" );
 	my $source_field = $ds->field( "rioxx2_project" );
@@ -572,10 +607,60 @@ print STDERR "######## project[$value]\n";
 	{
 		push @problems, $repo->html_phrase( "rioxx2_validate:mandatory_not_set", field=>$name );
 	} 
+	
+	my $funder_lookup = {};
+	my $filepath = $repo->config( "fundref_csv_file" );
+	if ( open( DATA, '<', $filepath ) )
+	{
+		while( <DATA> )
+		{
+        		my( $uri, $name ) = split( /,/, $_, 2 );
+		        $name =~ /^"(.+)"/;
+			next unless $1;
+			$name = lc $1;
+			$funder_lookup->{$name} = $uri;
+		}
+		close DATA;
+	}
+
 	foreach my $project ( @$value )
 	{
 		push @problems, $repo->html_phrase( "rioxx2_validate:project_not_set" ) unless $project->{project};
 		push @problems, $repo->html_phrase( "rioxx2_validate:funder_not_set" ) unless ( $project->{funder_name} || $project->{funder_id} );
+		my $name_found = 0;
+		my $id_found = 0;
+		my $funder;
+		if ( $project->{funder_name} )
+		{
+			$funder = lc($project->{funder_name});
+			my @lookup_names = keys %$funder_lookup;
+			if ( scalar @lookup_names )
+			{
+				$name_found = grep { index( $_, $funder ) != -1 } @lookup_names;
+				push @problems, $repo->html_phrase( "rioxx2_validate:funder_not_in_list" ) unless $name_found;
+			}
+			else
+			{
+				push @problems, $repo->html_phrase( "rioxx2_validate:no_funder_controlled_list" );
+			}
+		}
+		if ( $project->{funder_id} )
+		{
+			my @lookup_ids = values %$funder_lookup;
+			if ( scalar @lookup_ids )
+			{
+				$id_found = grep { index( $_, $project->{funder_id} ) != -1 } @lookup_ids;
+				push @problems, $repo->html_phrase( "rioxx2_validate:funder_id_not_in_list" ) unless $id_found;
+			}
+		}
+		if ( $name_found && $id_found )
+		{
+			if ( $funder_lookup->{$funder} ne $project->{funder_id} )
+			{
+				push @problems, $repo->html_phrase( "rioxx2_validate:funder_no_match_for_name_id" );
+			}
+		}
+
 	}
 	return @problems;
 };
@@ -624,7 +709,6 @@ $c->{rioxx2_validate_version} = sub {
 
 $c->{rioxx2_validate_version_of} = sub {
 	my( $repo, $value, $eprint ) = @_;
-print STDERR "rioxx2_validate_version_of value[$value]\n";
 	my $ds = $repo->dataset( "eprint" );
 	my $source_field;
 	foreach my $field ( qw( rioxx2_version_of_record id_number doi ) )
