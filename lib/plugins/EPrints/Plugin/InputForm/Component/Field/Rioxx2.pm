@@ -96,8 +96,7 @@ sub validate
 {
 	my( $self ) = @_;
 
-	return map { $self->repository->xml->create_text_node( $_ ) }
-		$self->{config}->{field}->validate( $self->repository, $self->{config}->{field}->get_value( $self->{dataobj} ) );
+	return $self->{config}->{field}->validate( $self->repository, $self->{config}->{field}->get_value( $self->{dataobj} ) );
 }
 
 1;
