@@ -173,10 +173,13 @@ $c->add_dataset_field(
 $c->add_dataset_field(
 	"eprint",
 	{ name => "rioxx2_project_input", type => "compound", show_in_html => 0, fields => [
-		{ sub_name => "project", type => "text" },
-		{ sub_name => "funder_name", type => "text" },
-		{ sub_name => "funder_id", type => "url" }
-	], required => 1, multiple => 1 }
+		{ sub_name => "project", type => "text", input_cols => "25" },
+		{ sub_name => "funder_name", type => "text", input_cols => "25", },
+		{ sub_name => "funder_id", type => "url", input_cols => "25", }
+	], required => 1, multiple => 1,
+#	render_input => "rioxx2_project_input_renderer", 
+	input_lookup_url =>"/cgi/users/lookup/fname",
+	}
 );
 
 $c->add_dataset_field(
@@ -733,6 +736,101 @@ $c->{rioxx2_validate_version_of} = sub {
 	return @problems;
 };
 
+
+$c->{rioxx2_project_input_renderer} = sub {
+	my( $field, $repo, $value, $dataset, $staff, $hidden_fields, $obj, $basename ) = @_;
+
+print STDERR "rioxx2_project_input_renderer called !!!!!\n";
+        my $frag = $repo->make_doc_fragment;
+	my $elements = $field->get_input_elements( $repo, $value, $staff, $obj, $basename );
+
+	my $table = $repo->make_element( "table", border=>0, cellpadding=>0, cellspacing=>0, class=>"ep_form_input_grid" );
+	$frag->appendChild ($table);
+
+	my $col_titles = $field->get_input_col_titles( $repo, $staff );
+	if( defined $col_titles )
+	{
+		my $tr = $repo->make_element( "tr" );
+		my $th;
+		my $x = 0;
+		if( $field->get_property( "multiple" ) && $field->{input_ordered})
+		{
+			$th = $repo->make_element( "th", class=>"empty_heading", id=>$basename."_th_".$x++ );
+			$tr->appendChild( $th );
+		}
+
+		if( !defined $col_titles )
+		{
+			$th = $repo->make_element( "th", class=>"empty_heading", id=>$basename."_th_".$x++ );
+			$tr->appendChild( $th );
+		}	
+		else
+		{
+			foreach my $col_title ( @{$col_titles} )
+			{
+				$th = $repo->make_element( "th", id=>$basename."_th_".$x++ );
+				$th->appendChild( $col_title );
+				$tr->appendChild( $th );
+			}
+		}
+		$table->appendChild( $tr );
+	}
+
+	my $y = 0;
+	foreach my $row ( @{$elements} )
+	{
+		my $x = 0;
+		my $tr = $repo->make_element( "tr" );
+		foreach my $item ( @{$row} )
+		{
+			my %opts = ( valign=>"top", id=>$basename."_cell_".$x++."_".$y );
+			foreach my $prop ( keys %{$item} )
+			{
+				next if( $prop eq "el" );
+				$opts{$prop} = $item->{$prop};
+			}	
+			my $td = $repo->make_element( "td", %opts );
+			if( defined $item->{el} )
+			{
+				$td->appendChild( $item->{el} );
+			}
+			$tr->appendChild( $td );
+		}
+		$table->appendChild( $tr );
+		$y++;
+	}
+
+	my $extra_params = URI->new( 'http:' );
+	$extra_params->query( $field->{input_lookup_params} );
+	my @params = (
+		$extra_params->query_form,
+		field => $field->name
+	);
+	if( defined $obj )
+	{
+		push @params, dataobj => $obj->id;
+	}
+	if( defined $field->{dataset} )
+	{
+		push @params, dataset => $field->{dataset}->id;
+	}
+	$extra_params->query_form( @params );
+	$extra_params = "&" . $extra_params->query;
+
+	my $componentid = substr($basename, 0, length($basename)-length($field->{name})-1);
+	my $url = EPrints::Utils::js_string( $field->{input_lookup_url} );
+	my $params = EPrints::Utils::js_string( $extra_params );
+print STDERR "got input [".$url."]\n";
+	$frag->appendChild( $repo->make_javascript( <<EOJ ) );
+new Metafield ('$componentid', '$field->{name}', {
+	input_lookup_url: $url,
+	input_lookup_params: $params
+});
+EOJ
+
+
+	return $frag;
+};
 
 
 
