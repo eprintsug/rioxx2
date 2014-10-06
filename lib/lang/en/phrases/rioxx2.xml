@@ -123,4 +123,8 @@
 <epp:phrase id="rioxx2_validate:missing_free_start">The free to read start date is incomplete</epp:phrase>
 <epp:phrase id="rioxx2_validate:missing_free_end">The free to read start date is incomplete</epp:phrase>
 
+<epp:phrase id="cgi/lookup/rioxx2_project:projects"><h2>Projects:</h2></epp:phrase>
+<epp:phrase id="cgi/lookup/rioxx2_project:funder"><epc:pin name="name"/><br/>(<epc:pin name="id"/>)</epp:phrase>
+<epp:phrase id="cgi/lookup/rioxx2_project:found"><small> (associated with <epc:pin name="count"/> item(s) in this repository)</small></epp:phrase>
+
 </epp:phrases>

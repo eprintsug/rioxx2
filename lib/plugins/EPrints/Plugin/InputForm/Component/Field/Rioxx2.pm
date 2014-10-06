@@ -52,9 +52,6 @@ sub render_content
 	my $field = $self->{config}->{field};
 	local $self->{config}->{field} = my $override_field = $self->_input_field;
 
-my $is_free = ( $field->name eq "rioxx2_free_to_read" ||  $field->name eq "rioxx2_publication_date");
-print STDERR "\nInputForm::Rioxx2::render_content [". $field->name."] property [". $field->property( "rioxx2_value" ) ."]\n" if $is_free;
-
 	unless( $field->property( "rioxx2_value" ) )
 	{
 		return $self->SUPER::render_content( $surround );
@@ -72,12 +69,10 @@ print STDERR "\nInputForm::Rioxx2::render_content [". $field->name."] property [
 		foreach my $key ( keys %$override_value )
 		{
 			$override_is_set = 1 if ( $override_value->{$key} && $override_value->{$key} ne "FALSE" );
-print STDERR "InputForm::Rioxx2::render_content [". $field->name."] key[$key] [".$override_value->{$key}."]\n";
 			last if $override_is_set;
 		}
 		$override_value = undef unless $override_is_set;
 	}
-print STDERR "InputForm::Rioxx2::render_content [". $field->name."] check override [".Data::Dumper::Dumper($override_value)."]\n" if $is_free;
 
 	return $self->html_phrase( "content",
 		mapped_value => $field->render_value( $repo, undef, undef, undef, $self->{dataobj}, 1 ),

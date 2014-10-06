@@ -178,7 +178,8 @@ $c->add_dataset_field(
 		{ sub_name => "funder_id", type => "url", input_cols => "25", }
 	], required => 1, multiple => 1,
 #	render_input => "rioxx2_project_input_renderer", 
-	input_lookup_url =>"/cgi/users/lookup/fname",
+	input_lookup_url =>"/cgi/users/lookup/rioxx2_project",
+	input_lookup_params => "file=funderNames",
 	}
 );
 
