@@ -1,0 +1,65 @@
+div.ep_report_row {
+	padding: 5px 5px;
+	margin-bottom: 5px;
+}
+
+div.ep_report_row_problems {
+	border-left: solid 7px #C41F1F;
+}
+
+div.ep_report_row_ok {
+        border-left: solid 7px #1F7E02;
+	opacity: 0.8;
+}
+
+div.ep_report_grouping {
+	margin: 20px 0px 10px 0px;
+	font-size: 16px;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+div.ep_report_progress_bar {
+	clear: both;
+	width: 200px;
+	height: 15px;
+	background-image: url(/style/images/progress_bar_orange.png);
+	background-repeat: no-repeat;
+	background-position: -200px 0px;
+	border: 1px solid #888;
+	border-radius: 10px;
+	text-align: center;
+	line-height: 15px;
+	margin: 10px auto;
+}
+
+div.ep_report_progress_bar:after {
+	content: "Loading...";
+}
+
+div.ep_report_compliance_container {
+	margin: 10px auto;
+	text-align:center;
+}
+
+div.ep_report_compliance_wrapper {
+	margin: 10px auto;
+	border: 1px solid #3366cc;
+	padding: 0px;
+	text-align: left;
+	height: 25px;
+}
+
+div.ep_report_compliance {
+	background-color: #c1d0ef;
+	color: #000;
+	text-align: left;
+	padding: 0px;
+	margin: 0px;
+	height:25px;
+}
+
+div.ep_report_compliance_text {
+	font-weight: bold;
+	font-size: 20px;
+}

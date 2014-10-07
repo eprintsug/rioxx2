@@ -96,10 +96,9 @@ my @rioxx2_fields = (
 	},
 );
 
-$c->{reports}->{"rioxx2"}->{fields} = [ map { $_->{target} } @rioxx2_fields ];
-$c->{reports}->{"rioxx2"}->{mappings} = { map { $_->{target} => $_->{source} } @rioxx2_fields };
-$c->{reports}->{"rioxx2"}->{validate} = { map { $_->{target} => $_->{validate} } @rioxx2_fields };
 
 $c->{reports}->{"rioxx2-articles"}->{fields} = [ map { $_->{target} } @rioxx2_fields ];
 $c->{reports}->{"rioxx2-articles"}->{mappings} = { map { $_->{target} => $_->{source} } @rioxx2_fields };
 $c->{reports}->{"rioxx2-articles"}->{validate} = { map { $_->{target} => $_->{validate} } @rioxx2_fields };
+
+

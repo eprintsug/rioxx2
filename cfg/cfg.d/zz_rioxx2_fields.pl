@@ -160,7 +160,7 @@ $c->add_dataset_field(
 $c->add_dataset_field(
 	"eprint",
 	{ name => "rioxx2_license_ref_input", type => "compound", show_in_html => 0, fields => [
-		{ sub_name => "license_ref", type => "url" },
+		{ sub_name => "license_ref", type => "url", input_cols => "45" },
 		{ sub_name => "start_date", type => "date" }
 	], required => 1 }
 );
@@ -741,7 +741,6 @@ $c->{rioxx2_validate_version_of} = sub {
 $c->{rioxx2_project_input_renderer} = sub {
 	my( $field, $repo, $value, $dataset, $staff, $hidden_fields, $obj, $basename ) = @_;
 
-print STDERR "rioxx2_project_input_renderer called !!!!!\n";
         my $frag = $repo->make_doc_fragment;
 	my $elements = $field->get_input_elements( $repo, $value, $staff, $obj, $basename );
 
@@ -821,7 +820,6 @@ print STDERR "rioxx2_project_input_renderer called !!!!!\n";
 	my $componentid = substr($basename, 0, length($basename)-length($field->{name})-1);
 	my $url = EPrints::Utils::js_string( $field->{input_lookup_url} );
 	my $params = EPrints::Utils::js_string( $extra_params );
-print STDERR "got input [".$url."]\n";
 	$frag->appendChild( $repo->make_javascript( <<EOJ ) );
 new Metafield ('$componentid', '$field->{name}', {
 	input_lookup_url: $url,

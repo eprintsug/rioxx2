@@ -32,16 +32,12 @@ sub action_enable
 
         $self->SUPER::action_enable( $skip_reload );
         my $repo = $self->{repository};
-print STDERR "RIOXX2 EPMC::Rioxx2::action_enable\n";
 
 	# With the current code you cannot provide an override for a report field that is derived 
 	# I.e. one that has a "sub" as a "source" in the report map rather than an EPrint field. 
 	my $filename = $repo->config( "config_path" )."/workflows/eprint/default.xml";
         my $insert = EPrints::XML::parse_xml( $repo->config( "lib_path" )."/workflows/eprint/rioxx2.xml" );
         EPrints::XML::add_to_xml( $filename, $insert->documentElement(), $self->{package_name} );
-
-print STDERR "###################################################\n";
-print STDERR "RIOXX2 EPMC::Rioxx2::action_enable added new stage\n";
 
         $self->reload_config if !$skip_reload;
 }
@@ -58,7 +54,6 @@ sub action_disable
 {
         my( $self, $skip_reload ) = @_;
 
-print STDERR "RIOXX2 EPMC::Rioxx2::action_disable\n";
         $self->SUPER::action_disable( $skip_reload );
         my $repo = $self->{repository};
 

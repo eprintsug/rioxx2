@@ -269,7 +269,6 @@ sub render_xml
 {
 	my( $self ) = @_;
 
-print STDERR "render_xml\n";
 	my $repo = $self->{repository};
 	my $eprint = $self->{processor}->{eprint};
 
@@ -277,8 +276,6 @@ print STDERR "render_xml\n";
 	my $page = $repo->make_doc_fragment;
 	
 	my $output = $plugin->xml_dataobj( $eprint ); 
-
-print STDERR "output: ".$output->toString."\n";
 
 	my $div = $page->appendChild( $repo->xml->create_element( "div" ) );
 	$div->appendChild( $self->html_phrase( "xmlblock", xml=>$self->render_xml_tree( $repo, $output, 0, 600 ) ) );
