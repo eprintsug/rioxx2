@@ -181,11 +181,11 @@
           <filesize>495</filesize>
         </file>
         <file>
-          <filename>static/images/epm/rioxx2.png</filename>
+          <filename>static/images/epm/rioxx2_icon.png</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>d8646e78c07e6a9653257a04d2c96521</hash>
+          <hash>825b39c66a86932f48bd4eebea6f6116</hash>
           <hash_type>MD5</hash_type>
-          <filesize>65030</filesize>
+          <filesize>100679</filesize>
         </file>
         <file>
           <filename>static/javascript/auto/reports.js</filename>
@@ -259,15 +259,15 @@
     <document>
       <files>
         <file>
-          <filename>static/images/epm/rioxx2.png</filename>
+          <filename>static/images/epm/rioxx2_icon.png</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>d8646e78c07e6a9653257a04d2c96521</hash>
+          <hash>825b39c66a86932f48bd4eebea6f6116</hash>
           <hash_type>MD5</hash_type>
-          <filesize>65030</filesize>
+          <filesize>100679</filesize>
         </file>
       </files>
       <format>image</format>
-      <main>static/images/epm/rioxx2.png</main>
+      <main>static/images/epm/rioxx2_icon.png</main>
       <content>coverimage</content>
     </document>
   </documents>
@@ -291,5 +291,5 @@
   </creators>
   <title>RIOXX2 Export utility</title>
   <description>RIOXX2 Export utility</description>
-  <icon>images/epm/rioxx2.png</icon>
+  <icon>images/epm/rioxx2_icon.png</icon>
 </epm>
