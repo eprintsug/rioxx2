@@ -1,5 +1,209 @@
 
-# New EPrint Fields for RIOXX2
+=pod
+
+The RIOXX 2.0 application profile
+
+A representation of the RIOXX 2.0 application profile as defined by http://rioxx.net/v2-0-beta-1/
+
+The following properties are mandatory and taken directly from the application profile:
+
+name - element name
+rioxx2_required - one of "optional", "recommended" or "mandatory"
+rioxx2_ns - element namespace
+
+Additional optional properties can be used to define exactly how an element's value should be derived and/or validated
+
+rioxx2_value - subroutine that given an eprint and document returns the element's value
+rioxx2_validate - subroutine that given
+
+=cut
+
+push @{ $c->{rioxx2}->{profile} },
+
+{
+	name => "rioxx2_coverage",
+	rioxx2_required => "optional",
+	rioxx2_ns => "dc",
+	rioxx2_validate => "rioxx2_validate_coverage"
+},
+
+{
+	name => "rioxx2_description",
+	rioxx2_required => "recommended",
+	rioxx2_ns => "dc",
+	rioxx2_value => sub { $_[0]->value( "abstract" ) },
+	rioxx2_validate =>"rioxx2_validate_description"
+},
+
+{
+	name => "rioxx2_format",
+	rioxx2_required => "recommended",
+	rioxx2_ns => "dc",
+	rioxx2_value => sub { $_[1] && $_[1]->value( "mime_type" ) },
+	rioxx2_validate => "rioxx2_validate_mime_type"
+},
+
+{
+	name => "rioxx2_identifier",
+	rioxx2_required => "mandatory",
+	rioxx2_ns => "dc",
+	rioxx2_value => sub { $_[1] && $_[1]->get_url },
+	rioxx2_validate => "rioxx2_validate_identifier"
+},
+
+{
+	name => "rioxx2_language",
+	rioxx2_required => "mandatory",
+	rioxx2_ns => "dc",
+	rioxx2_value => sub { $_[1] && $_[1]->value( "language" ) },
+	rioxx2_validate => "rioxx2_validate_language"
+},
+
+{
+	name => "rioxx2_publisher",
+	rioxx2_required => "recommended",
+	rioxx2_ns => "dc",
+	rioxx2_value => sub { $_[0]->value( "publisher" ) },
+	rioxx2_validate => "rioxx2_validate_publisher"
+},
+
+{
+	name => "rioxx2_relation",
+	rioxx2_required => "optional",
+	rioxx2_ns => "dc",
+	rioxx2_value => sub { $_[0]->value( "related_url_url" ) },
+	rioxx2_validate => "rioxx2_validate_relation"
+},
+
+{
+	name => "rioxx2_source", 
+	rioxx2_required => "mandatory",
+	rioxx2_ns => "dc",
+	rioxx2_value => "rioxx2_source",
+	rioxx2_validate => "rioxx2_validate_source"
+},
+
+{
+	name => "rioxx2_subject",
+	rioxx2_required => "recommended",
+	rioxx2_ns => "dc",
+	rioxx2_value => sub { $_[0]->value( "subjects" ) },
+	rioxx2_validate =>"rioxx2_validate_subject"
+},
+
+{
+	name => "rioxx2_title",
+	rioxx2_required => "mandatory",
+	rioxx2_ns => "dc",
+	rioxx2_value => sub { $_[0]->value( "title" ) },
+	rioxx2_validate => "rioxx2_validate_title"
+},
+
+{
+	name => "rioxx2_dateAccepted",
+	rioxx2_required => "mandatory",
+	rioxx2_ns => "dcterms",
+	rioxx2_validate =>"rioxx2_validate_dateAccepted"
+},
+
+{
+	name => "rioxx2_free_to_read",
+	rioxx2_required => "optional",
+	rioxx2_ns => "tbc",
+	rioxx2_value => "rioxx2_free_to_read",
+	rioxx2_validate =>"rioxx2_validate_free_to_read"
+},
+
+# TODO rioxx2_value: derive from document.license + document.date_embargo
+# TODO rioxx2_validate: license_ref must be HTTP URL, must include start_date
+{
+	name => "rioxx2_license_ref",
+	rioxx2_required => "mandatory",
+	rioxx2_ns => "tbc",
+	rioxx2_validate =>"rioxx2_validate_license_ref"
+},
+
+{
+	name => "rioxx2_apc",
+	rioxx2_required => "optional",
+	rioxx2_ns => "rioxxterms",
+	rioxx2_validate =>"rioxx2_validate_apc"
+},
+
+{
+	name => "rioxx2_author",
+	rioxx2_required => "mandatory",
+	rioxx2_ns => "rioxxterms",
+	rioxx2_value => "rioxx2_author",
+	rioxx2_validate =>"rioxx2_validate_author"
+},
+
+{
+	name => "rioxx2_contributor",
+	rioxx2_required => "optional",
+	rioxx2_ns => "rioxxterms",
+	rioxx2_value => "rioxx2_contributor",
+	rioxx2_validate =>"rioxx2_validate_contributor"
+},
+
+{
+	name => "rioxx2_project",
+	rioxx2_required => "mandatory",
+	rioxx2_ns => "rioxxterms",
+	rioxx2_value => "rioxx2_project",
+	rioxx2_validate =>"rioxx2_validate_project"
+},
+
+{
+	name => "rioxx2_publication_date",
+	rioxx2_required => "optional",
+	rioxx2_ns => "rioxxterms",
+	rioxx2_value => sub { ( !$_[0]->is_set( "date_type" ) || $_[0]->value( "date_type" ) eq "published" ) && $_[0]->value( "date" ) },
+	rioxx2_validate =>"rioxx2_validate_publication_date"
+},
+
+{
+	name => "rioxx2_type",
+	rioxx2_required => "mandatory",
+	rioxx2_ns => "rioxxterms",
+	rioxx2_value => sub { $_[0]->repository->config( "rioxx2", "type_map", $_[0]->get_type ) || "other" },
+	rioxx2_validate =>"rioxx2_validate_type"
+},
+
+{
+	name => "rioxx2_version",
+	rioxx2_required => "mandatory",
+	rioxx2_ns => "rioxxterms",
+	rioxx2_value => sub { $_[1] && $_[1]->repository->config( "rioxx2", "content_map", $_[1]->value( "content" ) ) || "NA" },
+	rioxx2_validate =>"rioxx2_validate_version"
+},
+
+# TODO check id_number contains a DOI
+# TODO rioxx2_validate: must be a HTTP URL
+# this is more of a conditional mandatory rather than a mandatory i.e. if there is a DOI it is manadatory
+# we could therefore say that if it is published and an article then it is manadtory.
+# could probably provide an override for this field
+{
+	name => "rioxx2_version_of_record",
+	rioxx2_required => "mandatory",
+	rioxx2_ns => "rioxxterms",
+	rioxx2_value =>"rioxx2_version_of_record",
+	rioxx2_validate =>"rioxx2_validate_version_of"
+},
+
+;
+
+for( @{ $c->{rioxx}->{profile} } )
+{
+	$_->{type} = "rioxx2"; # virtual field
+	$c->add_dataset_field( "eprint", $_ );
+}
+
+=pod
+
+Map eprint deposit type to RIOXX type element
+
+=cut
 
 $c->{rioxx2}->{type_map} = {
 	article		=> 'Journal Article/Review',
@@ -10,6 +214,12 @@ $c->{rioxx2}->{type_map} = {
 	thesis		=> 'Thesis',
 };
 
+=pod
+
+Map document content type to RIOXX2 version element
+
+=cut
+
 $c->{rioxx2}->{content_map} = {
 	draft		=> "AO",
 	submitted	=> "SMUR",
@@ -17,189 +227,145 @@ $c->{rioxx2}->{content_map} = {
 	published	=> "P",
 };
 
-# rioxx2 virtual fields
+=pod
 
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_coverage", type => "rioxx2", rioxx2_required => "optional", rioxx2_ns => "dc", rioxx2_validate => "rioxx2_validate_coverage" });
+Define RIOXX fields that can be overridden
 
-# TODO strip HTML
-# validation checks for markup and reports the tags found - that might be more appropriate than trying to strip out tags.
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_description", type => "rioxx2", rioxx2_validate=>"rioxx2_validate_description", rioxx2_value => sub { $_[0]->value( "abstract" ) }, rioxx2_required => "recommended", rioxx2_ns => "dc" }
-);
+Allows any of the fields defined in the profile above to be entered manually
 
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_format", type => "rioxx2", rioxx2_value => sub { $_[1] && $_[1]->value( "mime_type" ) }, rioxx2_validate=>"rioxx2_validate_mime_type", rioxx2_required => "recommended", rioxx2_ns => "dc" }
-);
+* allow user to override the derived value
+* allow user to enter a value where no value can be derived (ie. no field in eprints schema)
 
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_identifier", type => "rioxx2", rioxx2_value => sub { $_[1] && $_[1]->get_url }, rioxx2_validate=>"rioxx2_validate_identifier", rioxx2_required => "mandatory", rioxx2_ns => "dc" }
-);
+Use same name as profile but postfix "_input"
 
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_language", type => "rioxx2", rioxx2_value => sub { $_[1] && $_[1]->value( "language" ) }, rioxx2_validate=>"rioxx2_validate_language", rioxx2_required => "mandatory", rioxx2_ns => "dc" }
-);
+=cut
 
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_publisher", type => "rioxx2", rioxx2_value => sub { $_[0]->value( "publisher" ) }, rioxx2_validate=>"rioxx2_validate_publisher", rioxx2_required => "recommended", rioxx2_ns => "dc" }
-);
+push @{ $c->{rioxx2}->{overrides} },
 
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_relation", type => "rioxx2", rioxx2_value => sub { $_[0]->value( "related_url_url" ) }, rioxx2_validate=>"rioxx2_validate_relation", rioxx2_required => "optional", rioxx2_ns => "dc" }
-);
+{
+	name => "rioxx2_coverage_input",
+	type => "text",
+	multiple => 1,
+	show_in_html => 0,
+},
 
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_source", type => "rioxx2", rioxx2_value => "rioxx2_source", rioxx2_validate=>"rioxx2_validate_source", rioxx2_required => "mandatory", rioxx2_ns => "dc" }
-);
+{
+	name => "rioxx2_language_input",
+	type => "namedset",
+	input_rows => 1,
+	set_name => "languages",
+	multiple => 1,
+	required => 1,
+	show_in_html => 0,
+},
 
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_subject", type => "rioxx2", rioxx2_value => sub { $_[0]->value( "subjects" ) }, rioxx2_validate=>"rioxx2_validate_subject", rioxx2_required => "recommended", rioxx2_ns => "dc" }
-);
+{
+	name => "rioxx2_dateAccepted_input",
+	type => "date",
+	min_resolution => "year",
+	required => 1,
+	show_in_html => 0,
+},
 
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_title", type => "rioxx2", rioxx2_value => sub { $_[0]->value( "title" ) }, rioxx2_validate=>"rioxx2_validate_title", rioxx2_required => "mandatory", rioxx2_ns => "dc" }
-);
-
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_dateAccepted", type => "rioxx2", rioxx2_validate=>"rioxx2_validate_dateAccepted", rioxx2_required => "mandatory", rioxx2_ns => "dcterms" }
-);
-
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_free_to_read", type => "rioxx2", rioxx2_value => "rioxx2_free_to_read", rioxx2_validate=>"rioxx2_validate_free_to_read", rioxx2_required => "optional", rioxx2_ns => "tbc" }
-);
-
-$c->add_dataset_field(
-	"eprint",
-	# TODO rioxx2_value: derive from document.license + document.date_embargo
-	# TODO rioxx2_validate: license_ref must be HTTP URL, must include start_date
-	{ name => "rioxx2_license_ref", type => "rioxx2", rioxx2_validate=>"rioxx2_validate_license_ref", rioxx2_required => "mandatory", rioxx2_ns => "tbc" }
-);
-
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_apc", type => "rioxx2", rioxx2_validate=>"rioxx2_validate_apc", rioxx2_required => "optional", rioxx2_ns => "rioxxterms" }
-);
-
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_author", type => "rioxx2", rioxx2_value => "rioxx2_author", rioxx2_validate=>"rioxx2_validate_author", rioxx2_required => "mandatory", rioxx2_ns => "rioxxterms" }
-);
-
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_contributor", type => "rioxx2", rioxx2_value => "rioxx2_contributor", rioxx2_validate=>"rioxx2_validate_contributor", rioxx2_required => "optional", rioxx2_ns => "rioxxterms" }
-);
-
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_project", type => "rioxx2", rioxx2_value => "rioxx2_project", rioxx2_validate=>"rioxx2_validate_project", rioxx2_required => "mandatory", rioxx2_ns => "rioxxterms" }
-);
-
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_publication_date", type => "rioxx2", rioxx2_value => sub { ( !$_[0]->is_set( "date_type" ) || $_[0]->value( "date_type" ) eq "published" ) && $_[0]->value( "date" ) }, rioxx2_validate=>"rioxx2_validate_publication_date", rioxx2_required => "optional", rioxx2_ns => "rioxxterms" }
-);
-
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_type", type => "rioxx2", rioxx2_value => sub { $_[0]->repository->config( "rioxx2", "type_map", $_[0]->get_type ) || "other" }, rioxx2_validate=>"rioxx2_validate_type", rioxx2_required => "mandatory", rioxx2_ns => "rioxxterms" }
-);
-
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_version", type => "rioxx2", rioxx2_value => sub { $_[1] && $_[1]->repository->config( "rioxx2", "content_map", $_[1]->value( "content" ) ) || "NA" }, rioxx2_validate=>"rioxx2_validate_version", rioxx2_required => "mandatory", rioxx2_ns => "rioxxterms" }
-);
-
-$c->add_dataset_field(
-	"eprint",
-	# TODO check id_number contains a DOI
-	# TODO rioxx2_validate: must be a HTTP URL
-	# this is more of a conditional mandatory rather than a mandatory i.e. if there is a DOI it is manadatory
-	# we could therefore say that if it is published and an article then it is manadtory.
-	# could probably provide an override for this field
-	{ name => "rioxx2_version_of_record", type => "rioxx2", rioxx2_value =>"rioxx2_version_of_record", rioxx2_validate=>"rioxx2_validate_version_of", rioxx2_required => "mandatory", rioxx2_ns => "rioxxterms" }
-);
-
-# overrides
-
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_coverage_input", type => "text", multiple => 1, show_in_html => 0, }
-);
-
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_language_input", type => "namedset", input_rows => 1, set_name => "languages", multiple => 1, required => 1, show_in_html => 0,}
-);
-
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_dateAccepted_input", type => "date", min_resolution => "year", required => 1, show_in_html => 0,}
-);
-
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_free_to_read_input", type => "compound", show_in_html => 0, fields => [
+{
+	name => "rioxx2_free_to_read_input",
+	type => "compound",
+	show_in_html => 0,
+	fields => [
 		{ sub_name => "free_to_read", type => "boolean" },
 		{ sub_name => "start_date", type => "date", min_resolution => "day" },
 		{ sub_name => "end_date", type => "date", min_resolution => "day" }
-	] }
-);
+	]
+},
 
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_license_ref_input", type => "compound", show_in_html => 0, fields => [
+{
+	name => "rioxx2_license_ref_input",
+	type => "compound",
+	show_in_html => 0,
+	fields => [
 		{ sub_name => "license_ref", type => "url", input_cols => "45" },
 		{ sub_name => "start_date", type => "date" }
-	], required => 1 }
-);
+	],
+	required => 1
+},
 
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_apc_input", type => "set", show_in_html => 0, options => [ "paid", "partially waived", "fully waived", "not charged", "not required", "unknown" ] }
-);
+{
+	name => "rioxx2_apc_input",
+	type => "set",
+	show_in_html => 0,
+	options => [ "paid", "partially waived", "fully waived", "not charged", "not required", "unknown" ] 
+},
 
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_project_input", type => "compound", show_in_html => 0, fields => [
+{
+	name => "rioxx2_project_input",
+	type => "compound",
+	show_in_html => 0,
+	fields => [
 		{ sub_name => "project", type => "text", input_cols => "25" },
-		{ sub_name => "funder_name", type => "text", input_cols => "25", },
-		{ sub_name => "funder_id", type => "url", input_cols => "25", }
-	], required => 1, multiple => 1,
-#	render_input => "rioxx2_project_input_renderer", 
-	input_lookup_url =>"/cgi/users/lookup/rioxx2_project",
+		{ sub_name => "funder_name", type => "text", input_cols => "25" },
+		{ sub_name => "funder_id", type => "url", input_cols => "25" }
+	],
+	required => 1,
+	multiple => 1,
+	input_lookup_url => "/cgi/users/lookup/rioxx2_project",
 	input_lookup_params => "file=funderNames",
-	}
-);
+},
 
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_publication_date_input", type => "text", show_in_html => 0, }
-);
+{
+	name => "rioxx2_publication_date_input",
+	type => "text",
+	show_in_html => 0,
+},
 
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_type_input", type => "set", show_in_html => 0, options => [ "Book", "Book chapter", "Book edited", "Conference Paper/Proceeding/Abstract", "Journal Article/Review", "Manual/Guide", "Monograph", "Policy briefing report", "Technical Report", "Technical Standard", "Thesis", "Other", "Consultancy Report", "Working paper" ], required => 1, multiple => 1 }
-);
+{
+	name => "rioxx2_type_input",
+	type => "set",
+	show_in_html => 0,
+	options => [ 
+		"Book",
+		"Book chapter",
+		"Book edited",
+		"Conference Paper/Proceeding/Abstract",
+		"Journal Article/Review",
+		"Manual/Guide",
+		"Monograph",
+		"Policy briefing report",
+		"Technical Report",
+		"Technical Standard",
+		"Thesis",
+		"Other",
+		"Consultancy Report",
+		"Working paper"
+	],
+	required => 1,
+	multiple => 1
+},
 
-$c->add_dataset_field(
-	"eprint",
-	{ name => "rioxx2_version_input", type => "set", show_in_html => 0, options => [qw( AO SMUR AM P VoR CVoR EVoR NA )], required => 1 }
-);
+{
+	name => "rioxx2_version_input",
+	type => "set",
+	show_in_html => 0,
+	options => [qw( AO SMUR AM P VoR CVoR EVoR NA )],
+	required => 1
+},
 
-# more complex mappings
+;
+
+for( @{ $c->{rioxx}->{overrides} } )
+{
+	$c->add_dataset_field( "eprint", $_ );
+}
+
+=pod
+
+Subroutines for deriving values for RIOXX2 elements
+
+Arguments:
+
+eprint
+document
+
+=cut
 
 $c->{rioxx2_source} = sub {
 	my ( $eprint ) = @_;
@@ -289,10 +455,17 @@ $c->{rioxx2_version_of_record} = sub {
 	return $value;
 };
 
+=pod
 
+Subroutines for validating RIOXX2 elements
 
+Arguments
 
-# Validation Routines
+repo
+value
+eprint
+
+=cut
 
 $c->{rioxx2_validate_coverage} = sub {
 	my( $repo, $value, $eprint ) = @_;
