@@ -101,4 +101,7 @@ $c->{reports}->{"rioxx2-articles"}->{fields} = [ map { $_->{target} } @rioxx2_fi
 $c->{reports}->{"rioxx2-articles"}->{mappings} = { map { $_->{target} => $_->{source} } @rioxx2_fields };
 $c->{reports}->{"rioxx2-articles"}->{validate} = { map { $_->{target} => $_->{validate} } @rioxx2_fields };
 
-
+# Enable optional RIOXX2 plugins for reporting framework (https://github.com/eprints/reports)
+$c->{plugins}{"Screen::Report::Rioxx2"}{params}{disable} = 0;
+$c->{plugins}{"Screen::Report::Rioxx2::Articles"}{params}{disable} = 0;
+$c->{plugins}{"Export::Report::CSV::Rioxx2"}{params}{disable} = 0;
