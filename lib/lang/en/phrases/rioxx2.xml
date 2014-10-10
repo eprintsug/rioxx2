@@ -23,6 +23,7 @@
  <epp:phrase id="eprint_fieldname_rioxx2_free_to_read">Free to read</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_free_to_read_input">Free to read Input</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_free_to_read_input_free_to_read">Free to read</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_free_to_read_input_free_to_read_Y">Yes</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_free_to_read_input_start_date">Start date</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_free_to_read_input_end_date">End date</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_license_ref">License ref</epp:phrase>
@@ -103,6 +104,21 @@
 <epp:phrase id="Plugin/Screen/EPrint/RIOXX2:field:validation:pass"><img src="{$config{rel_path}}/style/images/rioxx2_validation_pass.png" alt="Required" width="16" height="16" title="Validation passed"/></epp:phrase>
 <epp:phrase id="Plugin/Screen/EPrint/RIOXX2:field:validation:fail"><img src="{$config{rel_path}}/style/images/rioxx2_validation_fail.png" alt="Required" width="16" height="16" title="Validation failed" border="0"/></epp:phrase>
 
+<epp:phrase id="rioxx2_validate_rioxx2_dateAccepted:not_done_field">You haven't filled out the required <span class="ep_problem_field:rioxx2_dateAccepted"><epc:phrase ref="eprint_fieldname_rioxx2_dateAccepted"/></span> field.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_license_ref:not_done_field">You haven't filled out the required <span class="ep_problem_field:rioxx2_license_ref"><epc:phrase ref="eprint_fieldname_rioxx2_license_ref"/></span> field.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_license_ref:not_done_part_start_date">You haven't filled out the required "<epc:phrase ref="eprint_fieldname_rioxx2_license_ref_input_start_date"/>" part of the <span class="ep_problem_field:rioxx2_license_ref"><epc:phrase ref="eprint_fieldname_rioxx2_license_ref"/></span> field.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_license_ref:not_done_part_license_ref">You haven't filled out the required "<epc:phrase ref="eprint_fieldname_rioxx2_license_ref_input_license_ref"/>" part of the <span class="ep_problem_field:rioxx2_license_ref"><epc:phrase ref="eprint_fieldname_rioxx2_license_ref"/></span> field.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_license_ref:not_http_uri">The "<epc:phrase ref="eprint_fieldname_rioxx2_license_ref_input_license_ref"/>" given for <span class="ep_problem_field:rioxx2_license_ref"><epc:phrase ref="eprint_fieldname_rioxx2_license_ref"/></span> is invalid. Did you include the initial <strong>http://</strong>?</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_license_ref:not_iso_8601_date">The "<epc:phrase ref="eprint_fieldname_rioxx2_license_ref_input_start_date"/>" given for <span class="ep_problem_field:rioxx2_license_ref"><epc:phrase ref="eprint_fieldname_rioxx2_license_ref"/></span> must be fully completed.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_project:not_done_field">You haven't filled out the required <span class="ep_problem_field:rioxx2_project"><epc:phrase ref="eprint_fieldname_rioxx2_project"/></span> field.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_project:not_done_part_project">You haven't filled out the required "<epc:phrase ref="eprint_fieldname_rioxx2_project_input_project"/>" part of the <span class="ep_problem_field:rioxx2_project"><epc:phrase ref="eprint_fieldname_rioxx2_project"/></span> field.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_project:not_http_uri">The "<epc:phrase ref="eprint_fieldname_rioxx2_project_input_funder_id"/>" given for <span class="ep_problem_field:rioxx2_project"><epc:phrase ref="eprint_fieldname_rioxx2_project"/></span> is invalid. Did you include the initial <strong>http://</strong>?</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_free_to_read:not_done_part_free_to_read">You haven't filled out the required "<epc:phrase ref="eprint_fieldname_rioxx2_free_to_read_input_free_to_read"/>" part of the <span class="ep_problem_field:rioxx2_free_to_read"><epc:phrase ref="eprint_fieldname_rioxx2_free_to_read"/></span> field.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_free_to_read_start_date:not_iso_8601_date">The "<epc:phrase ref="eprint_fieldname_rioxx2_free_to_read_input_start_date"/>" given for <span class="ep_problem_field:rioxx2_free_to_read"><epc:phrase ref="eprint_fieldname_rioxx2_free_to_read"/></span> must be fully completed.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_free_to_read_end_date:not_iso_8601_date">The "<epc:phrase ref="eprint_fieldname_rioxx2_free_to_read_input_end_date"/>" given for <span class="ep_problem_field:rioxx2_free_to_read"><epc:phrase ref="eprint_fieldname_rioxx2_free_to_read"/></span> must be fully completed.</epp:phrase>
 
 <epp:phrase id="rioxx2_validate:item_has_no_resource">This item does not have a resouce. Please upload a document</epp:phrase>
 <epp:phrase id="rioxx2_validate:mandatory_not_set">The mandatory field "<epc:pin name="field"/>" is not set</epp:phrase>
