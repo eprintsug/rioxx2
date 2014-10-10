@@ -62,17 +62,6 @@ sub render_content
 	my $basename = $self->{prefix} . "_$class";
 
 	my $override_value = $self->{dataobj}->value( $override_field->name );
-	# the value may be a hash
-	if ( "HASH" eq ref $override_value )
-	{
-		my $override_is_set = 0;
-		foreach my $key ( keys %$override_value )
-		{
-			$override_is_set = 1 if ( $override_value->{$key} && $override_value->{$key} ne "FALSE" );
-			last if $override_is_set;
-		}
-		$override_value = undef unless $override_is_set;
-	}
 
 	return $self->html_phrase( "content",
 		mapped_value => $field->render_value( $repo, undef, undef, undef, $self->{dataobj}, 1 ),
@@ -108,6 +97,13 @@ sub validate
 	my( $self ) = @_;
 
 	return $self->{config}->{field}->validate( $self->repository, $self->{config}->{field}->get_value( $self->{dataobj} ) );
+}
+
+sub is_required
+{
+	my( $self ) = @_;
+
+	return $self->{config}->{field}->is_mandatory( $self->{dataobj} );
 }
 
 1;
