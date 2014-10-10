@@ -98,6 +98,10 @@ sub _render_required_icon
         my $xml = $repo->xml;
 
 	my $rioxx2_required = $field->property( "rioxx2_required" );
+	if( ref( $rioxx2_required ) eq "CODE" )
+	{
+		$rioxx2_required = $field->call_property( "rioxx2_required", $self->{processor}->{eprint} );
+	}
 	my $div = $xml->create_element( "div", style=>"float: left; width: 16px;" );
 	$div->appendChild( $self->html_phrase( "field:rioxx2:".$rioxx2_required ) );
 	return $div;
