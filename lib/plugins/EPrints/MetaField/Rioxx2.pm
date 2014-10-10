@@ -41,12 +41,31 @@ sub validate
 
 	my @problems = $self->SUPER::validate( $repo, $value, $object );
 
-	if( $self->has_property( "rioxx2_validate" ) )
+	if( EPrints::Utils::is_set( $value ) && $self->has_property( "rioxx2_validate" ) )
 	{
 		push @problems, $self->call_property( "rioxx2_validate", $repo, $value, $object );
 	}
 
+	if( $self->is_mandatory( $object ) && !EPrints::Utils::is_set( $value ) )
+	{
+		push @problems, $repo->html_phrase( "rioxx2_validate_" . $self->name . ":not_done_field" );
+	}
+
 	return @problems;
+}
+
+sub is_mandatory
+{
+	my( $self, $object ) = @_;
+
+	my $v = $self->property( "rioxx2_required" );
+
+	if( ref( $v ) eq "CODE" )
+	{
+		return $self->call_property( "rioxx2_required", $object ) eq "mandatory";
+	}
+
+	return $v eq "mandatory";
 }
 
 sub get_property_defaults
