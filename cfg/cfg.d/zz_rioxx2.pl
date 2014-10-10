@@ -417,11 +417,13 @@ $c->{rioxx2_project} = sub {
 
 	return unless $eprint->is_set( "funders" ) && $eprint->is_set( "projects" );
 
+	# attempt to give every project a funder (and vice versa)
 	my @p = @{ $eprint->value( "projects" ) };
 	my @f = @{ $eprint->value( "funders" ) };
 
 	while( scalar @p < scalar @f )
 	{
+		# fewer projects than funders - top up project list by repeating last element
 		push @p, $p[$#p];
 	}
 
@@ -430,6 +432,7 @@ $c->{rioxx2_project} = sub {
 	{
 		push @projects, {
 			project => $p[$i],
+			# if fewer funders than projects, use the last funder
 			funder_name => ( $i > $#f ? $f[$#f] : $f[$i] ),
 		};
 	}
@@ -447,12 +450,18 @@ $c->{rioxx2_version_of_record} = sub {
 	}
 	return unless $value;
 
-	#If it is a DOI then it must be represented in HTTP form
-	if ( $value =~ /10\..+\/.+/ )
+	# must be a HTTP URI
+	return $value if $value =~ /^http/;
+
+	# if value looks like a DOI convert to HTTP form..
+	if( $value =~ /^(doi:)?10\..+\/.+/ )
 	{
-		$value = "http://dx.doi.org/".$value;
+		$value =~ s/^doi://;
+		return "http://dx.doi.org/$value";
 	}
-	return $value;
+
+	# ..otherwise give up
+	return;
 };
 
 =pod
