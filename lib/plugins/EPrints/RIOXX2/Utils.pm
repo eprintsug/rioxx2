@@ -14,7 +14,12 @@ sub is_http_uri
 {
 	my( $value ) = @_;
 
-	return $value =~ /^http:/i;
+	my @v = ref( $value ) eq "ARRAY" ? @$value : ( $value );
+	for( @v )
+	{
+		return 0 unless /^http:/i;
+	}
+	return 1;
 }
 
 sub is_iso_8601_date
