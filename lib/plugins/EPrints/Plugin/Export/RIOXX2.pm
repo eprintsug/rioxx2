@@ -73,6 +73,7 @@ sub xml_dataobj
 			elsif( ref( $_ ) eq "HASH" )
 			{
 				my %copy = %$_;
+				$copy{$1} = "" if $1 eq "free_to_read"; # special case for rioxx2_free_to_read
 				push @data, [
 					$field->property( "rioxx2_ns" ) . ":" . $1,
 					delete $copy{$1},
