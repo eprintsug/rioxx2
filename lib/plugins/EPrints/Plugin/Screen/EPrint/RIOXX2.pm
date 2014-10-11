@@ -22,6 +22,7 @@ sub new
 			position => 2500,
 		},
 	];
+	$self->{expensive} = 1;
 
 	return $self;
 }
