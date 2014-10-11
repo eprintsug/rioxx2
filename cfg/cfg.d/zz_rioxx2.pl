@@ -423,9 +423,6 @@ $c->{rioxx2_value_version_of_record} = sub {
 	}
 	return unless $value;
 
-	# must be a HTTP URI
-	return $value if $value =~ /^http/;
-
 	# if value looks like a DOI convert to HTTP form..
 	if( $value =~ /^(doi:)?10\..+\/.+/ )
 	{
@@ -433,8 +430,7 @@ $c->{rioxx2_value_version_of_record} = sub {
 		return "http://dx.doi.org/$value";
 	}
 
-	# ..otherwise give up
-	return;
+	return $value;
 };
 
 =pod
@@ -456,6 +452,8 @@ $c->{rioxx2_validate_description} = sub {
 	{
 		return $repo->html_phrase( "rioxx2_validate_rioxx2_description:contains_markup" );
 	}
+
+	return;
 };
 
 $c->{rioxx2_validate_relation} = sub {
@@ -541,8 +539,10 @@ $c->{rioxx2_validate_version_of_record} = sub {
 
 	unless( EPrints::RIOXX2::Utils::is_http_uri( $value ) )
 	{
-		return $repo->html_phrase( "rioxx2_validate_rioxx2_version_of:not_http_uri" );
+		return $repo->html_phrase( "rioxx2_validate_rioxx2_version_of_record:not_http_uri" );
 	}
+
+	return;
 };
 
 # Enable core RIOXX2 plugins
