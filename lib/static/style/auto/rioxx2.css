@@ -23,3 +23,10 @@ div.rioxx2_help
 	display: none;
 	visibility: hidden;
 }
+
+.rioxx2_tab_title
+{
+	font-family: monospace;
+	font-weight: bold;
+	font-size: 125%;
+}

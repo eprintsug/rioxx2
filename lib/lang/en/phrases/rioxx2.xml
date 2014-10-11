@@ -75,7 +75,7 @@
  <epp:phrase id="eprint_fieldopt_rioxx2_version_input_NA">Not Applicable (or Unknown)</epp:phrase>
  <epp:phrase id="eprint_fieldname_rioxx2_version_of_record">Version of Record</epp:phrase>
 
- <epp:phrase id="metapage_title_rioxx2">RIOXX2</epp:phrase>
+ <epp:phrase id="metapage_title_rioxx2"><span class="rioxx2_tab_title">rioxx</span></epp:phrase>
 
  <epp:phrase id="Plugin/InputForm/Component/Field/Rioxx2:content">
 	<epc:pin name="choose_container">
@@ -90,7 +90,7 @@
 
 <epp:phrase id="Plugin/InputForm/Component/Field/Rioxx2:error_missing_input"><em><epc:pin name="ref"/></em> requires <em><epc:pin name="ref"/>_input</em> to be defined: <pre><epc:pin name="xml" /></pre></epp:phrase>
 
-<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:title">RIOXX2</epp:phrase>
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:title"><epc:phrase ref="metapage_title_rioxx2"/></epp:phrase>
 <epp:phrase id="Plugin/Screen/EPrint/RIOXX2:non_compliant">Sorry, this item <strong>does not</strong> comply with RIOXX 2.0. Please address the problems listed below.</epp:phrase>
 <epp:phrase id="Plugin/Screen/EPrint/RIOXX2:compliant">Congratulations, this item complies with RIOXX 2.0. For bonus points please consider adding recommended or optional information.</epp:phrase>
 <epp:phrase id="Plugin/Screen/EPrint/RIOXX2:render_problems"><ul class="rioxx2_problems"><epc:pin name="problems"/></ul></epp:phrase>
