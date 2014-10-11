@@ -24,9 +24,19 @@ div.rioxx2_help
 	visibility: hidden;
 }
 
-.rioxx2_tab_title
+#rioxx2_tab_title
 {
 	font-family: monospace;
 	font-weight: bold;
 	font-size: 125%;
+	padding-left: 18px;
+}
+
+.rioxx2_compliant
+{
+	background: url('/style/images/rioxx2_validation_pass.png') no-repeat;
+}
+.rioxx2_non_compliant
+{
+	background: url('/style/images/warning-icon.png') no-repeat;
 }
