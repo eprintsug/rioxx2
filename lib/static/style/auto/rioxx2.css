@@ -1,0 +1,25 @@
+
+ul.rioxx2_problems
+{
+	list-style-image: url(/style/images/warning-icon.png);
+}
+
+ul.rioxx2_problems li
+{
+	margin-bottom: 0.5em;
+}
+
+div.rioxx2_help
+{
+	padding-left: 1em;
+	padding-right: 1em;
+	background: #fff;
+	border: 1px solid #ccc;
+	margin: 2px;
+}
+
+.rioxx2_hidden
+{
+	display: none;
+	visibility: hidden;
+}

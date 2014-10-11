@@ -91,53 +91,73 @@
 <epp:phrase id="Plugin/InputForm/Component/Field/Rioxx2:error_missing_input"><em><epc:pin name="ref"/></em> requires <em><epc:pin name="ref"/>_input</em> to be defined: <pre><epc:pin name="xml" /></pre></epp:phrase>
 
 <epp:phrase id="Plugin/Screen/EPrint/RIOXX2:title">RIOXX2</epp:phrase>
-<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:edit_field_link">Edit <epc:pin name="field"/></epp:phrase>
-<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:fields">RIOXX2 Metadata</epp:phrase>
-<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:xml">XML</epp:phrase>
-<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:export:title"><br/><table border="0" cellpadding="3" style="width:100%"><tbody><th class="ep_title_row" style="text-align:left;margin-right:1em"> Export </th></tbody></table></epp:phrase>
-<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:xmlblock"><pre style="margin: 0 0 0 0; padding: 3px 3px 3px 3px; border-left: 1px dashed black; border-bottom: 1px dashed black;"><epc:pin name="xml"/></pre></epp:phrase>
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:non_compliant">Sorry, this item <strong>does not</strong> comply with RIOXX 2.0. Please address the problems listed below.</epp:phrase>
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:compliant">Congratulations, this item complies with RIOXX 2.0. For bonus points please consider adding recommended or optional information.</epp:phrase>
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:render_problems"><ul class="rioxx2_problems"><epc:pin name="problems"/></ul></epp:phrase>
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:render_problem">
+	<li><epc:pin name="problem"/> <a class="rioxx2_show_gl">Why?</a><div class="rioxx2_help rioxx2_hidden"><p>This problem affects the <strong><epc:pin name="field"/></strong> element.</p><epc:pin name="help"/></div></li>
+</epp:phrase>
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:recommended">Recommended (<epc:pin name="n"/>)</epp:phrase>
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:optional">Optional (<epc:pin name="n"/>)</epp:phrase>
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:export"><epc:pin name="link">View RIOXX2 record</epc:pin></epp:phrase>
 
-<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:field:rioxx2:mandatory"><img src="{$config{rel_path}}/style/images/rioxx2_mandatory.png" alt="Required" width="16" height="16" style="float: left;" title="Mandatory"/></epp:phrase>
-<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:field:rioxx2:recommended"><img src="{$config{rel_path}}/style/images/rioxx2_recommended.png" alt="Required" width="16" height="16" style="float: left;" title="Recommended" /></epp:phrase>
-<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:field:rioxx2:optional"><img src="{$config{rel_path}}/style/images/rioxx2_optional.png" alt="Required" width="16" height="16" style="float: left;" title="Optional"/></epp:phrase>
+<!-- validation -->
 
-<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:field:validation:pass"><img src="{$config{rel_path}}/style/images/rioxx2_validation_pass.png" alt="Required" width="16" height="16" title="Validation passed"/></epp:phrase>
-<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:field:validation:fail"><img src="{$config{rel_path}}/style/images/rioxx2_validation_fail.png" alt="Required" width="16" height="16" title="Validation failed" border="0"/></epp:phrase>
+<epp:phrase id="lib/metafield/property:rioxx2_required:mandatory">Mandatory</epp:phrase>
+<epp:phrase id="lib/metafield/property:rioxx2_required:recommended">Recommended</epp:phrase>
+<epp:phrase id="lib/metafield/property:rioxx2_required:optional">Optional</epp:phrase>
 
-<epp:phrase id="rioxx2_validate_rioxx2_dateAccepted:not_done_field">You haven't filled out the required <span class="ep_problem_field:rioxx2_dateAccepted"><epc:phrase ref="eprint_fieldname_rioxx2_dateAccepted"/></span> field.</epp:phrase>
+<!-- for derived fields, use these phrases to hint to the user what fields they need to fill in -->
+<epp:phrase id="rioxx2_validate_rioxx2_coverage:not_done_field">You need to fill in the <span class="ep_problem_field:rioxx2_coverage"><epc:phrase ref="eprint_fieldname_rioxx2_coverage"/></span> field.</epp:phrase>
 
-<epp:phrase id="rioxx2_validate_rioxx2_license_ref:not_done_field">You haven't filled out the required <span class="ep_problem_field:rioxx2_license_ref"><epc:phrase ref="eprint_fieldname_rioxx2_license_ref"/></span> field.</epp:phrase>
-<epp:phrase id="rioxx2_validate_rioxx2_license_ref:not_done_part_start_date">You haven't filled out the required "<epc:phrase ref="eprint_fieldname_rioxx2_license_ref_input_start_date"/>" part of the <span class="ep_problem_field:rioxx2_license_ref"><epc:phrase ref="eprint_fieldname_rioxx2_license_ref"/></span> field.</epp:phrase>
-<epp:phrase id="rioxx2_validate_rioxx2_license_ref:not_done_part_license_ref">You haven't filled out the required "<epc:phrase ref="eprint_fieldname_rioxx2_license_ref_input_license_ref"/>" part of the <span class="ep_problem_field:rioxx2_license_ref"><epc:phrase ref="eprint_fieldname_rioxx2_license_ref"/></span> field.</epp:phrase>
-<epp:phrase id="rioxx2_validate_rioxx2_license_ref:not_http_uri">The "<epc:phrase ref="eprint_fieldname_rioxx2_license_ref_input_license_ref"/>" given for <span class="ep_problem_field:rioxx2_license_ref"><epc:phrase ref="eprint_fieldname_rioxx2_license_ref"/></span> is invalid. Did you include the initial <strong>http://</strong>?</epp:phrase>
-<epp:phrase id="rioxx2_validate_rioxx2_license_ref:not_iso_8601_date">The "<epc:phrase ref="eprint_fieldname_rioxx2_license_ref_input_start_date"/>" given for <span class="ep_problem_field:rioxx2_license_ref"><epc:phrase ref="eprint_fieldname_rioxx2_license_ref"/></span> must be fully completed.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_description:not_done_field">You need to fill in the <span class="ep_problem_field:abstract"><epc:phrase ref="eprint_fieldname_abstract"/></span> field.</epp:phrase>
 
-<epp:phrase id="rioxx2_validate_rioxx2_project:not_done_field">You haven't filled out the required <span class="ep_problem_field:rioxx2_project"><epc:phrase ref="eprint_fieldname_rioxx2_project"/></span> field.</epp:phrase>
-<epp:phrase id="rioxx2_validate_rioxx2_project:not_done_part_project">You haven't filled out the required "<epc:phrase ref="eprint_fieldname_rioxx2_project_input_project"/>" part of the <span class="ep_problem_field:rioxx2_project"><epc:phrase ref="eprint_fieldname_rioxx2_project"/></span> field.</epp:phrase>
-<epp:phrase id="rioxx2_validate_rioxx2_project:not_http_uri">The "<epc:phrase ref="eprint_fieldname_rioxx2_project_input_funder_id"/>" given for <span class="ep_problem_field:rioxx2_project"><epc:phrase ref="eprint_fieldname_rioxx2_project"/></span> is invalid. Did you include the initial <strong>http://</strong>?</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_format:not_done_field">You need to <span class="ep_problem_field:documents">upload at least one document</span>.</epp:phrase>
 
-<epp:phrase id="rioxx2_validate_rioxx2_free_to_read:not_done_part_free_to_read">You haven't filled out the required "<epc:phrase ref="eprint_fieldname_rioxx2_free_to_read_input_free_to_read"/>" part of the <span class="ep_problem_field:rioxx2_free_to_read"><epc:phrase ref="eprint_fieldname_rioxx2_free_to_read"/></span> field.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_identifier:not_done_field">You need to <span class="ep_problem_field:documents">upload at least one document</span>.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_language:not_done_field">You need to <span class="ep_problem_field:documents">upload at least one document</span> and specify the document language.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_publisher:not_done_field">You need to fill in the <span class="ep_problem_field:publisher"><epc:phrase ref="eprint_fieldname_publisher"/></span> field.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_relation:not_done_field">You need to fill in the <span class="ep_problem_field:related_url"><epc:phrase ref="eprint_fieldname_related_url"/></span> field.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_source:not_done_field">You need to fill in at least one of the following fields: <span class="ep_problem_field:issn"><epc:phrase ref="eprint_fieldname_issn"/></span>, <span class="ep_problem_field:isbn"><epc:phrase ref="eprint_fieldname_isbn"/></span>, <span class="ep_problem_field:publication"><epc:phrase ref="eprint_fieldname_publication"/></span>, <span class="ep_problem_field:book_title"><epc:phrase ref="eprint_fieldname_book_title"/></span>, <span class="ep_problem_field:event_title"><epc:phrase ref="eprint_fieldname_event_title"/></span>.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_subject:not_done_field">You need to select some <span class="ep_problem_field:subjects"><epc:phrase ref="eprint_fieldname_subjects"/></span></epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_title:not_done_field">You need to fill in the <span class="ep_problem_field:title"><epc:phrase ref="eprint_fieldname_title"/></span> field.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_dateAccepted:not_done_field">You need to fill in the required <span class="ep_problem_field:rioxx2_dateAccepted"><epc:phrase ref="eprint_fieldname_rioxx2_dateAccepted"/></span> field.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_free_to_read:not_done_part_free_to_read">You need to fill in the required "<epc:phrase ref="eprint_fieldname_rioxx2_free_to_read_input_free_to_read"/>" part of the <span class="ep_problem_field:rioxx2_free_to_read"><epc:phrase ref="eprint_fieldname_rioxx2_free_to_read"/></span> field.</epp:phrase>
 <epp:phrase id="rioxx2_validate_rioxx2_free_to_read_start_date:not_iso_8601_date">The "<epc:phrase ref="eprint_fieldname_rioxx2_free_to_read_input_start_date"/>" given for <span class="ep_problem_field:rioxx2_free_to_read"><epc:phrase ref="eprint_fieldname_rioxx2_free_to_read"/></span> must be fully completed.</epp:phrase>
 <epp:phrase id="rioxx2_validate_rioxx2_free_to_read_end_date:not_iso_8601_date">The "<epc:phrase ref="eprint_fieldname_rioxx2_free_to_read_input_end_date"/>" given for <span class="ep_problem_field:rioxx2_free_to_read"><epc:phrase ref="eprint_fieldname_rioxx2_free_to_read"/></span> must be fully completed.</epp:phrase>
 
-<epp:phrase id="rioxx2_validate:item_has_no_resource">This item does not have a resouce. Please upload a document</epp:phrase>
-<epp:phrase id="rioxx2_validate:mandatory_not_set">The mandatory field "<epc:pin name="field"/>" is not set</epp:phrase>
-<epp:phrase id="rioxx2_validate:recommended_not_set">The field "<epc:pin name="field"/>" is recommended but not set</epp:phrase>
-<epp:phrase id="rioxx2_validate:field_contains_markup">The field "<epc:pin name="field"/>" contains markup tags: <epc:pin name="tags"/></epp:phrase>
-<epp:phrase id="rioxx2_validate:language_not_found">The field "<epc:pin name="field"/>" does not seem to contain a valid ISO 639-3 language code: <epc:pin name="code"/></epp:phrase>
-<epp:phrase id="rioxx2_validate:source_not_set">This item is probably published as part of a larger work but the source (e.g. the ISSN) has not been specified</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_license_ref:not_done_field">You need to fill in the required <span class="ep_problem_field:rioxx2_license_ref"><epc:phrase ref="eprint_fieldname_rioxx2_license_ref"/></span> field.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_license_ref:not_done_part_start_date">You need to fill in the required "<epc:phrase ref="eprint_fieldname_rioxx2_license_ref_input_start_date"/>" part of the <span class="ep_problem_field:rioxx2_license_ref"><epc:phrase ref="eprint_fieldname_rioxx2_license_ref"/></span> field.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_license_ref:not_done_part_license_ref">You need to fill in the required "<epc:phrase ref="eprint_fieldname_rioxx2_license_ref_input_license_ref"/>" part of the <span class="ep_problem_field:rioxx2_license_ref"><epc:phrase ref="eprint_fieldname_rioxx2_license_ref"/></span> field.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_license_ref:not_http_uri">The "<epc:phrase ref="eprint_fieldname_rioxx2_license_ref_input_license_ref"/>" given for <span class="ep_problem_field:rioxx2_license_ref"><epc:phrase ref="eprint_fieldname_rioxx2_license_ref"/></span> is invalid. Did you include the initial <strong>http://</strong>?</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_license_ref:not_iso_8601_date">The "<epc:phrase ref="eprint_fieldname_rioxx2_license_ref_input_start_date"/>" given for <span class="ep_problem_field:rioxx2_license_ref"><epc:phrase ref="eprint_fieldname_rioxx2_license_ref"/></span> must be fully completed.</epp:phrase>
 
-<epp:phrase id="rioxx2_validate:not_an_http_uri">The entry "<epc:pin name="fvalue"/>" for the field "<epc:pin name="field"/>" does not appear to be an HTTP URI</epp:phrase>
-<epp:phrase id="rioxx2_validate:project_not_set">The mandatory Project field has not been specified</epp:phrase>
-<epp:phrase id="rioxx2_validate:funder_not_set">The mandatory Project field must have either a funder name or a funder id specified.</epp:phrase>
-<epp:phrase id="rioxx2_validate:no_funder_controlled_list">A funder name has been specified but the controlled list of names has not been found.</epp:phrase>
-<epp:phrase id="rioxx2_validate:funder_not_in_list">The funder name was not found in the controlled list of names.</epp:phrase>
-<epp:phrase id="rioxx2_validate:funder_id_not_in_list">The funder id was not found in the controlled list of IDs.</epp:phrase>
-<epp:phrase id="rioxx2_validate:funder_no_match_for_name_id">The funder name and id do not match in the controlled list.</epp:phrase>
-<epp:phrase id="rioxx2_validate:missing_license_url">The License URI is missing. This should point to a resource which expresses the license terms</epp:phrase>
-<epp:phrase id="rioxx2_validate:missing_license_start">The License start date is missing or incomplete</epp:phrase>
-<epp:phrase id="rioxx2_validate:missing_free_start">The free to read start date is incomplete</epp:phrase>
-<epp:phrase id="rioxx2_validate:missing_free_end">The free to read start date is incomplete</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_apc:not_done_field">You need to fill in the <span class="ep_problem_field:rioxx2_apc"><epc:phrase ref="eprint_fieldname_rioxx2_apc"/></span> field.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_author:not_done_field">You need to fill in the <span class="ep_problem_field:creators"><epc:phrase ref="eprint_fieldname_creators"/></span> and/or <span class="ep_problem_field:corp_creators"><epc:phrase ref="eprint_fieldname_corp_creators"/></span> fields.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_contributor:not_done_field">You need to fill in the <span class="ep_problem_field:editors"><epc:phrase ref="eprint_fieldname_editors"/></span> and/or <span class="ep_problem_field:contributors"><epc:phrase ref="eprint_fieldname_contributors"/></span> fields.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_project:not_done_field">You need to fill in the required <span class="ep_problem_field:rioxx2_project"><epc:phrase ref="eprint_fieldname_rioxx2_project"/></span> field.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_project:not_done_part_project">You need to fill in the required "<epc:phrase ref="eprint_fieldname_rioxx2_project_input_project"/>" part of the <span class="ep_problem_field:rioxx2_project"><epc:phrase ref="eprint_fieldname_rioxx2_project"/></span> field.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_project:not_http_uri">The "<epc:phrase ref="eprint_fieldname_rioxx2_project_input_funder_id"/>" given for <span class="ep_problem_field:rioxx2_project"><epc:phrase ref="eprint_fieldname_rioxx2_project"/></span> is invalid. Did you include the initial <strong>http://</strong>?</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_publication_date:not_done_field">You need to fill in a <span class="ep_problem_field:date"><epc:phrase ref="eprint_fieldname_date"/></span> or <span class="ep_problem_field:rioxx2_publication_date"><epc:phrase ref="eprint_fieldname_rioxx2_publication_date"/></span>.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_type:not_done_field">You need to fill in a <span class="ep_problem_field:type"><epc:phrase ref="eprint_fieldname_type"/></span> or <span class="ep_problem_field:rioxx2_type"><epc:phrase ref="eprint_fieldname_rioxx2_type"/></span>.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_version:not_done_field">You need to <span class="ep_problem_field:documents">upload at least one document</span> and specify the document content.</epp:phrase>
+
+<epp:phrase id="eprint_fieldname_doi">DOI</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_version_of_record:not_done_field">You need to fill in the <span class="ep_problem_field:doi"><epc:phrase ref="eprint_fieldname_doi"/></span> or <span class="ep_problem_field:id_number"><epc:phrase ref="eprint_fieldname_id_number"/></span> field.</epp:phrase>
 
 <epp:phrase id="cgi/lookup/rioxx2_project:projects"><h2>Projects:</h2></epp:phrase>
 <epp:phrase id="cgi/lookup/rioxx2_project:funder"><epc:pin name="name"/><br/>(<epc:pin name="id"/>)</epp:phrase>

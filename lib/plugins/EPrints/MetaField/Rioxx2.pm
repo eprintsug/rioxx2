@@ -58,14 +58,30 @@ sub is_mandatory
 {
 	my( $self, $object ) = @_;
 
+	return $self->get_required( $object ) eq "mandatory";
+}
+
+sub get_required
+{
+	my( $self, $object ) = @_;
+
 	my $v = $self->property( "rioxx2_required" );
 
 	if( ref( $v ) eq "CODE" )
 	{
-		return $self->call_property( "rioxx2_required", $object ) eq "mandatory";
+		return $self->call_property( "rioxx2_required", $object );
 	}
 
-	return $v eq "mandatory";
+	return $v;
+}
+
+sub render_required
+{
+	my( $self, $object ) = @_;
+
+	my $v = $self->get_required( $object );
+
+	return $self->{repository}->html_phrase( "lib/metafield/property:rioxx2_required:$v" );
 }
 
 sub get_property_defaults

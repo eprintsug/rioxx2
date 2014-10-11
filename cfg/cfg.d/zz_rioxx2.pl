@@ -164,11 +164,6 @@ push @{ $c->{rioxx2}->{profile} },
 	rioxx2_value => sub { $_[1] && $_[1]->repository->config( "rioxx2", "content_map", $_[1]->value( "content" ) ) || "NA" },
 },
 
-# TODO check id_number contains a DOI
-# TODO rioxx2_validate: must be a HTTP URL
-# this is more of a conditional mandatory rather than a mandatory i.e. if there is a DOI it is manadatory
-# we could therefore say that if it is published and an article then it is manadtory.
-# could probably provide an override for this field
 {
 	name => "rioxx2_version_of_record",
 	rioxx2_required => "mandatory",
