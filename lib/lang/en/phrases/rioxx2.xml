@@ -167,4 +167,8 @@
 <epp:phrase id="cgi/lookup/rioxx2_project:funder"><epc:pin name="name"/><br/>(<epc:pin name="id"/>)</epp:phrase>
 <epp:phrase id="cgi/lookup/rioxx2_project:found"><small> (associated with <epc:pin name="count"/> item(s) in this repository)</small></epp:phrase>
 
+<!-- the Rioxx2 reports -->
+<epp:phrase id="Plugin/Screen/Report/Rioxx2:title">Rioxx2</epp:phrase>
+<epp:phrase id="Plugin/Screen/Report/Rioxx2/Articles:title">Articles</epp:phrase>
+
 </epp:phrases>
