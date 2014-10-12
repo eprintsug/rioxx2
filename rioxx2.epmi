@@ -29,9 +29,9 @@
         <file>
           <filename>epm/rioxx2/cfg/cfg.d/zz_rioxx2.pl</filename>
           <mime_type>text/plain</mime_type>
-          <hash>2bfbc7a187689ddb2c0da417c60243f0</hash>
+          <hash>3aef29129b2fbf373ae4e346542312ad</hash>
           <hash_type>MD5</hash_type>
-          <filesize>12838</filesize>
+          <filesize>13370</filesize>
         </file>
         <file>
           <filename>epm/rioxx2/cfg/cfg.d/zz_rioxx2_report.pl</filename>
@@ -50,9 +50,9 @@
         <file>
           <filename>lang/en/phrases/rioxx2.xml</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>cd2c83fb9014df04c905aef0c84d913e</hash>
+          <hash>d9e13cd93a781ea29573511e1af6cf1d</hash>
           <hash_type>MD5</hash_type>
-          <filesize>18120</filesize>
+          <filesize>19450</filesize>
         </file>
         <file>
           <filename>lang/en/phrases/rioxx2_help.xml</filename>
@@ -64,9 +64,9 @@
         <file>
           <filename>plugins/EPrints/MetaField/Rioxx2.pm</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>5e2b4b267ae2eb8e7989247914a41f2d</hash>
+          <hash>6dc98f300382f4cdc5932a8470d9f3d3</hash>
           <hash_type>MD5</hash_type>
-          <filesize>2182</filesize>
+          <filesize>2152</filesize>
         </file>
         <file>
           <filename>plugins/EPrints/Plugin/Export/RIOXX2.pm</filename>
@@ -99,9 +99,9 @@
         <file>
           <filename>plugins/EPrints/Plugin/Screen/EPrint/RIOXX2.pm</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>8a6852b636c2f560c3063665a8b2001f</hash>
+          <hash>6fc2c9eb2bcdbe2b5483b89c2a7400b6</hash>
           <hash_type>MD5</hash_type>
-          <filesize>3445</filesize>
+          <filesize>3570</filesize>
         </file>
         <file>
           <filename>plugins/EPrints/Plugin/Screen/Report/Rioxx2.pm</filename>
@@ -141,9 +141,16 @@
         <file>
           <filename>static/style/auto/rioxx2.css</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>633fa55242a3648eaa818285f9a47fc2</hash>
+          <hash>6dde350e26e0ea2a74289c0ebf39d89c</hash>
           <hash_type>MD5</hash_type>
-          <filesize>597</filesize>
+          <filesize>742</filesize>
+        </file>
+        <file>
+          <filename>static/style/images/rioxx2_arrow.png</filename>
+          <mime_type>inode/symlink</mime_type>
+          <hash>663a2af13bd4586330b9a16058cb7e2b</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>374</filesize>
         </file>
         <file>
           <filename>static/style/images/rioxx2_mandatory.png</filename>
@@ -151,6 +158,13 @@
           <hash>8c6e0cfb5695de3adf1418d2a9c86240</hash>
           <hash_type>MD5</hash_type>
           <filesize>849</filesize>
+        </file>
+        <file>
+          <filename>static/style/images/rioxx2_message-icon.png</filename>
+          <mime_type>inode/symlink</mime_type>
+          <hash>09a55048a4e5d641dac50d519ceda642</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>1120</filesize>
         </file>
         <file>
           <filename>static/style/images/rioxx2_optional.png</filename>
