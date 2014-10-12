@@ -18,7 +18,7 @@ sub get_value
 	}
 
 	# will return undef if property not defined
-	return $self->call_property( "rioxx2_value", $object, ($object->get_all_documents)[0] ); # TODO remove implicit assumption that object is a DataObj::EPrint
+	return $self->call_property( "rioxx2_value", $object, $self->{repository}->call( [qw( rioxx2 select_document )], $object ) );
 }
 
 sub render_value

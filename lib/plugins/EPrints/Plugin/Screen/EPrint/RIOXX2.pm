@@ -38,22 +38,26 @@ sub render
 	my( $self ) = @_;
 
 	my $repo = $self->{repository};
-	my $page = $repo->xml->create_document_fragment;
+	my $page = $repo->xml->create_element( "div" ); # wrapper
 
 	my( $problems, $recommended, $optional ) = $self->validate_fields;
 
-	unless( scalar @$problems )
+	my $message;
+	if( scalar @$problems )
 	{
-		$page->appendChild( $repo->render_message( "message", $self->html_phrase( "compliant" ) ) );
+		$message = $repo->render_message( "warning", $self->html_phrase( "non_compliant" ) );
 	}
 	else
 	{
-		$page->appendChild( $repo->render_message( "warning", $self->html_phrase( "non_compliant" ) ) );
+		$message = $repo->render_message( "message", $self->html_phrase( "compliant" ) );
 	}
+	$page->appendChild( $self->html_phrase( "intro", message => $message, document => $self->render_document ) );
 
-	$page->appendChild( $self->render_problems( @$problems ) );
-	$page->appendChild( $self->render_recommended( @$recommended ) );
-	$page->appendChild( $self->render_optional( @$optional ) );
+	$page->appendChild( $self->render_problems( undef, @$problems ) );
+	$page->appendChild( $self->render_problems( "recommended", @$recommended ) );
+	$page->appendChild( $self->render_problems( "optional", @$optional ) );
+
+	$self->workflow->link_problem_xhtml( $page, $self->edit_screen_id );
 
 	$page->appendChild( $self->render_export );
 
@@ -93,22 +97,21 @@ sub validate_fields
 	return \@problems, \@recommended, \@optional;
 }
 
+sub render_document
+{
+	my( $self ) = @_;
+
+	my $repo = $self->{repository};
+	my $doc = $repo->call( [qw( rioxx2 select_document )], $self->{processor}->{eprint} );
+
+	if( $doc )
+	{
+		return $self->html_phrase( "render_document", icon => $doc->render_icon_link, citation => $doc->render_citation );
+	}
+	return $self->html_phrase( "render_no_document" );
+}
+
 sub render_problems
-{
-	return shift->_render_problems( undef, @_ );
-}
-
-sub render_recommended
-{
-	return shift->_render_problems( "recommended", @_ );
-}
-
-sub render_optional
-{
-	return shift->_render_problems( "optional", @_ );
-}
-
-sub _render_problems
 {
 	my( $self, $id, @problems ) = @_;
 
@@ -119,31 +122,22 @@ sub _render_problems
 	my $p = $repo->xml->create_document_fragment;
 	for( @problems )
 	{
-		$p->appendChild( $self->render_problem( $_->{field}, $_->{problem} ) );
+		$p->appendChild( $self->html_phrase( "render_problem",
+			field => $_->{field}->render_name,
+			help => $_->{field}->render_help,
+			problem => $_->{problem},
+		) );
 	}
 	$frag = $self->html_phrase( "render_problems", problems => $p );
 
-	$self->workflow->link_problem_xhtml( $frag->firstChild, $self->edit_screen_id );
+	return $frag unless defined $id;
 
-	return !defined $id ? $frag : EPrints::Box::render(
+	return EPrints::Box::render(
 		id => $id,
 		session => $repo,
 		title => $self->html_phrase( $id, n => $repo->xml->create_text_node( scalar @problems ) ),
 		content => $frag,
 		collapsed => "true",
-	);
-}
-
-sub render_problem
-{
-	my( $self, $field, $problem ) = @_;
-
-	my $repo = $self->{repository};
-
-	return $self->html_phrase( "render_problem",
-		field => $field->render_name,
-		help => $field->render_help,
-		problem => $problem,
 	);
 }
 

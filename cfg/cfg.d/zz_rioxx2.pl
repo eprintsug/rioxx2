@@ -210,6 +210,35 @@ $c->{rioxx2}->{content_map} = {
 
 =pod
 
+Select most appropriate document from eprint
+
+=cut
+
+$c->{rioxx2}->{select_document} = sub {
+	my( $eprint ) = @_;
+
+	my @docs = $eprint->get_all_documents;
+
+	# simple cases
+	return unless scalar @docs;
+	return $docs[0] if scalar @docs == 1;
+
+	# prefer published, accepted and submitted versions over anything else
+	my %pref = (
+		published => 3,
+		accepted => 2,
+		submitted => 1,
+	);
+
+	my @ordered = sort {
+		($pref{$b->value( "content" )||""}||0) <=> ($pref{$a->value( "content" )||""}||0)
+	} @docs;
+
+	return $ordered[0];
+};
+
+=pod
+
 Define RIOXX fields that can be overridden
 
 Allows any of the fields defined in the profile above to be entered manually

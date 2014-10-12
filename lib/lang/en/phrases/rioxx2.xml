@@ -92,10 +92,35 @@
 
 <epp:phrase id="Plugin/Screen/EPrint/RIOXX2:title"><epc:phrase ref="metapage_title_rioxx2"/></epp:phrase>
 <epp:phrase id="Plugin/Screen/EPrint/RIOXX2:non_compliant"><span id="rioxx2_status" data-status="non_compliant">Sorry, this item <strong>does not</strong> comply with RIOXX 2.0. Please address the problems listed below.</span></epp:phrase>
+
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:intro">
+<div id="rioxx2_intro_message"><epc:pin name="message"/></div>
+<div id="rioxx2_intro_document"><epc:pin name="document"/></div>
+</epp:phrase>
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:render_document">
+	<table>
+		<tr>
+			<td align="right"><epc:pin name="icon"/></td>
+			<td><epc:pin name="citation"/></td>
+			<td><img src="/style/images/rioxx2_arrow.png"/></td>
+			<td>This document will be described by RIOXX. To use a different document <span class="ep_problem_field:documents">upload a new document or edit an existing document</span> and set <strong><epc:phrase ref="document_fieldname_content"/></strong> to <em><epc:phrase ref="content_typename_published"/></em> or <em><epc:phrase ref="content_typename_submitted"/></em>.</td>
+		</tr>
+	</table>
+</epp:phrase>
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:render_no_document">
+	<table>
+		<tr>
+			<td align="right"><img src="/style/images/fileicons/unknown.png"/></td>
+			<td><img src="/style/images/rioxx2_arrow.png"/></td>
+			<td><span class="ep_problem_field:documents">Upload a document</span> and set <strong><epc:phrase ref="document_fieldname_content"/></strong> to <em><epc:phrase ref="content_typename_published"/></em> or <em><epc:phrase ref="content_typename_submitted"/></em>.</td>
+		</tr>
+	</table>
+</epp:phrase>
+
 <epp:phrase id="Plugin/Screen/EPrint/RIOXX2:compliant"><span id="rioxx2_status" data-status="compliant">Congratulations, this item complies with RIOXX 2.0. For bonus points please consider adding recommended or optional information.</span></epp:phrase>
 <epp:phrase id="Plugin/Screen/EPrint/RIOXX2:render_problems"><ul class="rioxx2_problems"><epc:pin name="problems"/></ul></epp:phrase>
 <epp:phrase id="Plugin/Screen/EPrint/RIOXX2:render_problem">
-	<li><epc:pin name="problem"/> <a class="rioxx2_show_gl">Why?</a><div class="rioxx2_help rioxx2_hidden"><p>This problem affects the RIOXX <strong><epc:pin name="field"/></strong> element.</p><epc:pin name="help"/></div></li>
+	<li><epc:pin name="problem"/> <a class="rioxx2_show_gl">Why?</a><div class="rioxx2_help rioxx2_hidden"><p>This is used by the RIOXX <strong><epc:pin name="field"/></strong> element.</p><epc:pin name="help"/></div></li>
 </epp:phrase>
 <epp:phrase id="Plugin/Screen/EPrint/RIOXX2:recommended">Recommended (<epc:pin name="n"/>)</epp:phrase>
 <epp:phrase id="Plugin/Screen/EPrint/RIOXX2:optional">Optional (<epc:pin name="n"/>)</epp:phrase>

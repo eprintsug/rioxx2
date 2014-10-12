@@ -34,9 +34,17 @@ div.rioxx2_help
 
 .rioxx2_compliant
 {
-	background: url('/style/images/rioxx2_validation_pass.png') no-repeat;
+	background: url('/style/images/rioxx2_message-icon.png') no-repeat;
 }
 .rioxx2_non_compliant
 {
 	background: url('/style/images/warning-icon.png') no-repeat;
+}
+
+#rioxx2_intro_document
+{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	background: url(images/bar_solid_12px.png) repeat-x;
 }
