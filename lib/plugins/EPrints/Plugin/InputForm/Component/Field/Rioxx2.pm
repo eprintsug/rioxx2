@@ -1,4 +1,4 @@
-package EPrints::Plugin::InputForm::Component::Field::RIOXX2;
+package EPrints::Plugin::InputForm::Component::Field::Rioxx2;
 
 use EPrints::Plugin::InputForm::Component::Field;
 
