@@ -176,7 +176,8 @@ push @{ $c->{rioxx2}->{profile} },
 
 for( @{ $c->{rioxx2}->{profile} } )
 {
-	$_->{type} = "rioxx2"; # virtual field
+	#$_->{type} = "rioxx2"; # virtual field
+	$_->{type} = "RIOXX2"; # virtual field
 	$c->add_dataset_field( "eprint", $_ );
 }
 

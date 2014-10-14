@@ -29,9 +29,9 @@
         <file>
           <filename>epm/rioxx2/cfg/cfg.d/zz_rioxx2.pl</filename>
           <mime_type>text/plain</mime_type>
-          <hash>15a7f26bfe6dd31bb7d6d4ce5031eb8f</hash>
+          <hash>299f080816483e675789ac717088793b</hash>
           <hash_type>MD5</hash_type>
-          <filesize>13372</filesize>
+          <filesize>13413</filesize>
         </file>
         <file>
           <filename>epm/rioxx2/cfg/cfg.d/zz_rioxx2_report.pl</filename>
@@ -62,9 +62,9 @@
           <filesize>18758</filesize>
         </file>
         <file>
-          <filename>plugins/EPrints/MetaField/Rioxx2.pm</filename>
+          <filename>plugins/EPrints/MetaField/RIOXX2.pm</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>6dc98f300382f4cdc5932a8470d9f3d3</hash>
+          <hash>4981b12726c033833efc3d17e73ee1a7</hash>
           <hash_type>MD5</hash_type>
           <filesize>2152</filesize>
         </file>
@@ -120,9 +120,9 @@
         <file>
           <filename>plugins/EPrints/RIOXX2/Utils.pm</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>7018040810b9aa3fdd298fdb71deaa6b</hash>
+          <hash>2666b59e27476fdbcda2ae0ae1ff8fad</hash>
           <hash_type>MD5</hash_type>
-          <filesize>2233</filesize>
+          <filesize>2314</filesize>
         </file>
         <file>
           <filename>static/images/epm/rioxx2_icon.png</filename>
@@ -197,7 +197,7 @@
         <file>
           <filename>workflows/eprint/rioxx2.xml</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>a85a554ab1aa6318b76fd3eab2db987e</hash>
+          <hash>f6393a8c6bae3d7df965d40a43c27e56</hash>
           <hash_type>MD5</hash_type>
           <filesize>1067</filesize>
         </file>
