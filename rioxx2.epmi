@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<epm xmlns='http://eprints.org/ep2/data/2.0' id='http://rioxx2.localhost/id/epm/rioxx2'>
+<epm id='http://rioxx2.localhost/id/epm/rioxx2' xmlns='http://eprints.org/ep2/data/2.0'>
   <epmid>rioxx2</epmid>
-  <uri>http://rioxx2.drs/id/epm/rioxx2</uri>
+  <uri>http://rioxx2.localhost/id/epm/rioxx2</uri>
   <documents>
     <document>
       <files>
@@ -14,7 +14,7 @@
         </file>
         <file>
           <filename>epm/rioxx2/bin/mk_help.pl</filename>
-          <mime_type>text/plain</mime_type>
+          <mime_type>text/x-perl</mime_type>
           <hash>abb3b7880a2420b3ed27c522371ca6f8</hash>
           <hash_type>MD5</hash_type>
           <filesize>767</filesize>
@@ -29,7 +29,7 @@
         <file>
           <filename>epm/rioxx2/cfg/cfg.d/zz_rioxx2.pl</filename>
           <mime_type>text/plain</mime_type>
-          <hash>17c3f26c6bc51d2904252f33d81a29a8</hash>
+          <hash>effcb2eb59aed95237624dbaebc391dd</hash>
           <hash_type>MD5</hash_type>
           <filesize>14117</filesize>
         </file>
@@ -50,7 +50,7 @@
         <file>
           <filename>lang/en/phrases/rioxx2.xml</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>ff50a14eefe893b9d3f5111ff5a13077</hash>
+          <hash>051c5a6c63e408dc16219759befc8012</hash>
           <hash_type>MD5</hash_type>
           <filesize>20445</filesize>
         </file>
