@@ -74,7 +74,7 @@ sub validate_fields
 	my $repo = $self->{repository};
 	my $eprint = $self->{processor}->{eprint};
 
-	my @fields = grep { $_->type =~ /^rioxx2$/ } $eprint->get_dataset->get_fields;
+	my @fields = grep { $_->type =~ /^RIOXX2$/ } $eprint->get_dataset->get_fields;
 	foreach my $field ( @fields )
 	{
 		if( my @p = $field->validate( $repo, $eprint->value( $field->get_name ), $eprint ) )

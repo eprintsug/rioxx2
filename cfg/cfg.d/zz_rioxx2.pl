@@ -176,7 +176,7 @@ push @{ $c->{rioxx2}->{profile} },
 
 for( @{ $c->{rioxx2}->{profile} } )
 {
-	$_->{type} = "rioxx2"; # virtual field
+	$_->{type} = "RIOXX2"; # virtual field
 	$c->add_dataset_field( "eprint", $_ );
 }
 
@@ -577,4 +577,4 @@ $c->{rioxx2_validate_version_of_record} = sub {
 # Enable core RIOXX2 plugins
 $c->{plugins}{'Export::RIOXX2'}{params}{disable} = 0;
 $c->{plugins}{"Screen::EPrint::RIOXX2"}{params}{disable} = 0;
-$c->{plugins}{'InputForm::Component::Field::Rioxx2'}{params}{disable} = 0;
+$c->{plugins}{'InputForm::Component::Field::RIOXX2'}{params}{disable} = 0;

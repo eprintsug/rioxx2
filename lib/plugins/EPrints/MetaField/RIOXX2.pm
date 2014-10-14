@@ -1,4 +1,4 @@
-package EPrints::MetaField::Rioxx2;
+package EPrints::MetaField::RIOXX2;
 
 @ISA = qw( EPrints::MetaField );
 

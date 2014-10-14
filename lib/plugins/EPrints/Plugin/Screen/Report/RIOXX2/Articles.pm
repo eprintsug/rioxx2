@@ -1,7 +1,7 @@
-package EPrints::Plugin::Screen::Report::Rioxx2::Articles;
+package EPrints::Plugin::Screen::Report::RIOXX2::Articles;
 
-use EPrints::Plugin::Screen::Report::Rioxx2;
-our @ISA = ( 'EPrints::Plugin::Screen::Report::Rioxx2' );
+use EPrints::Plugin::Screen::Report::RIOXX2;
+our @ISA = ( 'EPrints::Plugin::Screen::Report::RIOXX2' );
 
 use strict;
 

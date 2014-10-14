@@ -1,4 +1,4 @@
-package EPrints::Plugin::Screen::Report::Rioxx2;
+package EPrints::Plugin::Screen::Report::RIOXX2;
 
 use EPrints::Plugin::Screen::Report;
 our @ISA = ( 'EPrints::Plugin::Screen::Report' );

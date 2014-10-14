@@ -10876,7 +10876,7 @@ MTMwMzkvNTAxMTAwMDA0OTE3LCJEb29zYW4gWW9ua2FuZyBGb3VuZGF0aW9uIg0K
         <file>
           <filename>epm/rioxx2/cfg/cfg.d/zz_rioxx2.pl</filename>
           <mime_type>text/plain</mime_type>
-          <hash>3aef29129b2fbf373ae4e346542312ad</hash>
+          <hash>17c3f26c6bc51d2904252f33d81a29a8</hash>
           <hash_type>MD5</hash_type>
           <filesize>13370</filesize>
           <data encoding='base64'>Cj1wb2QKClRoZSBSSU9YWCAyLjAgYXBwbGljYXRpb24gcHJvZmlsZQoKQSByZXByZXNlbnRhdGlv
@@ -10953,7 +10953,7 @@ ICJOQSIgfSwKfSwKCnsKCW5hbWUgPT4gInJpb3h4Ml92ZXJzaW9uX29mX3JlY29yZCIsCglyaW94
 eDJfcmVxdWlyZWQgPT4gIm1hbmRhdG9yeSIsCglyaW94eDJfbnMgPT4gInJpb3h4dGVybXMiLAoJ
 cmlveHgyX3ZhbHVlID0+InJpb3h4Ml92YWx1ZV92ZXJzaW9uX29mX3JlY29yZCIsCglyaW94eDJf
 dmFsaWRhdGUgPT4gInJpb3h4Ml92YWxpZGF0ZV92ZXJzaW9uX29mX3JlY29yZCIKfSwKCjsKCmZv
-ciggQHsgJGMtPntyaW94eDJ9LT57cHJvZmlsZX0gfSApCnsKCSRfLT57dHlwZX0gPSAicmlveHgy
+ciggQHsgJGMtPntyaW94eDJ9LT57cHJvZmlsZX0gfSApCnsKCSRfLT57dHlwZX0gPSAiUklPWFgy
 IjsgIyB2aXJ0dWFsIGZpZWxkCgkkYy0+YWRkX2RhdGFzZXRfZmllbGQoICJlcHJpbnQiLCAkXyAp
 Owp9Cgo9cG9kCgpNYXAgZXByaW50IGRlcG9zaXQgdHlwZSB0byBSSU9YWCB0eXBlIGVsZW1lbnQK
 Cj1jdXQKCiRjLT57cmlveHgyfS0+e3R5cGVfbWFwfSA9IHsKCWFydGljbGUJCT0+ICdKb3VybmFs
@@ -11113,13 +11113,13 @@ ZWNvcmQ6bm90X2h0dHBfdXJpIiApOwoJfQoKCXJldHVybjsKfTsKCiMgRW5hYmxlIGNvcmUgUklP
 WFgyIHBsdWdpbnMKJGMtPntwbHVnaW5zfXsnRXhwb3J0OjpSSU9YWDInfXtwYXJhbXN9e2Rpc2Fi
 bGV9ID0gMDsKJGMtPntwbHVnaW5zfXsiU2NyZWVuOjpFUHJpbnQ6OlJJT1hYMiJ9e3BhcmFtc317
 ZGlzYWJsZX0gPSAwOwokYy0+e3BsdWdpbnN9eydJbnB1dEZvcm06OkNvbXBvbmVudDo6RmllbGQ6
-OlJpb3h4Mid9e3BhcmFtc317ZGlzYWJsZX0gPSAwOwo=
+OlJJT1hYMid9e3BhcmFtc317ZGlzYWJsZX0gPSAwOwo=
 </data>
         </file>
         <file>
           <filename>epm/rioxx2/cfg/cfg.d/zz_rioxx2_report.pl</filename>
           <mime_type>text/plain</mime_type>
-          <hash>086bb3b667d8251356f43532f8de2aee</hash>
+          <hash>9a43afb1bbb4a1237f86957d2a1463a0</hash>
           <hash_type>MD5</hash_type>
           <filesize>2494</filesize>
           <data encoding='base64'>Cm15IEByaW94eDJfZmllbGRzID0gKAoJewoJCXRhcmdldCA9PiAiZGM6Y292ZXJhZ2UiLAoJCXNv
@@ -11162,10 +11162,10 @@ fSA9PiAkXy0+e3NvdXJjZX0gfSBAcmlveHgyX2ZpZWxkcyB9OwokYy0+e3JlcG9ydHN9LT57InJp
 b3h4Mi1hcnRpY2xlcyJ9LT57dmFsaWRhdGV9ID0geyBtYXAgeyAkXy0+e3RhcmdldH0gPT4gJF8t
 Pnt2YWxpZGF0ZX0gfSBAcmlveHgyX2ZpZWxkcyB9OwoKIyBFbmFibGUgb3B0aW9uYWwgUklPWFgy
 IHBsdWdpbnMgZm9yIHJlcG9ydGluZyBmcmFtZXdvcmsgKGh0dHBzOi8vZ2l0aHViLmNvbS9lcHJp
-bnRzL3JlcG9ydHMpCiRjLT57cGx1Z2luc317IlNjcmVlbjo6UmVwb3J0OjpSaW94eDIifXtwYXJh
-bXN9e2Rpc2FibGV9ID0gMDsKJGMtPntwbHVnaW5zfXsiU2NyZWVuOjpSZXBvcnQ6OlJpb3h4Mjo6
+bnRzL3JlcG9ydHMpCiRjLT57cGx1Z2luc317IlNjcmVlbjo6UmVwb3J0OjpSSU9YWDIifXtwYXJh
+bXN9e2Rpc2FibGV9ID0gMDsKJGMtPntwbHVnaW5zfXsiU2NyZWVuOjpSZXBvcnQ6OlJJT1hYMjo6
 QXJ0aWNsZXMifXtwYXJhbXN9e2Rpc2FibGV9ID0gMDsKJGMtPntwbHVnaW5zfXsiRXhwb3J0OjpS
-ZXBvcnQ6OkNTVjo6UmlveHgyIn17cGFyYW1zfXtkaXNhYmxlfSA9IDA7Cg==
+ZXBvcnQ6OkNTVjo6UklPWFgyIn17cGFyYW1zfXtkaXNhYmxlfSA9IDA7Cg==
 </data>
         </file>
         <file>
@@ -11263,7 +11263,7 @@ ICRuYW1lOwoJfQoJY2xvc2UgREFUQTsKCglyZXR1cm4gJGxvb2t1cF91cmk7Cn0K
         <file>
           <filename>lang/en/phrases/rioxx2.xml</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>d9e13cd93a781ea29573511e1af6cf1d</hash>
+          <hash>ff50a14eefe893b9d3f5111ff5a13077</hash>
           <hash_type>MD5</hash_type>
           <filesize>19450</filesize>
           <data encoding='base64'>PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjwh
@@ -11378,14 +11378,14 @@ L2VwcDpwaHJhc2U+CiA8ZXBwOnBocmFzZSBpZD0iZXByaW50X2ZpZWxkbmFtZV9yaW94eDJfdmVy
 c2lvbl9vZl9yZWNvcmQiPlZlcnNpb24gb2YgUmVjb3JkPC9lcHA6cGhyYXNlPgoKIDxlcHA6cGhy
 YXNlIGlkPSJtZXRhcGFnZV90aXRsZV9yaW94eDIiPjxzcGFuIGlkPSJyaW94eDJfdGFiX3RpdGxl
 Ij5yaW94eDwvc3Bhbj48L2VwcDpwaHJhc2U+CgogPGVwcDpwaHJhc2UgaWQ9IlBsdWdpbi9JbnB1
-dEZvcm0vQ29tcG9uZW50L0ZpZWxkL1Jpb3h4Mjpjb250ZW50Ij4KCTxlcGM6cGluIG5hbWU9ImNo
+dEZvcm0vQ29tcG9uZW50L0ZpZWxkL1JJT1hYMjpjb250ZW50Ij4KCTxlcGM6cGluIG5hbWU9ImNo
 b29zZV9jb250YWluZXIiPgoJCTxsYWJlbD48ZXBjOnBpbiBuYW1lPSJ1c2VfbWFwcGluZyIvPlVz
 ZSBkZWZhdWx0IG1hcHBpbmc6IDxlcGM6cGluIG5hbWU9Im1hcHBlZF92YWx1ZSIvPjwvbGFiZWw+
 CgkJPGJyLz4KCQk8bGFiZWw+PGVwYzpwaW4gbmFtZT0idXNlX292ZXJyaWRlIi8+T3ZlcnJpZGUg
 dGhlIGRlZmF1bHQgbWFwcGluZyBieSBwcm92aWRpbmcgYSB2YWx1ZTwvbGFiZWw+Cgk8L2VwYzpw
 aW4+Cgk8ZXBjOnBpbiBuYW1lPSJpbnB1dF9jb250YWluZXIiPgoJCTxlcGM6cGluIG5hbWU9Imlu
 cHV0Ii8+Cgk8L2VwYzpwaW4+CjwvZXBwOnBocmFzZT4KCjxlcHA6cGhyYXNlIGlkPSJQbHVnaW4v
-SW5wdXRGb3JtL0NvbXBvbmVudC9GaWVsZC9SaW94eDI6ZXJyb3JfbWlzc2luZ19pbnB1dCI+PGVt
+SW5wdXRGb3JtL0NvbXBvbmVudC9GaWVsZC9SSU9YWDI6ZXJyb3JfbWlzc2luZ19pbnB1dCI+PGVt
 PjxlcGM6cGluIG5hbWU9InJlZiIvPjwvZW0+IHJlcXVpcmVzIDxlbT48ZXBjOnBpbiBuYW1lPSJy
 ZWYiLz5faW5wdXQ8L2VtPiB0byBiZSBkZWZpbmVkOiA8cHJlPjxlcGM6cGluIG5hbWU9InhtbCIg
 Lz48L3ByZT48L2VwcDpwaHJhc2U+Cgo8ZXBwOnBocmFzZSBpZD0iUGx1Z2luL1NjcmVlbi9FUHJp
@@ -11603,10 +11603,10 @@ cHA6cGhyYXNlPgo8ZXBwOnBocmFzZSBpZD0iY2dpL2xvb2t1cC9yaW94eDJfcHJvamVjdDpmdW5k
 ZXIiPjxlcGM6cGluIG5hbWU9Im5hbWUiLz48YnIvPig8ZXBjOnBpbiBuYW1lPSJpZCIvPik8L2Vw
 cDpwaHJhc2U+CjxlcHA6cGhyYXNlIGlkPSJjZ2kvbG9va3VwL3Jpb3h4Ml9wcm9qZWN0OmZvdW5k
 Ij48c21hbGw+IChhc3NvY2lhdGVkIHdpdGggPGVwYzpwaW4gbmFtZT0iY291bnQiLz4gaXRlbShz
-KSBpbiB0aGlzIHJlcG9zaXRvcnkpPC9zbWFsbD48L2VwcDpwaHJhc2U+Cgo8IS0tIHRoZSBSaW94
-eDIgcmVwb3J0cyAtLT4KPGVwcDpwaHJhc2UgaWQ9IlBsdWdpbi9TY3JlZW4vUmVwb3J0L1Jpb3h4
-Mjp0aXRsZSI+UmlveHgyPC9lcHA6cGhyYXNlPgo8ZXBwOnBocmFzZSBpZD0iUGx1Z2luL1NjcmVl
-bi9SZXBvcnQvUmlveHgyL0FydGljbGVzOnRpdGxlIj5BcnRpY2xlczwvZXBwOnBocmFzZT4KCjwv
+KSBpbiB0aGlzIHJlcG9zaXRvcnkpPC9zbWFsbD48L2VwcDpwaHJhc2U+Cgo8IS0tIHRoZSBSSU9Y
+WDIgcmVwb3J0cyAtLT4KPGVwcDpwaHJhc2UgaWQ9IlBsdWdpbi9TY3JlZW4vUmVwb3J0L1JJT1hY
+Mjp0aXRsZSI+UklPWFgyPC9lcHA6cGhyYXNlPgo8ZXBwOnBocmFzZSBpZD0iUGx1Z2luL1NjcmVl
+bi9SZXBvcnQvUklPWFgyL0FydGljbGVzOnRpdGxlIj5BcnRpY2xlczwvZXBwOnBocmFzZT4KCjwv
 ZXBwOnBocmFzZXM+Cg==
 </data>
         </file>
@@ -11949,12 +11949,12 @@ c2VzPgo=
 </data>
         </file>
         <file>
-          <filename>plugins/EPrints/MetaField/Rioxx2.pm</filename>
+          <filename>plugins/EPrints/MetaField/RIOXX2.pm</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>6dc98f300382f4cdc5932a8470d9f3d3</hash>
+          <hash>4981b12726c033833efc3d17e73ee1a7</hash>
           <hash_type>MD5</hash_type>
           <filesize>2152</filesize>
-          <data encoding='base64'>cGFja2FnZSBFUHJpbnRzOjpNZXRhRmllbGQ6OlJpb3h4MjsKCkBJU0EgPSBxdyggRVByaW50czo6
+          <data encoding='base64'>cGFja2FnZSBFUHJpbnRzOjpNZXRhRmllbGQ6OlJJT1hYMjsKCkBJU0EgPSBxdyggRVByaW50czo6
 TWV0YUZpZWxkICk7Cgp1c2UgRVByaW50czo6Q29uc3QgcXcoIDptZXRhZmllbGQgKTsKCnVzZSBz
 dHJpY3Q7CgpzdWIgaXNfdmlydHVhbCB7IDEgfQoKc3ViIGdldF92YWx1ZQp7CglteSggJHNlbGYs
 ICRvYmplY3QsICRpZ25vcmVfb3ZlcnJpZGUgKSA9IEBfOwoKCWlmKCAhJGlnbm9yZV9vdmVycmlk
@@ -11997,7 +11997,7 @@ CgoJcmV0dXJuICVkZWZhdWx0czsKfQoKc3ViIHRvX3NheAp7Cn0KCjE7Cg==
         <file>
           <filename>plugins/EPrints/Plugin/Export/RIOXX2.pm</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>bc32f5891c78c481e46aae53cc241309</hash>
+          <hash>e4562630051c42343bf813cdb772ce23</hash>
           <hash_type>MD5</hash_type>
           <filesize>2047</filesize>
           <data encoding='base64'>cGFja2FnZSBFUHJpbnRzOjpQbHVnaW46OkV4cG9ydDo6UklPWFgyOwoKdXNlIGJhc2UgcXcoIEVQ
@@ -12023,7 +12023,7 @@ Lm9yZy9tYWRlL3VwL25hbWVzcGFjZS8iLAogICAgICAgIAkneG1sbnM6eHNpJyA9PiAiaHR0cDov
 L3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiLAoJCSd4c2k6c2NoZW1hTG9jYXRp
 b24nID0+ICRzZWxmLT5wYXJhbSgneG1sbnMnKS4iICIuJHNlbGYtPnBhcmFtKCdzY2hlbWFMb2Nh
 dGlvbicpLAoJKTsKCglteSBAZGF0YTsKCglmb3JlYWNoIG15ICRmaWVsZCAoIGdyZXAgeyAkXy0+
-dHlwZSA9fiAvXnJpb3h4MiQvIH0gJGVwcmludC0+ZGF0YXNldC0+Z2V0X2ZpZWxkcyApIAoJewoJ
+dHlwZSA9fiAvXlJJT1hYMiQvIH0gJGVwcmludC0+ZGF0YXNldC0+Z2V0X2ZpZWxkcyApIAoJewoJ
 CSRmaWVsZC0+bmFtZSA9fiAvXnJpb3h4Ml8oLiopJC87CgkJCgkJbXkgJHZhbHVlID0gJGZpZWxk
 LT5nZXRfdmFsdWUoICRlcHJpbnQgKTsKCQkkdmFsdWUgPSBbICR2YWx1ZSBdIHVubGVzcyByZWYo
 ICR2YWx1ZSApIGVxICJBUlJBWSI7CgoJCWZvciggQCR2YWx1ZSApCgkJewoJCQluZXh0IHVubGVz
@@ -12039,28 +12039,28 @@ cmVhdGVfZGF0YV9lbGVtZW50KEAkXykpOwoJfQoKCXJldHVybiAkcmlveHg7Cn0KCjE7Cg==
 </data>
         </file>
         <file>
-          <filename>plugins/EPrints/Plugin/Export/Report/CSV/Rioxx2.pm</filename>
+          <filename>plugins/EPrints/Plugin/Export/Report/CSV/RIOXX2.pm</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>8aa7b0b23f70c8157008b52145854e27</hash>
+          <hash>c34610b121658e750d7d1ddc798797cd</hash>
           <hash_type>MD5</hash_type>
           <filesize>378</filesize>
-          <data encoding='base64'>cGFja2FnZSBFUHJpbnRzOjpQbHVnaW46OkV4cG9ydDo6UmVwb3J0OjpDU1Y6OlJpb3h4MjsKCnVz
+          <data encoding='base64'>cGFja2FnZSBFUHJpbnRzOjpQbHVnaW46OkV4cG9ydDo6UmVwb3J0OjpDU1Y6OlJJT1hYMjsKCnVz
 ZSBFUHJpbnRzOjpQbHVnaW46OkV4cG9ydDo6UmVwb3J0OjpDU1Y7Cm91ciBASVNBID0gKCAiRVBy
 aW50czo6UGx1Z2luOjpFeHBvcnQ6OlJlcG9ydDo6Q1NWIiApOwoKdXNlIHN0cmljdDsKCnN1YiBu
 ZXcKewoJbXkoICRjbGFzcywgJXBhcmFtcyApID0gQF87CgoJbXkgJHNlbGYgPSAkY2xhc3MtPlNV
-UEVSOjpuZXcoICVwYXJhbXMgKTsKCgkkc2VsZi0+e25hbWV9ID0gIlJpb3h4MiBDU1YiOwoJJHNl
+UEVSOjpuZXcoICVwYXJhbXMgKTsKCgkkc2VsZi0+e25hbWV9ID0gIlJJT1hYMiBDU1YiOwoJJHNl
 bGYtPnthY2NlcHR9ID0gWyAncmVwb3J0L3Jpb3h4Mi1hcnRpY2xlcycsIF07Cgkkc2VsZi0+e2Fk
 dmVydGlzZX0gPSAxOwoJcmV0dXJuICRzZWxmOwp9CgoKMTsK
 </data>
         </file>
         <file>
-          <filename>plugins/EPrints/Plugin/InputForm/Component/Field/Rioxx2.pm</filename>
+          <filename>plugins/EPrints/Plugin/InputForm/Component/Field/RIOXX2.pm</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>c9ce7b4b7f493c1b1ca51ea54b9d7ce4</hash>
+          <hash>89d3300be21c693c5efb930230d2fed0</hash>
           <hash_type>MD5</hash_type>
           <filesize>2727</filesize>
-          <data encoding='base64'>cGFja2FnZSBFUHJpbnRzOjpQbHVnaW46OklucHV0Rm9ybTo6Q29tcG9uZW50OjpGaWVsZDo6Umlv
-eHgyOwoKdXNlIEVQcmludHM6OlBsdWdpbjo6SW5wdXRGb3JtOjpDb21wb25lbnQ6OkZpZWxkOwoK
+          <data encoding='base64'>cGFja2FnZSBFUHJpbnRzOjpQbHVnaW46OklucHV0Rm9ybTo6Q29tcG9uZW50OjpGaWVsZDo6UklP
+WFgyOwoKdXNlIEVQcmludHM6OlBsdWdpbjo6SW5wdXRGb3JtOjpDb21wb25lbnQ6OkZpZWxkOwoK
 QElTQSA9ICggIkVQcmludHM6OlBsdWdpbjo6SW5wdXRGb3JtOjpDb21wb25lbnQ6OkZpZWxkIiAp
 OwoKdXNlIHN0cmljdDsKCnN1YiBuZXcKewoJbXkoICRjbGFzcywgJW9wdHMgKSA9IEBfOwoKCW15
 ICRzZWxmID0gJGNsYXNzLT5TVVBFUjo6bmV3KCAlb3B0cyApOwoKCSRzZWxmLT57bmFtZX0gPSAi
@@ -12069,7 +12069,7 @@ LCAkY29uZmlnX2RvbSApID0gQF87CgoJJHNlbGYtPlNVUEVSOjpwYXJzZV9jb25maWcoICRjb25m
 aWdfZG9tICk7CgoJcmV0dXJuIGlmIHNjYWxhciBAeyRzZWxmLT57cHJvYmxlbXN9fTsKCgl1bmxl
 c3MoIGRlZmluZWQgJHNlbGYtPl9pbnB1dF9maWVsZCApCgl7CgkJcHVzaCBAeyRzZWxmLT57cHJv
 YmxlbXN9fSwgJHNlbGYtPnJlcG9zaXRvcnktPmh0bWxfcGhyYXNlKCAiUGx1Z2luL0lucHV0Rm9y
-bS9Db21wb25lbnQvRmllbGQvUmlveHgyOmVycm9yX21pc3NpbmdfaW5wdXQiLAoJCQlyZWYgPT4g
+bS9Db21wb25lbnQvRmllbGQvUklPWFgyOmVycm9yX21pc3NpbmdfaW5wdXQiLAoJCQlyZWYgPT4g
 JHNlbGYtPnJlcG9zaXRvcnktPnhtbC0+Y3JlYXRlX3RleHRfbm9kZSggJHNlbGYtPntjb25maWd9
 LT57ZmllbGR9LT5uYW1lICksCgkJCXhtbCA9PiAkc2VsZi0+cmVwb3NpdG9yeS0+eG1sLT5jcmVh
 dGVfdGV4dF9ub2RlKCAkc2VsZi0+e3JlcG9zaXRvcnl9LT54bWwtPnRvX3N0cmluZyggJGNvbmZp
@@ -12110,12 +12110,12 @@ ZmllbGR9LT5pc19tYW5kYXRvcnkoICRzZWxmLT57ZGF0YW9ian0gKTsKfQoKMTsK
 </data>
         </file>
         <file>
-          <filename>plugins/EPrints/Plugin/Screen/EPMC/Rioxx2.pm</filename>
+          <filename>plugins/EPrints/Plugin/Screen/EPMC/RIOXX2.pm</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>f3af36b14d3eb5ee1b0a349069a58210</hash>
+          <hash>4656e72ce4293272825b92bcc5bd76e5</hash>
           <hash_type>MD5</hash_type>
           <filesize>1826</filesize>
-          <data encoding='base64'>cGFja2FnZSBFUHJpbnRzOjpQbHVnaW46OlNjcmVlbjo6RVBNQzo6UmlveHgyOwoKQElTQSA9ICgg
+          <data encoding='base64'>cGFja2FnZSBFUHJpbnRzOjpQbHVnaW46OlNjcmVlbjo6RVBNQzo6UklPWFgyOwoKQElTQSA9ICgg
 J0VQcmludHM6OlBsdWdpbjo6U2NyZWVuOjpFUE1DJyApOwoKdXNlIHN0cmljdDsKIyBNYWtlIHRo
 ZSBwbHVnLWluCnN1YiBuZXcKewogICAgICBteSggJGNsYXNzLCAlcGFyYW1zICkgPSBAXzsKCiAg
 ICAgIG15ICRzZWxmID0gJGNsYXNzLT5TVVBFUjo6bmV3KCAlcGFyYW1zICk7CgogICAgICAkc2Vs
@@ -12153,7 +12153,7 @@ Cgo=
         <file>
           <filename>plugins/EPrints/Plugin/Screen/EPrint/RIOXX2.pm</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>6fc2c9eb2bcdbe2b5483b89c2a7400b6</hash>
+          <hash>d219b300b5094b34e19ccdf1295938d4</hash>
           <hash_type>MD5</hash_type>
           <filesize>3570</filesize>
           <data encoding='base64'>PWhlYWQxIE5BTUUKCkVQcmludHM6OlBsdWdpbjo6U2NyZWVuOjpFUHJpbnQ6OlJJT1hYMgoKPWN1
@@ -12183,7 +12183,7 @@ cl9leHBvcnQgKTsKCglyZXR1cm4gJHBhZ2U7Cgp9CgpzdWIgdmFsaWRhdGVfZmllbGRzCnsKCW15
 KCAkc2VsZiApID0gQF87CgoJbXkoIEBwcm9ibGVtcywgQHJlY29tbWVuZGVkLCBAb3B0aW9uYWwg
 KTsKCglteSAkcmVwbyA9ICRzZWxmLT57cmVwb3NpdG9yeX07CglteSAkZXByaW50ID0gJHNlbGYt
 Pntwcm9jZXNzb3J9LT57ZXByaW50fTsKCglteSBAZmllbGRzID0gZ3JlcCB7ICRfLT50eXBlID1+
-IC9ecmlveHgyJC8gfSAkZXByaW50LT5nZXRfZGF0YXNldC0+Z2V0X2ZpZWxkczsKCWZvcmVhY2gg
+IC9eUklPWFgyJC8gfSAkZXByaW50LT5nZXRfZGF0YXNldC0+Z2V0X2ZpZWxkczsKCWZvcmVhY2gg
 bXkgJGZpZWxkICggQGZpZWxkcyApCgl7CgkJaWYoIG15IEBwID0gJGZpZWxkLT52YWxpZGF0ZSgg
 JHJlcG8sICRlcHJpbnQtPnZhbHVlKCAkZmllbGQtPmdldF9uYW1lICksICRlcHJpbnQgKSApCgkJ
 ewoJCQlmb3IoIEBwICkKCQkJewoJCQkJcHVzaCBAcHJvYmxlbXMsIHsgZmllbGQgPT4gJGZpZWxk
@@ -12222,12 +12222,12 @@ bl9pZCB7IHJldHVybiAiRVByaW50OjpFZGl0IjsgfQoKMTsK
 </data>
         </file>
         <file>
-          <filename>plugins/EPrints/Plugin/Screen/Report/Rioxx2.pm</filename>
+          <filename>plugins/EPrints/Plugin/Screen/Report/RIOXX2.pm</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>fd0d5b33375a81baf03242708fcc2501</hash>
+          <hash>29a9b5e4376d5b8e00e9e12b330f7bf3</hash>
           <hash_type>MD5</hash_type>
           <filesize>1893</filesize>
-          <data encoding='base64'>cGFja2FnZSBFUHJpbnRzOjpQbHVnaW46OlNjcmVlbjo6UmVwb3J0OjpSaW94eDI7Cgp1c2UgRVBy
+          <data encoding='base64'>cGFja2FnZSBFUHJpbnRzOjpQbHVnaW46OlNjcmVlbjo6UmVwb3J0OjpSSU9YWDI7Cgp1c2UgRVBy
 aW50czo6UGx1Z2luOjpTY3JlZW46OlJlcG9ydDsKb3VyIEBJU0EgPSAoICdFUHJpbnRzOjpQbHVn
 aW46OlNjcmVlbjo6UmVwb3J0JyApOwoKdXNlIHN0cmljdDsKCiMKIyBBIHNpbXBsZSBSZXBvcnQK
 IwoKc3ViIG5ldwp7CglteSggJGNsYXNzLCAlcGFyYW1zICkgPSBAXzsKCglteSAkc2VsZiA9ICRj
@@ -12264,14 +12264,14 @@ ZWN0czsKfQoKMTsK
 </data>
         </file>
         <file>
-          <filename>plugins/EPrints/Plugin/Screen/Report/Rioxx2/Articles.pm</filename>
+          <filename>plugins/EPrints/Plugin/Screen/Report/RIOXX2/Articles.pm</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>0fc53ea0deb378ee5a868ac0925111ee</hash>
+          <hash>de7fd6881c5a14440160c7de0cbfdd13</hash>
           <hash_type>MD5</hash_type>
           <filesize>495</filesize>
-          <data encoding='base64'>cGFja2FnZSBFUHJpbnRzOjpQbHVnaW46OlNjcmVlbjo6UmVwb3J0OjpSaW94eDI6OkFydGljbGVz
-OwoKdXNlIEVQcmludHM6OlBsdWdpbjo6U2NyZWVuOjpSZXBvcnQ6OlJpb3h4MjsKb3VyIEBJU0Eg
-PSAoICdFUHJpbnRzOjpQbHVnaW46OlNjcmVlbjo6UmVwb3J0OjpSaW94eDInICk7Cgp1c2Ugc3Ry
+          <data encoding='base64'>cGFja2FnZSBFUHJpbnRzOjpQbHVnaW46OlNjcmVlbjo6UmVwb3J0OjpSSU9YWDI6OkFydGljbGVz
+OwoKdXNlIEVQcmludHM6OlBsdWdpbjo6U2NyZWVuOjpSZXBvcnQ6OlJJT1hYMjsKb3VyIEBJU0Eg
+PSAoICdFUHJpbnRzOjpQbHVnaW46OlNjcmVlbjo6UmVwb3J0OjpSSU9YWDInICk7Cgp1c2Ugc3Ry
 aWN0OwoKc3ViIG5ldwp7CglteSggJGNsYXNzLCAlcGFyYW1zICkgPSBAXzsKCglteSAkc2VsZiA9
 ICRjbGFzcy0+U1VQRVI6Om5ldyggJXBhcmFtcyApOwoKCSRzZWxmLT57cmVwb3J0fSA9ICdyaW94
 eDItYXJ0aWNsZXMnOwoKCXJldHVybiAkc2VsZjsKfQoKc3ViIGZpbHRlcnMKewoJbXkoICRzZWxm
@@ -14292,27 +14292,27 @@ wBLODC5AUqKMKz8hAixgzRDnHRMjWFZWxgPRqg+xlrEsLxzMD/NjYAj1iImJltSGK2BgMAuAu9QI
         <file>
           <filename>workflows/eprint/rioxx2.xml</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>a85a554ab1aa6318b76fd3eab2db987e</hash>
+          <hash>f6393a8c6bae3d7df965d40a43c27e56</hash>
           <hash_type>MD5</hash_type>
           <filesize>1067</filesize>
           <data encoding='base64'>PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KCjx3b3JrZmxvdyB4bWxucz0i
 aHR0cDovL2VwcmludHMub3JnL2VwMy93b3JrZmxvdyIgeG1sbnM6ZXBjPSJodHRwOi8vZXByaW50
 cy5vcmcvZXAzL2NvbnRyb2wiPgoKCTxmbG93PgogICAgCQk8ZXBjOmlmIHRlc3Q9IiRTVEFGRl9P
 TkxZID0gJ1RSVUUnIj4KCQkJPHN0YWdlIHJlZj0icmlveHgyIi8+CgkJPC9lcGM6aWY+Cgk8L2Zs
-b3c+CgoJPHN0YWdlIG5hbWU9InJpb3h4MiI+CgkJPGNvbXBvbmVudCB0eXBlPSJGaWVsZDo6Umlv
-eHgyIj48ZmllbGQgcmVmPSJyaW94eDJfdHlwZSIgLz48L2NvbXBvbmVudD4KCQk8Y29tcG9uZW50
-IHR5cGU9IkZpZWxkOjpSaW94eDIiPjxmaWVsZCByZWY9InJpb3h4Ml9jb3ZlcmFnZSIgLz48L2Nv
-bXBvbmVudD4KCQk8Y29tcG9uZW50IHR5cGU9IkZpZWxkOjpSaW94eDIiPjxmaWVsZCByZWY9InJp
+b3c+CgoJPHN0YWdlIG5hbWU9InJpb3h4MiI+CgkJPGNvbXBvbmVudCB0eXBlPSJGaWVsZDo6UklP
+WFgyIj48ZmllbGQgcmVmPSJyaW94eDJfdHlwZSIgLz48L2NvbXBvbmVudD4KCQk8Y29tcG9uZW50
+IHR5cGU9IkZpZWxkOjpSSU9YWDIiPjxmaWVsZCByZWY9InJpb3h4Ml9jb3ZlcmFnZSIgLz48L2Nv
+bXBvbmVudD4KCQk8Y29tcG9uZW50IHR5cGU9IkZpZWxkOjpSSU9YWDIiPjxmaWVsZCByZWY9InJp
 b3h4Ml9sYW5ndWFnZSIgLz48L2NvbXBvbmVudD4KCQk8Y29tcG9uZW50IHR5cGU9IkZpZWxkOjpS
-aW94eDIiPjxmaWVsZCByZWY9InJpb3h4Ml9kYXRlQWNjZXB0ZWQiIC8+PC9jb21wb25lbnQ+CgkJ
-PGNvbXBvbmVudCB0eXBlPSJGaWVsZDo6UmlveHgyIj48ZmllbGQgcmVmPSJyaW94eDJfZnJlZV90
-b19yZWFkIiAvPjwvY29tcG9uZW50PgoJCTxjb21wb25lbnQgdHlwZT0iRmllbGQ6OlJpb3h4MiI+
+SU9YWDIiPjxmaWVsZCByZWY9InJpb3h4Ml9kYXRlQWNjZXB0ZWQiIC8+PC9jb21wb25lbnQ+CgkJ
+PGNvbXBvbmVudCB0eXBlPSJGaWVsZDo6UklPWFgyIj48ZmllbGQgcmVmPSJyaW94eDJfZnJlZV90
+b19yZWFkIiAvPjwvY29tcG9uZW50PgoJCTxjb21wb25lbnQgdHlwZT0iRmllbGQ6OlJJT1hYMiI+
 PGZpZWxkIHJlZj0icmlveHgyX2xpY2Vuc2VfcmVmIiAvPjwvY29tcG9uZW50PgoJCTxjb21wb25l
-bnQgdHlwZT0iRmllbGQ6OlJpb3h4MiI+PGZpZWxkIHJlZj0icmlveHgyX2FwYyIgLz48L2NvbXBv
-bmVudD4KCQk8Y29tcG9uZW50IHR5cGU9IkZpZWxkOjpSaW94eDIiPjxmaWVsZCByZWY9InJpb3h4
-Ml9wcm9qZWN0IiAvPjwvY29tcG9uZW50PgoJCTxjb21wb25lbnQgdHlwZT0iRmllbGQ6OlJpb3h4
+bnQgdHlwZT0iRmllbGQ6OlJJT1hYMiI+PGZpZWxkIHJlZj0icmlveHgyX2FwYyIgLz48L2NvbXBv
+bmVudD4KCQk8Y29tcG9uZW50IHR5cGU9IkZpZWxkOjpSSU9YWDIiPjxmaWVsZCByZWY9InJpb3h4
+Ml9wcm9qZWN0IiAvPjwvY29tcG9uZW50PgoJCTxjb21wb25lbnQgdHlwZT0iRmllbGQ6OlJJT1hY
 MiI+PGZpZWxkIHJlZj0icmlveHgyX3B1YmxpY2F0aW9uX2RhdGUiIC8+PC9jb21wb25lbnQ+CgkJ
-PGNvbXBvbmVudCB0eXBlPSJGaWVsZDo6UmlveHgyIj48ZmllbGQgcmVmPSJyaW94eDJfdmVyc2lv
+PGNvbXBvbmVudCB0eXBlPSJGaWVsZDo6UklPWFgyIj48ZmllbGQgcmVmPSJyaW94eDJfdmVyc2lv
 biIgLz48L2NvbXBvbmVudD4KCTwvc3RhZ2U+Cgo8L3dvcmtmbG93Pgo=
 </data>
         </file>
@@ -16106,7 +16106,7 @@ MHpDHz0AAAAASUVORK5CYII=
     </document>
   </documents>
   <version>1.0.0</version>
-  <controller>EPMC::Rioxx2</controller>
+  <controller>EPMC::RIOXX2</controller>
   <creators>
     <item>
       <name>

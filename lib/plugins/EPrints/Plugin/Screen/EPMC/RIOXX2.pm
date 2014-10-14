@@ -1,4 +1,4 @@
-package EPrints::Plugin::Screen::EPMC::Rioxx2;
+package EPrints::Plugin::Screen::EPMC::RIOXX2;
 
 @ISA = ( 'EPrints::Plugin::Screen::EPMC' );
 
