@@ -545,19 +545,33 @@ $c->{rioxx2_validate_project} = sub {
 	my( $repo, $value, $eprint ) = @_;
 
 	my @problems;
-	for( @$value )
+	foreach my $entry ( @$value )
 	{
-		unless( EPrints::Utils::is_set( $_->{project} ) )
+		my $project = $entry->{project};
+		my $funder_name = $entry->{funder_name};
+		my $funder_id = $entry->{funder_id};
+		unless( EPrints::Utils::is_set( $project ) )
 		{
 			push @problems, $repo->html_phrase( "rioxx2_validate_rioxx2_project:not_done_part_project" );
 		}
-		if( $_->{funder} && !EPrints::RIOXX2::Utils::is_valid_funder( $_->{funder} ) )
+		unless( EPrints::Utils::is_set( $funder_name ) || EPrints::Utils::is_set( $funder_id ) )
+		{
+			push @problems, $repo->html_phrase( "rioxx2_validate_rioxx2_project:not_done_part_funder" );
+		}
+
+        	my $funder_lookup = EPrints::RIOXX2::Utils::get_funder_lookup( $repo ) if $funder_name; 
+
+		if( $funder_name && !EPrints::RIOXX2::Utils::is_valid_funder_name( $funder_name, $funder_lookup ) )
 		{
 			push @problems, $repo->html_phrase( "rioxx2_validate_rioxx2_project:not_valid_funder" );
 		}
-		if( $_->{funder_id} && !EPrints::RIOXX2::Utils::is_http_uri( $_->{funder_id} ) )
+		if( $funder_id && !EPrints::RIOXX2::Utils::is_http_uri( $funder_id ) )
 		{
 			push @problems, $repo->html_phrase( "rioxx2_validate_rioxx2_project:not_http_uri" );
+		}
+		if( $funder_id && $funder_name && !EPrints::RIOXX2::Utils::is_valid_funder_id( $funder_id, $funder_name, $funder_lookup ) )
+		{
+			push @problems, $repo->html_phrase( "rioxx2_validate_rioxx2_project:funder_name_id_do_not_match" );
 		}
 	}
 	return @problems;
@@ -573,6 +587,8 @@ $c->{rioxx2_validate_version_of_record} = sub {
 
 	return;
 };
+
+$c->{fundref_csv_file} = $c->{"config_path"}."/autocomplete/funderNames";
 
 # Enable core RIOXX2 plugins
 $c->{plugins}{'Export::RIOXX2'}{params}{disable} = 0;

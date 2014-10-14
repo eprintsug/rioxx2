@@ -3,11 +3,46 @@ package EPrints::RIOXX2::Utils;
 use HTML::Parser;
 use strict;
 
-sub is_valid_funder
+sub is_valid_funder_name
 {
-	my( $value ) = @_;
+	my( $value, $funder_lookup) = @_;
 
-	return 1;
+	my $funder = lc($value);
+	my @lookup_names = keys %$funder_lookup;
+	if ( scalar @lookup_names )
+	{
+		my $name_found = grep { index( $_, $funder ) != -1 } @lookup_names;
+		return $name_found;
+	}
+	return 0;
+}
+sub is_valid_funder_id
+{
+	my( $value, $name, $funder_lookup ) = @_;
+
+	my $funder = lc($name);
+	return 1 unless $funder_lookup->{$funder};
+	return $value eq $funder_lookup->{$funder};
+}
+
+sub get_funder_lookup
+{
+	my( $repo ) = @_;
+	my $funder_lookup = {};
+	my $filepath = $repo->config( "fundref_csv_file" );
+	if ( open( DATA, '<', $filepath ) )
+	{
+		while( <DATA> )
+		{
+			my( $uri, $name ) = split( /,/, $_, 2 );
+			$name =~ /^"(.+)"/;
+			next unless $1;
+			$name = lc $1;
+			$funder_lookup->{$name} = $uri;
+		}
+		close DATA;
+	}
+	return $funder_lookup;
 }
 
 sub is_http_uri
@@ -43,61 +78,3 @@ sub contains_markup
 
 1;
 
-__DATA__
-
-	my $funder_lookup = {};
-	my $filepath = $repo->config( "fundref_csv_file" );
-	if ( open( DATA, '<', $filepath ) )
-	{
-		while( <DATA> )
-		{
-        		my( $uri, $name ) = split( /,/, $_, 2 );
-		        $name =~ /^"(.+)"/;
-			next unless $1;
-			$name = lc $1;
-			$funder_lookup->{$name} = $uri;
-		}
-		close DATA;
-	}
-
-	foreach my $project ( @$value )
-	{
-		push @problems, $repo->html_phrase( "rioxx2_validate:project_not_set" ) unless $project->{project};
-		push @problems, $repo->html_phrase( "rioxx2_validate:funder_not_set" ) unless ( $project->{funder_name} || $project->{funder_id} );
-		my $name_found = 0;
-		my $id_found = 0;
-		my $funder;
-		if ( $project->{funder_name} )
-		{
-			$funder = lc($project->{funder_name});
-			my @lookup_names = keys %$funder_lookup;
-			if ( scalar @lookup_names )
-			{
-				$name_found = grep { index( $_, $funder ) != -1 } @lookup_names;
-				push @problems, $repo->html_phrase( "rioxx2_validate:funder_not_in_list" ) unless $name_found;
-			}
-			else
-			{
-				push @problems, $repo->html_phrase( "rioxx2_validate:no_funder_controlled_list" );
-			}
-		}
-		if ( $project->{funder_id} )
-		{
-			my @lookup_ids = values %$funder_lookup;
-			if ( scalar @lookup_ids )
-			{
-				$id_found = grep { index( $_, $project->{funder_id} ) != -1 } @lookup_ids;
-				push @problems, $repo->html_phrase( "rioxx2_validate:funder_id_not_in_list" ) unless $id_found;
-			}
-		}
-		if ( $name_found && $id_found )
-		{
-			if ( $funder_lookup->{$funder} ne $project->{funder_id} )
-			{
-				push @problems, $repo->html_phrase( "rioxx2_validate:funder_no_match_for_name_id" );
-			}
-		}
-
-	}
-	return @problems;
-};
