@@ -166,7 +166,7 @@ push @{ $c->{rioxx2}->{profile} },
 
 {
 	name => "rioxx2_version_of_record",
-	rioxx2_required => "mandatory",
+	rioxx2_required => "recommended",
 	rioxx2_ns => "rioxxterms",
 	rioxx2_value =>"rioxx2_value_version_of_record",
 	rioxx2_validate => "rioxx2_validate_version_of_record"
@@ -577,4 +577,4 @@ $c->{rioxx2_validate_version_of_record} = sub {
 # Enable core RIOXX2 plugins
 $c->{plugins}{'Export::RIOXX2'}{params}{disable} = 0;
 $c->{plugins}{"Screen::EPrint::RIOXX2"}{params}{disable} = 0;
-$c->{plugins}{'InputForm::Component::Field::Rioxx2'}{params}{disable} = 0;
+$c->{plugins}{'InputForm::Component::Field::RIOXX2'}{params}{disable} = 0;

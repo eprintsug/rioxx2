@@ -1,4 +1,4 @@
-package EPrints::Plugin::InputForm::Component::Field::Rioxx2;
+package EPrints::Plugin::InputForm::Component::Field::RIOXX2;
 
 use EPrints::Plugin::InputForm::Component::Field;
 
@@ -27,7 +27,7 @@ sub parse_config
 
 	unless( defined $self->_input_field )
 	{
-		push @{$self->{problems}}, $self->repository->html_phrase( "Plugin/InputForm/Component/Field/Rioxx2:error_missing_input",
+		push @{$self->{problems}}, $self->repository->html_phrase( "Plugin/InputForm/Component/Field/RIOXX2:error_missing_input",
 			ref => $self->repository->xml->create_text_node( $self->{config}->{field}->name ),
 			xml => $self->repository->xml->create_text_node( $self->{repository}->xml->to_string( $config_dom ) )
 		);
