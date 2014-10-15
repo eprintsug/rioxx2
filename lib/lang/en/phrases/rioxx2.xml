@@ -126,6 +126,9 @@
 <epp:phrase id="Plugin/Screen/EPrint/RIOXX2:optional">Optional (<epc:pin name="n"/>)</epp:phrase>
 <epp:phrase id="Plugin/Screen/EPrint/RIOXX2:export"><epc:pin name="link">View RIOXX2 record</epc:pin></epp:phrase>
 
+<epp:phrase id="Plugin/Screen/EPMC/RIOXX2:warn:reports_not_installed">The Generic Reporting Framework Bazaar package is not installed and enabled. As a result some functionality of the RIOXX2 package will not be available</epp:phrase>
+<epp:phrase id="Plugin/Screen/EPMC/RIOXX2:warn:reports_not_enabled">The Generic Reporting Framework Bazaar package is not enabled. As a result some functionality of the RIOXX2 package will not be available</epp:phrase>
+
 <!-- validation -->
 
 <epp:phrase id="lib/metafield/property:rioxx2_required:mandatory">Mandatory</epp:phrase>

@@ -63,3 +63,34 @@ sub action_disable
         $self->reload_config if !$skip_reload;
 }
 
+sub render_messages
+{
+	my( $self ) = @_;
+
+	my $repo = $self->{repository};
+	my $xml = $repo->xml;
+
+	my $frag = $xml->create_document_fragment;
+
+	if ( eval { require EPrints::Plugin::Screen::Report } )
+	{
+		my $plugin = $repo->plugin( 'Screen::Report' );
+		unless ( $plugin )
+		{
+			$frag->appendChild( $repo->render_message( 'warning', $self->html_phrase( 'warn:reports_not_enabled' ) ) );
+			return $frag;
+		}
+	}
+	else
+	{
+		$frag->appendChild( $repo->render_message( 'warning', $self->html_phrase( 'warn:reports_not_installed' ) ) );
+		return $frag;
+	}
+
+
+	#$frag->appendChild( $repo->render_message( 'message', $self->html_phrase( 'ready' ) ) );
+
+	return $frag;
+}
+
+
