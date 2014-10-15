@@ -304,6 +304,19 @@ push @{ $c->{rioxx2}->{overrides} },
 },
 
 {
+	name => "rioxx2_author_input",
+	type => "compound",
+	show_in_html => 0,
+	fields => [
+		{ sub_name => "author", type => "text", input_cols => "35" },
+		{ sub_name => "id", type => "url", input_cols => "35" }
+	],
+	multiple => 1,
+	input_lookup_url => "/cgi/users/lookup/rioxx2_orcid",
+},
+
+
+{
 	name => "rioxx2_project_input",
 	type => "compound",
 	show_in_html => 0,
@@ -395,9 +408,19 @@ $c->{rioxx2_value_author} = sub {
 	my @authors;
 	for( @{ $eprint->value( "creators_name" ) } )
 	{
-		push @authors, EPrints::Utils::make_name_string( $_ );
+		push @authors, {
+			author => EPrints::Utils::make_name_string( $_ ),
+			id => "an id"
+		};
+		#push @authors, EPrints::Utils::make_name_string( $_ );
 	}
-	push @authors, @{ $eprint->value( "corp_creators" ) };
+	foreach my $corp ( @{ $eprint->value( "corp_creators" ) } )
+	{
+		my $entry = {};
+		$entry->{name} = $corp;
+		push @authors, { author => $corp };
+	}
+#	push @authors, @{ $eprint->value( "corp_creators" ) };
 
 	return \@authors;
 };

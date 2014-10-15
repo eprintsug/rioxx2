@@ -16,6 +16,7 @@
 		<component type="Field::RIOXX2"><field ref="rioxx2_free_to_read" /></component>
 		<component type="Field::RIOXX2"><field ref="rioxx2_license_ref" /></component>
 		<component type="Field::RIOXX2"><field ref="rioxx2_apc" /></component>
+		<component type="Field::RIOXX2"><field ref="rioxx2_author" /></component>
 		<component type="Field::RIOXX2"><field ref="rioxx2_project" /></component>
 		<component type="Field::RIOXX2"><field ref="rioxx2_publication_date" /></component>
 		<component type="Field::RIOXX2"><field ref="rioxx2_version" /></component>
