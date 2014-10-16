@@ -29,9 +29,9 @@
         <file>
           <filename>epm/rioxx2/cfg/cfg.d/zz_rioxx2.pl</filename>
           <mime_type>text/plain</mime_type>
-          <hash>8f4f419643dc22f9d73880fb1e392a16</hash>
+          <hash>4e112705f105e818ed4829bfdc34178c</hash>
           <hash_type>MD5</hash_type>
-          <filesize>14652</filesize>
+          <filesize>15975</filesize>
         </file>
         <file>
           <filename>epm/rioxx2/cfg/cfg.d/zz_rioxx2_report.pl</filename>

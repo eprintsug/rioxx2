@@ -107,11 +107,11 @@ push @{ $c->{rioxx2}->{profile} },
 	rioxx2_validate => "rioxx2_validate_free_to_read"
 },
 
-# TODO rioxx2_value: derive from document.license + document.date_embargo
 {
 	name => "rioxx2_license_ref",
 	rioxx2_required => "mandatory",
 	rioxx2_ns => "niso",
+	rioxx2_value => "rioxx2_value_license_ref",
 	rioxx2_validate => "rioxx2_validate_license_ref"
 },
 
@@ -207,6 +207,26 @@ $c->{rioxx2}->{content_map} = {
 	accepted	=> "AM",
 	published	=> "P",
 };
+
+=pod
+
+Map document license to RIOXX2 license_ref url
+It is possible that the URLs may need to be changed to the "legal Code" rather than the "details"
+
+=cut
+
+$c->{rioxx2}->{license_map} = {
+	cc_by_nd	=> "http://creativecommons.org/licenses/by-nd/4.0",
+	cc_by		=> "http://creativecommons.org/licenses/by/4.0",
+	cc_by_nc	=> "http://creativecommons.org/licenses/by-nc/4.0",
+	cc_by_nc_nd	=> "http://creativecommons.org/licenses/by-nc-nd/4.0",
+	cc_by_nc_sa	=> "http://creativecommons.org/licenses/by-nd-sa/4.0",
+	cc_by_sa	=> "http://creativecommons.org/licenses/by-sa/4.0",
+	cc_public_domain=> "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
+	cc_gnu_gpl	=> "http://www.gnu.org/licenses/gpl.html",
+	cc_gnu_lgpl	=> "http://www.gnu.org/licenses/lgpl.html",
+};
+
 
 =pod
 
@@ -401,6 +421,19 @@ $c->{rioxx2_value_free_to_read} = sub {
 	return { free_to_read => 1 } if $document->is_set( "security" ) && $document->value( "security" ) eq "public";
 	return { free_to_read => 1, start_date => $document->value( "date_embargo" ) } if $document->is_set( "date_embargo" );
 };
+
+$c->{rioxx2_value_license_ref} = sub {
+	my( $eprint, $document ) = @_;
+
+	return undef unless $document;
+	return undef unless $document->is_set( "license" );
+	my $license = $document->repository->config( "rioxx2", "license_map", $document->value( "license" ) ); 
+	return undef unless $license;
+	my $start_date = $eprint->value( "date" ) if ( !$eprint->is_set( "date_type" ) || $eprint->value( "date_type" ) eq "published" ); 
+	$start_date = $document->value( "date_embargo" ) if $document->is_set( "date_embargo" );
+	return { license_ref => $license, start_date => $start_date };
+};
+
 
 $c->{rioxx2_value_author} = sub {
 	my( $eprint ) = @_;
