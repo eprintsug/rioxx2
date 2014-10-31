@@ -300,7 +300,7 @@ push @{ $c->{rioxx2}->{overrides} },
 	type => "compound",
 	show_in_html => 0,
 	fields => [
-		{ sub_name => "free_to_read", type => "set", options => [ "Y" ] },
+		{ sub_name => "free_to_read", type => "set", options => [ "Yes" ] },
 		{ sub_name => "start_date", type => "date", min_resolution => "day" },
 		{ sub_name => "end_date", type => "date", min_resolution => "day" }
 	]
@@ -418,8 +418,8 @@ $c->{rioxx2_value_free_to_read} = sub {
 	my( $eprint, $document ) = @_;
 
 	return undef unless $document;
-	return { free_to_read => 1 } if $document->is_set( "security" ) && $document->value( "security" ) eq "public";
-	return { free_to_read => 1, start_date => $document->value( "date_embargo" ) } if $document->is_set( "date_embargo" );
+	return { free_to_read => "Yes" } if $document->is_set( "security" ) && $document->value( "security" ) eq "public";
+	return { free_to_read => "Yes", start_date => $document->value( "date_embargo" ) } if $document->is_set( "date_embargo" );
 };
 
 $c->{rioxx2_value_license_ref} = sub {
