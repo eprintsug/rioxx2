@@ -5,10 +5,6 @@ our @ISA = ( 'EPrints::Plugin::Screen::Report' );
 
 use strict;
 
-#
-# A simple Report
-#
-
 sub new
 {
 	my( $class, %params ) = @_;
@@ -18,6 +14,7 @@ sub new
 	$self->{datasetid} = 'eprint';
 	$self->{custom_order} = '-title/creators_name';
 	$self->{appears} = [];
+	$self->{report} = 'rioxx2';
 
 	return $self;
 }
@@ -28,25 +25,17 @@ sub can_be_viewed
 
 	return 0 if( !$self->SUPER::can_be_viewed );
 
-# you can limit who can see this report:
-#	return $self->allow( 'report/example' );
-	
 	return 1;
 }
 
-# Filters allow to select a sub-set of the data objects
 sub filters
 {
 	my( $self ) = @_;
 
 	my @filters = @{ $self->SUPER::filters || [] };
 
-	# Must be in the Live Archive
 	push @filters, { meta_fields => [ 'eprint_status' ], value => 'archive', match => 'EX' };
 
-	# Must have been published in 2002
-	#push @filters, { meta_fields => [ 'date' ], value => '2000', match => 'EX' };
-	
 	return \@filters;
 }
 
@@ -65,7 +54,7 @@ sub ajax_eprint
 
 		return if !defined $eprint; # odd
 
-		my $frag = $eprint->render_citation_link;
+		my $frag = $eprint->render_citation_link_staff;
 		push @{$json->{data}}, { 
 			datasetid => $eprint->dataset->base_id, 
 			dataobjid => $eprint->id, 
@@ -79,19 +68,21 @@ sub ajax_eprint
 }
 
 
-sub get_related_objects
+sub validate_dataobj
 {
-	my( $plugin, $dataobj ) = @_;
+	my( $self, $eprint ) = @_;
 
-	my $repository = $plugin->{repository};
+	my $repo = $self->{repository};
 
-	my $objects = {
-		$dataobj->dataset->confid => $dataobj,
-	};
+	my @problems;
 
-	# Add your own rules here to include other data-obj (perhaps you need the Users, Funders etc to generate your reports...)
+	my @fields = grep { $_->type =~ /^RIOXX2$/ } $eprint->get_dataset->get_fields;
+	foreach my $field ( @fields )
+	{
+		push @problems, $field->validate( $repo, $eprint->value( $field->get_name ), $eprint );
+	}
 
-	return $objects;
+	return @problems;
 }
 
 1;

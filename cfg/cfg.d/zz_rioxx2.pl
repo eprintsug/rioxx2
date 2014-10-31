@@ -161,7 +161,7 @@ push @{ $c->{rioxx2}->{profile} },
 	name => "rioxx2_version",
 	rioxx2_required => "mandatory",
 	rioxx2_ns => "rioxxterms",
-	rioxx2_value => sub { $_[1] && $_[1]->repository->config( "rioxx2", "content_map", $_[1]->value( "content" ) ) || "NA" },
+	rioxx2_value => sub { $_[1] && $_[1]->repository->config( "rioxx2", "content_map", $_[1]->value( "content" ) || "" ) || "NA" },
 },
 
 {
@@ -650,3 +650,7 @@ $c->{fundref_csv_file} = $c->{"config_path"}."/autocomplete/funderNames";
 $c->{plugins}{'Export::RIOXX2'}{params}{disable} = 0;
 $c->{plugins}{"Screen::EPrint::RIOXX2"}{params}{disable} = 0;
 $c->{plugins}{'InputForm::Component::Field::RIOXX2'}{params}{disable} = 0;
+# Enable optional RIOXX2 plugins for reporting framework (https://github.com/eprints/reports)
+$c->{plugins}{"Screen::Report::RIOXX2"}{params}{disable} = 0;
+$c->{plugins}{"Screen::Report::RIOXX2::2014"}{params}{disable} = 0;
+$c->{plugins}{"Export::Report::CSV::RIOXX2"}{params}{disable} = 0;

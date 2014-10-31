@@ -27,11 +27,24 @@ sub render_value
 
 	my $value = $self->get_value( $object, $ignore_override );
 
+	return $repo->xml->create_text_node( $self->_flatten( $value ) );
+}
+
+sub _flatten
+{
+	my( $self, $value ) = @_;
+
+	if( ref( $value ) eq "HASH" )
 	{
-		use Data::Dumper;
-		$Data::Dumper::Terse = 1;
-		$Data::Dumper::Indent = 0;
-		return $repo->xml->create_text_node( Dumper( $value ) );
+		return join( ", ", map { "\u$_: " . $self->_flatten( $value->{ $_ } ) } sort keys %$value );
+	}
+	elsif( ref( $value ) eq "ARRAY" )
+	{
+		return join( "; ", map { $self->_flatten( $_ ) } @$value );
+	}
+	else
+	{
+		return $value;
 	}
 }
 

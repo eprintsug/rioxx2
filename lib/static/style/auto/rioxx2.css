@@ -24,11 +24,15 @@ div.rioxx2_help
 	visibility: hidden;
 }
 
-#rioxx2_tab_title
+.rioxx2_title
 {
 	font-family: monospace;
 	font-weight: bold;
 	font-size: 125%;
+}
+
+#rioxx2_tab_title
+{
 	padding-left: 18px;
 }
 

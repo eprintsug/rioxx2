@@ -1,4 +1,4 @@
-package EPrints::Plugin::Screen::Report::RIOXX2::Articles;
+package EPrints::Plugin::Screen::Report::RIOXX2::2014;
 
 use EPrints::Plugin::Screen::Report::RIOXX2;
 our @ISA = ( 'EPrints::Plugin::Screen::Report::RIOXX2' );
@@ -11,7 +11,7 @@ sub new
 
 	my $self = $class->SUPER::new( %params );
 
-	$self->{report} = 'rioxx2-articles';
+	$self->{report} = 'rioxx2-2014';
 
 	return $self;
 }
@@ -22,7 +22,7 @@ sub filters
 
 	my @filters = @{ $self->SUPER::filters || [] };
 
-	push @filters, { meta_fields => [ "type" ], value => 'article' };
+	push @filters, { meta_fields => [ "date" ], value => '2014-', match => "IN" };
 
 	return \@filters;
 }
