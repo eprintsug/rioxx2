@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns:rioxxterms="http://docs.rioxx.net/schema/v2.0/rioxxterms/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+	<xs:import namespace="http://docs.rioxx.net/schema/v1.0/rioxxterms/" schemaLocation="rioxxterms.xsd"/>
+	<xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="dc.xsd"/>
+	<xs:import namespace="http://purl.org/dc/terms/" schemaLocation="dcterms.xsd"/>
+
+	<xs:simpleType name="httpURI">
+		<xs:restriction base="xs:anyURI">
+			<xs:pattern value="http://.*"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:element name="free_to_read">
+		<xs:complexType>
+			<xs:attribute name="start_date" type="xs:date"/>
+			<xs:attribute name="end_date" type="xs:date"/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="license_ref">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="httpURI">
+					<xs:attribute name="start_date" type="xs:date"/>
+				</xs:extension>
+			</xs:simpleContent>
+		<xs:complexType>
+	</xs:element>
+
+	<xs:element name="rioxxterms:apc">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="paid"/>
+				<xs:enumeration value="partially waived"/>
+				<xs:enumeration value="fully waived"/>
+				<xs:enumeration value="not charged"/>
+				<xs:enumeration value="not required"/>
+				<xs:enumeration value="unknown"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+
+	<xsd:element name="rioxxterms:author" type="rioxxterms:personType"/>
+	<xsd:element name="rioxxterms:contributor" type="rioxxterms:personType"/>
+
+	<xs:complexType name="rioxxterms:personType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="id" type="httpURI"/>
+			</xs:extension>
+		</xs:simpleContent>
+	<xs:complexType>
+
+	<xs:element name="rioxxterms:project">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="funder_name" type="xs:string"/>
+					<xs:attribute name="funder_id" type="httpURI"/>
+				</xs:extension>
+			</xs:simpleContent>
+		<xs:complexType>
+	</xs:element>
+
+	<xs:element name="rioxxterms:publication_date" type="xs:string"/>
+
+	<xs:element name="rioxxterms:type">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="Book"/>
+				<xs:enumeration value="Book chapter"/>
+				<xs:enumeration value="Book edited"/>
+				<xs:enumeration value="Conference Paper/Proceeding/Abstract"/>
+				<xs:enumeration value="Journal Article/Review"/>
+				<xs:enumeration value="Manual/Guide"/>
+				<xs:enumeration value="Monograph"/>
+				<xs:enumeration value="Policy briefing report"/>
+				<xs:enumeration value="Technical Report"/>
+				<xs:enumeration value="Technical Standard"/>
+				<xs:enumeration value="Thesis"/>
+				<xs:enumeration value="Other"/>
+				<xs:enumeration value="Consultancy Report"/>
+				<xs:enumeration value="Working paper"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+
+	<xs:element name="rioxxterms:version">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="AO"/>
+				<xs:enumeration value="SMUR"/>
+				<xs:enumeration value="AM"/>
+				<xs:enumeration value="P"/>
+				<xs:enumeration value="VoR"/>
+				<xs:enumeration value="CVoR"/>
+				<xs:enumeration value="EVoR"/>
+				<xs:enumeration value="NA"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+
+	<xs:element name="rioxxterms:version_of_record" type="httpURI"/>
+
+	<xs:element name="rioxxterms:rioxx">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="dc:coverage" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element ref="dc:description" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="dc:format" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="dc:identifier" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="dc:language" minOccurs="1" maxOccurs="unbounded"/>
+				<xs:element ref="dc:publisher" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="dc:relation" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element ref="dc:source" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="dc:subject" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="dc:title" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="dcterms:dateAccepted" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="free_to_read" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="licence_ref" minOccurs="1" maxOccurs="unbounded"/>
+				<xs:element ref="rioxxterms:apc" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="rioxxterms:author" minOccurs="1" maxOccurs="unbounded"/>
+				<xs:element ref="rioxxterms:contributor" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="rioxxterms:project" minOccurs="1" maxOccurs="unbounded"/>
+				<xs:element ref="rioxxterms:publication_date" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="rioxxterms:type" minOccurs="1" maxOccurs="unbounded"/>
+				<xs:element ref="rioxxterms:version" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="rioxxterms:version_of_record" minOccurs="0" maxOccurs="1"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>
