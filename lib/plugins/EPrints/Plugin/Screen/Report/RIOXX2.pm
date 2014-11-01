@@ -25,7 +25,7 @@ sub can_be_viewed
 
 	return 0 if( !$self->SUPER::can_be_viewed );
 
-	return 1;
+	return $self->allow( 'report/rioxx2' );
 }
 
 sub filters
