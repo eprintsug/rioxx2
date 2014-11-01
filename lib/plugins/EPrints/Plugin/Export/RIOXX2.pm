@@ -12,7 +12,7 @@ sub new
 
 	$self->{accept} = [qw( dataobj/eprint )];
 	$self->{name} = 'RIOXX2 XML';
-	$self->{metadataPrefix} = "rioxx2";
+	$self->{metadataPrefix} = "rioxx";
 	$self->{xmlns} = "http://docs.rioxx.net/schema/v2.0/",
 	$self->{schemaLocation} = "http://docs.rioxx.net/schema/v2.0/rioxx.xsd";
 
