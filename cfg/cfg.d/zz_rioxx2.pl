@@ -254,7 +254,17 @@ $c->{rioxx2}->{select_document} = sub {
 		($pref{$b->value( "content" )||""}||0) <=> ($pref{$a->value( "content" )||""}||0)
 	} @docs;
 
-	return $ordered[0];
+	return $ordered[0] if $ordered[0]->is_set( "content" );
+	
+	# prefer text documents
+	for( @docs )
+	{
+		return $_ if $_->value( "format" ) eq "text";
+	}
+
+	return $docs[0];
+	
+
 };
 
 =pod
