@@ -26,6 +26,11 @@ sub output_dataobj
 	my $r = "";
 	my $f = $opts{fh} ? sub { print {$opts{fh}} @_ } : sub { $r .= $_[0] };
 
+	&$f( <<HEAD );
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/rioxx2.xsl"?>
+HEAD
+
 	&$f($self->repository->xml->to_string(
 		$self->xml_dataobj($dataobj),
 		indent => 1,
