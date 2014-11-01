@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<epm id='http://rioxx.localhost/id/epm/rioxx2' xmlns='http://eprints.org/ep2/data/2.0'>
+<epm xmlns='http://eprints.org/ep2/data/2.0' id='http://rioxx.localhost/id/epm/rioxx2'>
   <epmid>rioxx2</epmid>
-  <uri>http://rioxx2.drs/id/epm/rioxx2</uri>
+  <uri>http://rioxx.localhost/id/epm/rioxx2</uri>
   <documents>
     <document>
       <files>
@@ -29,9 +29,9 @@
         <file>
           <filename>epm/rioxx2/cfg/cfg.d/zz_rioxx2.pl</filename>
           <mime_type>text/plain</mime_type>
-          <hash>59e8280bba4bdaa0fe5dfeaebfaa3dc8</hash>
+          <hash>6455c7aba771ba01089c6583c19f2b08</hash>
           <hash_type>MD5</hash_type>
-          <filesize>16282</filesize>
+          <filesize>16492</filesize>
         </file>
         <file>
           <filename>epm/rioxx2/cgi/users/lookup/rioxx2_orcid</filename>
@@ -71,9 +71,9 @@
         <file>
           <filename>plugins/EPrints/Plugin/Export/RIOXX2.pm</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>2d3c1e25988c7c985e574012aefb8639</hash>
+          <hash>1b27e1e4d57dfd2a2433245e2b5fa9f0</hash>
           <hash_type>MD5</hash_type>
-          <filesize>2162</filesize>
+          <filesize>2161</filesize>
         </file>
         <file>
           <filename>plugins/EPrints/Plugin/Export/Report/CSV/RIOXX2.pm</filename>
@@ -106,9 +106,9 @@
         <file>
           <filename>plugins/EPrints/Plugin/Screen/Report/RIOXX2.pm</filename>
           <mime_type>inode/symlink</mime_type>
-          <hash>2aaa5d342a6957ccd84bce0e2a74778f</hash>
+          <hash>c046763a74d3373c423d76cfad8b95bb</hash>
           <hash_type>MD5</hash_type>
-          <filesize>1638</filesize>
+          <filesize>1668</filesize>
         </file>
         <file>
           <filename>plugins/EPrints/Plugin/Screen/Report/RIOXX2/2014.pm</filename>
