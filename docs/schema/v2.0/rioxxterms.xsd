@@ -11,10 +11,10 @@
 	<xs:complexType name="personIdType">
 		<xs:simpleContent>
 			<xs:extension base="xs:string">
-				<xs:attribute name="id" type="httpUriType"/>
+				<xs:attribute name="id" type="rioxxterms:httpUriType"/>
 			</xs:extension>
 		</xs:simpleContent>
-	<xs:complexType>
+	</xs:complexType>
 
 	<xs:element name="free_to_read">
 		<xs:complexType>
@@ -26,11 +26,11 @@
 	<xs:element name="license_ref">
 		<xs:complexType>
 			<xs:simpleContent>
-				<xs:extension base="httpUriType">
+				<xs:extension base="rioxxterms:httpUriType">
 					<xs:attribute name="start_date" type="xs:date"/>
 				</xs:extension>
 			</xs:simpleContent>
-		<xs:complexType>
+		</xs:complexType>
 	</xs:element>
 
 	<xs:element name="apc">
@@ -46,19 +46,19 @@
 		</xs:simpleType>
 	</xs:element>
 
-	<xsd:element name="author" type="personIdType"/>
+	<xs:element name="author" type="rioxxterms:personIdType"/>
 
-	<xsd:element name="contributor" type="personIdType"/>
+	<xs:element name="contributor" type="rioxxterms:personIdType"/>
 
 	<xs:element name="project">
 		<xs:complexType>
 			<xs:simpleContent>
 				<xs:extension base="xs:string">
 					<xs:attribute name="funder_name" type="xs:string"/>
-					<xs:attribute name="funder_id" type="httpUriType"/>
+					<xs:attribute name="funder_id" type="rioxxterms:httpUriType"/>
 				</xs:extension>
 			</xs:simpleContent>
-		<xs:complexType>
+		</xs:complexType>
 	</xs:element>
 
 	<xs:element name="publication_date" type="xs:string"/>
@@ -99,6 +99,6 @@
 		</xs:simpleType>
 	</xs:element>
 
-	<xs:element name="version_of_record" type="httpUriType"/>
+	<xs:element name="version_of_record" type="rioxxterms:httpUriType"/>
 
 </xs:schema>
