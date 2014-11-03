@@ -453,9 +453,8 @@ $c->{rioxx2_value_author} = sub {
 	{
 		push @authors, {
 			author => EPrints::Utils::make_name_string( $_ ),
-			id => "an id"
+			#id => "", 	#if the config includes an orcid id for the contributors then that can be used here
 		};
-		#push @authors, EPrints::Utils::make_name_string( $_ );
 	}
 	foreach my $corp ( @{ $eprint->value( "corp_creators" ) } )
 	{
@@ -463,7 +462,6 @@ $c->{rioxx2_value_author} = sub {
 		$entry->{name} = $corp;
 		push @authors, { author => $corp };
 	}
-#	push @authors, @{ $eprint->value( "corp_creators" ) };
 
 	return \@authors;
 };
