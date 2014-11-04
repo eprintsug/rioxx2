@@ -102,7 +102,7 @@ push @{ $c->{rioxx2}->{profile} },
 {
 	name => "rioxx2_free_to_read",
 	rioxx2_required => "optional",
-	rioxx2_ns => "niso",
+	rioxx2_ns => "rioxxterms",
 	rioxx2_value => "rioxx2_value_free_to_read",
 	rioxx2_validate => "rioxx2_validate_free_to_read"
 },
@@ -110,7 +110,7 @@ push @{ $c->{rioxx2}->{profile} },
 {
 	name => "rioxx2_license_ref",
 	rioxx2_required => "mandatory",
-	rioxx2_ns => "niso",
+	rioxx2_ns => "rioxxterms",
 	rioxx2_value => "rioxx2_value_license_ref",
 	rioxx2_validate => "rioxx2_validate_license_ref"
 },

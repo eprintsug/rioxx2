@@ -50,8 +50,7 @@ sub xml_dataobj
 		'xmlns' => $self->param('xmlns'),
 		'xmlns:dc' => "http://purl.org/dc/elements/1.1/",
 		'xmlns:dcterms' => "http://purl.org/dc/terms/",
-		'xmlns:rioxxterms' => "http://docs.rioxx.net/schema/v1.0/rioxxterms/",
-		'xmlns:niso' => "http://niso.org/made/up/namespace/",
+		'xmlns:rioxxterms' => "http://docs.rioxx.net/schema/v2.0/rioxxterms/",
         	'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance",
 		'xsi:schemaLocation' => $self->param('xmlns')." ".$self->param('schemaLocation'),
 	);

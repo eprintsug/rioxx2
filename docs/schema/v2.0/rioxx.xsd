@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docs.rioxx.net/schema/v2.0/" xmlns:rioxxterms="http://docs.rioxx.net/schema/v2.0/rioxxterms/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+	<xs:import namespace="http://docs.rioxx.net/schema/v2.0/rioxxterms/" schemaLocation="rioxxterms.xsd"/>
+	<xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="dc.xsd"/>
+	<xs:import namespace="http://purl.org/dc/terms/" schemaLocation="dcterms.xsd"/>
+
+	<xs:element name="rioxx">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="dc:coverage" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element ref="dc:description" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="dc:format" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="dc:identifier"/>
+				<xs:element ref="dc:language" maxOccurs="unbounded"/>
+				<xs:element ref="dc:publisher" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="dc:relation" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element ref="dc:source" minOccurs="0"/>
+				<xs:element ref="dc:subject" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="dc:title"/>
+				<xs:element ref="dcterms:dateAccepted"/>
+				<xs:element ref="rioxxterms:free_to_read" minOccurs="0"/>
+				<xs:element ref="rioxxterms:license_ref" maxOccurs="unbounded"/>
+				<xs:element ref="rioxxterms:apc" minOccurs="0"/>
+				<xs:element ref="rioxxterms:author" maxOccurs="unbounded"/>
+				<xs:element ref="rioxxterms:contributor" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="rioxxterms:project" maxOccurs="unbounded"/>
+				<xs:element ref="rioxxterms:publication_date" minOccurs="0"/>
+				<xs:element ref="rioxxterms:type" maxOccurs="unbounded"/>
+				<xs:element ref="rioxxterms:version"/>
+				<xs:element ref="rioxxterms:version_of_record" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>
