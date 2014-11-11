@@ -10,8 +10,8 @@ $repo->send_http_header( content_type=>$content );
 my @params = $repo->param;
 my $string_frag = lc $repo->param( "q" );
 my $project = $repo->param( "_project" );
-my $funder_name = $repo->param( "_funder_name" );
-my $funder_id = $repo->param( "_funder_id" );
+my $funder_name = lc $repo->param( "_funder_name" );
+my $funder_id = lc $repo->param( "_funder_id" );
 my $lookup_file = $repo->param( "file" );
 
 my $rows = [];
@@ -110,13 +110,13 @@ sub lookup_funder_names
 		{ 
 			my $frag = $repo->make_doc_fragment;
 			$frag->appendChild( $repo->html_phrase( 'cgi/lookup/rioxx2_project:funder',
-								name=> $repo->make_text( $val ), 
-								id => $repo->make_text( $lookup->{$val} ) ) );
+								name=> $repo->make_text( $lookup->{$val}->{name} ), 
+								id => $repo->make_text( $lookup->{$val}->{uri} ) ) );
 			my $item = {};
 			$item->{xhtml} = $frag;
 			$item->{values} = [
-				"for:value:relative:_funder_name" => $val,
-				"for:value:relative:_funder_id" => $lookup->{$val},
+				"for:value:relative:_funder_name" => $lookup->{$val}->{name},
+				"for:value:relative:_funder_id" => $lookup->{$val}->{uri},
 			];
 			push @$rows, $item;
 			$matches++;
@@ -136,17 +136,17 @@ sub lookup_funder_ids
 	foreach my $val ( keys %$lookup )
 	{
 		last if $matches >= $limit;
-		if ( index( $lookup->{$val}, $funder ) != -1 )
+		if ( index( $lookup->{$val}->{lc_uri}, $funder ) != -1 )
 		{
 			my $frag = $repo->make_doc_fragment;
 			$frag->appendChild( $repo->html_phrase( 'cgi/lookup/rioxx2_project:funder',
-								name=> $repo->make_text( $val ), 
-								id => $repo->make_text( $lookup->{$val} ) ) );
+								name=> $repo->make_text( $lookup->{$val}->{name} ), 
+								id => $repo->make_text( $lookup->{$val}->{uri} ) ) );
 			my $item = {};
 			$item->{xhtml} = $frag;
 			$item->{values} = [
-				"for:value:relative:_funder_name" => $val,
-				"for:value:relative:_funder_id" => $lookup->{$val},
+				"for:value:relative:_funder_name" => $lookup->{$val}->{name},
+				"for:value:relative:_funder_id" => $lookup->{$val}->{uri},
 			];
 			push @$rows, $item;
 			$matches++;
@@ -175,8 +175,12 @@ sub read_lookup_file
 	{
 		my( $uri, $name ) = split( /,/, $_, 2 );
 		$name =~ /^"(.+)"/;
-		$name = lc $1;
-		$lookup_uri->{$name} = $uri if $name;
+		$name = $1;
+		my $lc_name = lc $name;
+		next unless $name;
+		$lookup_uri->{$lc_name}->{uri} = $uri;
+		$lookup_uri->{$lc_name}->{lc_uri} = lc $uri;
+		$lookup_uri->{$lc_name}->{name} = $name;
 	}
 	close DATA;
 
