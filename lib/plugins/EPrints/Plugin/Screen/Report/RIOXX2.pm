@@ -79,7 +79,7 @@ sub validate_dataobj
 	my @fields = grep { $_->type =~ /^RIOXX2$/ } $eprint->get_dataset->get_fields;
 	foreach my $field ( @fields )
 	{
-		push @problems, $field->validate( $repo, $eprint->value( $field->get_name ), $eprint );
+		push @problems, map { EPrints::XML::to_string( $_ ) } $field->validate( $repo, $eprint->value( $field->get_name ), $eprint );
 	}
 
 	return @problems;
