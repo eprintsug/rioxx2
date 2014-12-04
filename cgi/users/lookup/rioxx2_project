@@ -9,7 +9,7 @@ $repo->send_http_header( content_type=>$content );
 
 my @params = $repo->param;
 my $string_frag = lc $repo->param( "q" );
-my $project = $repo->param( "_project" );
+my $project = lc $repo->param( "_project" );
 my $funder_name = lc $repo->param( "_funder_name" );
 my $funder_id = lc $repo->param( "_funder_id" );
 my $lookup_file = $repo->param( "file" );

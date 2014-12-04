@@ -14,10 +14,10 @@ $repo->send_http_header( content_type=>$content );
 
 my @params = $repo->param;
 my $string_frag = lc $repo->param( "q" );
-my $name = $repo->param( "_author" );
-my $id = $repo->param( "_id" );
+my $name = lc $repo->param( "_author" );
+my $id = lc $repo->param( "_id" );
 
-print STDERR "q[$string_frag] n[$name] i[$id]\n";
+#print STDERR "q[$string_frag] n[$name] i[$id]\n";
 
 my $rows = [];
 my $limit = 20;
