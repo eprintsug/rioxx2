@@ -422,6 +422,7 @@ $c->{rioxx2_value_source} = sub {
 		next unless $eprint->is_set( $_ );
 		return $eprint->value( $_ );
 	}
+	return undef;
 };
 
 $c->{rioxx2_value_free_to_read} = sub {
@@ -430,6 +431,7 @@ $c->{rioxx2_value_free_to_read} = sub {
 	return undef unless $document;
 	return { free_to_read => "Yes" } if $document->is_set( "security" ) && $document->value( "security" ) eq "public";
 	return { free_to_read => "Yes", start_date => $document->value( "date_embargo" ) } if $document->is_set( "date_embargo" );
+	return undef;
 };
 
 $c->{rioxx2_value_license_ref} = sub {
