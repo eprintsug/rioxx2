@@ -205,7 +205,7 @@ $c->{rioxx2}->{content_map} = {
 	draft		=> "AO",
 	submitted	=> "SMUR",
 	accepted	=> "AM",
-	published	=> "P",
+	published	=> "VoR",
 };
 
 =pod
