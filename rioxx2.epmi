@@ -1,26 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<epm id='http://test.localhost/id/epm/rioxx2' xmlns='http://eprints.org/ep2/data/2.0'>
+<epm xmlns='http://eprints.org/ep2/data/2.0' id='http://winch.localhost/id/epm/rioxx2'>
   <epmid>rioxx2</epmid>
-  <uri>http://test.localhost/id/epm/rioxx2</uri>
   <documents>
     <document>
       <files>
-        <file>
-          <datasetid>document</datasetid>
-          <filename>epm/rioxx2/bin/README</filename>
-          <mime_type>text/plain</mime_type>
-          <hash>33621561d84b28c9447d098f757ccb16</hash>
-          <hash_type>MD5</hash_type>
-          <filesize>123</filesize>
-        </file>
-        <file>
-          <datasetid>document</datasetid>
-          <filename>epm/rioxx2/bin/mk_help.pl</filename>
-          <mime_type>text/x-perl</mime_type>
-          <hash>abb3b7880a2420b3ed27c522371ca6f8</hash>
-          <hash_type>MD5</hash_type>
-          <filesize>767</filesize>
-        </file>
         <file>
           <datasetid>document</datasetid>
           <filename>epm/rioxx2/cfg/autocomplete/funderNames</filename>
@@ -35,7 +18,7 @@
           <mime_type>text/plain</mime_type>
           <hash>10836f268e50839380daf11dabf43c67</hash>
           <hash_type>MD5</hash_type>
-          <filesize>16501</filesize>
+          <filesize>16503</filesize>
         </file>
         <file>
           <datasetid>document</datasetid>
@@ -233,12 +216,11 @@
           <datasetid>document</datasetid>
           <filename>workflows/eprint/rioxx2.xml</filename>
           <mime_type>application/xml</mime_type>
-          <hash>6cc98c885702b296515452ea667637e7</hash>
+          <hash>21056b41b452795099cff8fac219eb27</hash>
           <hash_type>MD5</hash_type>
-          <filesize>1143</filesize>
+          <filesize>1172</filesize>
         </file>
       </files>
-      <pos>lib</pos>
       <mime_type>application/xml</mime_type>
       <format>other</format>
       <main>workflows/eprint/rioxx2.xml</main>
@@ -247,7 +229,6 @@
     <document>
       <files>
         <file>
-          <datasetid>document</datasetid>
           <filename>static/images/epm/rioxx2_icon.png</filename>
           <mime_type>image/png</mime_type>
           <hash>825b39c66a86932f48bd4eebea6f6116</hash>
@@ -255,7 +236,6 @@
           <filesize>100679</filesize>
         </file>
       </files>
-      <pos>lib</pos>
       <format>image</format>
       <main>static/images/epm/rioxx2_icon.png</main>
       <content>coverimage</content>
@@ -279,6 +259,7 @@
       <id>timothy.miles-board@london.ac.uk</id>
     </item>
   </creators>
+  <datestamp>2015-02-03 10:42:00</datestamp>
   <title>RIOXX2</title>
   <description>This RIOXX plugin gives your EPrints repository the capability to expose its publication data using the RIOXX V2-0-beta-1 application profile.</description>
   <icon>images/epm/rioxx2_icon.png</icon>
