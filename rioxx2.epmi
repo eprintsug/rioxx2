@@ -261,6 +261,6 @@
   </creators>
   <datestamp>2015-02-03 10:42:00</datestamp>
   <title>RIOXX2</title>
-  <description>This RIOXX plugin gives your EPrints repository the capability to expose its publication data using the RIOXX V2-0-beta-1 application profile.</description>
+  <description>This RIOXX plugin gives your EPrints repository the capability to expose its publication data using the RIOXX V2.0 application profile.</description>
   <icon>images/epm/rioxx2_icon.png</icon>
 </epm>

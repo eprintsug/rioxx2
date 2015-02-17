@@ -2,7 +2,7 @@
 
 The RIOXX2 plugin for EPrints allows you to:
 
-* Capture additional metadata required by the RIOXX 2.0 Application Profile (http://rioxx.net/v2-0-beta-1/)
+* Capture additional metadata required by the RIOXX 2.0 Application Profile (http://rioxx.net/v2-0-final/)
 * Measure compliance across your EPrints repository
 * Expose RIOXX 2.0 compliant XML records via OAI-PMH, for consumption by Funders and Governing bodies
 

@@ -13,7 +13,7 @@
 		<head>
 			<script src="http://rioxx.net/javascripts/jquery-1.10.2.js" type="text/javascript"></script>
 			<link href="http://rioxx.net/stylesheets/application.css" rel="stylesheet" type="text/css" media="all" />
-			<title>RIOXX: Application Profile Version 2.0 beta 1</title>
+			<title>RIOXX: Application Profile Version 2.0 Final Version</title>
 		</head>
 		<body>
 			<div class='container-fluid'>
@@ -25,7 +25,7 @@
 				<div class='col-xs-12'>
 					<div class='panel panel-default'>
 						<div class='panel-heading'>
-							<h1 class='post-title'>Application Profile Version 2.0 beta 1</h1>
+							<h1 class='post-title'>Application Profile Version 2.0 Final Version</h1>
 						</div>
 					</div>
 				</div>
