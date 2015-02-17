@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <epm xmlns='http://eprints.org/ep2/data/2.0' id='http://winch.localhost/id/epm/rioxx2'>
   <epmid>rioxx2</epmid>
+  <uri>http://winch.localhost/id/epm/rioxx2</uri>
   <documents>
     <document>
       <files>
@@ -22,67 +23,11 @@
         </file>
         <file>
           <datasetid>document</datasetid>
-          <filename>epm/rioxx2/cgi/users/lookup/rioxx2_orcid</filename>
+          <filename>plugins/EPrints/RIOXX2/Utils.pm</filename>
           <mime_type>text/plain</mime_type>
-          <hash>47dabf1300b356e52c6b63caa33d9e2f</hash>
+          <hash>73c3202ac72268995b68d62d77d8d035</hash>
           <hash_type>MD5</hash_type>
-          <filesize>2642</filesize>
-        </file>
-        <file>
-          <datasetid>document</datasetid>
-          <filename>epm/rioxx2/cgi/users/lookup/rioxx2_project</filename>
-          <mime_type>text/plain</mime_type>
-          <hash>e761f2aa0c65fe0e125b8f86e4b19b4d</hash>
-          <hash_type>MD5</hash_type>
-          <filesize>5037</filesize>
-        </file>
-        <file>
-          <datasetid>document</datasetid>
-          <filename>lang/en/phrases/rioxx2.xml</filename>
-          <mime_type>application/xml</mime_type>
-          <hash>13fe231b0d7798f3f6d24d28d9a47ddd</hash>
-          <hash_type>MD5</hash_type>
-          <filesize>21523</filesize>
-        </file>
-        <file>
-          <datasetid>document</datasetid>
-          <filename>lang/en/phrases/rioxx2_help.xml</filename>
-          <mime_type>application/xml</mime_type>
-          <hash>76695cbbc69daf1d3ce6599086c42fdf</hash>
-          <hash_type>MD5</hash_type>
-          <filesize>19582</filesize>
-        </file>
-        <file>
-          <datasetid>document</datasetid>
-          <filename>plugins/EPrints/MetaField/RIOXX2.pm</filename>
-          <mime_type>text/plain</mime_type>
-          <hash>8c9f51ac5b7a26d3fb3448ad4a6631a2</hash>
-          <hash_type>MD5</hash_type>
-          <filesize>2387</filesize>
-        </file>
-        <file>
-          <datasetid>document</datasetid>
-          <filename>plugins/EPrints/Plugin/Export/RIOXX2.pm</filename>
-          <mime_type>text/plain</mime_type>
-          <hash>b45f23c98b9aa8991ba8a182b1be795a</hash>
-          <hash_type>MD5</hash_type>
-          <filesize>2167</filesize>
-        </file>
-        <file>
-          <datasetid>document</datasetid>
-          <filename>plugins/EPrints/Plugin/Export/Report/CSV/RIOXX2.pm</filename>
-          <mime_type>text/plain</mime_type>
-          <hash>b818928f61f70eb0d1887a44399b1fa1</hash>
-          <hash_type>MD5</hash_type>
-          <filesize>1126</filesize>
-        </file>
-        <file>
-          <datasetid>document</datasetid>
-          <filename>plugins/EPrints/Plugin/InputForm/Component/Field/RIOXX2.pm</filename>
-          <mime_type>text/plain</mime_type>
-          <hash>89d3300be21c693c5efb930230d2fed0</hash>
-          <hash_type>MD5</hash_type>
-          <filesize>2727</filesize>
+          <filesize>1380</filesize>
         </file>
         <file>
           <datasetid>document</datasetid>
@@ -118,19 +63,59 @@
         </file>
         <file>
           <datasetid>document</datasetid>
-          <filename>plugins/EPrints/RIOXX2/Utils.pm</filename>
+          <filename>plugins/EPrints/Plugin/Export/RIOXX2.pm</filename>
           <mime_type>text/plain</mime_type>
-          <hash>73c3202ac72268995b68d62d77d8d035</hash>
+          <hash>b45f23c98b9aa8991ba8a182b1be795a</hash>
           <hash_type>MD5</hash_type>
-          <filesize>1380</filesize>
+          <filesize>2167</filesize>
         </file>
         <file>
           <datasetid>document</datasetid>
-          <filename>static/images/epm/rioxx2_icon.png</filename>
-          <mime_type>image/png</mime_type>
-          <hash>825b39c66a86932f48bd4eebea6f6116</hash>
+          <filename>plugins/EPrints/Plugin/Export/Report/CSV/RIOXX2.pm</filename>
+          <mime_type>text/plain</mime_type>
+          <hash>b818928f61f70eb0d1887a44399b1fa1</hash>
           <hash_type>MD5</hash_type>
-          <filesize>100679</filesize>
+          <filesize>1126</filesize>
+        </file>
+        <file>
+          <datasetid>document</datasetid>
+          <filename>plugins/EPrints/Plugin/InputForm/Component/Field/RIOXX2.pm</filename>
+          <mime_type>text/plain</mime_type>
+          <hash>89d3300be21c693c5efb930230d2fed0</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>2727</filesize>
+        </file>
+        <file>
+          <datasetid>document</datasetid>
+          <filename>plugins/EPrints/MetaField/RIOXX2.pm</filename>
+          <mime_type>text/plain</mime_type>
+          <hash>8c9f51ac5b7a26d3fb3448ad4a6631a2</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>2387</filesize>
+        </file>
+        <file>
+          <datasetid>document</datasetid>
+          <filename>lang/en/phrases/rioxx2.xml</filename>
+          <mime_type>application/xml</mime_type>
+          <hash>13fe231b0d7798f3f6d24d28d9a47ddd</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>21523</filesize>
+        </file>
+        <file>
+          <datasetid>document</datasetid>
+          <filename>lang/en/phrases/rioxx2_help.xml</filename>
+          <mime_type>application/xml</mime_type>
+          <hash>76695cbbc69daf1d3ce6599086c42fdf</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>19582</filesize>
+        </file>
+        <file>
+          <datasetid>document</datasetid>
+          <filename>static/rioxx2.xsl</filename>
+          <mime_type>application/xml</mime_type>
+          <hash>27d1ee13ab40dda97393bef1845c73b4</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>1900</filesize>
         </file>
         <file>
           <datasetid>document</datasetid>
@@ -142,43 +127,11 @@
         </file>
         <file>
           <datasetid>document</datasetid>
-          <filename>static/rioxx2.xsl</filename>
-          <mime_type>application/xml</mime_type>
-          <hash>2503aae6e95544de9489d9671d496cb8</hash>
-          <hash_type>MD5</hash_type>
-          <filesize>1895</filesize>
-        </file>
-        <file>
-          <datasetid>document</datasetid>
           <filename>static/style/auto/rioxx2.css</filename>
           <mime_type>text/plain</mime_type>
           <hash>dc22b70f06b861ef1a4360c73ccc289b</hash>
           <hash_type>MD5</hash_type>
           <filesize>743</filesize>
-        </file>
-        <file>
-          <datasetid>document</datasetid>
-          <filename>static/style/images/rioxx2_arrow.png</filename>
-          <mime_type>image/png</mime_type>
-          <hash>663a2af13bd4586330b9a16058cb7e2b</hash>
-          <hash_type>MD5</hash_type>
-          <filesize>374</filesize>
-        </file>
-        <file>
-          <datasetid>document</datasetid>
-          <filename>static/style/images/rioxx2_mandatory.png</filename>
-          <mime_type>image/png</mime_type>
-          <hash>8c6e0cfb5695de3adf1418d2a9c86240</hash>
-          <hash_type>MD5</hash_type>
-          <filesize>849</filesize>
-        </file>
-        <file>
-          <datasetid>document</datasetid>
-          <filename>static/style/images/rioxx2_message-icon.png</filename>
-          <mime_type>image/png</mime_type>
-          <hash>09a55048a4e5d641dac50d519ceda642</hash>
-          <hash_type>MD5</hash_type>
-          <filesize>1120</filesize>
         </file>
         <file>
           <datasetid>document</datasetid>
@@ -190,6 +143,22 @@
         </file>
         <file>
           <datasetid>document</datasetid>
+          <filename>static/style/images/rioxx2_validation_fail.png</filename>
+          <mime_type>image/png</mime_type>
+          <hash>bdb3958a998cc6efd9d1f5d2b0111f61</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>761</filesize>
+        </file>
+        <file>
+          <datasetid>document</datasetid>
+          <filename>static/style/images/rioxx2_arrow.png</filename>
+          <mime_type>image/png</mime_type>
+          <hash>663a2af13bd4586330b9a16058cb7e2b</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>374</filesize>
+        </file>
+        <file>
+          <datasetid>document</datasetid>
           <filename>static/style/images/rioxx2_recommended.png</filename>
           <mime_type>image/png</mime_type>
           <hash>5159addd95c9b95508a2360ca038ee9c</hash>
@@ -198,11 +167,19 @@
         </file>
         <file>
           <datasetid>document</datasetid>
-          <filename>static/style/images/rioxx2_validation_fail.png</filename>
+          <filename>static/style/images/rioxx2_message-icon.png</filename>
           <mime_type>image/png</mime_type>
-          <hash>bdb3958a998cc6efd9d1f5d2b0111f61</hash>
+          <hash>09a55048a4e5d641dac50d519ceda642</hash>
           <hash_type>MD5</hash_type>
-          <filesize>761</filesize>
+          <filesize>1120</filesize>
+        </file>
+        <file>
+          <datasetid>document</datasetid>
+          <filename>static/style/images/rioxx2_mandatory.png</filename>
+          <mime_type>image/png</mime_type>
+          <hash>8c6e0cfb5695de3adf1418d2a9c86240</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>849</filesize>
         </file>
         <file>
           <datasetid>document</datasetid>
@@ -214,21 +191,46 @@
         </file>
         <file>
           <datasetid>document</datasetid>
+          <filename>static/images/epm/rioxx2_icon.png</filename>
+          <mime_type>image/png</mime_type>
+          <hash>825b39c66a86932f48bd4eebea6f6116</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>100679</filesize>
+        </file>
+        <file>
+          <datasetid>document</datasetid>
           <filename>workflows/eprint/rioxx2.xml</filename>
           <mime_type>application/xml</mime_type>
           <hash>21056b41b452795099cff8fac219eb27</hash>
           <hash_type>MD5</hash_type>
           <filesize>1172</filesize>
         </file>
+        <file>
+          <datasetid>document</datasetid>
+          <filename>epm/rioxx2/cgi/users/lookup/rioxx2_project</filename>
+          <mime_type>text/plain</mime_type>
+          <hash>e761f2aa0c65fe0e125b8f86e4b19b4d</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>5037</filesize>
+        </file>
+        <file>
+          <datasetid>document</datasetid>
+          <filename>epm/rioxx2/cgi/users/lookup/rioxx2_orcid</filename>
+          <mime_type>text/plain</mime_type>
+          <hash>47dabf1300b356e52c6b63caa33d9e2f</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>2642</filesize>
+        </file>
       </files>
-      <mime_type>application/xml</mime_type>
-      <format>other</format>
-      <main>workflows/eprint/rioxx2.xml</main>
+      <mime_type>text/plain</mime_type>
+      <format>text</format>
+      <main>epm/rioxx2/cgi/users/lookup/rioxx2_orcid</main>
       <content>install</content>
     </document>
     <document>
       <files>
         <file>
+          <datasetid>document</datasetid>
           <filename>static/images/epm/rioxx2_icon.png</filename>
           <mime_type>image/png</mime_type>
           <hash>825b39c66a86932f48bd4eebea6f6116</hash>
@@ -241,7 +243,7 @@
       <content>coverimage</content>
     </document>
   </documents>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
   <controller>EPMC::RIOXX2</controller>
   <creators>
     <item>
@@ -259,7 +261,7 @@
       <id>timothy.miles-board@london.ac.uk</id>
     </item>
   </creators>
-  <datestamp>2015-02-17 11:13:49</datestamp>
+  <datestamp>2015-02-17 13:24:42</datestamp>
   <title>RIOXX2</title>
   <description>This RIOXX plugin gives your EPrints repository the capability to expose its publication data using the RIOXX V2.0 application profile.</description>
   <icon>images/epm/rioxx2_icon.png</icon>
