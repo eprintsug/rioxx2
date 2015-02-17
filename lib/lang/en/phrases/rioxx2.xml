@@ -162,6 +162,7 @@
 <epp:phrase id="rioxx2_validate_rioxx2_title:not_done_field">You need to fill in the <span class="ep_problem_field:title"><epc:phrase ref="eprint_fieldname_title"/></span> field.</epp:phrase>
 
 <epp:phrase id="rioxx2_validate_rioxx2_dateAccepted:not_done_field">You need to fill in the required <span class="ep_problem_field:rioxx2_dateAccepted"><epc:phrase ref="eprint_fieldname_rioxx2_dateAccepted"/></span> field.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_dateAccepted:not_iso_8601_date">You need to make sure that the <span class="ep_problem_field:rioxx2_dateAccepted"><epc:phrase ref="eprint_fieldname_rioxx2_dateAccepted"/></span> is fully completed with a year, month and day.</epp:phrase>
 
 <epp:phrase id="rioxx2_validate_rioxx2_free_to_read:not_done_field">You need to fill in the required <span class="ep_problem_field:rioxx2_free_to_read"><epc:phrase ref="eprint_fieldname_rioxx2_free_to_read"/></span> field.</epp:phrase>
 <epp:phrase id="rioxx2_validate_rioxx2_free_to_read:not_done_part_free_to_read"><epc:phrase ref="rioxx2_validate_rioxx2_free_to_read:not_done_field"/></epp:phrase>

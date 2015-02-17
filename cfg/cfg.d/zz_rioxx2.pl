@@ -113,6 +113,7 @@ push @{ $c->{rioxx2}->{profile} },
 	name => "rioxx2_dateAccepted",
 	rioxx2_required => "mandatory",
 	rioxx2_ns => "dcterms",
+	rioxx2_validate => "rioxx2_validate_dateAccepted",
 },
 
 {
@@ -539,6 +540,17 @@ value
 eprint
 
 =cut
+
+$c->{rioxx2_validate_dateAccepted} = sub {
+	my( $repo, $value, $eprint ) = @_;
+
+	if( $value && !EPrints::RIOXX2::Utils::is_iso_8601_date( $value ) )
+	{
+		push @problems, $repo->html_phrase( "rioxx2_validate_rioxx2_dateAccepted:not_iso_8601_date" );
+	}
+
+    return;
+};
 
 $c->{rioxx2_validate_description} = sub {
 	my( $repo, $value, $eprint ) = @_;
