@@ -13,8 +13,8 @@ sub new
 	$self->{accept} = [qw( dataobj/eprint )];
 	$self->{name} = 'RIOXX2 XML';
 	$self->{metadataPrefix} = "rioxx";
-	$self->{xmlns} = "http://docs.rioxx.net/schema/v2.0/",
-	$self->{schemaLocation} = "http://docs.rioxx.net/schema/v2.0/rioxx.xsd";
+	$self->{xmlns} = "http://www.rioxx.net/schema/v2.0/rioxx/",
+	$self->{schemaLocation} = "http://www.rioxx.net/schema/v2.0/rioxx/rioxx.xsd";
 
 	return $self;
 }
@@ -48,10 +48,11 @@ sub xml_dataobj
 
 	my $rioxx = $xml->create_element('rioxx',
 		'xmlns' => $self->param('xmlns'),
+		'xmlns:ali' => "http://ali.niso.org/2014/ali/1.0",
 		'xmlns:dc' => "http://purl.org/dc/elements/1.1/",
 		'xmlns:dcterms' => "http://purl.org/dc/terms/",
 		'xmlns:rioxxterms' => "http://docs.rioxx.net/schema/v2.0/rioxxterms/",
-        	'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance",
+        'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance",
 		'xsi:schemaLocation' => $self->param('xmlns')." ".$self->param('schemaLocation'),
 	);
 

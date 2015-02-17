@@ -3,7 +3,7 @@
 
 The RIOXX 2.0 application profile
 
-A representation of the RIOXX 2.0 application profile as defined by http://rioxx.net/v2-0-beta-1/
+A representation of the RIOXX 2.0 application profile as defined by http://rioxx.net/v2-0-final/
 
 The following properties are mandatory and taken directly from the application profile:
 
@@ -21,6 +21,22 @@ rioxx2_validate - subroutine that given
 use EPrints::RIOXX2::Utils;
 
 push @{ $c->{rioxx2}->{profile} },
+
+{
+	name => "rioxx2_free_to_read",
+	rioxx2_required => "optional",
+	rioxx2_ns => "ali",
+	rioxx2_value => "rioxx2_value_free_to_read",
+	rioxx2_validate => "rioxx2_validate_free_to_read"
+},
+
+{
+	name => "rioxx2_license_ref",
+	rioxx2_required => "mandatory",
+	rioxx2_ns => "ali",
+	rioxx2_value => "rioxx2_value_license_ref",
+	rioxx2_validate => "rioxx2_validate_license_ref"
+},
 
 {
 	name => "rioxx2_coverage",
@@ -97,22 +113,6 @@ push @{ $c->{rioxx2}->{profile} },
 	name => "rioxx2_dateAccepted",
 	rioxx2_required => "mandatory",
 	rioxx2_ns => "dcterms",
-},
-
-{
-	name => "rioxx2_free_to_read",
-	rioxx2_required => "optional",
-	rioxx2_ns => "rioxxterms",
-	rioxx2_value => "rioxx2_value_free_to_read",
-	rioxx2_validate => "rioxx2_validate_free_to_read"
-},
-
-{
-	name => "rioxx2_license_ref",
-	rioxx2_required => "mandatory",
-	rioxx2_ns => "rioxxterms",
-	rioxx2_value => "rioxx2_value_license_ref",
-	rioxx2_validate => "rioxx2_validate_license_ref"
 },
 
 {
@@ -301,7 +301,7 @@ push @{ $c->{rioxx2}->{overrides} },
 {
 	name => "rioxx2_dateAccepted_input",
 	type => "date",
-	min_resolution => "year",
+	min_resolution => "day",
 	show_in_html => 0,
 },
 
