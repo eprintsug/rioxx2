@@ -1,6 +1,61 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE phrases SYSTEM "entities.dtd">
 <epp:phrases xmlns="http://www.w3.org/1999/xhtml" xmlns:epp="http://eprints.org/ep3/phrase" xmlns:epc="http://eprints.org/ep3/control">
+<epp:phrase id="eprint_fieldhelp_rioxx2_free_to_read">Use of this element is:
+<strong>
+Optional
+</strong>
+<br/>
+<p>This is defined in the <a href="http://www.niso.org/workrooms/ali/">NISO Open Access Metadata and Indicators</a>.</p>
+
+<p>This element does not take a value - the semantics of <em>ali:free_to_read</em> are conveyed by its presence or absence. This element may be modified by two optional attributes</p>
+
+<ul>
+  <li>start_date</li>
+  <li>end_date</li>
+</ul>
+
+<p>Each of these attributes, if present, takes a date value which <strong>MUST</strong> be encoded using ISO 8601 (post–2004 versions) which follows the following format: YYYY-MM-DD.
+Examples:</p>
+
+<pre><code>&lt;ali:free_to_read start_date="2013-03-28" end_date="2014-04-30"&gt;
+&lt;ali:free_to_read start_date="2013-03-28"&gt;
+&lt;ali:free_to_read&gt;
+</code></pre>
+
+<p>The absence of a <em>start_date</em> attribute implies that the meaning conveyed by the ali:free_to_read element is current and immediate, unless an <em>end_date</em> attribute which is a date in the subjective past, is present in the element.</p>
+
+<p><strong><em>Note that NISO have yet to specify a namespace for this element - RIOXX will adopt the NISO recommendation when it is made</em></strong></p></epp:phrase>
+<epp:phrase id="eprint_fieldhelp_rioxx2_license_ref">Use of this element is:
+<strong>
+Mandatory
+</strong>
+<br/>
+<p>This is defined in the <a href="http://www.niso.org/workrooms/ali/">NISO Open Access Metadata and Indicators</a>. This element <strong>MUST</strong> take an HTTP URI for its value. This HTTP URI <strong>MUST</strong> point to a resource which expresses the license terms specifying how <strong><em>the resource</em></strong> may be used.</p>
+
+<p>This element <strong>MUST</strong> include the attribute:</p>
+
+<ul>
+  <li>start_date</li>
+</ul>
+
+<p>This attribute takes a date value which <strong>MUST</strong> be encoded using ISO 8601 (post–2004 versions) which follows the following format: YYYY-MM-DD.</p>
+
+<p>This atribute is used to indicate the date upon which this license takes effect. Multiple <em>ali:license_ref</em> elements may be included. Where several such elements are included, the one with the <em>start_date</em> attribute indicating the most recent date takes precedence.</p>
+
+<p>Example:</p>
+
+<pre><code>&lt;ali:license_ref start_date="2015-02-17"&gt;http://creativecommons.org/licenses/by/4.0&lt;/ali:license_ref&gt;
+</code></pre>
+
+<p>This approach allows the expression of 'embargoes', where a particular license takes effect at a date in the subjective future.</p>
+
+<p>In the absence of any other license, the copyright holder reserves all rights automatically. As a convenience, RIOXX provides two URLs which may be used to explicitly convey this state:</p>
+
+<ul>
+  <li><a href="http://www.rioxx.net/licenses/all-rights-reserved">http://www.rioxx.net/licenses/all-rights-reserved</a></li>
+  <li><a href="http://www.rioxx.net/licenses/under-embargo-all-rights-reserved">http://www.rioxx.net/licenses/under-embargo-all-rights-reserved</a></li>
+</ul></epp:phrase>
 <epp:phrase id="eprint_fieldhelp_rioxx2_coverage">Use of this element is:
 <strong>
 Optional
@@ -24,7 +79,7 @@ Recommended
 Mandatory
 </strong>
 <br/>
-<p>This field <strong>MUST</strong> contain an HTTP URI which is a persistent identifier for <strong><em>the resource</em></strong>. The purpose of this field is to allow access to <strong><em>the resource</em></strong>, therefore it is <strong>RECOMMENDED</strong> that this identifier should point to the <em>actual resource being described by the RIOXX record</em> (typically a file in MS Word or PDF format), rather than to an intermediary resource such as a repository web page.</p>
+<p>This field <strong>MUST</strong> contain an HTTP URI which is a persistent identifier for <strong><em>the resource</em></strong>. The purpose of this field is, through direct identification of <strong><em>the resource</em></strong>, to allow access to it, therefore it is <strong>RECOMMENDED</strong> that this identifier should point to the <em>actual resource being described by the RIOXX record</em> (typically a file in MS Word or PDF format), rather than to an intermediary resource such as a repository web page. Note that RIOXX does not require any require particular file format to be used for <strong><em>the resource</em></strong>.</p>
 
 <p>To describe another version of <strong><em>the resource</em></strong> with a different identifier, a completely separate RIOXX record should be created.</p></epp:phrase>
 <epp:phrase id="eprint_fieldhelp_rioxx2_language">Use of this element is:
@@ -54,7 +109,7 @@ Optional
 Mandatory where applicable
 </strong>
 <br/>
-<p>The source label describes a resource from which <strong><em>the resource</em></strong> is derived (in whole or in part). It is <strong>RECOMMENDED</strong> that the source is referenced using a unique identifier from a recognised system e.g. the unique 8-digit International Standard Serial Numbers (ISSN) assigned to <em>electronic</em> periodicals.</p>
+<p>The source label describes a resource from which <strong><em>the resource</em></strong> is derived (in whole or in part). It is <strong>RECOMMENDED</strong> that the source is referenced using a unique identifier from a recognised system e.g. the unique 8-digit International Standard Serial Numbers (ISSN) assigned to <em>electronic</em> periodicals, or the 13 digit International Standard Book Number (ISBN13) assigned to books. In the latter case, the ISBN13 for the electronic verison of the book <strong><em>SHOULD</em></strong> be used if available.</p>
 
 <p>Use of this element is applicable where <strong><em>the resource</em></strong> is to be published as part of a larger resource. Examples might include a journal article, a conference paper or a chapter of a book, but not a complete book for example.</p></epp:phrase>
 <epp:phrase id="eprint_fieldhelp_rioxx2_subject">Use of this element is:
@@ -62,17 +117,7 @@ Mandatory where applicable
 Recommended
 </strong>
 <br/>
-<p>Normally keywords, phrases or classification codes are used to describe the topic of <strong><em>the resource</em></strong>. If using free text, the use of general keywords <strong>SHOULD</strong> be avoided. It is <strong>RECOMMENDED</strong> to use a formal classification scheme or controlled vocabulary e.g <a href="http://www.loc.gov/catdir/cpso/lcco/">Library of Congress Classification Headings</a> or <a href="http://www.nlm.nih.gov/mesh/">Medical Subject Headings (MeSH)</a>. When including terms from multiple vocabularies, separate instances of this element <strong>MUST</strong> be used. If multiple vocabulary terms or keywords are used, terms <strong>SHOULD</strong> be separated with one of the following approaches:</p>
-
-<ul>
-  <li>the use of semi-colons to separate individual terms</li>
-</ul>
-
-<p>or</p>
-
-<ul>
-  <li>the use of separate iterations of this element for each term</li>
-</ul></epp:phrase>
+<p>The <a href="https://guidelines.openaire.eu/wiki/Literature_Guidelines:_Metadata_Field_Subject">Openaire Guidelines recommend the inclusion of this element</a>.</p></epp:phrase>
 <epp:phrase id="eprint_fieldhelp_rioxx2_title">Use of this element is:
 <strong>
 Mandatory
@@ -83,63 +128,13 @@ Mandatory
 <pre><code>Title:Subtitle
 </code></pre>
 
-<p>Note that where <strong><em>the resource</em></strong> is a chapter in a book, the chapter title <strong>MUST</strong> be entered here, with the book title being recorded in the <em>dc:source</em> element.</p></epp:phrase>
+<p>Note that where <strong><em>the resource</em></strong> is a chapter in a book, the chapter title <strong>MUST</strong> be entered here, with the ISBN13 of the book being recorded in the <em>dc:source</em> element.</p></epp:phrase>
 <epp:phrase id="eprint_fieldhelp_rioxx2_dateAccepted">Use of this element is:
 <strong>
 Mandatory
 </strong>
 <br/>
-<p>The date on which <strong><em>the resource</em></strong> was accepted for publication. The date <strong>SHOULD</strong> be encoded using ISO 8601 (post–2004 versions) which follows the following format: YYYY-MM-DD. Year (YYYY) or year and month (YYYY-MM) <strong>MAY</strong> be used if the full date is not known.</p></epp:phrase>
-<epp:phrase id="eprint_fieldhelp_rioxx2_free_to_read">Use of this element is:
-<strong>
-Optional
-</strong>
-<br/>
-<p>This is defined in the <a href="http://www.niso.org/workrooms/oami/">NISO Open Access Metadata and Indicators</a>.</p>
-
-<p>This element does not take a value - the semantics of <em>free_to_read</em> are conveyed by its presence or absence. This element may be modified by two optional attributes</p>
-
-<ul>
-  <li>start_date</li>
-  <li>end_date</li>
-</ul>
-
-<p>Each of these attributes, if present, takes a date value which <strong>MUST</strong> be encoded using ISO 8601 (post–2004 versions) which follows the following format: YYYY-MM-DD.
-Examples:</p>
-
-<pre><code>&lt;free_to_read start_date="2013-03-28" end_date="2014-04-30"&gt;
-&lt;free_to_read start_date="2013-03-28"&gt;
-&lt;free_to_read&gt;
-</code></pre>
-
-<p>The absence of a <em>start_date</em> attribute implies that the meaning conveyed by the free_to_read element is current and immediate, unless an <em>end_date</em> attribute which is a date in the subjective past, is present in the element.</p>
-
-<p><strong><em>Note that NISO have yet to specify a namespace for this element - RIOXX will adopt the NISO recommendation when it is made</em></strong></p></epp:phrase>
-<epp:phrase id="eprint_fieldhelp_rioxx2_license_ref">Use of this element is:
-<strong>
-Mandatory
-</strong>
-<br/>
-<p>This is defined in the <a href="http://www.niso.org/workrooms/oami/">NISO Open Access Metadata and Indicators</a>. This element <strong>MUST</strong> take an HTTP URI for its value. This HTTP URI <strong>MUST</strong> point to a resource which expresses the license terms specifying how <strong><em>the resource</em></strong> may be used.</p>
-
-<p>This element <strong>MUST</strong> include the attribute:</p>
-
-<ul>
-  <li>start_date</li>
-</ul>
-
-<p>This attribute takes a date value which <strong>MUST</strong> be encoded using ISO 8601 (post–2004 versions) which follows the following format: YYYY-MM-DD.</p>
-
-<p>This atribute is used to indicate the date upon which this license takes effect. Multiple <em>license_ref</em> elements may be included. Where several such elements are included, the one with the <em>start_date</em> attribute indicating the most recent date takes precedence.</p>
-
-<p>Example:</p>
-
-<pre><code>&lt;license_ref start_date="2015-02-17"&gt;http://creativecommons.org/licenses/by/3.0/deed.en_US&lt;/license_ref&gt;
-</code></pre>
-
-<p>This approach allows the expression of 'embargoes', where a particular license takes effect at a date in the subjective future.</p>
-
-<p><strong><em>Note that NISO have yet to specify a namespace for this element - RIOXX will adopt the NISO recommendation when it is made</em></strong></p></epp:phrase>
+<p>The date on which <strong><em>the resource</em></strong> was accepted for publication. The date <strong>MUST</strong> be encoded using ISO 8601 (post–2004 versions) using the following format: YYYY-MM-DD.</p></epp:phrase>
 <epp:phrase id="eprint_fieldhelp_rioxx2_apc">Use of this element is:
 <strong>
 Optional
@@ -168,10 +163,17 @@ As many authors may be entered as required. The ideal use of this element is to 
 &lt;/rioxxterms:author&gt;
 </code></pre>
 
-<p>Where the author is a person, the <strong>RECOMMENDED</strong> format is to add text in the form Last Name, First Name(s), and to include an ORCID ID, if known, in its HTTP URI form, e.g. </p>
+<p>Where the author is a person, the <strong>RECOMMENDED</strong> format is to add text in the form Last Name, First Name(s), and to include an <a href="http://orcid.org">ORCID</a> ID, if known, in its HTTP URI form, e.g. </p>
 
 <pre><code>&lt;rioxxterms:author id="http://orcid.org/0000-0002-1395-3092"&gt;
     Lawson, Gerald
+&lt;/rioxxterms:author&gt;
+</code></pre>
+
+<p>Where the author is an organisation, the <strong>RECOMMENDED</strong> format is to add the official name of the organisation, and to include an <a href="http://isni.org">ISNI</a> ID, if known, in its HTTP URI form, e.g.</p>
+
+<pre><code>&lt;rioxxterms:author id="http://isni.org/isni/0000000419367988"&gt;
+    University of Edinburgh
 &lt;/rioxxterms:author&gt;
 </code></pre>
 
@@ -193,10 +195,17 @@ Optional
 &lt;/rioxxterms:contributor&gt;
 </code></pre>
 
-<p>Where the contributor is a person, the <strong>RECOMMENDED</strong> format is to add text in the form Last Name, First Name(s), and to include an ORCID ID, if known, in its HTTP URI form, e.g.</p>
+<p>Where the contributor is a person, the <strong>RECOMMENDED</strong> format is to add text in the form Last Name, First Name(s), and to include an <a href="http://orcid.org">ORCID</a> ID, if known, in its HTTP URI form, e.g.</p>
 
 <pre><code>&lt;rioxxterms:contributor id="http://orcid.org/0000-0002-1395-3092"&gt;
     Lawson, Gerald
+&lt;/rioxxterms:contributor&gt;
+</code></pre>
+
+<p>Where the contributor is an organisation, the <strong>RECOMMENDED</strong> format is to add the official name of the organisation, and to include an <a href="http://isni.org">ISNI</a> ID, if known, in its HTTP URI form, e.g.</p>
+
+<pre><code>&lt;rioxxterms:contributor id="http://isni.org/isni/0000000419367988"&gt;
+    University of Edinburgh
 &lt;/rioxxterms:contributor&gt;
 </code></pre></epp:phrase>
 <epp:phrase id="eprint_fieldhelp_rioxx2_project">Use of this element is:
@@ -211,12 +220,27 @@ Mandatory
 <p>The element takes two attributes, <em>funder_name</em> and <em>funder_id</em>. One or both of <em>funder_name</em> and <em>funder_id</em> <strong>MUST</strong> be supplied.</p>
 
 <h2 id="fundername">funder_name</h2>
-<p>The canonical name of the entity responsible for funding <strong><em>the resource</em></strong> <strong>SHOULD</strong> be recorded here as text. A controlled list of funder names <strong>MUST</strong> be used for this. The list of funder names provided by the <a href="http://www.crossref.org/fundref/">FundRef</a> service is <strong>RECOMMENDED</strong></p>
+<p>The canonical name of the entity responsible for funding <strong><em>the resource</em></strong> <strong>SHOULD</strong> be recorded here as text.</p>
 
 <h2 id="funderid">funder_id</h2>
-<p>A globally unique identifier for the funder of <strong><em>the resource</em></strong> <strong>SHOULD</strong> be recorded here. An HTTP URI <strong>MUST</strong> be used for this. It is <strong>RECOMMENDED</strong> that a DOI (in its HTTP URI form) made available by the <a href="http://www.crossref.org/fundref/">FundRef</a> service is used for this.</p>
+<p>A globally unique identifier for the funder of <strong><em>the resource</em></strong> <strong>SHOULD</strong> be recorded here. An HTTP URI <strong>MUST</strong> be used for this. It is <strong>RECOMMENDED</strong> that one of the following identifier schemes is used:</p>
+
+<ul>
+  <li>an <a href="http://isni.org">ISNI</a> ID</li>
+  <li>a DOI (in its HTTP URI form) made available by <a href="http://www.crossref.org/fundref/">FundRef</a></li>
+</ul>
 
 <h2 id="example">Example</h2>
+
+<pre><code>&lt;rioxxterms:project
+    funder_name="Engineering and Physical Sciences Research Council"
+    funder_id="http://isni.org/isni/0000000403948681"
+&gt;
+    EP/K023195/1
+&lt;/rioxxterms:project&gt;
+</code></pre>
+
+<p>or</p>
 
 <pre><code>&lt;rioxxterms:project
     funder_name="Engineering and Physical Sciences Research Council"
@@ -247,7 +271,7 @@ Optional
 &lt;/rioxxterms:publication_date&gt;
 </code></pre>
 
-<p>As RIOXX is primarily concerned with such issues as compliance with funders’ mandates and licensing of open access publications, the critical dates for the assertion of compliance are those held in the <em>start_date</em> attributes of the <em>license_ref</em> elements.</p></epp:phrase>
+<p>As RIOXX is primarily concerned with such issues as compliance with funders’ mandates and licensing of open access publications, the critical dates for the assertion of compliance are those held in the <em>start_date</em> attributes of the <em>ali:license_ref</em> elements.</p></epp:phrase>
 <epp:phrase id="eprint_fieldhelp_rioxx2_type">Use of this element is:
 <strong>
 Mandatory
