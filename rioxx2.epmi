@@ -16,9 +16,9 @@
           <datasetid>document</datasetid>
           <filename>epm/rioxx2/cfg/cfg.d/zz_rioxx2.pl</filename>
           <mime_type>text/plain</mime_type>
-          <hash>10836f268e50839380daf11dabf43c67</hash>
+          <hash>69b0714bb592e4d910f9d17d22a23c59</hash>
           <hash_type>MD5</hash_type>
-          <filesize>16503</filesize>
+          <filesize>16808</filesize>
         </file>
         <file>
           <datasetid>document</datasetid>
@@ -40,17 +40,17 @@
           <datasetid>document</datasetid>
           <filename>lang/en/phrases/rioxx2.xml</filename>
           <mime_type>application/xml</mime_type>
-          <hash>b302c5d0eed3d0cf90f8d4b492194e25</hash>
+          <hash>13fe231b0d7798f3f6d24d28d9a47ddd</hash>
           <hash_type>MD5</hash_type>
-          <filesize>21335</filesize>
+          <filesize>21523</filesize>
         </file>
         <file>
           <datasetid>document</datasetid>
           <filename>lang/en/phrases/rioxx2_help.xml</filename>
           <mime_type>application/xml</mime_type>
-          <hash>17dd2fdca75f25bbd8aecc0ac4365560</hash>
+          <hash>76695cbbc69daf1d3ce6599086c42fdf</hash>
           <hash_type>MD5</hash_type>
-          <filesize>18758</filesize>
+          <filesize>19582</filesize>
         </file>
         <file>
           <datasetid>document</datasetid>
@@ -64,9 +64,9 @@
           <datasetid>document</datasetid>
           <filename>plugins/EPrints/Plugin/Export/RIOXX2.pm</filename>
           <mime_type>text/plain</mime_type>
-          <hash>423e7c3f19c3bc7d55c0c6fb960e53db</hash>
+          <hash>b45f23c98b9aa8991ba8a182b1be795a</hash>
           <hash_type>MD5</hash_type>
-          <filesize>2105</filesize>
+          <filesize>2167</filesize>
         </file>
         <file>
           <datasetid>document</datasetid>
@@ -136,25 +136,25 @@
           <datasetid>document</datasetid>
           <filename>static/javascript/auto/rioxx2.js</filename>
           <mime_type>text/plain</mime_type>
-          <hash>b3332aec1b3a75644ba7a69318f8c83e</hash>
+          <hash>0742d6e1170af979f4797e1b631c5833</hash>
           <hash_type>MD5</hash_type>
-          <filesize>1084</filesize>
+          <filesize>1108</filesize>
         </file>
         <file>
           <datasetid>document</datasetid>
           <filename>static/rioxx2.xsl</filename>
           <mime_type>application/xml</mime_type>
-          <hash>9c58c24912ef9345651c514038a0c415</hash>
+          <hash>2503aae6e95544de9489d9671d496cb8</hash>
           <hash_type>MD5</hash_type>
-          <filesize>1881</filesize>
+          <filesize>1895</filesize>
         </file>
         <file>
           <datasetid>document</datasetid>
           <filename>static/style/auto/rioxx2.css</filename>
           <mime_type>text/plain</mime_type>
-          <hash>a46fa400db0494760dab333679eca11b</hash>
+          <hash>dc22b70f06b861ef1a4360c73ccc289b</hash>
           <hash_type>MD5</hash_type>
-          <filesize>761</filesize>
+          <filesize>743</filesize>
         </file>
         <file>
           <datasetid>document</datasetid>
@@ -241,7 +241,7 @@
       <content>coverimage</content>
     </document>
   </documents>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <controller>EPMC::RIOXX2</controller>
   <creators>
     <item>
@@ -259,7 +259,7 @@
       <id>timothy.miles-board@london.ac.uk</id>
     </item>
   </creators>
-  <datestamp>2015-02-03 10:42:00</datestamp>
+  <datestamp>2015-02-17 10:56:26</datestamp>
   <title>RIOXX2</title>
   <description>This RIOXX plugin gives your EPrints repository the capability to expose its publication data using the RIOXX V2.0 application profile.</description>
   <icon>images/epm/rioxx2_icon.png</icon>
