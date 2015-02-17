@@ -546,7 +546,7 @@ $c->{rioxx2_validate_dateAccepted} = sub {
 
 	if( $value && !EPrints::RIOXX2::Utils::is_iso_8601_date( $value ) )
 	{
-		push @problems, $repo->html_phrase( "rioxx2_validate_rioxx2_dateAccepted:not_iso_8601_date" );
+	    return $repo->html_phrase( "rioxx2_validate_rioxx2_dateAccepted:not_iso_8601_date" );
 	}
 
     return;
