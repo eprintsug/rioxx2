@@ -17,9 +17,9 @@
           <datasetid>document</datasetid>
           <filename>epm/rioxx2/cfg/cfg.d/zz_rioxx2.pl</filename>
           <mime_type>text/plain</mime_type>
-          <hash>c9ba5b52fb8a9b184463348eaf4227d6</hash>
+          <hash>0559af9b8c2042a005ab655e8e7f4e34</hash>
           <hash_type>MD5</hash_type>
-          <filesize>16802</filesize>
+          <filesize>16922</filesize>
         </file>
         <file>
           <datasetid>document</datasetid>
@@ -41,9 +41,9 @@
           <datasetid>document</datasetid>
           <filename>plugins/EPrints/Plugin/Screen/EPrint/RIOXX2.pm</filename>
           <mime_type>text/plain</mime_type>
-          <hash>d219b300b5094b34e19ccdf1295938d4</hash>
+          <hash>e4f33be2f09d1f8683678c95d40c4bd8</hash>
           <hash_type>MD5</hash_type>
-          <filesize>3570</filesize>
+          <filesize>3569</filesize>
         </file>
         <file>
           <datasetid>document</datasetid>
@@ -243,7 +243,7 @@
       <content>coverimage</content>
     </document>
   </documents>
-  <version>1.0.4</version>
+  <version>1.0.5</version>
   <controller>EPMC::RIOXX2</controller>
   <creators>
     <item>
@@ -261,7 +261,7 @@
       <id>timothy.miles-board@london.ac.uk</id>
     </item>
   </creators>
-  <datestamp>2015-02-17 13:24:42</datestamp>
+  <datestamp>2015-03-11 21:31:11</datestamp>
   <title>RIOXX2</title>
   <description>This RIOXX plugin gives your EPrints repository the capability to expose its publication data using the RIOXX V2.0 application profile.</description>
   <icon>images/epm/rioxx2_icon.png</icon>
