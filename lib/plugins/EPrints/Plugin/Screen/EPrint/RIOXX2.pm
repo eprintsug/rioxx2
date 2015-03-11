@@ -30,7 +30,7 @@ sub can_be_viewed
 {
 	my( $self ) = @_;
 		
-	return $self->allow( "eprint/details" );
+	return $self->allow( "eprint/rioxx2" );
 }
 
 sub render

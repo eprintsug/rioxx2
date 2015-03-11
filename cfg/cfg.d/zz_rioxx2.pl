@@ -676,4 +676,7 @@ $c->{plugins}{'InputForm::Component::Field::RIOXX2'}{params}{disable} = 0;
 $c->{plugins}{"Screen::Report::RIOXX2"}{params}{disable} = 0;
 $c->{plugins}{"Screen::Report::RIOXX2::2014"}{params}{disable} = 0;
 $c->{plugins}{"Export::Report::CSV::RIOXX2"}{params}{disable} = 0;
+
 push @{$c->{user_roles}->{admin}}, qw{ +report/rioxx2 };
+push @{ $c->{user_roles}->{editor} }, qw{ +eprint/rioxx2 };
+push @{ $c->{user_roles}->{admin} }, qw{ +eprint/rioxx2 };
