@@ -1,4 +1,4 @@
-# RIOXX2 Configuration Guide
+# RIOXX2 Plugin for EPrints: Configuration Guide
 
 ## Introduction
 
@@ -44,9 +44,9 @@ When $eprint->value( "rioxx2\_description" ) is called, MetaField::RIOXX2::get\_
 * check whether a field called rioxx2\_description\_input exists, and if so return its value
 * otherwise call the rioxx2\_description field's "rioxx2\_value" property and return its value (or undef if the field does not have this property)
 
-### RIOXX Fields in the Workflow
+### RIOXX2 Fields in the Workflow
 
-The virtual RIOXX fields can be added to the deposit workflow, provided that a corresponding _input field is also defined (by default the plugin adds 11 virtual fields to the workflow in a separate "rioxx" stage):
+The virtual RIOXX2 fields can be added to the deposit workflow, provided that a corresponding _input field is also defined (by default the plugin adds 11 virtual fields to the workflow in a separate "rioxx" stage):
 
      <component type="Field::RIOXX2"><field ref="rioxx2_dateAccepted" /></component>
 
@@ -91,7 +91,7 @@ Then add the following to archives/foo/cfg/cfg.d/zzz\_rioxx\_overrides.pl:
     	return undef;
     };
 
-### I'm not already capturing the date of acceptance - I want depositors to see the RIOXX Date Accepted field
+### I'm not already capturing the date of acceptance - I want depositors to see the RIOXX2 Date Accepted field
 
 Edit archives/foo/cfg/workflows/eprint/default.xml and move the rioxx2_dateAccepted field out of the rioxx stage.
 
@@ -115,7 +115,7 @@ Edit archives/foo/cfg/workflows/eprint/default.xml and move the rioxx2_dateAccep
          <component type="Field::RIOXX2"><field ref="rioxx2_license_ref"/></component>
          <component type="Field::RIOXX2"><field ref="rioxx2_apc"/></component>
 
-### I want to use the RIOXX Projects field instead of the default EPrints Projects and Funders fields
+### I want to use the RIOXX2 Projects field instead of the default EPrints Projects and Funders fields
 
 Edit archives/foo/cfg/workflows/eprint/default.xml and replace the default projects and funders fields with the rioxx2_project field:
 
