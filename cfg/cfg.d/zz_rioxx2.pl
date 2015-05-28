@@ -49,7 +49,7 @@ push @{ $c->{rioxx2}->{profile} },
 	rioxx2_required => "recommended",
 	rioxx2_ns => "dc",
 	rioxx2_value => sub { $_[0]->value( "abstract" ) },
-	rioxx2_validate => "rioxx2_validate_description"
+	rioxx2_validate => "rioxx2_validate_description",
 	show_in_html => 0,
 },
 
@@ -89,7 +89,7 @@ push @{ $c->{rioxx2}->{profile} },
 	rioxx2_required => "optional",
 	rioxx2_ns => "dc",
 	rioxx2_value => sub { $_[0]->value( "related_url_url" ) },
-	rioxx2_validate => "rioxx2_validate_relation"
+	rioxx2_validate => "rioxx2_validate_relation",
 	show_in_html => 0,
 },
 
@@ -179,7 +179,7 @@ push @{ $c->{rioxx2}->{profile} },
 	rioxx2_required => "recommended",
 	rioxx2_ns => "rioxxterms",
 	rioxx2_value =>"rioxx2_value_version_of_record",
-	rioxx2_validate => "rioxx2_validate_version_of_record"
+	rioxx2_validate => "rioxx2_validate_version_of_record",
 	show_in_html => 0,
 },
 
