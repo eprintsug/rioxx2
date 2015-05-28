@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<epm xmlns='http://eprints.org/ep2/data/2.0' id='http://winch.localhost/id/epm/rioxx2'>
+<epm xmlns='http://eprints.org/ep2/data/2.0' id='http://drtjmb.com/id/epm/rioxx2'>
   <epmid>rioxx2</epmid>
-  <uri>http://winch.localhost/id/epm/rioxx2</uri>
+  <uri>http://drtjmb.com/id/epm/rioxx2</uri>
   <documents>
     <document>
       <files>
@@ -17,9 +17,9 @@
           <datasetid>document</datasetid>
           <filename>epm/rioxx2/cfg/cfg.d/zz_rioxx2.pl</filename>
           <mime_type>text/plain</mime_type>
-          <hash>0559af9b8c2042a005ab655e8e7f4e34</hash>
+          <hash>9953e203f34edf87a621d19703dc3b1d</hash>
           <hash_type>MD5</hash_type>
-          <filesize>16922</filesize>
+          <filesize>17122</filesize>
         </file>
         <file>
           <datasetid>document</datasetid>
@@ -243,7 +243,7 @@
       <content>coverimage</content>
     </document>
   </documents>
-  <version>1.0.5</version>
+  <version>1.0.7</version>
   <controller>EPMC::RIOXX2</controller>
   <creators>
     <item>
@@ -261,7 +261,7 @@
       <id>timothy.miles-board@london.ac.uk</id>
     </item>
   </creators>
-  <datestamp>2015-03-11 21:31:11</datestamp>
+  <datestamp>2015-05-28 16:26:41</datestamp>
   <title>RIOXX2</title>
   <description>This RIOXX plugin gives your EPrints repository the capability to expose its publication data using the RIOXX V2.0 application profile.</description>
   <icon>images/epm/rioxx2_icon.png</icon>

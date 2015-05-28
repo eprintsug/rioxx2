@@ -50,6 +50,7 @@ push @{ $c->{rioxx2}->{profile} },
 	rioxx2_ns => "dc",
 	rioxx2_value => sub { $_[0]->value( "abstract" ) },
 	rioxx2_validate => "rioxx2_validate_description"
+	show_in_html => 0,
 },
 
 {
@@ -57,6 +58,7 @@ push @{ $c->{rioxx2}->{profile} },
 	rioxx2_required => "recommended",
 	rioxx2_ns => "dc",
 	rioxx2_value => sub { $_[1] && $_[1]->value( "mime_type" ) },
+	show_in_html => 0,
 },
 
 {
@@ -64,6 +66,7 @@ push @{ $c->{rioxx2}->{profile} },
 	rioxx2_required => "mandatory",
 	rioxx2_ns => "dc",
 	rioxx2_value => sub { $_[1] && $_[1]->get_url },
+	show_in_html => 0,
 },
 
 {
@@ -78,6 +81,7 @@ push @{ $c->{rioxx2}->{profile} },
 	rioxx2_required => "recommended",
 	rioxx2_ns => "dc",
 	rioxx2_value => sub { $_[0]->value( "publisher" ) },
+	show_in_html => 0,
 },
 
 {
@@ -86,6 +90,7 @@ push @{ $c->{rioxx2}->{profile} },
 	rioxx2_ns => "dc",
 	rioxx2_value => sub { $_[0]->value( "related_url_url" ) },
 	rioxx2_validate => "rioxx2_validate_relation"
+	show_in_html => 0,
 },
 
 {
@@ -93,6 +98,7 @@ push @{ $c->{rioxx2}->{profile} },
 	rioxx2_required => sub { ( $_[0]->get_type eq "article" || $_[0]->get_type eq "book_section" || $_[0]->get_type eq "conference_item" ) ? "mandatory" : "optional" },
 	rioxx2_ns => "dc",
 	rioxx2_value => "rioxx2_value_source",
+	show_in_html => 0,
 },
 
 {
@@ -100,6 +106,7 @@ push @{ $c->{rioxx2}->{profile} },
 	rioxx2_required => "recommended",
 	rioxx2_ns => "dc",
 	rioxx2_value => sub { $_[0]->value( "subjects" ) },
+	show_in_html => 0,
 },
 
 {
@@ -107,6 +114,7 @@ push @{ $c->{rioxx2}->{profile} },
 	rioxx2_required => "mandatory",
 	rioxx2_ns => "dc",
 	rioxx2_value => sub { $_[0]->value( "title" ) },
+	show_in_html => 0,
 },
 
 {
@@ -134,6 +142,7 @@ push @{ $c->{rioxx2}->{profile} },
 	rioxx2_required => "optional",
 	rioxx2_ns => "rioxxterms",
 	rioxx2_value => "rioxx2_value_contributor",
+	show_in_html => 0,
 },
 
 {
@@ -171,6 +180,7 @@ push @{ $c->{rioxx2}->{profile} },
 	rioxx2_ns => "rioxxterms",
 	rioxx2_value =>"rioxx2_value_version_of_record",
 	rioxx2_validate => "rioxx2_validate_version_of_record"
+	show_in_html => 0,
 },
 
 ;
