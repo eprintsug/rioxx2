@@ -76,5 +76,54 @@ sub contains_markup
 	return scalar @$start_events;
 }
 
+sub get_embargo_lapse_date
+{
+	my( $value ) = @_;
+
+	if( defined $value && $value =~ /^\d{4}/ ) #possibly partial date - but at least a full year
+	{
+		my( $year, $month, $day ) = split( "-", $value );
+
+		# basic map of days in month
+		my @monthDays= qw( 31 28 31 30 31 30 31 31 30 31 30 31 );
+		# fixed for leap years
+		if (($year % 4 == 0 && $year % 100 != 0) || ($year % 400 == 0)) {
+			$monthDays[1] = 29;  # leap year
+		}
+
+		if( !defined $month && !defined $day )
+		{
+			# an embargo date of '2017' will be released after the end of 2017:  2018-01-01.
+			$day = 1;
+			$month = 1;
+			$year++;
+		}
+		elsif( !defined $day )
+		{
+			# an embargo date of '2017-07' will be released after the end of July 2017: 2017-08-01.
+			$day = 1;
+			$month++;
+                }
+		else
+		{
+			if( $day >= $monthDays[$month-1] ){
+				$day = 1;
+				$month++;
+			} else {
+				$day++;
+			}
+		}
+
+		if( $month > 12 ){
+			$month = 1;
+			$year++;
+		}
+
+		return sprintf( "%04d-%02d-%02d", $year, $month, $day );
+	}
+	
+	return undef;
+}
+
 1;
 
