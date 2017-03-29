@@ -127,7 +127,7 @@ Edit archives/foo/cfg/workflows/eprint/default.xml and replace the default proje
      
     -    <component><field ref="funders"/></component>
     -    <component><field ref="projects"/></component>
-    +    <component type="Field::RIOXX2"><field ref="rioxx2_project"/></component>
+    +    <component><field ref="rioxx2_project_input"/></component>
      
          <epc:if test="type = 'teaching_resource'">
            <component type="Field::Multi">
