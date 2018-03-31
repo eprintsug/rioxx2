@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <epm xmlns='http://eprints.org/ep2/data/2.0' id='http://192.168.23.142/id/epm/rioxx2'>
   <epmid>rioxx2</epmid>
-  <uri>http://drtjmb.com/id/epm/rioxx2</uri>
+  <uri>http://192.168.23.142/id/epm/rioxx2</uri>
   <documents>
     <document>
       <files>
@@ -233,9 +233,9 @@
           <datasetid>document</datasetid>
           <filename>epm/rioxx2/cfg/cfg.d/zz_rioxx2.pl</filename>
           <mime_type>text/plain</mime_type>
-          <hash>9bbe56537eb4eadef109d33805d9208f</hash>
+          <hash>cea3da50440737bc79d22442683219fc</hash>
           <hash_type>MD5</hash_type>
-          <filesize>17429</filesize>
+          <filesize>18007</filesize>
         </file>
       </files>
       <mime_type>text/plain</mime_type>
@@ -259,7 +259,7 @@
       <content>coverimage</content>
     </document>
   </documents>
-  <version>1.0.8</version>
+  <version>1.0.9</version>
   <controller>EPMC::RIOXX2</controller>
   <creators>
     <item>
@@ -277,7 +277,7 @@
       <id>timothy.miles-board@london.ac.uk</id>
     </item>
   </creators>
-  <datestamp>2018-03-31 21:53:06</datestamp>
+  <datestamp>2018-03-31 22:11:22</datestamp>
   <title>RIOXX2</title>
   <description>This RIOXX plugin gives your EPrints repository the capability to expose its publication data using the RIOXX V2.0 application profile.</description>
   <icon>images/epm/rioxx2_icon.png</icon>
