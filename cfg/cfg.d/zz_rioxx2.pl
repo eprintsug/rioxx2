@@ -479,7 +479,7 @@ $c->{rioxx2_value_author} = sub {
             $_->{orcid} =~ m/\b(\d{4})\-?(\d{4})\-?(\d{4})\-?(\d{3}(?:\d|X))/ )
         {
             my $id = "$1-$2-$3-$4";
-            $creator_data->{id} =   id => "http://orcid.org/$id";
+            $creator_data->{id} = "http://orcid.org/$id";
         }
 
 		push @authors, $creator_data;
