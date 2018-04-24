@@ -594,6 +594,11 @@ $c->{rioxx2_validate_free_to_read} = sub {
 	my( $repo, $value, $eprint ) = @_;
 
 	my @problems;
+	if ( ref($value) ne 'HASH' )
+        {
+                push @problems, $repo->html_phrase( "rioxx2_validate_rioxx2_free_to_read:not_done_part_free_to_read" );
+                return @problems;
+        }
 	unless( EPrints::Utils::is_set( $value->{free_to_read} ) )
 	{
 		push @problems, $repo->html_phrase( "rioxx2_validate_rioxx2_free_to_read:not_done_part_free_to_read" );
