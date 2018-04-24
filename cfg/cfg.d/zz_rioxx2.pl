@@ -465,13 +465,26 @@ $c->{rioxx2_value_author} = sub {
 	my( $eprint ) = @_;
 
 	my @authors;
-	for( @{ $eprint->value( "creators_name" ) } )
-	{
-		push @authors, {
-			author => EPrints::Utils::make_name_string( $_ ),
-			#id => "", 	#if the config includes an orcid id for the contributors then that can be used here
-		};
+    my $orcid_support_installed = 0;
+
+    $orcid_support_installed = 1 if(EPrints::Utils::is_set($c->{plugins}{"Orcid"}) && $c->{plugins}{"Orcid"}{params}{disable} == 0);
+
+	for( @{ $eprint->value( "creators" ) } )
+	{   
+        my $creator_data = { author => EPrints::Utils::make_name_string( $_->{name} ) };
+        # Add orcid if available not required if orcid_support is installed 
+        # normalisation from orcid_support https://github.com/eprints/orcid_support
+        if( $orcid_support_installed == 0 && 
+            EPrints::Utils::is_set($_->{orcid}) && 
+            $_->{orcid} =~ m/\b(\d{4})\-?(\d{4})\-?(\d{4})\-?(\d{3}(?:\d|X))/ )
+        {
+            my $id = "$1-$2-$3-$4";
+            $creator_data->{id} =   id => "http://orcid.org/$id";
+        }
+
+		push @authors, $creator_data;
 	}
+
 	foreach my $corp ( @{ $eprint->value( "corp_creators" ) } )
 	{
 		my $entry = {};
