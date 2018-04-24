@@ -536,7 +536,7 @@ $c->{rioxx2_value_version_of_record} = sub {
 	if( $value =~ /^(doi:)?10\..+\/.+/ )
 	{
 		$value =~ s/^doi://;
-		return "http://dx.doi.org/$value";
+		return "http://doi.org/$value";
 	}
 
 	return $value;

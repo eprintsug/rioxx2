@@ -244,7 +244,7 @@ Mandatory
 
 <pre><code>&lt;rioxxterms:project
     funder_name="Engineering and Physical Sciences Research Council"
-    funder_id="http://dx.doi.org/10.13039/501100000266"
+    funder_id="http://doi.org/10.13039/501100000266"
 &gt;
     EP/K023195/1
 &lt;/rioxxterms:project&gt;
@@ -335,7 +335,7 @@ Recommended
 <p>This field <strong>MUST</strong> contain an HTTP URI which is a persistent identifier for the published version of <strong><em>the resource</em></strong>. If a DOI has been issued by the publisher then this <em>MUST</em> be used. Such a DOI <strong>MUST</strong> be represented in its HTTP form, for example:</p>
 
 <pre><code>&lt;rioxxterms:version_of_record&gt;
-    http://dx.doi.org/10.1006/jmbi.1995.0238
+    http://doi.org/10.1006/jmbi.1995.0238
 &lt;/rioxxterms:version_of_record&gt;
 </code></pre></epp:phrase>
 </epp:phrases>
