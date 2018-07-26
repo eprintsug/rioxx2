@@ -45,14 +45,14 @@ sub get_funder_lookup
 	return $funder_lookup;
 }
 
-sub is_http_uri
+sub is_http_or_https_uri
 {
 	my( $value ) = @_;
 
 	my @v = ref( $value ) eq "ARRAY" ? @$value : ( $value );
 	for( @v )
 	{
-		return 0 unless /^http:/i;
+		return 0 unless /^https?:/i;
 	}
 	return 1;
 }
