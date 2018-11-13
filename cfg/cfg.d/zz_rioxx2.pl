@@ -455,7 +455,7 @@ $c->{rioxx2_value_license_ref} = sub {
 	my $license = $document->repository->config( "rioxx2", "license_map", $document->value( "license" ) ); 
 	return undef unless $license;
 
-	my $start_date = $eprint->value( "date" ) if ( !$eprint->is_set( "date_type" ) || $eprint->value( "date_type" ) eq "published" ); 
+	my $start_date = $eprint->value( "date" ) if ( !$eprint->is_set( "date_type" ) || $eprint->value( "date_type" ) =~ m/^published/ ); 
 	$start_date = EPrints::RIOXX2::Utils::get_embargo_lapse_date( $document->value( "date_embargo" ) ) if $document->is_set( "date_embargo" );
 	return { license_ref => $license, start_date => $start_date };
 };
