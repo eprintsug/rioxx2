@@ -595,7 +595,7 @@ $c->{rioxx2_validate_relation} = sub {
 	my @problems;
 	for( @$value )
 	{
-		unless( EPrints::RIOXX2::Utils::is_http_uri( $value ) )
+		unless( EPrints::RIOXX2::Utils::is_http_or_https_uri( $value ) )
 		{
 			push @problems, $repo->html_phrase( "rioxx2_validate_rioxx2_relation:not_http_uri" );
 		}
@@ -635,7 +635,7 @@ $c->{rioxx2_validate_license_ref} = sub {
 	{
 		push @problems, $repo->html_phrase( "rioxx2_validate_rioxx2_license_ref:not_done_part_license_ref" );
 	}
-	if( $value->{license_ref} && !EPrints::RIOXX2::Utils::is_http_uri( $value->{license_ref} ) )
+	if( $value->{license_ref} && !EPrints::RIOXX2::Utils::is_http_or_https_uri( $value->{license_ref} ) )
 	{
 		push @problems, $repo->html_phrase( "rioxx2_validate_rioxx2_license_ref:not_http_uri" );
 	}
@@ -674,7 +674,7 @@ $c->{rioxx2_validate_project} = sub {
 		{
 			push @problems, $repo->html_phrase( "rioxx2_validate_rioxx2_project:not_valid_funder" );
 		}
-		if( $funder_id && !EPrints::RIOXX2::Utils::is_http_uri( $funder_id ) )
+		if( $funder_id && !EPrints::RIOXX2::Utils::is_http_or_https_uri( $funder_id ) )
 		{
 			push @problems, $repo->html_phrase( "rioxx2_validate_rioxx2_project:not_http_uri" );
 		}
@@ -689,7 +689,7 @@ $c->{rioxx2_validate_project} = sub {
 $c->{rioxx2_validate_version_of_record} = sub {
 	my( $repo, $value, $eprint ) = @_;
 
-	unless( EPrints::RIOXX2::Utils::is_http_uri( $value ) )
+	unless( EPrints::RIOXX2::Utils::is_http_or_https_uri( $value ) )
 	{
 		return $repo->html_phrase( "rioxx2_validate_rioxx2_version_of_record:not_http_uri" );
 	}
