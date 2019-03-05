@@ -17,9 +17,9 @@
           <datasetid>document</datasetid>
           <filename>lang/en/phrases/rioxx2.xml</filename>
           <mime_type>application/xml</mime_type>
-          <hash>13fe231b0d7798f3f6d24d28d9a47ddd</hash>
+          <hash>13faba4812a4cd94c91ad67928d9e1dc</hash>
           <hash_type>MD5</hash_type>
-          <filesize>21523</filesize>
+          <filesize>22239</filesize>
         </file>
         <file>
           <datasetid>document</datasetid>
@@ -255,6 +255,14 @@
         </file>
         <file>
           <datasetid>document</datasetid>
+          <filename>cfg.d/z_rioxx2.pl</filename>
+          <mime_type>text/plain</mime_type>
+          <hash>2b960672c3939b9a2a75047d508ad32b</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>1118</filesize>
+        </file>
+        <file>
+          <datasetid>document</datasetid>
           <filename>epm/rioxx2/cgi/users/lookup/rioxx2_orcid</filename>
           <mime_type>text/plain</mime_type>
           <hash>47dabf1300b356e52c6b63caa33d9e2f</hash>
@@ -341,7 +349,7 @@
       <id>timothy.miles-board@london.ac.uk</id>
     </item>
   </creators>
-  <datestamp>2019-03-05 12:58:21</datestamp>
+  <datestamp>2019-03-05 13:09:11</datestamp>
   <title>RIOXX2</title>
   <description>This RIOXX plugin gives your EPrints repository the capability to expose its publication data using the RIOXX V2.0 application profile.</description>
   <icon>images/epm/rioxx2_icon.png</icon>
