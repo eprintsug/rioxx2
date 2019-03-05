@@ -206,6 +206,14 @@
 
 <!-- the RIOXX2 reports -->
 <epp:phrase id="Plugin/Screen/Report/RIOXX2:title"><span class="rioxx2_title">rioxx</span></epp:phrase>
-<epp:phrase id="Plugin/Screen/Report/RIOXX2/2014:title">2014 outputs</epp:phrase>
+<epp:phrase id="Plugin/Screen/Report/RIOXX2/2014:title">All outputs from 2014 to present</epp:phrase>
+<epp:phrase id="Plugin/Screen/Report/RIOXX2/2014_only:title">2014 outputs</epp:phrase>
+<epp:phrase id="Plugin/Screen/Report/RIOXX2/2015_only:title">2015 outputs</epp:phrase>
+<epp:phrase id="Plugin/Screen/Report/RIOXX2/2016_only:title">2016 outputs</epp:phrase>
+<epp:phrase id="Plugin/Screen/Report/RIOXX2/2017_only:title">2017 outputs</epp:phrase>
+<epp:phrase id="Plugin/Screen/Report/RIOXX2/2018_only:title">2018 outputs</epp:phrase>
+<epp:phrase id="Plugin/Screen/Report/RIOXX2/2019_only:title">2019 outputs</epp:phrase>
+<epp:phrase id="Plugin/Screen/Report/RIOXX2/2020_only:title">2020 outputs</epp:phrase>
+<epp:phrase id="Plugin/Screen/Report/RIOXX2/2021_only:title">2021 outputs</epp:phrase>
 
 </epp:phrases>
