@@ -159,6 +159,70 @@
         </file>
         <file>
           <datasetid>document</datasetid>
+          <filename>plugins/EPrints/Plugin/Screen/Report/RIOXX2/2019_only.pm</filename>
+          <mime_type>text/plain</mime_type>
+          <hash>9fabf60bc013ec624abaa2a948623d22</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>509</filesize>
+        </file>
+        <file>
+          <datasetid>document</datasetid>
+          <filename>plugins/EPrints/Plugin/Screen/Report/RIOXX2/2020_only.pm</filename>
+          <mime_type>text/plain</mime_type>
+          <hash>b818c2639162b8390f9d6ec93a21b20e</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>509</filesize>
+        </file>
+        <file>
+          <datasetid>document</datasetid>
+          <filename>plugins/EPrints/Plugin/Screen/Report/RIOXX2/2017_only.pm</filename>
+          <mime_type>text/plain</mime_type>
+          <hash>e7e19f9a07bcbc034cfcad11221050e8</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>509</filesize>
+        </file>
+        <file>
+          <datasetid>document</datasetid>
+          <filename>plugins/EPrints/Plugin/Screen/Report/RIOXX2/2016_only.pm</filename>
+          <mime_type>text/plain</mime_type>
+          <hash>c76e077200628a4ebe610eef3692c1f7</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>509</filesize>
+        </file>
+        <file>
+          <datasetid>document</datasetid>
+          <filename>plugins/EPrints/Plugin/Screen/Report/RIOXX2/2021_only.pm</filename>
+          <mime_type>text/plain</mime_type>
+          <hash>55b39a43304e09a76a8267a081710e86</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>509</filesize>
+        </file>
+        <file>
+          <datasetid>document</datasetid>
+          <filename>plugins/EPrints/Plugin/Screen/Report/RIOXX2/2015_only.pm</filename>
+          <mime_type>text/plain</mime_type>
+          <hash>972c92f45f093991de23b47dae240d83</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>509</filesize>
+        </file>
+        <file>
+          <datasetid>document</datasetid>
+          <filename>plugins/EPrints/Plugin/Screen/Report/RIOXX2/2014_only.pm</filename>
+          <mime_type>text/plain</mime_type>
+          <hash>9cb65c80ddca261678a068f918e9b9f0</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>509</filesize>
+        </file>
+        <file>
+          <datasetid>document</datasetid>
+          <filename>plugins/EPrints/Plugin/Screen/Report/RIOXX2/2018_only.pm</filename>
+          <mime_type>text/plain</mime_type>
+          <hash>ba80daa18edb86c8c4a354439c7c0bda</hash>
+          <hash_type>MD5</hash_type>
+          <filesize>509</filesize>
+        </file>
+        <file>
+          <datasetid>document</datasetid>
           <filename>plugins/EPrints/Plugin/Screen/Report/RIOXX2/2014.pm</filename>
           <mime_type>text/plain</mime_type>
           <hash>f0c6c04d43ae27bd373fe099a04344ae</hash>
@@ -259,7 +323,7 @@
       <content>coverimage</content>
     </document>
   </documents>
-  <version>1.1.0</version>
+  <version>1.1.1</version>
   <controller>EPMC::RIOXX2</controller>
   <creators>
     <item>
@@ -277,7 +341,7 @@
       <id>timothy.miles-board@london.ac.uk</id>
     </item>
   </creators>
-  <datestamp>2018-10-30 15:49:37</datestamp>
+  <datestamp>2019-03-05 12:58:21</datestamp>
   <title>RIOXX2</title>
   <description>This RIOXX plugin gives your EPrints repository the capability to expose its publication data using the RIOXX V2.0 application profile.</description>
   <icon>images/epm/rioxx2_icon.png</icon>
