@@ -1,0 +1,168 @@
+#!/usr/bin/perl -w
+
+use FindBin;
+use lib "$FindBin::Bin/../../../perl_lib";
+
+=pod
+#############################################################################
+# A script to collect funder refernces and splurge them out ready for a static 
+# autocomplete file. Takes up to 3 args:
+#   - repoid
+#   - service sherpa|fundref (default)
+#   - search (if number sherpa service will assume it is sherpa record if)
+##############################################################################
+=cut
+
+use EPrints;
+use JSON;
+use strict;
+use utf8;
+use open ':std', ':encoding(UTF-8)';
+
+my $repoid = shift @ARGV;
+my $service = shift @ARGV || "fundref";
+my $q = shift @ARGV;
+
+my $eprints = EPrints->new();
+my $noise = 1;
+
+my $repo = repository($repoid);
+
+my $services = {
+        fundref => {base_url => 'https://api.crossref.org/funders',
+                query => undef,
+                rows=>100,
+                offset=>0,
+
+        },
+        sherpa => {base_url => 'https://v2.sherpa.ac.uk/cgi/retrieve',
+                "api-key" => $repo->get_conf("sherpa","api_key"),
+                "item-type" => "funder",
+                format=>"Json",
+                limit=>100,
+                filter => undef,
+                query=>undef,
+                offset=>0,
+        }
+};
+
+if (defined $q){
+        $services->{sherpa}->{filter}="[[\"name\",\"contains word\",\"$q\"]]";
+        $services->{sherpa}->{filter}="[[\"id\",\"equals\",\"$q\"]]" if($q =~ /^\d+$/);
+        $services->{fundref}->{query}="$q";
+}
+
+my $base_url = $services->{$service}->{base_url};
+
+my $offset = $services->{$service}->{offset};
+my $hits=0;
+while (1){
+
+        my $request_url = $base_url."?";
+        while(my($param,$value) = each(%{$services->{$service}})){
+                next if($param eq "base_url" || $param eq "offset");
+                $request_url .= "$param=$value&" if(defined $value);
+        }
+        $request_url .= "offset=$offset" if(defined $offset);
+        $request_url =~ s/\&$//;
+#       print $request_url."\n";
+
+        my $funder_data = get_data($request_url);
+        ($hits,$offset) = eval("process_".$service."_data(\$funder_data,\$offset)");
+        my $limit = $services->{$service}->{limit} || $services->{$service}->{rows};
+#       print "HITS: $hits\n";
+#       print "OFFSET: $offset\n";
+        last if($hits < $limit);
+        sleep 1;
+}
+
+
+exit;
+
+sub process_fundref_data
+{
+        my ($funder_data,$offset) = @_;
+
+        my $hits = scalar @{$funder_data->{message}->{items}};
+        my $total = $funder_data->{message}->{"total-results"};
+        my $limit = $funder_data->{message}->{"items-per-page"};
+
+        $offset += $hits;
+        for my $hit (@{$funder_data->{message}->{items}}){
+
+                print $hit->{uri}.",\"".$hit->{name}."\"\n";
+        }
+
+        return ($hits,$offset);
+
+}
+
+sub process_sherpa_data
+{
+        my ($funder_data,$offset) = @_;
+
+        my $hits = scalar @{$funder_data->{items}};
+        $offset += $hits;
+
+        for my $hit (@{$funder_data->{items}}){
+                my $link = undef;
+                my $funder_name = undef;
+                for my $id (@{$hit->{funder_metadata}->{identifiers}}){
+                        if($id->{type} eq "fundref"){
+                                $link = $id->{identifier};
+                                last;
+                        }
+                }
+                if(! defined $link){
+                        for my $url (@{$hit->{funder_metadata}->{url}}){
+                                if(defined $url->{url}){
+                                        $link = $url->{url};
+                                        last;
+                                }
+                        }
+                }
+                for my $name (@{$hit->{funder_metadata}->{name}}){
+                        if(defined $name->{language}){
+                                if($name->{language} eq "en"){
+                                        $funder_name = $name->{name};
+                                        last;
+                                }
+                        }elsif(defined $name->{name}){
+                                $funder_name = $name->{name};
+                                last;
+                        }
+                }
+                print "$link,\"$funder_name\"\n" if(defined $link && defined $funder_name);
+        }
+        return ($hits,$offset);
+
+}
+sub get_data
+{
+        my ($request_url) = @_;
+        my $ua = LWP::UserAgent->new;
+        # Manners (for crossref especially)
+        my $ua_string = "getFunders/EPrints 3.3.x (".$repo->get_conf("base_url")."; mailto:".$repo->get_conf("adminemail").")";
+        $ua->agent($ua_string);
+        my $r;
+        $r = $ua->get( $request_url );
+        my $json = $r->content;
+        my $funder_data = decode_json $json;
+        return $funder_data;
+
+}
+sub repository
+{
+        my( $repoid, %opts ) = @_;
+
+        return $repoid if ref($repoid) && $repoid->isa( "EPrints::Repository" );
+
+        my $repo = $eprints->repository( $repoid, noise => $noise, %opts );
+        if( !defined $repo )
+        {
+                print STDERR "Failed to load repository: $repoid\n";
+                exit 1;
+        }
+
+        return $repo;
+}
