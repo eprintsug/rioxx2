@@ -48,7 +48,7 @@ sub xml_dataobj
 
 	my $rioxx = $xml->create_element('rioxx',
 		'xmlns' => $self->param('xmlns'),
-		'xmlns:ali' => "http://ali.niso.org/2014/ali/1.0",
+		'xmlns:ali' => "https://www.niso.org/schemas/ali/1.0",
 		'xmlns:dc' => "http://purl.org/dc/elements/1.1/",
 		'xmlns:dcterms' => "http://purl.org/dc/terms/",
 		'xmlns:rioxxterms' => "http://docs.rioxx.net/schema/v2.0/rioxxterms/",
