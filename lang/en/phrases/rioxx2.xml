@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE phrases SYSTEM "entities.dtd">
+<epp:phrases xmlns="http://www.w3.org/1999/xhtml" xmlns:epp="http://eprints.org/ep3/phrase" xmlns:epc="http://eprints.org/ep3/control">
+
+
+<epp:phrase id="user_fieldname_orcid">ORCID</epp:phrase>
+<epp:phrase id="user_fieldhelp_orcid">The ORCID for the user</epp:phrase>
+
+ <epp:phrase id="eprint_fieldname_rioxx2_coverage">Coverage</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_coverage_input">Coverage Input</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_description">Description</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_format">Format</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_identifier">Identifier</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_language">Language</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_language_input">Language Input</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_publisher">Publisher</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_relation">Relation</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_source">Source</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_subject">Subject</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_title">Title</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_dateAccepted">Date accepted</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_dateAccepted_input">Date accepted Input</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_free_to_read">Free to read</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_free_to_read_input">Free to read Input</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_free_to_read_input_free_to_read">Free to read</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_free_to_read_input_free_to_read_Yes">Yes</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_free_to_read_input_start_date">Start date</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_free_to_read_input_end_date">End date</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_license_ref">License ref</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_license_ref_input">License ref Input</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_license_ref_input_license_ref">License URL</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_license_ref_input_start_date">Start date</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_apc">APC</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_apc_input">APC Input</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_apc_input_paid">Paid</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_apc_input_partially waived">Partially Waived</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_apc_input_fully waived">Fully Waived</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_apc_input_not charged">Not Charged</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_apc_input_not required">Not Required</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_apc_input_unknown">Unknown</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_author">Author</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_author_input">Author Input</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_author_input_author">Author</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_author_input_id">Author ID</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_contributor">Contributor</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_project">Project</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_project_input">Project Input</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_project_input_project">Project ID</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_project_input_funder_name">Funder Name</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_project_input_funder_id">Funder ID</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_publication_date">Publication Date</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_publication_date_input">Publication Date Input</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_type">Type</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_type_input">Type Input</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Book">Book</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Book chapter">Book chapter</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Book edited">Book edited</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Conference Paper/Proceeding/Abstract">Conference Paper/Proceeding/Abstract</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Journal Article/Review">Journal Article/Review</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Manual/Guide">Manual/Guide</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Monograph">Monograph</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Policy briefing report">Policy briefing report</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Technical Report">Technical Report</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Technical Standard">Technical Standard</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Thesis">Thesis</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Other">Other</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Consultancy Report">Consultancy Report</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_type_input_Working paper">Working paper</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_version">Version</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_version_input">Version Input</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_version_input_AO">Author's Original</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_version_input_SMUR">Submitted Manuscript Under Review</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_version_input_AM">Accepted Manuscript</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_version_input_P">Proof</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_version_input_VoR">Version of Record</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_version_input_CVoR">Corrected Version of Record</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_version_input_EVoR">Enhanced Version of Record</epp:phrase>
+ <epp:phrase id="eprint_fieldopt_rioxx2_version_input_NA">Not Applicable (or Unknown)</epp:phrase>
+ <epp:phrase id="eprint_fieldname_rioxx2_version_of_record">Version of Record</epp:phrase>
+
+ <epp:phrase id="metapage_title_rioxx2"><span class="rioxx2_title">rioxx</span></epp:phrase>
+
+ <epp:phrase id="Plugin/InputForm/Component/Field/RIOXX2:content">
+	<epc:pin name="choose_container">
+		<label><epc:pin name="use_mapping"/>Use default mapping: <epc:pin name="mapped_value"/></label>
+		<br/>
+		<label><epc:pin name="use_override"/>Override the default mapping by providing a value</label>
+	</epc:pin>
+	<epc:pin name="input_container">
+		<epc:pin name="input"/>
+	</epc:pin>
+</epp:phrase>
+
+<epp:phrase id="Plugin/InputForm/Component/Field/RIOXX2:error_missing_input"><em><epc:pin name="ref"/></em> requires <em><epc:pin name="ref"/>_input</em> to be defined: <pre><epc:pin name="xml" /></pre></epp:phrase>
+
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:title"><span id="rioxx2_tab_title" class="rioxx2_title">rioxx</span></epp:phrase>
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:non_compliant"><span id="rioxx2_status" data-status="non_compliant">Sorry, this item <strong>does not</strong> comply with RIOXX 2.0. Please address the problems listed below.</span></epp:phrase>
+
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:intro">
+<div id="rioxx2_intro_message"><epc:pin name="message"/></div>
+<div id="rioxx2_intro_document"><epc:pin name="document"/></div>
+</epp:phrase>
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:render_document">
+	<table>
+		<tr>
+			<td align="right"><epc:pin name="icon"/></td>
+			<td><epc:pin name="citation"/></td>
+			<td><img src="/style/images/rioxx2_arrow.png"/></td>
+			<td>This document will be described by RIOXX. To use a different document <span class="ep_problem_field:documents">upload a new document or edit an existing document</span> and set <strong><epc:phrase ref="document_fieldname_content"/></strong> to <em><epc:phrase ref="content_typename_published"/></em> or <em><epc:phrase ref="content_typename_submitted"/></em>.</td>
+		</tr>
+	</table>
+</epp:phrase>
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:render_no_document">
+	<table>
+		<tr>
+			<td align="right"><img src="/style/images/fileicons/unknown.png"/></td>
+			<td><img src="/style/images/rioxx2_arrow.png"/></td>
+			<td><span class="ep_problem_field:documents">Upload a document</span> and set <strong><epc:phrase ref="document_fieldname_content"/></strong> to <em><epc:phrase ref="content_typename_published"/></em> or <em><epc:phrase ref="content_typename_submitted"/></em>.</td>
+		</tr>
+	</table>
+</epp:phrase>
+
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:compliant"><span id="rioxx2_status" data-status="compliant">Congratulations, this item complies with RIOXX 2.0. For bonus points please consider adding recommended or optional information.</span></epp:phrase>
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:render_problems"><ul class="rioxx2_problems"><epc:pin name="problems"/></ul></epp:phrase>
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:render_problem">
+	<li><epc:pin name="problem"/> <a class="rioxx2_show_gl">Why?</a><div class="rioxx2_help rioxx2_hidden"><p>This is used by the RIOXX <strong><epc:pin name="field"/></strong> element.</p><epc:pin name="help"/></div></li>
+</epp:phrase>
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:recommended">Recommended (<epc:pin name="n"/>)</epp:phrase>
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:optional">Optional (<epc:pin name="n"/>)</epp:phrase>
+<epp:phrase id="Plugin/Screen/EPrint/RIOXX2:export"><epc:pin name="link">View RIOXX2 record</epc:pin></epp:phrase>
+
+<epp:phrase id="Plugin/Screen/EPMC/RIOXX2:warn:reports_not_installed">The Generic Reporting Framework Bazaar package is not installed and enabled. As a result some functionality of the RIOXX2 package will not be available</epp:phrase>
+<epp:phrase id="Plugin/Screen/EPMC/RIOXX2:warn:reports_not_enabled">The Generic Reporting Framework Bazaar package is not enabled. As a result some functionality of the RIOXX2 package will not be available</epp:phrase>
+
+<!-- validation -->
+
+<epp:phrase id="lib/metafield/property:rioxx2_required:mandatory">Mandatory</epp:phrase>
+<epp:phrase id="lib/metafield/property:rioxx2_required:recommended">Recommended</epp:phrase>
+<epp:phrase id="lib/metafield/property:rioxx2_required:optional">Optional</epp:phrase>
+
+<!-- for derived fields, use these phrases to hint to the user what fields they need to fill in -->
+<epp:phrase id="rioxx2_validate_rioxx2_coverage:not_done_field">You could fill in the <span class="ep_problem_field:rioxx2_coverage"><epc:phrase ref="eprint_fieldname_rioxx2_coverage"/></span> field.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_description:not_done_field">You should fill in the <span class="ep_problem_field:abstract"><epc:phrase ref="eprint_fieldname_abstract"/></span> field.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_description:contains_markup">You need to remove HTML or other markup from the <span class="ep_problem_field:abstract"><epc:phrase ref="eprint_fieldname_abstract"/></span> field.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_format:not_done_field">You should <span class="ep_problem_field:documents">upload at least one document</span>.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_identifier:not_done_field">You need to <span class="ep_problem_field:documents">upload at least one document</span>.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_language:not_done_field">You need to <span class="ep_problem_field:documents">upload at least one document</span> and specify the document language.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_publisher:not_done_field">You should fill in the <span class="ep_problem_field:publisher"><epc:phrase ref="eprint_fieldname_publisher"/></span> field.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_relation:not_done_field">You could fill in the <span class="ep_problem_field:related_url"><epc:phrase ref="eprint_fieldname_related_url"/></span> field.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_relation:not_http_uri">You need to make sure that the <span class="ep_problem_field:related_url"><epc:phrase ref="eprint_fieldname_related_url"/></span> field contains HTTP URIs.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_source:not_done_field">You need to fill in at least one of the following fields: <span class="ep_problem_field:issn"><epc:phrase ref="eprint_fieldname_issn"/></span>, <span class="ep_problem_field:isbn"><epc:phrase ref="eprint_fieldname_isbn"/></span>, <span class="ep_problem_field:publication"><epc:phrase ref="eprint_fieldname_publication"/></span>, <span class="ep_problem_field:book_title"><epc:phrase ref="eprint_fieldname_book_title"/></span>, <span class="ep_problem_field:event_title"><epc:phrase ref="eprint_fieldname_event_title"/></span>.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_subject:not_done_field">You should select some <span class="ep_problem_field:subjects"><epc:phrase ref="eprint_fieldname_subjects"/></span></epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_title:not_done_field">You need to fill in the <span class="ep_problem_field:title"><epc:phrase ref="eprint_fieldname_title"/></span> field.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_dateAccepted:not_done_field">You need to fill in the <span class="ep_problem_field:rioxx2_dateAccepted"><epc:phrase ref="eprint_fieldname_rioxx2_dateAccepted"/></span> field.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_dateAccepted:not_iso_8601_date">You need to make sure that the <span class="ep_problem_field:rioxx2_dateAccepted"><epc:phrase ref="eprint_fieldname_rioxx2_dateAccepted"/></span> is fully completed with a year, month and day.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_free_to_read:not_done_field">You could fill in the <span class="ep_problem_field:rioxx2_free_to_read"><epc:phrase ref="eprint_fieldname_rioxx2_free_to_read"/></span> field.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_free_to_read:not_done_part_free_to_read"><epc:phrase ref="rioxx2_validate_rioxx2_free_to_read:not_done_field"/></epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_free_to_read_start_date:not_iso_8601_date">You need to make sure that the <span class="ep_problem_field:rioxx2_free_to_read"><epc:phrase ref="eprint_fieldname_rioxx2_free_to_read"/></span> "<epc:phrase ref="eprint_fieldname_rioxx2_free_to_read_input_start_date"/>" is fully completed with a year, month and day.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_free_to_read_end_date:not_iso_8601_date">You need to make sure that the <span class="ep_problem_field:rioxx2_free_to_read"><epc:phrase ref="eprint_fieldname_rioxx2_free_to_read"/></span> "<epc:phrase ref="eprint_fieldname_rioxx2_free_to_read_input_end_date"/>" is fully completed with a year, month and day.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_license_ref:not_done_field">You need to fill in the <span class="ep_problem_field:rioxx2_license_ref"><epc:phrase ref="eprint_fieldname_rioxx2_license_ref"/></span> field.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_license_ref:not_done_part_start_date">You need to fill in the <span class="ep_problem_field:rioxx2_license_ref"><epc:phrase ref="eprint_fieldname_rioxx2_license_ref"/></span> "<epc:phrase ref="eprint_fieldname_rioxx2_license_ref_input_start_date"/>" field.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_license_ref:not_done_part_license_ref">You need to fill in the <span class="ep_problem_field:rioxx2_license_ref"><epc:phrase ref="eprint_fieldname_rioxx2_license_ref"/></span> "<epc:phrase ref="eprint_fieldname_rioxx2_license_ref_input_license_ref"/>" field.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_license_ref:not_http_uri">You need to make sure that the <span class="ep_problem_field:rioxx2_license_ref"><epc:phrase ref="eprint_fieldname_rioxx2_license_ref"/></span> "<epc:phrase ref="eprint_fieldname_rioxx2_license_ref_input_license_ref"/>" contains a HTTP URI.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_license_ref:not_iso_8601_date">You need to make sure that the <span class="ep_problem_field:rioxx2_license_ref"><epc:phrase ref="eprint_fieldname_rioxx2_license_ref"/></span> "<epc:phrase ref="eprint_fieldname_rioxx2_license_ref_input_start_date"/>" is fully completed with a year, month and day.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_apc:not_done_field">You could fill in the <span class="ep_problem_field:rioxx2_apc"><epc:phrase ref="eprint_fieldname_rioxx2_apc"/></span> field.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_author:not_done_field">You need to fill in the <span class="ep_problem_field:creators"><epc:phrase ref="eprint_fieldname_creators"/></span> and/or <span class="ep_problem_field:corp_creators"><epc:phrase ref="eprint_fieldname_corp_creators"/></span> fields.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_contributor:not_done_field">You could fill in the <span class="ep_problem_field:editors"><epc:phrase ref="eprint_fieldname_editors"/></span> and/or <span class="ep_problem_field:contributors"><epc:phrase ref="eprint_fieldname_contributors"/></span> fields.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_project:not_done_field">You need to fill in the <span class="ep_problem_field:rioxx2_project"><epc:phrase ref="eprint_fieldname_rioxx2_project"/></span> field.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_project:not_done_part_project">You need to fill in the <span class="ep_problem_field:rioxx2_project"><epc:phrase ref="eprint_fieldname_rioxx2_project"/></span> "<epc:phrase ref="eprint_fieldname_rioxx2_project_input_project"/>" field.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_project:not_http_uri">You need to make sure that the <span class="ep_problem_field:rioxx2_project"><epc:phrase ref="eprint_fieldname_rioxx2_project"/></span> "<epc:phrase ref="eprint_fieldname_rioxx2_project_input_funder_id"/>" contains a HTTP URI.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_project:not_done_part_funder">The <span class="ep_problem_field:rioxx2_project"><epc:phrase ref="eprint_fieldname_rioxx2_project"/></span> field must have either a "<epc:phrase ref="eprint_fieldname_rioxx2_project_input_funder_name"/>" or a "<epc:phrase ref="eprint_fieldname_rioxx2_project_input_funder_id"/>".</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_project:not_valid_funder">The <span class="ep_problem_field:rioxx2_project"><epc:phrase ref="eprint_fieldname_rioxx2_project"/></span> "<epc:phrase ref="eprint_fieldname_rioxx2_project_input_funder_name"/>" was not found in the lookup data.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_project:funder_name_id_do_not_match">The funder name does not match the <span class="ep_problem_field:rioxx2_project"><epc:phrase ref="eprint_fieldname_rioxx2_project"/></span> "<epc:phrase ref="eprint_fieldname_rioxx2_project_input_funder_id"/>" according to the lookup data.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_publication_date:not_done_field">You could fill in a <span class="ep_problem_field:date"><epc:phrase ref="eprint_fieldname_date"/></span> or <span class="ep_problem_field:rioxx2_publication_date"><epc:phrase ref="eprint_fieldname_rioxx2_publication_date"/></span>.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_type:not_done_field">You need to fill in a <span class="ep_problem_field:type"><epc:phrase ref="eprint_fieldname_type"/></span> or <span class="ep_problem_field:rioxx2_type"><epc:phrase ref="eprint_fieldname_rioxx2_type"/></span>.</epp:phrase>
+
+<epp:phrase id="rioxx2_validate_rioxx2_version:not_done_field">You need to <span class="ep_problem_field:documents">upload at least one document</span> and specify the document content.</epp:phrase>
+
+<epp:phrase id="eprint_fieldname_doi">DOI</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_version_of_record:not_done_field">You should fill in the <span class="ep_problem_field:doi"><epc:phrase ref="eprint_fieldname_doi"/></span> or <span class="ep_problem_field:id_number"><epc:phrase ref="eprint_fieldname_id_number"/></span> field.</epp:phrase>
+<epp:phrase id="rioxx2_validate_rioxx2_version_of_record:not_http_uri">You need to make sure that the <span class="ep_problem_field:doi"><epc:phrase ref="eprint_fieldname_doi"/></span> or <span class="ep_problem_field:id_number"><epc:phrase ref="eprint_fieldname_id_number"/></span> field contains a DOI or a HTTP URI.</epp:phrase>
+
+<epp:phrase id="cgi/lookup/rioxx2_project:projects"><h2>Projects:</h2></epp:phrase>
+<epp:phrase id="cgi/lookup/rioxx2_project:funder"><epc:pin name="name"/><br/>(<epc:pin name="id"/>)</epp:phrase>
+<epp:phrase id="cgi/lookup/rioxx2_project:found"><small> (associated with <epc:pin name="count"/> item(s) in this repository)</small></epp:phrase>
+
+<epp:phrase id="cgi/lookup/rioxx2_orcid:name"><epc:pin name="family"/>, <epc:pin name="given"/><br/>(<epc:pin name="id"/>)</epp:phrase>
+
+<!-- the RIOXX2 reports -->
+<epp:phrase id="Plugin/Screen/Report/RIOXX2:title"><span class="rioxx2_title">rioxx</span></epp:phrase>
+<epp:phrase id="Plugin/Screen/Report/RIOXX2/2014:title">All outputs from 2014 to present</epp:phrase>
+<epp:phrase id="Plugin/Screen/Report/RIOXX2/2014_only:title">2014 outputs</epp:phrase>
+<epp:phrase id="Plugin/Screen/Report/RIOXX2/2015_only:title">2015 outputs</epp:phrase>
+<epp:phrase id="Plugin/Screen/Report/RIOXX2/2016_only:title">2016 outputs</epp:phrase>
+<epp:phrase id="Plugin/Screen/Report/RIOXX2/2017_only:title">2017 outputs</epp:phrase>
+<epp:phrase id="Plugin/Screen/Report/RIOXX2/2018_only:title">2018 outputs</epp:phrase>
+<epp:phrase id="Plugin/Screen/Report/RIOXX2/2019_only:title">2019 outputs</epp:phrase>
+<epp:phrase id="Plugin/Screen/Report/RIOXX2/2020_only:title">2020 outputs</epp:phrase>
+<epp:phrase id="Plugin/Screen/Report/RIOXX2/2021_only:title">2021 outputs</epp:phrase>
+
+</epp:phrases>

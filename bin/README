@@ -1,0 +1,3 @@
+# Generate help text for rioxx2 fields
+curl http://rioxx.net/v2-0-final/ > v2.0-final.html
+./mk_help.pl v2.0-final.html > lib/lang/en/phrases/rioxx2_help.xml

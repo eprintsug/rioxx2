@@ -1,0 +1,97 @@
+use EPrints;
+
+use strict;
+
+my $repo = EPrints::Session->new();
+my $orcid_url = "http://pub.orcid.org/v1.1/search/orcid-bio?start=0&rows=20&q=";
+
+# we could split the input to be family/given and then we could search using
+# my $orcid_url = "http://pub.orcid.org/v1.1/search/orcid-bio?start=0&rows=20&q=family-name:";
+# but without the split it seems less flexible
+
+my $content = "text/xml";
+$repo->send_http_header( content_type=>$content );
+
+my @params = $repo->param;
+my $string_frag = lc $repo->param( "q" );
+my $name = lc $repo->param( "_author" );
+my $id = lc $repo->param( "_id" );
+
+#print STDERR "q[$string_frag] n[$name] i[$id]\n";
+
+my $rows = [];
+my $limit = 20;
+
+if ( $string_frag eq $name ) 
+{
+	if ( length( $name ) > 3 )
+	{
+		$rows = lookup_author_names( $repo, $name, $id, $orcid_url, $limit );
+	}
+}
+
+my $ul = EPrints::Extras::render_lookup_list( $repo, $rows );
+$repo->send_http_header( content_type => "text/xml; charset=UTF-8" );
+
+binmode(STDOUT,":utf8");
+print <<END;
+<?xml version="1.0" encoding="UTF-8" ?>
+
+END
+print EPrints::XML::to_string( $ul, "utf-8", 1 );
+
+EPrints::XML::dispose( $ul );
+
+$repo->terminate;
+
+
+sub lookup_author_names
+{
+	my ( $repo, $name, $id, $url, $limit ) = @_;
+
+	my $rows = [];
+	my $matches = 0;
+	$url .= $name;
+
+	my $req = HTTP::Request->new("GET",$url);
+	$req->header( "accept" => "application/json" );
+
+	my $ua = LWP::UserAgent->new;
+	my $response = $ua->request($req);
+
+	if (200 != $response->code)
+	{
+		return $rows;
+	}
+	my $content = $response->content;
+	my $json_vars = JSON::decode_json($content);
+	my $count = $json_vars->{"orcid-search-results"}->{"num-found"};
+	my $results = $json_vars->{"orcid-search-results"}->{"orcid-search-result"};
+
+#print STDERR "got [".$count."] results\n";
+	
+	foreach my $result ( @$results )
+	{
+#print STDERR "got response [".Data::Dumper::Dumper($result)."]\n";
+		my $given = $result->{"orcid-profile"}->{"orcid-bio"}->{"personal-details"}->{"given-names"}->{"value"};
+		my $family = $result->{"orcid-profile"}->{"orcid-bio"}->{"personal-details"}->{"family-name"}->{"value"};
+		my $orcid = $result->{"orcid-profile"}->{"orcid-identifier"}->{"uri"};
+		last if $matches >= $limit;
+		my $frag = $repo->make_doc_fragment;
+		$frag->appendChild( $repo->html_phrase( 'cgi/lookup/rioxx2_orcid:name',
+								family => $repo->make_text( $family ), 
+								given => $repo->make_text( $given ), 
+								id => $repo->make_text( $orcid ) ) );
+		my $item = {};
+		$item->{xhtml} = $frag;
+		$item->{values} = [
+				"for:value:relative:_author" => $family.", ".$given,
+				"for:value:relative:_id" => $orcid,
+			];
+		push @$rows, $item;
+		$matches++;
+	}
+	return $rows;
+}
+
+

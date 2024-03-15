@@ -1,0 +1,188 @@
+use EPrints;
+
+use strict;
+
+my $repo = EPrints::Session->new();
+
+my $content = "text/xml";
+$repo->send_http_header( content_type=>$content );
+
+my @params = $repo->param;
+my $string_frag = lc $repo->param( "q" );
+my $project = lc $repo->param( "_project" );
+my $funder_name = lc $repo->param( "_funder_name" );
+my $funder_id = lc $repo->param( "_funder_id" );
+my $lookup_file = $repo->param( "file" );
+
+my $rows = [];
+my $limit = 20;
+
+if ( $string_frag eq $funder_name ) 
+{
+	$rows = lookup_funder_names( $repo, $lookup_file, $funder_name, $limit );
+}
+elsif ( $string_frag eq $funder_id )
+{
+	$rows = lookup_funder_ids( $repo, $lookup_file, $funder_id, $limit );
+}
+elsif ( $string_frag eq $project )
+{
+	$rows = lookup_project( $repo, $project, $limit );
+}
+
+my $ul = EPrints::Extras::render_lookup_list( $repo, $rows );
+$repo->send_http_header( content_type => "text/xml; charset=UTF-8" );
+
+binmode(STDOUT,":utf8");
+print <<END;
+<?xml version="1.0" encoding="UTF-8" ?>
+
+END
+print EPrints::XML::to_string( $ul, "utf-8", 1 );
+
+EPrints::XML::dispose( $ul );
+
+$repo->terminate;
+
+
+sub lookup_project
+{
+	my ( $repo, $project, $limit ) = @_;
+
+	my $rows = [];
+
+	my $dataset = $repo->dataset( "eprint" );
+	my $database = $repo->get_database;
+	my $project_field = $dataset->get_field( "rioxx2_project_input_project" );
+	my $main_project_field = $dataset->get_field( "projects" );
+	my $Q_p_table = $database->quote_identifier($dataset->get_sql_sub_table_name($main_project_field));
+	my $Q_rioxx_table = $database->quote_identifier($dataset->get_sql_sub_table_name($project_field));
+
+	$rows = lookup_project_in_db( $repo, $project, $limit, $project_field, $project_field->get_sql_names, $Q_rioxx_table, $rows ); 
+	$rows = lookup_project_in_db( $repo, $project, $limit, $project_field, $main_project_field->get_sql_names, $Q_p_table, $rows ); 
+	return $rows;
+}
+
+sub lookup_project_in_db
+{
+	my ( $repo, $project, $limit, $project_field, $col, $table, $rows) = @_;
+
+	my $database = $repo->get_database;
+	my $sql = "SELECT DISTINCT ".$col." from ".$table;
+	$sql .= " WHERE "; 
+	$sql .= $database->quote_identifier($col).$database->sql_LIKE().$database->quote_value(EPrints::Database::prep_like_value($project).'%');
+
+	my $sth = $database->prepare_select( $sql, 'limit' => $limit );
+	$database->execute( $sth , $sql );
+	while( my @row = $sth->fetchrow_array )
+	{
+		my $project_name = @row[0];
+
+		my $frag = $repo->make_doc_fragment;
+
+		$frag->appendChild( $project_field->render_single_value( $repo, $project_name ) );
+		$frag->appendChild( $repo->html_phrase( 'cgi/lookup/rioxx2_project:found', count => $repo->make_text( 1 ) ) );
+
+		my $item = {};
+		push @$rows, $item;
+		$item->{xhtml} = $frag;
+		$item->{values} = [
+			"for:value:relative:_project" => $project_name,
+		];
+	}
+	$sth->finish();
+
+	return $rows;
+}
+
+sub lookup_funder_names
+{
+	my ( $repo, $lookup_file, $funder, $limit ) = @_;
+
+	my $rows = [];
+	my $matches = 0;
+	my $lookup = read_lookup_file( $lookup_file );
+
+	foreach my $val ( keys %$lookup )
+	{
+		last if $matches >= $limit;
+		if ( index( $val, $funder ) != -1 )
+		{ 
+			my $frag = $repo->make_doc_fragment;
+			$frag->appendChild( $repo->html_phrase( 'cgi/lookup/rioxx2_project:funder',
+								name=> $repo->make_text( $lookup->{$val}->{name} ), 
+								id => $repo->make_text( $lookup->{$val}->{uri} ) ) );
+			my $item = {};
+			$item->{xhtml} = $frag;
+			$item->{values} = [
+				"for:value:relative:_funder_name" => $lookup->{$val}->{name},
+				"for:value:relative:_funder_id" => $lookup->{$val}->{uri},
+			];
+			push @$rows, $item;
+			$matches++;
+		}
+	}
+	return $rows;
+}
+
+sub lookup_funder_ids
+{
+	my ( $repo, $lookup_file, $funder, $limit ) = @_;
+
+	my $rows = [];
+	my $matches = 0;
+	my $lookup = read_lookup_file( $lookup_file );
+
+	foreach my $val ( keys %$lookup )
+	{
+		last if $matches >= $limit;
+		if ( index( $lookup->{$val}->{lc_uri}, $funder ) != -1 )
+		{
+			my $frag = $repo->make_doc_fragment;
+			$frag->appendChild( $repo->html_phrase( 'cgi/lookup/rioxx2_project:funder',
+								name=> $repo->make_text( $lookup->{$val}->{name} ), 
+								id => $repo->make_text( $lookup->{$val}->{uri} ) ) );
+			my $item = {};
+			$item->{xhtml} = $frag;
+			$item->{values} = [
+				"for:value:relative:_funder_name" => $lookup->{$val}->{name},
+				"for:value:relative:_funder_id" => $lookup->{$val}->{uri},
+			];
+			push @$rows, $item;
+			$matches++;
+		}
+	}
+	return $rows;
+}
+
+
+sub read_lookup_file
+{
+	my ( $lookup_file ) = @_;
+
+	if( !defined $lookup_file )
+	{
+		EPrints::abort( "no filename" );
+	}
+	$lookup_file=~s/\///sg;
+	$lookup_file=~s/^\.+//s;
+
+	my $lookup_uri ={};
+
+	my $filepath = $repo->config( "config_path" )."/autocomplete/$lookup_file";
+	open( DATA, '<', $filepath ) || EPrints::abort "can't read $filepath: $!";
+	while( <DATA> )
+	{
+		my( $uri, $name ) = split( /,/, $_, 2 );
+		$name =~ /^"(.+)"/;
+		$name = $1;
+		my $lc_name = lc $name;
+		next unless $name;
+		$lookup_uri->{$lc_name}->{uri} = $uri;
+		$lookup_uri->{$lc_name}->{lc_uri} = lc $uri;
+		$lookup_uri->{$lc_name}->{name} = $name;
+	}
+	close DATA;
+
+	return $lookup_uri;
+}
