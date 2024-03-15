@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<workflow xmlns="http://eprints.org/ep3/workflow" xmlns:epc="http://eprints.org/ep3/control">
+
+  <flow>
+    <epc:if test="$STAFF_ONLY = 'TRUE'">
+      <stage ref="rioxx2"/>
+    </epc:if>
+  </flow>
+
+  <stage name="rioxx2">
+    <component type="Field::RIOXX2"><field ref="rioxx2_type" /></component>
+    <component type="Field::RIOXX2"><field ref="rioxx2_coverage" /></component>
+    <component type="Field::RIOXX2"><field ref="rioxx2_language" /></component>
+    <component type="Field::RIOXX2"><field ref="rioxx2_dateAccepted" /></component>
+    <component type="Field::RIOXX2"><field ref="rioxx2_free_to_read" /></component>
+    <component type="Field::RIOXX2"><field ref="rioxx2_license_ref" /></component>
+    <component type="Field::RIOXX2"><field ref="rioxx2_apc" /></component>
+    <component type="Field::RIOXX2"><field ref="rioxx2_author" /></component>
+    <component type="Field::RIOXX2"><field ref="rioxx2_project" /></component>
+    <component type="Field::RIOXX2"><field ref="rioxx2_publication_date" /></component>
+    <component type="Field::RIOXX2"><field ref="rioxx2_version" /></component>
+  </stage>
+
+</workflow>
