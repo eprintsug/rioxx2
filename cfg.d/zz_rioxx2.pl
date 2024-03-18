@@ -327,7 +327,7 @@ push @{ $c->{rioxx2}->{overrides} },
 		{ sub_name => "free_to_read", type => "set", options => [ "Yes" ] },
 		{ sub_name => "start_date", type => "date", min_resolution => "day" },
 		{ sub_name => "end_date", type => "date", min_resolution => "day" }
-	]
+	],
 	sql_index => 0,
 },
 
@@ -346,7 +346,7 @@ push @{ $c->{rioxx2}->{overrides} },
 	name => "rioxx2_apc_input",
 	type => "set",
 	show_in_html => 0,
-	options => [ "paid", "partially waived", "fully waived", "not charged", "not required", "unknown" ] 
+	options => [ "paid", "partially waived", "fully waived", "not charged", "not required", "unknown" ],
 	sql_index => 0,
 },
 
@@ -406,7 +406,7 @@ push @{ $c->{rioxx2}->{overrides} },
 		"Consultancy Report",
 		"Working paper"
 	],
-	multiple => 1
+	multiple => 1,
 	sql_index => 0,
 },
 
